@@ -1,0 +1,16 @@
+name: assigned-issues-to-inprogress
+
+on:
+  issues:
+    types: [assigned]
+
+jobs:
+  move-assigned-issues-to-inprogress:
+    if: github.repository == 'Mavodeli/spaceroguelite'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: KarylReyne/github-project-automation-plus
+        with:
+          project: orga-board
+          column: In Progress
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
