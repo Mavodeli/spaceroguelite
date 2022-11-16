@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: KarylReyne/github-project-automation-plus@v1.0
         with:
-          project: orga-board
+          project: orga board
           column: In Progress
           repo-token: ${{ secrets.GITHUB_TOKEN }}
