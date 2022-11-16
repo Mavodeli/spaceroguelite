@@ -9,7 +9,7 @@ jobs:
     if: github.repository == 'Mavodeli/spaceroguelite'
     runs-on: ubuntu-latest
     steps:
-      - uses: KarylReyne/github-project-automation-plus
+      - uses: KarylReyne/github-project-automation-plus@v1.0
         with:
           project: orga-board
           column: In Progress
