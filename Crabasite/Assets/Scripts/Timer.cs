@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Timer
 {
+    //this is NOT a MonoBehaviour file!
+    //that means whenever you use this timer, make sure to call its Start() and Update() in the corresponding functions of the caller file!
+    //e.g. like it is done in Movement.cs
     private float wait_time;
     private float elapsed_time;
     private bool isRunning;
@@ -34,7 +37,6 @@ public class Timer
         isRunning = false;
     }
 
-    // Update is called once per frame
     public void Update()
     {
         if(isRunning){
