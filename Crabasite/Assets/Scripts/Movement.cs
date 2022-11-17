@@ -7,6 +7,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private float Speed = 8;
     [SerializeField] private float StartDelayDuration = 0.2f;
     [SerializeField] private float EndDelayDuration = 0.15f;
+    [SerializeField] private float DashCooldown = 1;
+    [SerializeField] private float DashDuration = 0.1f;
+    [SerializeField] private float DashModifier = 4;
 
     //dict that maps input keys to the corresponding direction vectors
     private Dictionary<string, Vector3> dir_map = new Dictionary<string, Vector3>();
@@ -18,10 +21,16 @@ public class Movement : MonoBehaviour
     //storage var for fade-out movement direction
     private Vector3 end_delay_direction;
 
+    //dash
+    private Timer dash_cooldown;
+    private Timer dash_active_frames;
+
     void Awake(){
-        //create two Timer instances
+        //create Timer instances
         start_delay_timer = new Timer();
         end_delay_timer = new Timer();
+        dash_cooldown = new Timer();
+        dash_active_frames = new Timer();
     }
     void Start()
     {
@@ -29,6 +38,8 @@ public class Movement : MonoBehaviour
         //call Start() for each timer as Timer is just a plain script and not a MonoBehaviour
         start_delay_timer.Start();
         end_delay_timer.Start();
+        dash_active_frames.Start();
+        dash_cooldown.Start();
         dir_map.Add("w", new Vector3(0, 1, 0));
         dir_map.Add("a", new Vector3(-1, 0, 0));
         dir_map.Add("s", new Vector3(0, -1, 0));
@@ -41,6 +52,8 @@ public class Movement : MonoBehaviour
         //call Update() for each timer as Timer is just a plain script and not a MonoBehaviour
         start_delay_timer.Update();
         end_delay_timer.Update();
+        dash_active_frames.Update();
+        dash_cooldown.Update();
         //stored for comparison with the movement situation (isMoving) in this frame
         //(to detect if the player begins or stops pressing wasd in-between frames)
         bool last_isMoving = isMoving;
@@ -81,6 +94,15 @@ public class Movement : MonoBehaviour
         if(end_delay_timer.is_running()){
             direction = end_delay_direction;
             speed = speed * (EndDelayDuration-end_delay_timer.get_elapsed_time());
+        }
+
+        //dash
+        if(Input.GetKey("left shift") && !dash_cooldown.is_running()){
+            dash_active_frames.start(DashDuration);
+            dash_cooldown.start(DashCooldown);
+        }
+        if(dash_active_frames.is_running()){
+            speed = speed*DashModifier;
         }
 
         //update gameObject (player) position
