@@ -21,7 +21,7 @@ public class CrabClaw : MonoBehaviour
         //- direction: normalized Mouse Cursor Position
         //- maximal t: +infinity
         if(Physics.Raycast(transform.position, mousePos_relative_to_player, out RaycastHit hit, Mathf.Infinity, DetectionLayer)){
-            //playerPos_relative_to_hit: vector that points [location where the ray hit a collider] -> Player
+            //playerPos_relative_to_hit: vector that points [location where the ray hits a collider] -> Player
             Vector3 playerPos_relative_to_hit = transform.position-hit.transform.position;
             playerPos_relative_to_hit.Normalize();
 
