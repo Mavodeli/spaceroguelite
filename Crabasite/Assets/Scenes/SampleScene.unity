@@ -493,11 +493,7 @@ MonoBehaviour:
   PushSpeed: 4
   DetectionLayer:
     serializedVersion: 2
-<<<<<<< Updated upstream
-    m_Bits: 1
-=======
     m_Bits: 8
->>>>>>> Stashed changes
 --- !u!4 &1091769800
 Transform:
   m_ObjectHideFlags: 0
