@@ -6,6 +6,7 @@ public class CrabClaw : MonoBehaviour
 {
     [SerializeField] private float PullSpeed = 4;
     [SerializeField] private float PushSpeed = 4;
+    // [SerializeField] private float PullSafetyDistance = 2;
     //the Layer in which the ray checks for intersections (default: 'Enemies')
     public LayerMask DetectionLayer;
     
@@ -25,12 +26,15 @@ public class CrabClaw : MonoBehaviour
             Vector3 playerPos_relative_to_hit = transform.position-hit.transform.position;
             playerPos_relative_to_hit.Normalize();
 
+            // float dist = Vector3.Distance(transform.position, hit.transform.position);
+
             //update the position of the object hit by the ray
+            // if(Input.GetMouseButton(0) && dist > PullSafetyDistance){
             if(Input.GetMouseButton(0)){
                 hit.transform.position += playerPos_relative_to_hit*PullSpeed*Time.deltaTime;
             }
             if(Input.GetMouseButton(1)){
-                hit.transform.position -= playerPos_relative_to_hit*PushSpeed*Time.deltaTime;
+                hit.transform.position += mousePos_relative_to_player*PushSpeed*Time.deltaTime;
             }
         }
     }
