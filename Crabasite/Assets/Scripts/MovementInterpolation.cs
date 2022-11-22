@@ -52,21 +52,22 @@ public class MovementInterpolation
         if(isMoving && !last_isMoving){// false -> true (aka begin movement)
             end_delay_timer.stop();
             end_delay_direction = new Vector3(0, 0, 0);
-            start_delay_timer.start(StartDelayDuration);
+            start_delay_timer.start(Mathf.Max(StartDelayDuration,0));
         }
         //checks if the player stops pressing wasd in-between frames
-        if(!isMoving && last_isMoving){// true -> false (aka stop movement)
+        else if(!isMoving && last_isMoving){// true -> false (aka stop movement)
             start_delay_timer.stop();
-            end_delay_timer.start(EndDelayDuration);
+            end_delay_timer.start(Mathf.Max(EndDelayDuration,0));
         }
-
-        //modify speed based on running timers (for fade-in/fade-out)
-        if(start_delay_timer.is_running()){
-            speed = speed * (1-(StartDelayDuration-start_delay_timer.get_elapsed_time()));
-        }
-        if(end_delay_timer.is_running()){
-            speed = speed * (EndDelayDuration-end_delay_timer.get_elapsed_time());
-            frameDirection = end_delay_direction;
+        else{
+            //modify speed based on running timers (for fade-in/fade-out)
+            if(start_delay_timer.is_running()){
+                speed = speed * Mathf.Clamp(1-(StartDelayDuration-start_delay_timer.get_elapsed_time()),0,1);
+            }
+            if(end_delay_timer.is_running()){
+                speed = speed * Mathf.Clamp(EndDelayDuration-end_delay_timer.get_elapsed_time(),0,1);
+                frameDirection = end_delay_direction;
+            }
         }
         frameSpeed = speed;
     }
