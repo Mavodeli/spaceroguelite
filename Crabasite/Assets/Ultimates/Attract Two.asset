@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 2
   isActive: 0
-  _initiated: 0
+  selectedObject1: {fileID: 0}
+  selectedObject2: {fileID: 0}
   object1Speed: 0
   object2Speed: 0
+  key: 50

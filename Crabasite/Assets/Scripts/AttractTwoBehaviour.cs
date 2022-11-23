@@ -37,5 +37,4 @@ public class AttractTwoBehaviour : MonoBehaviour
         myTransform.position = Vector3.MoveTowards(myTransform.position, targetTransform.position, speed * Time.deltaTime);
     }
 
-
 }
