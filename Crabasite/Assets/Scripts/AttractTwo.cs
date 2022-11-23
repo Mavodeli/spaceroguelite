@@ -10,9 +10,6 @@ public class AttractTwo : Ultimate
     GameObject selectedObject1;
     GameObject selectedObject2;
 
-    Transform object1Transform;
-    Transform object2Transform;
-
     public float object1Speed;
     public float object2Speed;
 
@@ -28,9 +25,6 @@ public class AttractTwo : Ultimate
         //select two targets
         selectedObject1 = GameObject.Find("GameObject");
         selectedObject2 = GameObject.Find("GameObject2");
-
-        object1Transform = selectedObject1.GetComponent<Transform>();
-        object2Transform = selectedObject2.GetComponent<Transform>();
 
         //attach the pull script
         AttractTwoBehaviour object1Script = selectedObject1.AddComponent<AttractTwoBehaviour>();
