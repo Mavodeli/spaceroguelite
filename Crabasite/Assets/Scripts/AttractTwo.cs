@@ -5,82 +5,45 @@ using UnityEngine;
 [CreateAssetMenu]
 public class AttractTwo : Ultimate
 {
+    GameObject player;
+    
     GameObject selectedObject1;
     GameObject selectedObject2;
-
-    CollisionDetector detectorObject1;
-    CollisionDetector detectorObject2;
 
     Transform object1Transform;
     Transform object2Transform;
 
-    Vector3 object1position;
-    Vector3 object2position;
-
-    public bool _initiated = false;
-
     public float object1Speed;
     public float object2Speed;
 
-    const int SPEED = 5;
+    const float SPEED = 5;
 
-    //pulls two selected targets together. Currently automatically selects the GameObject and GameObject2
+    //selects two targets (currently always selects GameObject and GameObject2) and adds a script that to both of them, making them pull together.
+    //needed to be split in two (AttractTwo and AttractTwoBehaviour) so the pulling of the objects happens separately
+    //and we don't have to wait for them to collide to start the cooldown
     //TODO: make targets selectable.
     //TODO: make it do dmg
     public override void Use()
     {
-        if (!_initiated)
-        {
-            // (re)set the speed
-            object1Speed = SPEED;
-            object2Speed = SPEED;
+        //select two targets
+        selectedObject1 = GameObject.Find("GameObject");
+        selectedObject2 = GameObject.Find("GameObject2");
 
-            selectedObject1 = GameObject.Find("GameObject");
-            selectedObject2 = GameObject.Find("GameObject2");
+        object1Transform = selectedObject1.GetComponent<Transform>();
+        object2Transform = selectedObject2.GetComponent<Transform>();
 
-            //attach Colliding Detector Scripts to the selected Objects
-            selectedObject1.AddComponent<CollisionDetector>();
-            selectedObject2.AddComponent<CollisionDetector>();
+        //attach the pull script
+        AttractTwoBehaviour object1Script = selectedObject1.AddComponent<AttractTwoBehaviour>();
+        AttractTwoBehaviour object2Script = selectedObject2.AddComponent<AttractTwoBehaviour>();
 
-            //get references to the script
-            detectorObject1 = selectedObject1.GetComponent<CollisionDetector>();
-            detectorObject2 = selectedObject2.GetComponent<CollisionDetector>();
+        //assign each other as the target to pull towards
+        object1Script.target = selectedObject2;
+        object2Script.target = selectedObject1;
 
-            //get transforms of the objects
-            object1Transform = selectedObject1.GetComponent<Transform>();
-            object2Transform = selectedObject2.GetComponent<Transform>();
+        //assign the speed of the pull
+        object1Script.speed = SPEED;
+        object2Script.speed = SPEED;
 
-            object1position = object1Transform.position;
-            object2position = object2Transform.position;
-
-            _initiated = true;
-        }
-
-        //exit condition
-        //check if both objects have collided with something and stop the ultimate
-        if (detectorObject1.isColliding && detectorObject2.isColliding)
-        {
-            isActive = false;
-            _initiated = false;
-            object1Speed = SPEED;
-            object2Speed = SPEED;
-        } 
-
-
-        // if either object has collided, make it's speed 0
-        // has to be seperate since objects can collide at different times
-        if (detectorObject1.isColliding)
-        {
-            object1Speed = 0;
-        }
-
-        if (detectorObject2.isColliding)
-        {
-            object2Speed = 0;
-        }
-
-        //move towards the other object
-        object2Transform.position = Vector3.MoveTowards(object2Transform.position, object1position, object2Speed * Time.deltaTime);
-        object1Transform.position = Vector3.MoveTowards(object1Transform.position, object2position, object1Speed * Time.deltaTime);
+        isActive = false;
     }
 }
