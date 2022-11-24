@@ -50,27 +50,34 @@ public class AttractTwo : Ultimate
 
     //selects a gameobject via raycast and returns it
     //returns   gameobject that was selected
-    GameObject SelectTarget()
-    {
-        GameObject target = null;
-        player = GameObject.Find("Player");
-        Vector3 playerPosition = player.GetComponent<Transform>().position;
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //GameObject SelectTarget()
+    //{
+    //    GameObject target = null;
+    //    player = GameObject.Find("Player");
+    //    //get positions for mouse and player
+    //    Vector3 playerPosition = player.GetComponent<Transform>().position;
+    //    Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector3 playerToMouseDirection = new Vector3(mousePosition.x - playerPosition.x, mousePosition.y - playerPosition.y, 0);
-        playerToMouseDirection.Normalize();
+    //    //save the vector that goes from the player to the mouse and normalize it to make it a direction vector
+    //    Vector3 playerToMouseDirection = new Vector3(mousePosition.x - playerPosition.x, mousePosition.y - playerPosition.y, 0);
+    //    playerToMouseDirection.Normalize();
 
-        RaycastHit hit;
-        if (Input.GetKeyDown(key))
-        {
-            if (Physics.Raycast(playerPosition, playerToMouseDirection, out hit))
-            {              
-                target = GameObject.Find(hit.transform.name);
-            }           
-        }
+    //    //hit will store information about the raycast hit
+    //    RaycastHit hit;
+    //    //if the key is down and the raycast hits something then store the hit gameobject inside target
+    //    if (Input.GetKeyDown(key))
+    //    {
+    //        //raycast from player to mouse, returns true if it hits something
+    //        //out hit stores information about what the raycast hit
+    //        if (Physics.Raycast(playerPosition, playerToMouseDirection, out hit))
+    //        {       
+    //            //get the name of the gameobject from the info stored in hit and find the gameobject to store it inside target
+    //            target = GameObject.Find(hit.transform.name);
+    //        }           
+    //    }
 
-        return target;
-    }
+    //    return target;
+    //}
 
     //selects both targets for the ultimate
     void SelectTargets()
@@ -78,14 +85,14 @@ public class AttractTwo : Ultimate
         //only look for a target if the first selected object is still null
         if (selectedObject1 == null)
         {
-            selectedObject1 = SelectTarget();
+            selectedObject1 = RayCastSelect.SelectTarget(key);
         }
 
         //only look for a second target if the second selected object is still null
         if (selectedObject2 == null)
         {
             //only assign the selected object if the found target is not the same gameobject as the first
-            GameObject selectedObject = SelectTarget();
+            GameObject selectedObject = RayCastSelect.SelectTarget(key);
             if (selectedObject1 != selectedObject)
             {
                 selectedObject2 = selectedObject;
