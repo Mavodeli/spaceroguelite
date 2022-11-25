@@ -16,6 +16,8 @@ public class CrabClaw : MonoBehaviour
     //the Layer in which the ray checks for intersections (default: 'Enemies')
     public LayerMask DetectionLayer;
 
+    Rigidbody objectRigidbody;
+
     void Awake(){
         PushMI = new MovementInterpolation();
         PullMI = new MovementInterpolation();
@@ -50,6 +52,8 @@ public class CrabClaw : MonoBehaviour
             // if(Input.GetMouseButton(0) && dist > PullSafetyDistance){
             if(Input.GetMouseButton(0)){
                 PullMI.Update(true, playerPos_relative_to_hit);
+                objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody>();
+                objectRigidbody.velocity = Vector3.zero;
                 hit.transform.position += PullMI.getFrameDirection()*PullMI.getFrameSpeed()*Time.deltaTime;
             }
             else{
@@ -57,6 +61,8 @@ public class CrabClaw : MonoBehaviour
             }
             if(Input.GetMouseButton(1)){
                 PushMI.Update(true, mousePos_relative_to_player);
+                objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody>();
+                objectRigidbody.velocity = Vector3.zero;
                 hit.transform.position += PushMI.getFrameDirection()*PushMI.getFrameSpeed()*Time.deltaTime;
             }
             else{
