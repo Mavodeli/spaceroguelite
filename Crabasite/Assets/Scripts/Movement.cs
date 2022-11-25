@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
             }
         }
 
-        MI.Update(direction);
+        MI.Update((direction != new Vector3(0, 0, 0)), direction);
         float speed = MI.getFrameSpeed();
 
         //dash

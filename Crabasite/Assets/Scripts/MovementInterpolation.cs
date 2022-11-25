@@ -8,8 +8,7 @@ public class MovementInterpolation
     private float EndDelayDuration;
     private float Speed;
 
-    //bool for checking if movement recently began or stopped
-    private bool isMoving;
+    private bool last_isMoving;
     private Timer start_delay_timer;
     private Timer end_delay_timer;
     //storage var for fade-out movement direction
@@ -31,19 +30,16 @@ public class MovementInterpolation
         StartDelayDuration = _StartDelayDuration;
         EndDelayDuration = _EndDelayDuration;
         Speed = _Speed;
-        isMoving = false;
+        last_isMoving = false;
     }
 
-    public void Update(Vector3 direction)
+    public void Update(bool isMoving, Vector3 direction)
     {
         //call Update() for each timer as Timer is just a plain script and not a MonoBehaviour
         start_delay_timer.Update();
         end_delay_timer.Update();
-        //stored for comparison with the movement situation (isMoving) in this frame
-        //(to detect if the player begins or stops pressing wasd in-between frames)
-        bool last_isMoving = isMoving;
+        
         float speed = Speed;
-        isMoving = direction != new Vector3(0, 0, 0);
         frameDirection = direction;
         //set the fade-out movement direction to the last known direction vector
         if(isMoving){end_delay_direction = direction;}
@@ -70,6 +66,7 @@ public class MovementInterpolation
             }
         }
         frameSpeed = speed;
+        last_isMoving = isMoving;
     }
 
     public float getFrameSpeed(){

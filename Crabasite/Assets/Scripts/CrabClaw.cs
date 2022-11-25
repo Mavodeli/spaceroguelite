@@ -9,8 +9,8 @@ public class CrabClaw : MonoBehaviour
     [SerializeField] private float StartDelayDuration = 0.15f;
     [SerializeField] private float EndDelayDuration = 0.3f;
     // [SerializeField] private float PullSafetyDistance = 2;
-    //IMPORTANT: the movement interpolation doesn't work bc the MIs can't use 
-    // the provided direction vector to detect movement changes (bc that vector is constant) :( 
+    //IMPORTANT: the movement interpolation doesn't work for the end delay
+    //  (and fixing that would significantly increase the complexity of the script, hence why that is not fixed) 
     private MovementInterpolation PushMI;
     private MovementInterpolation PullMI;
     //the Layer in which the ray checks for intersections (default: 'Enemies')
@@ -44,25 +44,28 @@ public class CrabClaw : MonoBehaviour
             Vector3 playerPos_relative_to_hit = transform.position-hit.transform.position;
             playerPos_relative_to_hit.Normalize();
 
-            PushMI.Update(mousePos_relative_to_player);
-            float pushspeed = PushMI.getFrameSpeed();
-            Vector3 pushdirection = PushMI.getFrameDirection();
-            PullMI.Update(playerPos_relative_to_hit);
-            float pullspeed = PullMI.getFrameSpeed();
-            Vector3 pulldirection = PullMI.getFrameDirection();
-
             // float dist = Vector3.Distance(transform.position, hit.transform.position);
 
             //update the position of the object hit by the ray
             // if(Input.GetMouseButton(0) && dist > PullSafetyDistance){
             if(Input.GetMouseButton(0)){
-                hit.transform.position += pulldirection*pullspeed*Time.deltaTime;
-                Debug.Log(pullspeed);
+                PullMI.Update(true, playerPos_relative_to_hit);
+                hit.transform.position += PullMI.getFrameDirection()*PullMI.getFrameSpeed()*Time.deltaTime;
+            }
+            else{
+                PullMI.Update(false, playerPos_relative_to_hit);
             }
             if(Input.GetMouseButton(1)){
-                hit.transform.position += pushdirection*pushspeed*Time.deltaTime;
-                Debug.Log(pushspeed);
+                PushMI.Update(true, mousePos_relative_to_player);
+                hit.transform.position += PushMI.getFrameDirection()*PushMI.getFrameSpeed()*Time.deltaTime;
             }
+            else{
+                PushMI.Update(false, mousePos_relative_to_player);
+            }
+        }
+        else{
+            PushMI.Update(false, new Vector3(0, 0, 0));
+            PullMI.Update(false, new Vector3(0, 0, 0));
         }
     }
 }
