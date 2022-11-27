@@ -33,12 +33,12 @@ public class InventoryManager : MonoBehaviour
             Destroy(item.gameObject);
         }
 
-
+        // gets all items from the List and puts them inside the inventory
         foreach(var item in Items)
         {
             GameObject obj = Instantiate(InventoryItem,ItemContent);
-            var itemName = obj.transform.Find("itemName").GetComponent<Text>();
-            var itemIcon = obj.transform.Find("itemIcon").GetComponent<Image>();
+            var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
 
             Debug.Log(itemName);
             Debug.Log(itemIcon);
