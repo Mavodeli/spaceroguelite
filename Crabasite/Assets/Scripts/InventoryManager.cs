@@ -21,7 +21,7 @@ public class InventoryManager : MonoBehaviour
         Items.Add(item);
     }
 
-    public void remove(Item item)
+    public void Remove(Item item)
     {
         Items.Remove(item);
     }
@@ -36,7 +36,7 @@ public class InventoryManager : MonoBehaviour
         // gets all items from the List and puts them inside the inventory
         foreach(var item in Items)
         {
-            GameObject obj = Instantiate(InventoryItem,ItemContent);
+            GameObject obj = Instantiate(InventoryItem, ItemContent);
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
 

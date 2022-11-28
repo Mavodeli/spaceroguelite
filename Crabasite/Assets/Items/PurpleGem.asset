@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e89876e2b9a4256bb7e09b9fb8318d, type: 3}
   m_Name: PurpleGem
   m_EditorClassIdentifier: 
-  id: 0
-  itemName: 
-  value: 0
-  icon: {fileID: 0}
+  id: 1
+  itemName: PurpleGem
+  value: 10
+  icon: {fileID: 21300000, guid: af43187fe78bf4124b5b3d89ceae73e6, type: 3}
