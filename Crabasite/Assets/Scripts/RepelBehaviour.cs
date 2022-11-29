@@ -8,17 +8,17 @@ public class RepelBehaviour : MonoBehaviour
     public GameObject infusedObject;
     Vector3 _position;
     float _force;
-    Rigidbody myRigidbody;
-    SphereCollider infusedObjectCollider;
+    Rigidbody2D myRigidbody;
+    CircleCollider2D infusedObjectCollider;
     
 
     // Start is called before the first frame update
     void Start()
     {
         //get the rigidbody to be able to apply force
-        myRigidbody = gameObject.GetComponent<Rigidbody>();
+        myRigidbody = gameObject.GetComponent<Rigidbody2D>();
         //get the collider of the negatively charged object to be able to meassure the distance to it
-        infusedObjectCollider = infusedObject.GetComponent<SphereCollider>();
+        infusedObjectCollider = infusedObject.GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame

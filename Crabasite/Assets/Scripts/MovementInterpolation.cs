@@ -12,8 +12,8 @@ public class MovementInterpolation
     private Timer start_delay_timer;
     private Timer end_delay_timer;
     //storage var for fade-out movement direction
-    private Vector3 end_delay_direction;
-    private Vector3 frameDirection;
+    private Vector2 end_delay_direction;
+    private Vector2 frameDirection;
     private float frameSpeed;
 
     public void Awake(){
@@ -33,7 +33,7 @@ public class MovementInterpolation
         last_isMoving = false;
     }
 
-    public void Update(bool isMoving, Vector3 direction)
+    public void Update(bool isMoving, Vector2 direction)
     {
         //call Update() for each timer as Timer is just a plain script and not a MonoBehaviour
         start_delay_timer.Update();
@@ -47,7 +47,7 @@ public class MovementInterpolation
         //checks if the player begins pressing wasd in-between frames
         if(isMoving && !last_isMoving){// false -> true (aka begin movement)
             end_delay_timer.stop();
-            end_delay_direction = new Vector3(0, 0, 0);
+            end_delay_direction = new Vector2(0, 0);
             start_delay_timer.start(Mathf.Max(StartDelayDuration,0));
         }
         //checks if the player stops pressing wasd in-between frames

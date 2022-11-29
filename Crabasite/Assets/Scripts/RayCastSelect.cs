@@ -17,19 +17,19 @@ public static class RayCastSelect
         playerToMouseDirection.Normalize();
 
         //hit will store information about the raycast hit
-        RaycastHit hit;
+        RaycastHit2D hit = Physics2D.Raycast(playerPosition, playerToMouseDirection, Mathf.Infinity, LayerMask.GetMask("Enemies"));
         //if the key is down and the raycast hits something then store the hit gameobject inside target
         if (Input.GetKeyDown(key))
         {
             //raycast from player to mouse, returns true if it hits something
             //out hit stores information about what the raycast hit
-            if (Physics.Raycast(playerPosition, playerToMouseDirection, out hit))
+            // Debug.Log(hit.collider);
+            if (hit.collider != null)
             {
                 //get the name of the gameobject from the info stored in hit and find the gameobject to store it inside target
                 target = GameObject.Find(hit.transform.name);
             }
         }
-
         return target;
     }
 }

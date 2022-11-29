@@ -11,6 +11,7 @@ public class NegativeCharge : Ultimate
     public override void Use()
     {
         //select target if none is selected
+        // Debug.Log(selectedTarget);
         if (selectedTarget == null)
         {
             selectedTarget = RayCastSelect.SelectTarget(key);
@@ -21,6 +22,7 @@ public class NegativeCharge : Ultimate
             selectedTarget = null;
             isActive = false;           
         }
+        // Debug.Log(selectedTarget);
     }
 
 }

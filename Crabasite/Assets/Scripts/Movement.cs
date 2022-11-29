@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float DashModifier = 4;
 
     //dict that maps input keys to the corresponding direction vectors
-    private Dictionary<string, Vector3> dir_map = new Dictionary<string, Vector3>();
+    private Dictionary<string, Vector2> dir_map = new Dictionary<string, Vector2>();
 
     private MovementInterpolation MI;
 
@@ -34,10 +34,10 @@ public class Movement : MonoBehaviour
         //call Start() for each timer as Timer is just a plain script and not a MonoBehaviour
         dash_active_frames.Start();
         dash_cooldown.Start();
-        dir_map.Add("w", new Vector3(0, 1, 0));
-        dir_map.Add("a", new Vector3(-1, 0, 0));
-        dir_map.Add("s", new Vector3(0, -1, 0));
-        dir_map.Add("d", new Vector3(1, 0, 0));
+        dir_map.Add("w", new Vector2(0, 1));
+        dir_map.Add("a", new Vector2(-1, 0));
+        dir_map.Add("s", new Vector2(0, -1));
+        dir_map.Add("d", new Vector2(1, 0));
     }
 
     void Update()
@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour
         dash_cooldown.Update();
 
         //reset direction from last frame
-        Vector3 direction = new Vector3(0, 0, 0);
+        Vector2 direction = new Vector2(0, 0);
 
         //check the map for all required movement directions
         //the loop can apply multiple direction vectors(!) e.g. for diagonal movement
@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
             }
         }
 
-        MI.Update((direction != new Vector3(0, 0, 0)), direction);
+        MI.Update((direction != new Vector2(0, 0)), direction);
         float speed = MI.getFrameSpeed();
 
         //dash
@@ -73,6 +73,7 @@ public class Movement : MonoBehaviour
         //update gameObject (player) position
         direction = MI.getFrameDirection();
         direction.Normalize();
-        transform.position += direction * speed * Time.deltaTime;
+        Vector3 dir = new Vector3(direction.x, direction.y, 0);
+        transform.position += dir * speed * Time.deltaTime;
     }
 }
