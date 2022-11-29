@@ -1,0 +1,16 @@
+{
+    "name": "Ultimate",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d74dccdce14465e45a79a6e7a628b35c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
