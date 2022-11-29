@@ -722,7 +722,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!1 &1188340395
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 1188340397}
   - component: {fileID: 1188340396}
   - component: {fileID: 1188340398}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spacebg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
