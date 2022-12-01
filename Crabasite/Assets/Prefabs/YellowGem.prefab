@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7405831957132672937}
   - component: {fileID: 1703497709100751354}
   m_Layer: 0
-  m_Name: AccuracyFragment
+  m_Name: YellowGem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

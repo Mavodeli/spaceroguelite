@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1199225052746743464}
   - component: {fileID: 5427792133857047169}
   m_Layer: 0
-  m_Name: ArcaneFragment
+  m_Name: PurpleGem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
