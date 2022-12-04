@@ -1285,3 +1285,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3286db63781af854d920eeb79a4d32f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pfHealthbar: {fileID: 6853365878369613476, guid: 7d65c769797fc544aa70e7251bf89190, type: 3}
+  enemyTransform: {fileID: 1925669850}

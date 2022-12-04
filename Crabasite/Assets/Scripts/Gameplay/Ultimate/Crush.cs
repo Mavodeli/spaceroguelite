@@ -23,7 +23,7 @@ public class Crush : MonoBehaviour
         
         foreach (var hitCollider in hitColliders)
         {
-            hitCollider.SendMessage("EnemyTakeDmg", 5);
+            hitCollider.SendMessage("EnemyTakeDmg", 5, SendMessageOptions.DontRequireReceiver);
             Debug.Log(hitCollider);
         }
 
