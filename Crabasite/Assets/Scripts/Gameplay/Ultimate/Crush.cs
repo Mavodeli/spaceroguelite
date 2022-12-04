@@ -19,7 +19,7 @@ public class Crush : MonoBehaviour
     public void Use()
     {
         Vector3 center = player.position;
-        Collider[] hitColliders = Physics.OverlapSphere(center, radius, layermask);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius, layermask);
         
         foreach (var hitCollider in hitColliders)
         {
