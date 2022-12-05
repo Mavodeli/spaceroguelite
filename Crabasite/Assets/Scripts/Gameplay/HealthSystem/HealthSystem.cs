@@ -42,13 +42,13 @@ public class HealthSystem {
 
     public void Damage(int damageAmount){
         if(_currentHealth > 0) _currentHealth -= damageAmount;
-        if(OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
+        if(OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty); //trigger Event
     }
 
     public void Heal(int healAmount){
         if(_currentHealth < _currentMaxHealth) _currentHealth += healAmount;
         if(_currentHealth > _currentMaxHealth) _currentHealth = _currentMaxHealth;
-        if(OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
+        if(OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty); //trigger Event
     }
 
 }
