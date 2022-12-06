@@ -17,7 +17,7 @@ public class NegativeCharge : Ultimate
         }
         else 
         {            
-            
+            RepelCollider repelColliderScript = selectedTarget.AddComponent<RepelCollider>();
             selectedTarget = null;
             isActive = false;           
         }

@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 940972577}
   - component: {fileID: 940972581}
   - component: {fileID: 940972580}
+  - component: {fileID: 940972582}
   m_Layer: 6
   m_Name: GameObject2
   m_TagString: Untagged
@@ -553,6 +554,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2615385, y: 0.2769231}
   m_EdgeRadius: 0
+--- !u!114 &940972582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940972576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3286db63781af854d920eeb79a4d32f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pfHealthbar: {fileID: 6853365878369613476, guid: 7d65c769797fc544aa70e7251bf89190, type: 3}
+  enemyTransform: {fileID: 940972579}
+  healthbarPosition: {x: 0, y: 0.5, z: 0}
 --- !u!1 &1091769795
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1fb9a45ce6038d45bc058a3add5788e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ultimate: {fileID: 11400000, guid: e417067b9cf7c0845951b50195c036d6, type: 2}
+  ultimate: {fileID: 11400000, guid: beafc0b3ddf448142946a2246a085589, type: 2}
   cooldownTimer: 0
   key: 49
 --- !u!61 &1091769804
@@ -758,7 +774,7 @@ MonoBehaviour:
   layermask:
     serializedVersion: 2
     m_Bits: 64
-  radius: 50
+  radius: 5
   player: {fileID: 1091769800}
 --- !u!1 &1188340395
 GameObject:
@@ -930,6 +946,7 @@ GameObject:
   - component: {fileID: 1886010744}
   - component: {fileID: 1886010746}
   - component: {fileID: 1886010745}
+  - component: {fileID: 1886010747}
   m_Layer: 6
   m_Name: GameObject3
   m_TagString: Untagged
@@ -945,7 +962,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886010740}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.27, y: -0.93, z: -0.4623403}
+  m_LocalPosition: {x: -3.99, y: -1.22, z: -0.4623403}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1051,6 +1068,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4156508, y: 0.81815636}
   m_EdgeRadius: 0
+--- !u!114 &1886010747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886010740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3286db63781af854d920eeb79a4d32f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pfHealthbar: {fileID: 6853365878369613476, guid: 7d65c769797fc544aa70e7251bf89190, type: 3}
+  enemyTransform: {fileID: 1886010741}
+  healthbarPosition: {x: 0, y: 1, z: 0}
 --- !u!1 &1919678449
 GameObject:
   m_ObjectHideFlags: 3
@@ -1287,3 +1319,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pfHealthbar: {fileID: 6853365878369613476, guid: 7d65c769797fc544aa70e7251bf89190, type: 3}
   enemyTransform: {fileID: 1925669850}
+  healthbarPosition: {x: 0, y: 0.5, z: 0}

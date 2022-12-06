@@ -7,6 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
     public HealthSystem _enemyHealth = new HealthSystem(100,100);
     public Transform pfHealthbar;
     public Transform enemyTransform;
+    public Vector3 healthbarPosition = new Vector3(0,.5f,0);
 
     // setup process for healthsystem
     // instantiate object from prefab and attach healthbar to the gameobject to which this script is attached to
@@ -15,7 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
         HealthBar healthBar = healtBarTransform.GetComponent<HealthBar>();
         healthBar.Setup(_enemyHealth);
         healthBar.transform.parent = enemyTransform;
-        healthBar.transform.localPosition = new Vector3(0,.5f,0);
+        healthBar.transform.localPosition = healthbarPosition;
     }
     // accessed damage function of the healthsystem
     private void EnemyTakeDmg(int dmg){
