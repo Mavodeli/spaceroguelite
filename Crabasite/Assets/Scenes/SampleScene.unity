@@ -708,7 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1fb9a45ce6038d45bc058a3add5788e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ultimate: {fileID: 11400000, guid: beafc0b3ddf448142946a2246a085589, type: 2}
+  ultimate: {fileID: 11400000, guid: 816f299222196f94ca562296d11e6bc7, type: 2}
   cooldownTimer: 0
   key: 49
 --- !u!61 &1091769804
@@ -775,6 +775,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   radius: 5
+  speed: 5
   player: {fileID: 1091769800}
 --- !u!1 &1188340395
 GameObject:
