@@ -8,6 +8,8 @@ public class AttractTwoBehaviour : MonoBehaviour
     public GameObject target;
     //speed of the pull
     public float speed;
+    Rigidbody2D myRigidbody;
+    float _force;
 
     //Collision detection script
     CollisionDetector detector;
@@ -22,6 +24,8 @@ public class AttractTwoBehaviour : MonoBehaviour
         detector = target.AddComponent<CollisionDetector>();
         myTransform = gameObject.GetComponent<Transform>();
         targetTransform = target.GetComponent<Transform>();
+        myRigidbody = gameObject.GetComponent<Rigidbody2D>();
+        _force = 5;
     }
 
     // Update is called once per frame
@@ -34,7 +38,11 @@ public class AttractTwoBehaviour : MonoBehaviour
         }
 
         //pulls the object towards the target
-        myTransform.position = Vector3.MoveTowards(myTransform.position, targetTransform.position, speed * Time.deltaTime);
+        //myTransform.position = Vector3.MoveTowards(myTransform.position, targetTransform.position, speed * Time.deltaTime);
+        Vector3 gameObjectToTargetDirection = new Vector3(target.transform.position.x - gameObject.transform.position.x, target.transform.position.y - gameObject.transform.position.y, 0);
+        gameObjectToTargetDirection.Normalize();
+
+        myRigidbody.AddForce(gameObjectToTargetDirection * _force);
     }
 
 }
