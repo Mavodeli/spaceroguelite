@@ -20,6 +20,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject InventoryMail;
 
 
+
     void Start() {
         inventoryIsOpened = false;
     }
@@ -29,7 +30,10 @@ public class InventoryManager : MonoBehaviour
             if (inventoryIsOpened == false) {
                 Inventory.SetActive(true);
                 inventoryIsOpened = true;
+
                 ListItems();
+                ListMails();
+                
             }
             else {
                 Inventory.SetActive(false);
