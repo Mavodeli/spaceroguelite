@@ -581,7 +581,6 @@ GameObject:
   - component: {fileID: 1091769799}
   - component: {fileID: 1091769798}
   - component: {fileID: 1091769803}
-  - component: {fileID: 1091769806}
   - component: {fileID: 1091769796}
   - component: {fileID: 1091769805}
   - component: {fileID: 1091769804}
@@ -708,8 +707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1fb9a45ce6038d45bc058a3add5788e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ultimate: {fileID: 11400000, guid: 816f299222196f94ca562296d11e6bc7, type: 2}
+  ultimate: {fileID: 11400000, guid: 2b2d4058bb8d24e48983b56467bd6243, type: 2}
   cooldownTimer: 0
+  player: {fileID: 1091769800}
   key: 49
 --- !u!61 &1091769804
 BoxCollider2D:
@@ -758,25 +758,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1091769806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091769795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83a7fba7d90e9554bac81ccc7ffa324c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: 51
-  layermask:
-    serializedVersion: 2
-    m_Bits: 64
-  radius: 5
-  speed: 5
-  player: {fileID: 1091769800}
 --- !u!1 &1188340395
 GameObject:
   m_ObjectHideFlags: 0
