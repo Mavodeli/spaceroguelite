@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     private Dictionary<string, Vector2> dir_map = new Dictionary<string, Vector2>();
 
     private MovementInterpolation MI;
+    private Rigidbody2D objectRigidbody;
 
     //dash
     private Timer dash_cooldown;
@@ -29,6 +30,7 @@ public class Movement : MonoBehaviour
     }
     void Start()
     {
+        objectRigidbody = GetComponent<Rigidbody2D>();
         //init class attributes
         MI.Start(Speed, StartDelayDuration, EndDelayDuration);
         //call Start() for each timer as Timer is just a plain script and not a MonoBehaviour
@@ -59,7 +61,8 @@ public class Movement : MonoBehaviour
         }
 
         MI.Update((direction != new Vector2(0, 0)), direction);
-        float speed = MI.getFrameSpeed();
+        // float speed = MI.getFrameSpeed();
+        float speed = Speed;
 
         //dash
         if(Input.GetKey("left shift") && !dash_cooldown.is_running()){
@@ -71,9 +74,10 @@ public class Movement : MonoBehaviour
         }
 
         //update gameObject (player) position
-        direction = MI.getFrameDirection();
+        // direction = MI.getFrameDirection();
         direction.Normalize();
         Vector3 dir = new Vector3(direction.x, direction.y, 0);
-        transform.position += dir * speed * Time.deltaTime;
+        objectRigidbody.AddForce(dir*speed);
+        // transform.position += dir * speed * Time.deltaTime;
     }
 }

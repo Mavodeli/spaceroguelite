@@ -55,7 +55,8 @@ public class CrabClaw : MonoBehaviour
                 PullMI.Update(true, playerPos_relative_to_hit);
                 objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
                 objectRigidbody.velocity = Vector3.zero;
-                hit.transform.position += PullMI.getFrameDirection()*PullMI.getFrameSpeed()*Time.deltaTime;
+                objectRigidbody.AddForce(PullMI.getFrameDirection()*PullMI.getFrameSpeed());
+                // hit.transform.position += PullMI.getFrameDirection()*PullMI.getFrameSpeed()*Time.deltaTime;
             }
             else{
                 PullMI.Update(false, playerPos_relative_to_hit);
@@ -64,7 +65,8 @@ public class CrabClaw : MonoBehaviour
                 PushMI.Update(true, mousePos_relative_to_player);
                 objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
                 objectRigidbody.velocity = Vector3.zero;
-                hit.transform.position += PushMI.getFrameDirection()*PushMI.getFrameSpeed()*Time.deltaTime;
+                objectRigidbody.AddForce(PushMI.getFrameDirection()*PushMI.getFrameSpeed());
+                // hit.transform.position += PushMI.getFrameDirection()*PushMI.getFrameSpeed()*Time.deltaTime;
             }
             else{
                 PushMI.Update(false, mousePos_relative_to_player);
