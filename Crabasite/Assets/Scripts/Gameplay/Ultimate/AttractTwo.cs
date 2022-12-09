@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class AttractTwo : Ultimate
 {
-    GameObject player;
-    
     public GameObject selectedObject1;
     public GameObject selectedObject2;
 
