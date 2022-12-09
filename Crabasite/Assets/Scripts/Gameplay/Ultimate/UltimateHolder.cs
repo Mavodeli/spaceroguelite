@@ -8,6 +8,7 @@ public class UltimateHolder : MonoBehaviour
 
     // timer for remaining cooldown
     public float cooldownTimer;
+    public Transform player;
 
     enum UltimateState
     {
@@ -25,6 +26,7 @@ public class UltimateHolder : MonoBehaviour
     void Start()
     {
         state = UltimateState.ready;
+        ultimate.player = player;
     }
 
     // Update is called once per frame

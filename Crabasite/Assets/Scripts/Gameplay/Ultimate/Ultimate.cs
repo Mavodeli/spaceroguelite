@@ -6,6 +6,7 @@ using UnityEngine;
 {
     public float cooldown;
     public bool isActive;
+    public Transform player;
 
     public abstract void Use();
 }
