@@ -7,7 +7,7 @@ public class RepelCollider : MonoBehaviour
     //range in which the force of the negative charge will start affecting other objects
     public CircleCollider2D repelRange;
     //duration of the negative charge
-    float chargeDuration = 5f;
+    float chargeDuration = 30f;
 
     private void Start()
     {

@@ -224,8 +224,8 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
+  m_UpdateMethod: 0
+  m_BlendUpdateMethod: 0
   m_DefaultBlend:
     m_Style: 0
     m_Time: 2
@@ -520,7 +520,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ccb1718eb075a4ebb4642ec6a2a4fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 8
+  Speed: 750
   StartDelayDuration: 0.2
   EndDelayDuration: 0.15
   DashCooldown: 1
@@ -674,8 +674,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63c3d9e4659f0243a4c1331e13d1e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PullSpeed: 4
-  PushSpeed: 4
+  PullSpeed: 16
+  PushSpeed: 16
   StartDelayDuration: 0.5
   EndDelayDuration: 0.3
   DetectionLayer:
@@ -749,8 +749,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 100
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1035,7 +1035,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1298,7 +1298,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
