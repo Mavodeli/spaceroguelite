@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ccb1718eb075a4ebb4642ec6a2a4fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 200
+  Speed: 750
   StartDelayDuration: 0.2
   EndDelayDuration: 0.15
   DashCooldown: 1
