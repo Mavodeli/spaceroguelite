@@ -7,9 +7,8 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Image))]
 public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
-    public TabGroup tabGroup;
-
     public Image background;
+    public TabGroup tabGroup;
 
     public void OnPointerClick(PointerEventData eventData)
     {
