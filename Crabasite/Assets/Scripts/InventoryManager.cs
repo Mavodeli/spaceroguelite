@@ -82,9 +82,13 @@ public class InventoryManager : MonoBehaviour
             var itemName = obj1.transform.Find("ItemName").GetComponent<TMP_Text>();
             var itemIcon = obj1.transform.Find("ItemIcon").GetComponent<Image>();
 
+            Debug.Log(Items[0]);
+            
+
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
         }
+
     }
 
     public void ListMails()
@@ -100,8 +104,16 @@ public class InventoryManager : MonoBehaviour
             var mailName = obj2.transform.Find("MailName").GetComponent<TMP_Text>();
             var mailIcon = obj2.transform.Find("MailIcon").GetComponent<Image>();
 
+            
+            
+            
+
             mailName.text = mail.mailName;
             mailIcon.sprite = mail.icon;
         }
+
+        Debug.Log(Mails.Count);
+
     }
+
 }
