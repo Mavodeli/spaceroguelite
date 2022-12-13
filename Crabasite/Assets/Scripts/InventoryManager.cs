@@ -6,6 +6,7 @@ using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
+    [Header("Health Settings")]
     public GameObject Inventory;
     public bool inventoryIsOpened;
 
@@ -15,10 +16,13 @@ public class InventoryManager : MonoBehaviour
 
     public Transform ItemContent;
     public GameObject InventoryItem;
+    public GameObject InventoryItemDescription;
 
     public Transform MailContent;
     public GameObject InventoryMail;
 
+    public Transform InventoryDescriptionContent;
+    public Transform MailDescriptionContent;
 
 
     void Start() {
@@ -78,17 +82,35 @@ public class InventoryManager : MonoBehaviour
         // gets all items from the List and puts them inside the inventory
         foreach(var item in Items)
         {
-            GameObject obj1 = Instantiate(InventoryItem, ItemContent);
-            var itemName = obj1.transform.Find("ItemName").GetComponent<TMP_Text>();
-            var itemIcon = obj1.transform.Find("ItemIcon").GetComponent<Image>();
+            GameObject obj = Instantiate(InventoryItem, ItemContent);
+            var itemName = obj.transform.Find("ItemName").GetComponent<TMP_Text>();
+            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
+            var itemDescription = obj.transform.Find("ItemDescription").GetComponent<TMP_Text>();
 
             Debug.Log(Items[0]);
             
 
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
+            itemDescription.text = item.description;
         }
 
+    }
+
+    public void ShowItems(string toFind)
+    {
+        Destroy(InventoryDescriptionContent.GetChild(0).gameObject);
+
+        Item item = Items.Find(x => x.itemName == toFind);
+
+        GameObject obj1 = Instantiate(InventoryItemDescription, InventoryDescriptionContent);
+        var itemName = obj1.transform.Find("ItemName").GetComponent<TMP_Text>();
+        var itemIcon = obj1.transform.Find("ItemIcon").GetComponent<Image>();
+        var itemDescription = obj1.transform.Find("ItemDescription").GetComponent<TMP_Text>();
+
+        itemName.text = item.itemName;
+        itemIcon.sprite = item.icon;
+        itemDescription.text = item.description;
     }
 
     public void ListMails()
@@ -100,16 +122,15 @@ public class InventoryManager : MonoBehaviour
 
         foreach(var mail in Mails)
         {
-            GameObject obj2 = Instantiate(InventoryMail, MailContent);
-            var mailName = obj2.transform.Find("MailName").GetComponent<TMP_Text>();
-            var mailIcon = obj2.transform.Find("MailIcon").GetComponent<Image>();
-
-            
-            
+            GameObject obj = Instantiate(InventoryMail, MailContent);
+            var mailName = obj.transform.Find("MailName").GetComponent<TMP_Text>();
+            var mailIcon = obj.transform.Find("MailIcon").GetComponent<Image>();
+            var mailDescription = obj.transform.Find("MailDescription").GetComponent<TMP_Text>();
             
 
             mailName.text = mail.mailName;
             mailIcon.sprite = mail.icon;
+            mailDescription.text = mail.description;
         }
 
         Debug.Log(Mails.Count);
