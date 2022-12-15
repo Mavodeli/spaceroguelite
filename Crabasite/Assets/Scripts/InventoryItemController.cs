@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// Controller for the Item Prefab
 public class InventoryItemController : MonoBehaviour
 {
     public Item item;

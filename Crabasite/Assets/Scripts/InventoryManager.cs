@@ -20,6 +20,7 @@ public class InventoryManager : MonoBehaviour
 
     public Transform MailContent;
     public GameObject InventoryMail;
+    public GameObject InventoryMailDescription;
 
     public Transform InventoryDescriptionContent;
     public Transform MailDescriptionContent;
@@ -29,6 +30,7 @@ public class InventoryManager : MonoBehaviour
         inventoryIsOpened = false;
     }
 
+    /// If the player presses the "i" key, the inventory will open or close
     void Update() {
         if (Input.GetKeyDown("i")) {
             if (inventoryIsOpened == false) {
@@ -72,14 +74,17 @@ public class InventoryManager : MonoBehaviour
     }
 
 
+   /// This function is used to list all the items in the inventory tab
     public void ListItems()
     {
+        /* Destroying all the items in the inventory and then adding all the items from the list to the
+        inventory. */
         foreach (Transform item in ItemContent)
         {
             Destroy(item.gameObject);
         }
 
-        // gets all items from the List and puts them inside the inventory
+        /* Creating a new object for each item in the list. */
         foreach(var item in Items)
         {
             GameObject obj = Instantiate(InventoryItem, ItemContent);
@@ -97,6 +102,8 @@ public class InventoryManager : MonoBehaviour
 
     }
 
+    /// It takes a string as a parameter, finds the item with the same name as the string, and then
+    /// displays the item's name, icon, and description in the inventory description panel
     public void ShowItems(string toFind)
     {
         Destroy(InventoryDescriptionContent.GetChild(0).gameObject);
@@ -113,13 +120,17 @@ public class InventoryManager : MonoBehaviour
         itemDescription.text = item.description;
     }
 
+    /// This function is used to list all the mails in the mail tab
     public void ListMails()
     {
+        /* Destroying all the mails in the mail tab and then adding all the mails from the list to the
+        mail tab. */
         foreach (Transform mail in MailContent)
         {
             Destroy(mail.gameObject);
         }
 
+        /* Creating a new object for each mail in the list. */
         foreach(var mail in Mails)
         {
             GameObject obj = Instantiate(InventoryMail, MailContent);
@@ -135,6 +146,24 @@ public class InventoryManager : MonoBehaviour
 
         Debug.Log(Mails.Count);
 
+    }
+
+      /// It takes a string as a parameter, finds the mail with the same name as the string, and then
+      /// displays the mail's name, icon, and description
+      public void ShowMails(string toFind)
+    {
+        Destroy(MailDescriptionContent.GetChild(0).gameObject);
+
+        Mail mail = Mails.Find(x => x.mailName == toFind);
+
+        GameObject obj1 = Instantiate(InventoryMailDescription, MailDescriptionContent);
+        var mailName = obj1.transform.Find("MailName").GetComponent<TMP_Text>();
+        var mailIcon = obj1.transform.Find("MailIcon").GetComponent<Image>();
+        var mailDescription = obj1.transform.Find("MailDescription").GetComponent<TMP_Text>();
+
+        mailName.text = mail.mailName;
+        mailIcon.sprite = mail.icon;
+        mailDescription.text = mail.description;
     }
 
 }
