@@ -23,6 +23,8 @@ public class TabGroup : MonoBehaviour
         tabButtons.Add(button);
     }
 
+    /// When the mouse enters a tab, reset all tabs and then change the background of the tab to the
+    /// hover sprite
     public void onTabEnter(TabButton button)
     {
         ResetTabs();
@@ -37,6 +39,8 @@ public class TabGroup : MonoBehaviour
         ResetTabs();
     }
 
+    /// If the button is selected, set the background to the active sprite, and set the sibling index to
+    /// the index of the button
     public void OnTabSelected(TabButton button)
     {
         selectedTab = button;
@@ -56,6 +60,9 @@ public class TabGroup : MonoBehaviour
         }
     }
 
+    /// For each tab button in the tabButtons list, if the selected tab is not null and the button is
+    /// equal to the selected tab, continue, otherwise set the button's background sprite to the tabIdle
+    /// sprite
     public void ResetTabs()
     {
         foreach(TabButton button in tabButtons)
