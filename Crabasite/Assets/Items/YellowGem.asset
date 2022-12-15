@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   itemName: YellowGem
-  value: 20
+  description: YellowGem
   icon: {fileID: 21300000, guid: 3f1d60c2aa5614514b2cc331bbab2cee, type: 3}
