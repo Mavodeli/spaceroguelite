@@ -44,10 +44,10 @@ public class PickupEnabler : MonoBehaviour
             if(Input.GetKey("e") && hasButton){
                 if(this.transform.gameObject.GetComponent<ItemPickup>() == null){
                     ItemPickup ip = this.transform.gameObject.AddComponent<ItemPickup>();
-                    Item placeholder = Resources.Load<Item>("ScriptableObjects/demoItem");
+                    Item placeholder = ScriptableObject.CreateInstance<Item>();
                     placeholder.id = 0;
                     placeholder.itemName = name;
-                    placeholder.description = "";
+                    placeholder.description = "";//json dict?
                     placeholder.icon = this.transform.gameObject.GetComponent<SpriteRenderer>().sprite;
                     ip.target = placeholder;
                     ip.Pickup();
