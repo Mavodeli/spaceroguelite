@@ -198,6 +198,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5427792133857047169, guid: c91e97420318c45358e344f15ddbf4c5, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 11400000, guid: 953f2525890f84df2b3e5eb80fe34d51, type: 2}
     - target: {fileID: 6726410266217374133, guid: c91e97420318c45358e344f15ddbf4c5, type: 3}
       propertyPath: m_Name
       value: ArcaneFragment
@@ -741,6 +745,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -848,6 +853,22 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &598662386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,6 +1767,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1703497709100751354, guid: 24089d9e9bc144143a391ef9c694c6fb, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 11400000, guid: 071070988373447298593fdd50259767, type: 2}
     - target: {fileID: 1963046799296540431, guid: 24089d9e9bc144143a391ef9c694c6fb, type: 3}
       propertyPath: m_Size.x
       value: 1
@@ -1837,6 +1862,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1074585357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506500902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940a11f8b24f04c369ae38d8dc57ec07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 11400000, guid: 54aeff376feac41148dc6e410c2221d0, type: 2}
 --- !u!1 &1091769795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2680,6 +2718,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1386464511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386464502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940a11f8b24f04c369ae38d8dc57ec07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 11400000, guid: a42aa03613da4445a81dc947bf8493ee, type: 2}
 --- !u!1 &1467086890 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1166952386445082410, guid: 24089d9e9bc144143a391ef9c694c6fb, type: 3}
@@ -3098,7 +3149,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 630866713575391255, guid: 5d202b60c91ca47b2862a24b27568300, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5d202b60c91ca47b2862a24b27568300, type: 3}
 --- !u!1 &1634147358
 GameObject:
@@ -3380,7 +3432,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5648282701957491496, guid: 0342059fc6e0f40248852b7bfd9ff004, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0342059fc6e0f40248852b7bfd9ff004, type: 3}
 --- !u!1 &1762650170
 GameObject:
@@ -3487,6 +3540,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1780435331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868148864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940a11f8b24f04c369ae38d8dc57ec07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 11400000, guid: 54aeff376feac41148dc6e410c2221d0, type: 2}
 --- !u!1 &1824337382
 GameObject:
   m_ObjectHideFlags: 0
@@ -4339,5 +4405,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 630866713575391255, guid: 5d202b60c91ca47b2862a24b27568300, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5d202b60c91ca47b2862a24b27568300, type: 3}

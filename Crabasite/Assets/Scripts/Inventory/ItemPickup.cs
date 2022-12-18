@@ -7,19 +7,23 @@ using UnityEngine.UIElements;
 
 public class ItemPickup : MonoBehaviour, IPointerDownHandler
 {
-    public Item Item;
+    private Item Item;
+    private Mail Mail;
+    public ScriptableObject target;
 
     void Pickup()
     {
-        InventoryManager.Instance.Add(Item);
+        if (target.GetType() == typeof(Item))
+        {   
+            Item = (Item)target;
+            InventoryManager.Instance.Add(Item);
+        }
+        else if (target.GetType() == typeof(Mail))
+        {
+            Mail = (Mail)target;
+            InventoryManager.Instance.Add(Mail);
+        }
         Destroy(gameObject);
-    }
-
-
-    private void OnMouseDown()
-    {
-        Pickup();
-        Debug.Log("MouseEvent");
     }
 
     public void OnPointerDown(PointerEventData eventData)
