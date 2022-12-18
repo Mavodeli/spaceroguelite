@@ -5,13 +5,13 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class ItemPickup : MonoBehaviour, IPointerDownHandler
+public class ItemPickup : MonoBehaviour//, IPointerDownHandler
 {
     private Item Item;
     private Mail Mail;
     public ScriptableObject target;
 
-    void Pickup()
+    public void Pickup()
     {
         if (target.GetType() == typeof(Item))
         {   
@@ -24,12 +24,5 @@ public class ItemPickup : MonoBehaviour, IPointerDownHandler
             InventoryManager.Instance.Add(Mail);
         }
         Destroy(gameObject);
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Pickup();
-        Debug.Log("PointerDown");
-        
     }
 }
