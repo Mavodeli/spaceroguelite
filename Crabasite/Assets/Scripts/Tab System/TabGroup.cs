@@ -11,7 +11,10 @@ public class TabGroup : MonoBehaviour
     public TabButton selectedTab;
     public List<GameObject>objectsToSwap;
 
-    
+    private void Start()
+    {
+        ResetTabs();
+    }
 
     public void Subscribe(TabButton button)
     {

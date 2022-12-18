@@ -28,6 +28,7 @@ public class InventoryManager : MonoBehaviour
 
     void Start() {
         inventoryIsOpened = false;
+        Inventory.SetActive(false);
     }
 
     /// If the player presses the "i" key, the inventory will open or close
