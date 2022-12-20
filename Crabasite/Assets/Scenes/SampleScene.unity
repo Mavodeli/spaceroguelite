@@ -2120,6 +2120,7 @@ MonoBehaviour:
   DetectionLayer:
     serializedVersion: 2
     m_Bits: 64
+  inventory: {fileID: 1016330775}
 --- !u!4 &1091769800
 Transform:
   m_ObjectHideFlags: 0
