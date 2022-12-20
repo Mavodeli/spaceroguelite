@@ -34,6 +34,7 @@ public class AttractTwoBehaviour : MonoBehaviour
         //if the Collision detector detects a collision with anything, the pull script will be destroyed to stop the pull
         if (detector.isColliding)
         {
+            gameObject.GetComponent<BoxCollider2D>().SendMessage("EnemyTakeDmg", 5*_force, SendMessageOptions.DontRequireReceiver);
             Destroy(GetComponent<AttractTwoBehaviour>());
         }
 
