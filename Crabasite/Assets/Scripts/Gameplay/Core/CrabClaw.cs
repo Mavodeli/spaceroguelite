@@ -16,6 +16,9 @@ public class CrabClaw : MonoBehaviour
     //the Layer in which the ray checks for intersections (default: 'Enemies')
     public LayerMask DetectionLayer;
 
+    // inventory to check if active
+    [SerializeField] private Transform inventory;
+
     Rigidbody2D objectRigidbody;
 
     void Awake(){
@@ -42,7 +45,7 @@ public class CrabClaw : MonoBehaviour
         //- direction: normalized Mouse Cursor Position
         //- maximal t: +infinity
         RaycastHit2D hit = Physics2D.Raycast(transform.position, mousePos_relative_to_player, Mathf.Infinity, DetectionLayer);
-        if(hit.collider != null){
+        if(hit.collider != null && !inventory.gameObject.activeSelf){ // check if inventory is off to enable crab claw 
             //playerPos_relative_to_hit: vector that points [location where the ray hits a collider] -> Player
             Vector2 playerPos_relative_to_hit = transform.position-hit.transform.position;
             playerPos_relative_to_hit.Normalize();

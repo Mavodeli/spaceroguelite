@@ -5,6 +5,7 @@ using UnityEngine;
 public class UltimateHolder : MonoBehaviour
 {
     public Ultimate ultimate;
+    private ScriptableObject[] ultimateList; // array for all ultimates
 
     // timer for remaining cooldown
     public float cooldownTimer;
@@ -27,6 +28,7 @@ public class UltimateHolder : MonoBehaviour
     {
         state = UltimateState.ready;
         ultimate.player = player;
+        ultimateList = Resources.LoadAll<ScriptableObject>("Scriptable Objects/Ultimates");
     }
 
     // Update is called once per frame
@@ -63,5 +65,10 @@ public class UltimateHolder : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void SwitchUltimate(int ult)
+    {
+        ultimate = (Ultimate)ultimateList[ult];
     }
 }
