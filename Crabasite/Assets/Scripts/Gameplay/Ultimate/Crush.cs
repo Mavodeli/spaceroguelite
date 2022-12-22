@@ -26,7 +26,7 @@ public class Crush : Ultimate
         foreach (var hitCollider in hitColliders)
         {
             hitCollider.SendMessage("EnemyTakeDmg", 5, SendMessageOptions.DontRequireReceiver);
-            Debug.Log(hitCollider);
+            // Debug.Log(hitCollider);
         }
 
         isActive = false;

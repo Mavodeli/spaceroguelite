@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collectable
   - GameHandler
+  - Enemy
   layers:
   - Default
   - TransparentFX

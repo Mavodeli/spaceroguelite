@@ -7,13 +7,14 @@ public class PickupEnabler : MonoBehaviour
     private float distanceToPlayer = Mathf.Infinity;
     private float pickupDistanceMaximum = 3;
     private GameObject player;
-    public GameObject button;
+    private GameObject button;
     private bool hasButton = false;
 
     void Start()
     {
         //get player via tag
         player = GameObject.FindWithTag("Player");
+        button = Resources.Load<GameObject>("Prefabs/Inventory/button");
         //create button template
         // button = new GameObject("Pickup Button of " + name);
         // SpriteRenderer renderer = button.AddComponent<SpriteRenderer>();
@@ -31,6 +32,7 @@ public class PickupEnabler : MonoBehaviour
                 Vector3 offset = new Vector3(1, 1, 0);
                 // button.SetActive(true);
                 button.name = "Pickup Button of " + name;
+                button.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 Instantiate(button, transform.position+offset, Quaternion.identity, transform);
                 hasButton = true;
                 // button.SetActive(false);
@@ -45,7 +47,7 @@ public class PickupEnabler : MonoBehaviour
                 if(this.transform.gameObject.GetComponent<ItemPickup>() == null){
                     ItemPickup ip = this.transform.gameObject.AddComponent<ItemPickup>();
                     Item placeholder = ScriptableObject.CreateInstance<Item>();
-                    placeholder.id = 0;
+                    placeholder.id = 0;//time?
                     placeholder.itemName = name;
                     placeholder.description = "";//json dict?
                     placeholder.icon = this.transform.gameObject.GetComponent<SpriteRenderer>().sprite;
