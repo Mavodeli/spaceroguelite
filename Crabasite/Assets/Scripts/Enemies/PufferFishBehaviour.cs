@@ -22,12 +22,15 @@ public class PufferFishBehaviour : Enemy
                         sprite,//sprite 
                         0.5f//sprite scale modifier
                         );
-
-        // gameObject.transform.position = new Vector3(0, 0, 0);
     }
 
     void Update()
     {
+        bool scaled = true;
+        getRigidbody().AddForce(getMovementDirection(scaled)*getSpeed());
+    }
+
+    private Vector3 getMovementDirection(bool scaled){
         float[] ctx_map_interest = chase(GameObject.FindWithTag("Player").transform.position);
         float[] ctx_map_danger = new float[8];
 
@@ -98,8 +101,8 @@ public class PufferFishBehaviour : Enemy
         printArray(ctx_map_danger);
         Debug.Log("combined:");
         printArray(ctx_map_combined);
-        getRigidbody().AddForce(getDirectionWithMaximalInterest(getNormalizedDirectionMap(), ctx_map_combined)*getSpeed());
-    }    
+        return getDirectionWithMaximalInterest(getNormalizedDirectionMap(), ctx_map_combined, scaled);
+    }
 
     float[] chase(Vector2 target){
         Vector2[] direction_map = getNormalizedDirectionMap();
@@ -141,7 +144,7 @@ public class PufferFishBehaviour : Enemy
         return direction_map;
     }
 
-    static Vector2 getDirectionWithMaximalInterest(Vector2[] direction_map, float[] ctx_map_interest){
+    static Vector2 getDirectionWithMaximalInterest(Vector2[] direction_map, float[] ctx_map_interest, bool scaled){
         Vector2 result = Vector2.zero;
         float highest_interest = -Mathf.Infinity;
         for(int i = 0; i < 8; ++i){
@@ -150,8 +153,11 @@ public class PufferFishBehaviour : Enemy
                 highest_interest = ctx_map_interest[i];
             }
         }
-        if(highest_interest > 0)
-            return result*(1+highest_interest);//scale movement speed with the desire to move in this direction
+        if(highest_interest > 0){
+            if(scaled)
+                return result*(1+highest_interest);//scale movement speed with the desire to move in this direction
+            return result;
+        }
         return Vector2.zero;
     }
 
