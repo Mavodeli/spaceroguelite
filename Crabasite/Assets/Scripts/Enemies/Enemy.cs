@@ -85,4 +85,7 @@ public class Enemy : MonoBehaviour
     public float getSpeed(){
         return speed;
     }
+    public float getDamage(){
+        return damage;
+    }
 }

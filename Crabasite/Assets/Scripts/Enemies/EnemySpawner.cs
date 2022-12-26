@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
         for(int i = 0; i < fishiesCount; i++){
             GameObject fish = new GameObject();
             fish.AddComponent<PufferFishBehaviour>();
+            // fish.AddComponent<MantisShrimpBehaviour>();
             fish.transform.position = new Vector3(Mathf.Pow((-1), i)*i, 2*Mathf.Pow((-1), i)*i, 0);
         }
     }

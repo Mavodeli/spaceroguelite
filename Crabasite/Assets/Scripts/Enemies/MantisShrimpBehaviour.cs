@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PufferFishBehaviour : Enemy
+public class MantisShrimpBehaviour : Enemy
 {
     void Awake()
     {
-        Texture2D _sprite = Resources.Load<Texture2D>("Sprites/EnemyPlaceholder_256x256");
+        Texture2D _sprite = Resources.Load<Texture2D>("Sprites/EnemyPlaceholder_MantisShrimp_256x256");
         Sprite sprite = Sprite.Create(_sprite, //texture
                                         new Rect(0.0f, 0.0f, _sprite.width, _sprite.height), //subpart of the texture to create the sprite from
                                         new Vector2(0.5f, 0.5f), //new sprite origin \in [0,1]^2
@@ -18,9 +18,9 @@ public class PufferFishBehaviour : Enemy
                         100,//max health 
                         10,//damage
                         0.5f,//speed
-                        "Puffer fish enemy",//name 
+                        "Mantis shrimp enemy",//name 
                         sprite,//sprite 
-                        0.5f//sprite scale modifier
+                        1.2f//sprite scale modifier
                         );
     }
 
@@ -80,20 +80,20 @@ public class PufferFishBehaviour : Enemy
         //     }
         // }
 
-        // float minimal_danger = Mathf.Infinity;
-        // for(int i = 0; i < 8; ++i){
-        //     if(minimal_danger > ctx_map_danger[i])
-        //         minimal_danger = ctx_map_danger[i];
-        // }
+        float minimal_danger = Mathf.Infinity;
+        for(int i = 0; i < 8; ++i){
+            if(minimal_danger > ctx_map_danger[i])
+                minimal_danger = ctx_map_danger[i];
+        }
 
         //combine the context maps for danger and interest
         float[] ctx_map_combined = new float[8];
         for(int i = 0; i < 8; ++i){
-            ctx_map_combined[i] = ctx_map_interest[i]-ctx_map_danger[i];
-            // if(ctx_map_danger[i] > minimal_danger)
-            //     ctx_map_combined[i] = 0;
-            // else
-            //     ctx_map_combined[i] = ctx_map_interest[i];
+            // ctx_map_combined[i] = ctx_map_interest[i]-ctx_map_danger[i];
+            if(ctx_map_danger[i] > minimal_danger)
+                ctx_map_combined[i] = 0;
+            else
+                ctx_map_combined[i] = ctx_map_interest[i];
         }
         Debug.Log("interest:");
         printArray(ctx_map_interest);
@@ -159,13 +159,6 @@ public class PufferFishBehaviour : Enemy
             return result;
         }
         return Vector2.zero;
-    }
-
-    void OnCollisionEnter2D(Collision2D collision){
-        //TODO: cooldown timer missing!!!
-        if(collision.collider.gameObject.tag == "Player"){
-            collision.collider.SendMessage("addHealth", -getDamage(), SendMessageOptions.DontRequireReceiver);
-        }
     }
 
     static void printArray(float[] array){
