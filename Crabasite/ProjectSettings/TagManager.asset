@@ -7,6 +7,8 @@ TagManager:
   - Collectable
   - GameHandler
   - Enemy
+  - Timers
+  - Timer
   layers:
   - Default
   - TransparentFX

@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
                                 float _maxhealth, 
                                 float _damage,
                                 float _speed, 
-                                string __name,
+                                string name,
                                 Sprite _sprite, 
                                 float spriteScale
                                 )
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
         health = _health;
         maxhealth = _maxhealth;
         damage = _damage;
-        _name = __name;
+        _name = name;
         speed = _speed;
 
         //setup name, tag & layer
