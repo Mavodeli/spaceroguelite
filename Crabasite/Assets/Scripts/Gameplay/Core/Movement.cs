@@ -44,40 +44,42 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        //call Update() for each timer as Timer is just a plain script and not a MonoBehaviour
-        dash_active_frames.Update();
-        dash_cooldown.Update();
+        if(gameObject.GetComponent<PlayerHealth>().isAlive()){
+            //call Update() for each timer as Timer is just a plain script and not a MonoBehaviour
+            dash_active_frames.Update();
+            dash_cooldown.Update();
 
-        //reset direction from last frame
-        Vector2 direction = new Vector2(0, 0);
+            //reset direction from last frame
+            Vector2 direction = new Vector2(0, 0);
 
-        //check the map for all required movement directions
-        //the loop can apply multiple direction vectors(!) e.g. for diagonal movement
-        string[] mov_strings = new string[]{"w", "a", "s", "d"};
-        for(int i = 0; i < mov_strings.GetLength(0); i++){
-            if(Input.GetKey(mov_strings[i])){
-                direction += dir_map[mov_strings[i]];
+            //check the map for all required movement directions
+            //the loop can apply multiple direction vectors(!) e.g. for diagonal movement
+            string[] mov_strings = new string[]{"w", "a", "s", "d"};
+            for(int i = 0; i < mov_strings.GetLength(0); i++){
+                if(Input.GetKey(mov_strings[i])){
+                    direction += dir_map[mov_strings[i]];
+                }
             }
-        }
 
-        MI.Update((direction != new Vector2(0, 0)), direction);
-        // float speed = MI.getFrameSpeed();
-        float speed = Speed;
+            MI.Update((direction != new Vector2(0, 0)), direction);
+            // float speed = MI.getFrameSpeed();
+            float speed = Speed;
 
-        //dash
-        if(Input.GetKey("left shift") && !dash_cooldown.is_running()){
-            dash_active_frames.start(DashDuration);
-            dash_cooldown.start(DashCooldown);
-        }
-        if(dash_active_frames.is_running()){
-            speed = speed*DashModifier;
-        }
+            //dash
+            if(Input.GetKey("left shift") && !dash_cooldown.is_running()){
+                dash_active_frames.start(DashDuration);
+                dash_cooldown.start(DashCooldown);
+            }
+            if(dash_active_frames.is_running()){
+                speed = speed*DashModifier;
+            }
 
-        //update gameObject (player) position
-        // direction = MI.getFrameDirection();
-        direction.Normalize();
-        Vector3 dir = new Vector3(direction.x, direction.y, 0);
-        objectRigidbody.AddForce(dir*speed);
-        // transform.position += dir * speed * Time.deltaTime;
+            //update gameObject (player) position
+            // direction = MI.getFrameDirection();
+            direction.Normalize();
+            Vector3 dir = new Vector3(direction.x, direction.y, 0);
+            objectRigidbody.AddForce(dir*speed);
+            // transform.position += dir * speed * Time.deltaTime;
+        }
     }
 }

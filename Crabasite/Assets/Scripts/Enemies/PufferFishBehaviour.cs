@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PufferFishBehaviour : Enemy
 {
+    private PufferFishData pfd;
+    private TimerObject bite_timer;
+
     void Awake()
     {
-        Texture2D _sprite = Resources.Load<Texture2D>("Sprites/EnemyPlaceholder_256x256");
+        pfd = Resources.Load<PufferFishData>("Scriptable Objects/EnemyData/PufferFishData");
+        Texture2D _sprite = Resources.Load<Texture2D>(pfd.texturePath);
         Sprite sprite = Sprite.Create(_sprite, //texture
                                         new Rect(0.0f, 0.0f, _sprite.width, _sprite.height), //subpart of the texture to create the sprite from
                                         new Vector2(0.5f, 0.5f), //new sprite origin \in [0,1]^2
@@ -14,14 +18,15 @@ public class PufferFishBehaviour : Enemy
                                         0, //amount by which the sprite mesh should be expanded outwards
                                         SpriteMeshType.FullRect //mesh type
                                         );
-        initialSetup(100,//health 
-                        100,//max health 
-                        10,//damage
-                        0.5f,//speed
-                        "Puffer fish enemy",//name 
+        initialSetup(pfd.health,//health 
+                        pfd.health,//max health 
+                        pfd.damage,//damage
+                        pfd.chaseSpeed,//speed
+                        pfd.gameObjectName,//name 
                         sprite,//sprite 
-                        0.5f//sprite scale modifier
+                        pfd.textureScale//sprite scale modifier
                         );
+        bite_timer = new TimerObject();
     }
 
     void Update()
@@ -30,26 +35,24 @@ public class PufferFishBehaviour : Enemy
         getRigidbody().AddForce(getMovementDirection(scaled)*getSpeed());
     }
 
+    //a.k.a. fish biting the player
+    void OnCollisionEnter2D(Collision2D collision){
+        if(collision.collider.gameObject.tag == "Player" && !bite_timer.runs()){
+            collision.collider.SendMessage("addHealth", -getDamage(), SendMessageOptions.DontRequireReceiver);
+            bite_timer.start(pfd.biteCooldown);
+        }
+    }
+
     private Vector3 getMovementDirection(bool scaled){
-        float[] ctx_map_interest = chase(GameObject.FindWithTag("Player").transform.position);
+        Vector2[] direction_map = getNormalizedDirectionMap();
+        float[] ctx_map_interest = chase(GameObject.FindWithTag("Player").transform.position, direction_map);
         float[] ctx_map_danger = new float[8];
 
         //the maximum distance at which to regard obstacles
         float maxDangerDistance = 3.0f;
 
-        // //get all possible obstacles
-        // GameObject[] collectables = GameObject.FindGameObjectsWithTag("Collectable");
-        // GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        // //concatenate all possible obstacles into one array
-        // GameObject[] obstacles = new GameObject[collectables.Length+enemies.Length];
-        // collectables.CopyTo(obstacles, 0);
-        // enemies.CopyTo(obstacles, collectables.Length);
-
         //get highest danger over all *near* obstacles 
-        foreach(Vector2 _direction in getNormalizedDirectionMap()){
-            // Vector2 obstaclePositionRelativeToEnemy = obstacle.transform.position-transform.position;
-            // obstaclePositionRelativeToEnemy.Normalize();
+        foreach(Vector2 _direction in direction_map){
             Vector3 direction = new Vector3(_direction.x, _direction.y, 0);
             BoxCollider2D bc = getCollider();
             bc.enabled = false;
@@ -57,28 +60,12 @@ public class PufferFishBehaviour : Enemy
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position+direction, maxDangerDistance, LayerMask.GetMask("Enemies"));
             bc.enabled = true;
             if(hit.collider != null){
-                float[] this_ctx_map_danger = avoid(hit.point);
+                float[] this_ctx_map_danger = avoid(hit.point, direction_map);
                 for(int i = 0; i < 8; ++i){
                     ctx_map_danger[i] = Mathf.Max(ctx_map_danger[i], this_ctx_map_danger[i]);
                 }
             }
         }
-        // foreach(GameObject obstacle in obstacles){
-        //     //check, if the obstacle's collider can be hit via raycast
-        //     Vector2 obstaclePositionRelativeToEnemy = obstacle.transform.position-transform.position;
-        //     obstaclePositionRelativeToEnemy.Normalize();
-        //     BoxCollider2D bc = getCollider();
-        //     bc.enabled = false;
-        //     //take only obstacles into account that are a maximum distance away
-        //     RaycastHit2D hit = Physics2D.Raycast(transform.position, obstaclePositionRelativeToEnemy, maxDangerDistance, LayerMask.GetMask("Enemies"));
-        //     bc.enabled = true;
-        //     if(hit.collider != null){
-        //         float[] this_ctx_map_danger = avoid(hit.point);
-        //         for(int i = 0; i < 8; ++i){
-        //             ctx_map_danger[i] = Mathf.Max(ctx_map_danger[i], this_ctx_map_danger[i]);
-        //         }
-        //     }
-        // }
 
         // float minimal_danger = Mathf.Infinity;
         // for(int i = 0; i < 8; ++i){
@@ -95,17 +82,16 @@ public class PufferFishBehaviour : Enemy
             // else
             //     ctx_map_combined[i] = ctx_map_interest[i];
         }
-        Debug.Log("interest:");
-        printArray(ctx_map_interest);
-        Debug.Log("danger:");
-        printArray(ctx_map_danger);
-        Debug.Log("combined:");
-        printArray(ctx_map_combined);
+        // Debug.Log("interest:");
+        // printArray(ctx_map_interest);
+        // Debug.Log("danger:");
+        // printArray(ctx_map_danger);
+        // Debug.Log("combined:");
+        // printArray(ctx_map_combined);
         return getDirectionWithMaximalInterest(getNormalizedDirectionMap(), ctx_map_combined, scaled);
     }
 
-    float[] chase(Vector2 target){
-        Vector2[] direction_map = getNormalizedDirectionMap();
+    private float[] chase(Vector2 target, Vector2[] direction_map){
         float[] ctx_map_interest = new float[8];
         Vector2 positionRelativeToTarget = target-new Vector2(transform.position.x, transform.position.y);
         positionRelativeToTarget.Normalize();
@@ -116,8 +102,7 @@ public class PufferFishBehaviour : Enemy
         return ctx_map_interest;
     }
 
-    float[] avoid(Vector2 obstacle){
-        Vector2[] direction_map = getNormalizedDirectionMap();
+    private float[] avoid(Vector2 obstacle, Vector2[] direction_map){
         float[] ctx_map_danger = new float[8];
         Vector2 positionRelativeToObstacle = obstacle-new Vector2(transform.position.x, transform.position.y);
         positionRelativeToObstacle.Normalize();
@@ -159,13 +144,6 @@ public class PufferFishBehaviour : Enemy
             return result;
         }
         return Vector2.zero;
-    }
-
-    void OnCollisionEnter2D(Collision2D collision){
-        //TODO: cooldown timer missing!!!
-        if(collision.collider.gameObject.tag == "Player"){
-            collision.collider.SendMessage("addHealth", -getDamage(), SendMessageOptions.DontRequireReceiver);
-        }
     }
 
     static void printArray(float[] array){

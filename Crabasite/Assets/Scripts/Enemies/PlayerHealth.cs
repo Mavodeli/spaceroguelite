@@ -31,4 +31,8 @@ public class PlayerHealth : MonoBehaviour
             //TODO: some kind of Game Over
         }
     }
+
+    public bool isAlive(){
+        return health > 0;
+    }
 }
