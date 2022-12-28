@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="New PufferFishData", menuName = "Enemy Data/Create New PufferFishData")]
+[CreateAssetMenu(fileName ="PufferFishData", menuName = "Enemy Data/Create PufferFishData")]
 public class PufferFishData : ScriptableObject
 {
     public string texturePath = "Sprites/EnemyPlaceholder_256x256";
