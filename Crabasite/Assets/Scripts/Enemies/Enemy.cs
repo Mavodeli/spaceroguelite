@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
         rb.gravityScale = 0;
         rb.drag = 1;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        rb.sharedMaterial = Resources.Load<PhysicsMaterial2D>("Materials/Obstacles");
+        rb.sharedMaterial = Resources.Load<PhysicsMaterial2D>("Materials/EnemyMaterial");
 
         //setup BoxCollider2D
         bc = gameObject.AddComponent<BoxCollider2D>();
