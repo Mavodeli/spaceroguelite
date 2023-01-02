@@ -35,11 +35,6 @@ public class AnglerFishBehaviour : Enemy
     // Update is called once per frame
     void LateUpdate()//bc Enemy.cs already uses Update()!
     {
-        /* makes the enemy move towards the player. */
-        Vector3 chaseDirection = getPlayer().transform.position - transform.position;
-        chaseDirection.Normalize();
-        getRigidbody().MovePosition(transform.position + chaseDirection * chaseSpeed * Time.deltaTime);
-
         /* makes the enemy pull the player towards it. */
         float distance = Vector3.Distance(transform.position, getPlayer().transform.position);
 
