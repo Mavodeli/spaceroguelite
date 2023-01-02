@@ -16,7 +16,9 @@ MonoBehaviour:
   textureScale: 1
   health: 180
   damage: 50
+  meleeDamage: 20
   chaseSpeed: 400
   gameObjectName: Mantis shrimp emeny
   spearCooldown: 2.5
+  meleeCooldown: 0.5
   stoppingDistance: 10

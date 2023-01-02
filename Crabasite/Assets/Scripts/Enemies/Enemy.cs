@@ -22,20 +22,24 @@ public class Enemy : MonoBehaviour
     private BoxCollider2D bc;
     private Seeker seeker;
 
+    //melee damage
+    private float meleeDamage;
+    private float meleeDistance;
+    private float meleeCooldown;
+    private TimerObject bite_timer;
+
     //Misc
     private Path path;
     private int currentWaypoint;
     private float nextWaypointDistance;
-    private bool endOfPath;
     private float stoppingDistance;
     private GameObject player;
-
-    // the sprite's starting position relative to the player
-    private float startX;
 
     public void initialSetup(float _health,
                                 float _maxhealth, 
                                 float _damage,
+                                float _meleeDamage,
+                                float _meleeCooldown,
                                 float _speed, 
                                 string name,
                                 Sprite _sprite, 
@@ -47,6 +51,8 @@ public class Enemy : MonoBehaviour
         health = _health;
         maxhealth = _maxhealth;
         damage = _damage;
+        meleeDamage = _meleeDamage;
+        meleeCooldown = _meleeCooldown;
         _name = name;
         speed = _speed;
 
@@ -81,16 +87,20 @@ public class Enemy : MonoBehaviour
         seeker = gameObject.AddComponent<Seeker>();
         currentWaypoint = 0;
         nextWaypointDistance = 3.0f;
-        endOfPath = false;
         stoppingDistance = _stoppingDistance;
         player = GameObject.FindGameObjectWithTag("Player");
         gameObject.AddComponent<DynamicGridObstacle>();
+
+        //setup melee damage
+        bite_timer = new TimerObject();
+        meleeDistance = 
+            (sr.size.x/2)+//~offset fish origin to collider edge
+            (player.GetComponent<SpriteRenderer>().size.x/2)+//~offset player origin to collider edge
+            .2f;//actual distance :)
     }
 
     private void Start(){
         StartCoroutine(UpdateCoroutine(.5f));
-        //
-        startX = transform.position.x - player.transform.position.x;
     }
 
     private IEnumerator UpdateCoroutine(float UpdateRate){
@@ -113,6 +123,7 @@ public class Enemy : MonoBehaviour
     }
 
     private void Update(){
+        //movement
         Vector3 force;
         if(Vector3.Distance(gameObject.transform.position, player.transform.position) >= stoppingDistance){
             if(path == null) return;
@@ -129,8 +140,15 @@ public class Enemy : MonoBehaviour
             force = direction*speed*Time.deltaTime;
         }
         rb.AddForce(force);
+
         // flip the sprite horizontally based on the player's position relative to the sprite's starting position
         transform.localScale = new Vector3(Mathf.Sign((gameObject.transform.position - player.transform.position).x), 1, 1);
+
+        //melee damage a.k.a. fish biting the player
+        if((Vector3.Distance(gameObject.transform.position, player.transform.position) <= meleeDistance) && !bite_timer.runs()){
+            player.GetComponent<BoxCollider2D>().SendMessage("addHealth", -getDamage(), SendMessageOptions.DontRequireReceiver);
+            bite_timer.start(meleeCooldown);
+        }
     }
 
     private static Vector3[] getNormalizedDirectionMap(){

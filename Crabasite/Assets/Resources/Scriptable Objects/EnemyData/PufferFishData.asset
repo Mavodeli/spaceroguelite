@@ -16,7 +16,8 @@ MonoBehaviour:
   textureScale: 0.38
   health: 100
   damage: 25
+  meleeDamage: 25
   chaseSpeed: 400
   gameObjectName: Puffer fish emeny
-  biteCooldown: 0.5
+  meleeCooldown: 0.5
   stoppingDistance: 0

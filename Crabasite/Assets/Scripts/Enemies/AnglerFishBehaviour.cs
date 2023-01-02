@@ -23,6 +23,8 @@ public class AnglerFishBehaviour : Enemy
         initialSetup(100,//health 
                         100,//max health 
                         10,//damage
+                        10,//melee damage
+                        .5f,//melee cooldown
                         0.5f,//speed
                         "Angler fish enemy",//name 
                         sprite,//sprite 

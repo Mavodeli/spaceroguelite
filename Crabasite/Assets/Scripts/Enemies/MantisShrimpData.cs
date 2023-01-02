@@ -9,8 +9,10 @@ public class MantisShrimpData : ScriptableObject
     public float textureScale = 1;
     public float health = 180;
     public float damage = 50;
-    public float chaseSpeed = 0.5f;
+    public float meleeDamage = 20;
+    public float chaseSpeed = 400;
     public string gameObjectName = "Mantis shrimp emeny";
     public float spearCooldown = 2.5f;
-    public float stoppingDistance = 5.0f;
+    public float meleeCooldown = .5f;
+    public float stoppingDistance = 10;
 }

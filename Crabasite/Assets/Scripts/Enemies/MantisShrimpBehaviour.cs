@@ -19,6 +19,8 @@ public class MantisShrimpBehaviour : Enemy
         initialSetup(msd.health,//health 
                         msd.health,//max health 
                         msd.damage,//damage
+                        msd.meleeDamage,//melee 
+                        msd.meleeCooldown,//melee cooldown
                         msd.chaseSpeed,//speed
                         msd.gameObjectName,//name 
                         sprite,//sprite 

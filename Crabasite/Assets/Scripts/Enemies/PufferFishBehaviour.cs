@@ -5,7 +5,6 @@ using UnityEngine;
 public class PufferFishBehaviour : Enemy
 {
     private PufferFishData pfd;
-    private TimerObject bite_timer;
 
     void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
     {
@@ -21,13 +20,14 @@ public class PufferFishBehaviour : Enemy
         initialSetup(pfd.health,//health 
                         pfd.health,//max health 
                         pfd.damage,//damage
+                        pfd.meleeDamage,//melee damage
+                        pfd.meleeCooldown,//melee cooldown
                         pfd.chaseSpeed,//speed
                         pfd.gameObjectName,//name 
                         sprite,//sprite 
                         pfd.textureScale,//sprite scale modifier
                         pfd.stoppingDistance//stopping distance
                         );
-        bite_timer = new TimerObject();
     }
 
     void LateUpdate()//bc Enemy.cs already uses Update()!
@@ -37,12 +37,12 @@ public class PufferFishBehaviour : Enemy
     }
 
     //a.k.a. fish biting the player
-    void OnCollisionEnter2D(Collision2D collision){
-        if(collision.collider.gameObject.tag == "Player" && !bite_timer.runs()){
-            collision.collider.SendMessage("addHealth", -getDamage(), SendMessageOptions.DontRequireReceiver);
-            bite_timer.start(pfd.biteCooldown);
-        }
-    }
+    // void OnCollisionEnter2D(Collision2D collision){
+    //     if(collision.collider.gameObject.tag == "Player" && !bite_timer.runs()){
+    //         collision.collider.SendMessage("addHealth", -getDamage(), SendMessageOptions.DontRequireReceiver);
+    //         bite_timer.start(pfd.biteCooldown);
+    //     }
+    // }
 
 //     private Vector3 getMovementDirection(bool scaled){
 //         Vector2[] direction_map = getNormalizedDirectionMap();
