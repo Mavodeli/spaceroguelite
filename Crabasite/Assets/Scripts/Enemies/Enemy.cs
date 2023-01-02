@@ -1,19 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Enemy : MonoBehaviour
 {
+    //HealthSystem
     private HealthSystem HS;
     private HealthBar healthBar;
+
+    //Gameplay Properties
     private float health;
     private float maxhealth;
     private float damage;
     private float speed;
     private string _name;
+
+    //Components
     private SpriteRenderer sr;
     private Rigidbody2D rb;
     private BoxCollider2D bc;
+    private Seeker seeker;
+
+    //Misc
+    private Path path;
+    private int currentWaypoint;
+    private float nextWaypointDistance;
+    private bool endOfPath;
+    private float stoppingDistance;
+    private GameObject player;
 
     public void initialSetup(float _health,
                                 float _maxhealth, 
@@ -21,7 +36,8 @@ public class Enemy : MonoBehaviour
                                 float _speed, 
                                 string name,
                                 Sprite _sprite, 
-                                float spriteScale
+                                float spriteScale,
+                                float _stoppingDistance
                                 )
     {
         //setup properties
@@ -34,7 +50,7 @@ public class Enemy : MonoBehaviour
         //setup name, tag & layer
         gameObject.name = _name;
         gameObject.tag = "Enemy";
-        gameObject.layer = LayerMask.NameToLayer("Enemies");
+        gameObject.layer = LayerMask.NameToLayer("Raycast");
 
         //setup SpriteRenderer
         sr = gameObject.AddComponent<SpriteRenderer>();
@@ -52,10 +68,78 @@ public class Enemy : MonoBehaviour
         rb.gravityScale = 0;
         rb.drag = 1;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        rb.sharedMaterial = Resources.Load<PhysicsMaterial2D>("Materials/Obstacles");
 
         //setup BoxCollider2D
         bc = gameObject.AddComponent<BoxCollider2D>();
         bc.size = sr.size;
+
+        //setup Pathfinding
+        seeker = gameObject.AddComponent<Seeker>();
+        currentWaypoint = 0;
+        nextWaypointDistance = 3.0f;
+        endOfPath = false;
+        stoppingDistance = _stoppingDistance;
+        player = GameObject.FindGameObjectWithTag("Player");
+        gameObject.AddComponent<DynamicGridObstacle>();
+    }
+
+    private void Start(){
+        StartCoroutine(UpdateCoroutine(.5f));
+    }
+
+    private IEnumerator UpdateCoroutine(float UpdateRate){
+        WaitForSeconds wait = new WaitForSeconds(UpdateRate);
+        while(true){
+            UpdatePath();
+            yield return wait;
+        }
+    }
+
+    private void UpdatePath(){
+        seeker.StartPath(gameObject.transform.position, player.transform.position, OnPathComplete);
+    }
+
+    private void OnPathComplete(Path p){
+        if(!p.error){
+            path = p;
+            currentWaypoint = 0;
+        }
+    }
+
+    private void Update(){
+        Vector3 force;
+        if(Vector3.Distance(gameObject.transform.position, player.transform.position) >= stoppingDistance){
+            if(path == null) return;
+            if(currentWaypoint >= path.vectorPath.Count) return;
+            Vector3 direction = path.vectorPath[currentWaypoint] - gameObject.transform.position;
+            direction.Normalize();
+            force = direction*speed*Time.deltaTime;
+            if(Vector2.Distance(gameObject.transform.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)
+                currentWaypoint++;
+        }
+        else{
+            Vector3[] map = getNormalizedDirectionMap();
+            Vector3 direction = map[Random.Range(0, map.Length-1)];
+            force = direction*speed*Time.deltaTime;
+        }
+        rb.AddForce(force);
+    }
+
+    private static Vector3[] getNormalizedDirectionMap(){
+        Vector3[] direction_map = new Vector3[]{new Vector3(0, 1, 0),
+                                                new Vector3(.5f, .5f, 0),
+                                                new Vector3(1, 0, 0),
+                                                new Vector3(.5f, -.5f, 0),
+                                                new Vector3(0, -1, 0),
+                                                new Vector3(-.5f, -.5f, 0),
+                                                new Vector3(-1, 0, 0),
+                                                new Vector3(-.5f, .5f, 0)
+                                                };
+        foreach(Vector2 vec in direction_map){
+            vec.Normalize();
+        }
+        return direction_map;
     }
 
     //negative hp damages, positive hp heals
@@ -87,5 +171,9 @@ public class Enemy : MonoBehaviour
     }
     public float getDamage(){
         return damage;
+    }
+
+    public GameObject getPlayer(){
+        return player;
     }
 }

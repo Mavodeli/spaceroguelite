@@ -12,4 +12,5 @@ public class PufferFishData : ScriptableObject
     public float chaseSpeed = 0.7f;
     public string gameObjectName = "Puffer fish emeny";
     public float biteCooldown = .5f;
+    public float stoppingDistance = 0.0f;
 }

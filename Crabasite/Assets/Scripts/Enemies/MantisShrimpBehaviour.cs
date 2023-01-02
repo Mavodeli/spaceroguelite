@@ -5,7 +5,7 @@ using UnityEngine;
 public class MantisShrimpBehaviour : Enemy
 {
     private MantisShrimpData msd;
-    void Awake()
+    void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
     {
         msd = Resources.Load<MantisShrimpData>("Scriptable Objects/EnemyData/MantisShrimpData");
         Texture2D _sprite = Resources.Load<Texture2D>(msd.texturePath);
@@ -22,11 +22,12 @@ public class MantisShrimpBehaviour : Enemy
                         msd.chaseSpeed,//speed
                         msd.gameObjectName,//name 
                         sprite,//sprite 
-                        msd.textureScale//sprite scale modifier
+                        msd.textureScale,//sprite scale modifier
+                        msd.stoppingDistance//stopping distance
                         );
     }
 
-    void Update()
+    void LateUpdate()//bc Enemy.cs already uses Update()!
     {
         //TODO
     }

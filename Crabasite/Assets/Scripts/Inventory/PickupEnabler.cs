@@ -9,6 +9,11 @@ public class PickupEnabler : MonoBehaviour
     private GameObject player;
     private GameObject button;
     private bool hasButton = false;
+    private GameObject inventory;
+
+    // void Awake(){
+    //     inventory = GameObject.FindGameObjectWithTag("Inventory");
+    // }
 
     void Start()
     {
@@ -23,7 +28,7 @@ public class PickupEnabler : MonoBehaviour
     }
 
     void Update(){
-        if(player){
+        if(player.GetComponent<PlayerHealth>().isAlive()){
             distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
             //create button if not present and player is close enough
@@ -43,7 +48,7 @@ public class PickupEnabler : MonoBehaviour
                 hasButton = false;
             }
             //check if player presses button for pickup, if so, perform pickup
-            if(Input.GetKey("e") && hasButton){
+            if(Input.GetKey("e") && hasButton && GameObject.FindGameObjectWithTag("Inventory") == null){
                 if(this.transform.gameObject.GetComponent<ItemPickup>() == null){
                     ItemPickup ip = this.transform.gameObject.AddComponent<ItemPickup>();
                     Item placeholder = ScriptableObject.CreateInstance<Item>();

@@ -4,25 +4,13 @@ using UnityEngine;
 
 public class AnglerFishBehaviour : Enemy
 {
-    public GameObject player;
     public float maxReachAttraction = 7f; // defines the Reach Value of the Attraction
     public float maxReachDamage = 3f; // defines the Range in which the enemy starts to deal damage
     public float AttractionForce = 50f; // defines the Force Value of the Attraction
-    Transform enemyTransform;
-    Rigidbody2D enemyRigidbody;
     
     public float chaseSpeed = 5f;
 
-
-
-    void Start()
-    {
-        player = GameObject.Find("Player");
-
-        enemyTransform = transform;
-        enemyRigidbody = GetComponent<Rigidbody2D>();
-    }
-    void Awake()
+    void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
     {
         Texture2D _sprite = Resources.Load<Texture2D>("Sprites/AnglerFish_256x256_New3");
         Sprite sprite = Sprite.Create(_sprite, //texture
@@ -38,26 +26,27 @@ public class AnglerFishBehaviour : Enemy
                         0.5f,//speed
                         "Angler fish enemy",//name 
                         sprite,//sprite 
-                        0.5f//sprite scale modifier
+                        0.5f,//sprite scale modifier
+                        0.0f//stopping distance
                         );
     }
 
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()//bc Enemy.cs already uses Update()!
     {
         /* makes the enemy move towards the player. */
-        Vector3 chaseDirection = player.transform.position - enemyTransform.position;
+        Vector3 chaseDirection = getPlayer().transform.position - transform.position;
         chaseDirection.Normalize();
-        enemyRigidbody.MovePosition(enemyTransform.position + chaseDirection * chaseSpeed * Time.deltaTime);
+        getRigidbody().MovePosition(transform.position + chaseDirection * chaseSpeed * Time.deltaTime);
 
         /* makes the enemy pull the player towards it. */
-        float distance = Vector3.Distance(transform.position, player.transform.position);
+        float distance = Vector3.Distance(transform.position, getPlayer().transform.position);
 
         if (distance < maxReachAttraction)
         {
-        Vector2 pullDirection = (Vector2)(transform.position - player.transform.position);
-        player.GetComponent<Rigidbody2D>().AddForce(pullDirection * AttractionForce);
+        Vector2 pullDirection = (Vector2)(transform.position - getPlayer().transform.position);
+        getPlayer().GetComponent<Rigidbody2D>().AddForce(pullDirection * AttractionForce);
         }
         if (distance < maxReachDamage)
         {

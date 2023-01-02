@@ -93,9 +93,6 @@ public class InventoryManager : MonoBehaviour
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var itemDescription = obj.transform.Find("ItemDescription").GetComponent<TMP_Text>();
 
-            Debug.Log(Items[0]);
-            
-
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
             itemDescription.text = item.description;
@@ -138,15 +135,11 @@ public class InventoryManager : MonoBehaviour
             var mailName = obj.transform.Find("MailName").GetComponent<TMP_Text>();
             var mailIcon = obj.transform.Find("MailIcon").GetComponent<Image>();
             var mailDescription = obj.transform.Find("MailDescription").GetComponent<TMP_Text>();
-            
 
             mailName.text = mail.mailName;
             mailIcon.sprite = mail.icon;
             mailDescription.text = mail.description;
         }
-
-        Debug.Log(Mails.Count);
-
     }
 
       /// It takes a string as a parameter, finds the mail with the same name as the string, and then

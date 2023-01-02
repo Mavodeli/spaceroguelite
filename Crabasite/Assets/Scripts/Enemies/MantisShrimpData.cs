@@ -12,4 +12,5 @@ public class MantisShrimpData : ScriptableObject
     public float chaseSpeed = 0.5f;
     public string gameObjectName = "Mantis shrimp emeny";
     public float spearCooldown = 2.5f;
+    public float stoppingDistance = 5.0f;
 }
