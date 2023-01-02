@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Timers
   - Timer
+  - Inventory
   layers:
   - Default
   - TransparentFX
@@ -48,4 +49,7 @@ TagManager:
     locked: 0
   - name: HealthBar
     uniqueID: 2197177389
+    locked: 0
+  - name: Inventory
+    uniqueID: 571075293
     locked: 0

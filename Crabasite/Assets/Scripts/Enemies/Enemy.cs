@@ -30,6 +30,9 @@ public class Enemy : MonoBehaviour
     private float stoppingDistance;
     private GameObject player;
 
+    // the sprite's starting position relative to the player
+    private float startX;
+
     public void initialSetup(float _health,
                                 float _maxhealth, 
                                 float _damage,
@@ -86,6 +89,8 @@ public class Enemy : MonoBehaviour
 
     private void Start(){
         StartCoroutine(UpdateCoroutine(.5f));
+        //
+        startX = transform.position.x - player.transform.position.x;
     }
 
     private IEnumerator UpdateCoroutine(float UpdateRate){
@@ -124,6 +129,8 @@ public class Enemy : MonoBehaviour
             force = direction*speed*Time.deltaTime;
         }
         rb.AddForce(force);
+        // flip the sprite horizontally based on the player's position relative to the sprite's starting position
+        transform.localScale = new Vector3(Mathf.Sign((gameObject.transform.position - player.transform.position).x), 1, 1);
     }
 
     private static Vector3[] getNormalizedDirectionMap(){

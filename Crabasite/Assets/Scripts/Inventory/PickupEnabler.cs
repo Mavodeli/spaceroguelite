@@ -47,8 +47,9 @@ public class PickupEnabler : MonoBehaviour
                 Destroy(transform.Find("Pickup Button of " + name + "(Clone)").gameObject);
                 hasButton = false;
             }
-            //check if player presses button for pickup, if so, perform pickup
-            if(Input.GetKey("e") && hasButton && GameObject.FindGameObjectWithTag("Inventory") == null){
+            //check if player presses button for pickup, if so, perform pickup 
+
+            if(Input.GetKey("e") && hasButton && !GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>().inventoryIsOpened){
                 if(this.transform.gameObject.GetComponent<ItemPickup>() == null){
                     ItemPickup ip = this.transform.gameObject.AddComponent<ItemPickup>();
                     Item placeholder = ScriptableObject.CreateInstance<Item>();
