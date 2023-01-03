@@ -59,6 +59,14 @@ public class TimerObject
         }
         return false;
     }
+
+    public float getElapsedTime(){
+        if(go != null){
+            Timer2 timer = go.GetComponent<Timer2>();
+            if(timer.isRunning) return timer.elapsed_time;
+        }
+        return 0;
+    }
 }
 
 public class Timer2 : MonoBehaviour

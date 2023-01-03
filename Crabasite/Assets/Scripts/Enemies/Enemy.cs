@@ -191,6 +191,10 @@ public class Enemy : MonoBehaviour
         return bc;
     }
 
+    public SpriteRenderer getSpriteRenderer(){
+        return sr;
+    }
+
     public float getSpeed(){
         return speed;
     }
