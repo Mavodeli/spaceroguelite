@@ -8,7 +8,8 @@ public class MantisShrimpBehaviour : Enemy
     private Sprite shrimpWithSpear;
     private Sprite shrimpWithoutSpear;
     private Sprite shrimpSpear;
-    private TimerObject spear_timer;
+    private TimerObject spear1_timer;
+    private TimerObject spear2_timer;
 
     void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
     {
@@ -27,19 +28,30 @@ public class MantisShrimpBehaviour : Enemy
                         msd.textureScale,//sprite scale modifier
                         msd.stoppingDistance//stopping distance
                         );
-        spear_timer = new TimerObject();
+        spear1_timer = new TimerObject();
+        spear2_timer = new TimerObject();
     }
 
     void LateUpdate()//bc Enemy.cs already uses Update()!
-    {
-        if((Vector3.Distance(gameObject.transform.position, getPlayer().transform.position) <= msd.spearTriggerDistance) && !spear_timer.runs()){
+    {   
+        //first spear
+        if((Vector3.Distance(gameObject.transform.position, getPlayer().transform.position) <= msd.spearTriggerDistance) && !spear1_timer.runs()){
             GameObject spear = new GameObject();
             MantisShrimpSpear script = spear.AddComponent<MantisShrimpSpear>();
             script.Setup(gameObject, GameObject.FindGameObjectWithTag("Player"), shrimpSpear);
-            spear_timer.start(msd.spearCooldown);
+            spear1_timer.start(msd.spearCooldown);
+            // updateSprite(shrimpWithoutSpear, msd.textureScaleNoSpear);
+        }
+        //second spear
+        if((spear1_timer.getElapsedTime() >= msd.secondSpearDelay) && !spear2_timer.runs()){
+            GameObject spear = new GameObject();
+            MantisShrimpSpear script = spear.AddComponent<MantisShrimpSpear>();
+            script.Setup(gameObject, GameObject.FindGameObjectWithTag("Player"), shrimpSpear);
+            spear2_timer.start(msd.spearCooldown);
             updateSprite(shrimpWithoutSpear, msd.textureScaleNoSpear);
         }
-        if(spear_timer.getElapsedTime() >= msd.spearCooldown/2)
+        //regrow comlete
+        if(spear1_timer.getElapsedTime() >= msd.spearCooldown/2)
             updateSprite(shrimpWithSpear, msd.textureScale);
     }
 
