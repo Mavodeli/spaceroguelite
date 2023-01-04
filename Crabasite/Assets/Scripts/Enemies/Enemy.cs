@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
     private float nextWaypointDistance;
     private float stoppingDistance;
     private GameObject player;
+    private bool nearPlayer;
 
     public void initialSetup(float _health,
                                 float _maxhealth, 
@@ -55,6 +56,7 @@ public class Enemy : MonoBehaviour
         meleeCooldown = _meleeCooldown;
         _name = name;
         speed = _speed;
+        nearPlayer = false;
 
         //setup name, tag & layer
         gameObject.name = _name;
@@ -145,7 +147,8 @@ public class Enemy : MonoBehaviour
         transform.localScale = new Vector3(Mathf.Sign((gameObject.transform.position - player.transform.position).x), 1, 1);
 
         //melee damage a.k.a. fish biting the player
-        if((Vector3.Distance(gameObject.transform.position, player.transform.position) <= meleeDistance) && !bite_timer.runs()){
+        nearPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position) <= meleeDistance;
+        if(nearPlayer && !bite_timer.runs()){
             player.GetComponent<BoxCollider2D>().SendMessage("addHealth", -getDamage(), SendMessageOptions.DontRequireReceiver);
             bite_timer.start(meleeCooldown);
         }
@@ -204,5 +207,9 @@ public class Enemy : MonoBehaviour
 
     public GameObject getPlayer(){
         return player;
+    }
+
+    public bool getNearPlayer(){
+        return nearPlayer;
     }
 }
