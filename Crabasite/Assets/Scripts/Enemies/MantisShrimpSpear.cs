@@ -18,9 +18,12 @@ public class MantisShrimpSpear : MonoBehaviour
         gameObject.transform.parent = parent.transform;
         gameObject.transform.position = parent.transform.position;
         targetDirection = (_target.transform.position-gameObject.transform.position).normalized;
-        gameObject.transform.Rotate(new Vector3(0, 0, 90));//rotate such that the point is up
-        float angle = Vector3.Angle(new Vector3(0, 1, 0), targetDirection);
+        float angle = 90 + Vector3.Angle(new Vector3(0, 1, 0), targetDirection);
         gameObject.transform.Rotate(new Vector3(0, 0, angle));
+        //flip Spear correctly
+        if(Mathf.Sign((gameObject.transform.position - _target.transform.position).x) == 1) {
+            gameObject.transform.Rotate(new Vector3(0, 0, 180));
+        }
         gameObject.name = "Mantis Shrimp Spear";
         gameObject.tag = "Enemy";
         gameObject.layer = LayerMask.NameToLayer("Raycast");
