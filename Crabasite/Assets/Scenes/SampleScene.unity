@@ -4316,7 +4316,7 @@ GameObject:
   - component: {fileID: 1266522455}
   - component: {fileID: 1266522454}
   m_Layer: 5
-  m_Name: Background
+  m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
