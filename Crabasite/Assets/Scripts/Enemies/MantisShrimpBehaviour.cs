@@ -32,27 +32,21 @@ public class MantisShrimpBehaviour : Enemy
     }
 
     void LateUpdate()//bc Enemy.cs already uses Update()!
-<<<<<<< Updated upstream
     {   
         //first spear
-        if((Vector3.Distance(gameObject.transform.position, getPlayer().transform.position) <= msd.spearTriggerDistance) && !spear1_timer.runs()){
+        if((Vector3.Distance(gameObject.transform.position, player.transform.position) <= msd.spearTriggerDistance) && !spear1_timer.runs()){
             GameObject spear = new GameObject();
             MantisShrimpSpear script = spear.AddComponent<MantisShrimpSpear>();
-            script.Setup(gameObject, GameObject.FindGameObjectWithTag("Player"), shrimpSpear);
+            script.Setup(gameObject, player, shrimpSpear);
             spear1_timer.start(msd.spearCooldown);
-            // updateSprite(shrimpWithoutSpear, msd.textureScaleNoSpear);
         }
         //second spear
         if((spear1_timer.getElapsedTime() >= msd.secondSpearDelay) && !spear2_timer.runs()){
-=======
-    {
-        if((Vector3.Distance(gameObject.transform.position, player.transform.position) <= msd.spearTriggerDistance) && !spear_timer.runs()){
->>>>>>> Stashed changes
             GameObject spear = new GameObject();
             MantisShrimpSpear script = spear.AddComponent<MantisShrimpSpear>();
-            script.Setup(gameObject, GameObject.FindGameObjectWithTag("Player"), shrimpSpear);
+            script.Setup(gameObject, player, shrimpSpear);
             spear2_timer.start(msd.spearCooldown);
-            updateSprite(shrimpWithoutSpear, msd.textureScaleNoSpear);
+            updateSprite(shrimpWithoutSpear, msd.textureScaleNoSpear);//update sprite only on second spear fired
         }
         //regrow comlete
         if(spear1_timer.getElapsedTime() >= msd.spearCooldown/2)
