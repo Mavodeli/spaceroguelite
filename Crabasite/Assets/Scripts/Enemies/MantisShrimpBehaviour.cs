@@ -18,8 +18,7 @@ public class MantisShrimpBehaviour : Enemy
         shrimpWithoutSpear = getSprite(Resources.Load<Texture2D>(msd.texturePathNoSpear));
         shrimpSpear = getSprite(Resources.Load<Texture2D>(msd.texturePathSpear));
         initialSetup(msd.health,//health 
-                        msd.health,//max health 
-                        msd.damage,//damage
+                        msd.health,//max health
                         msd.meleeDamage,//melee 
                         msd.meleeCooldown,//melee cooldown
                         msd.chaseSpeed,//speed
@@ -33,6 +32,7 @@ public class MantisShrimpBehaviour : Enemy
     }
 
     void LateUpdate()//bc Enemy.cs already uses Update()!
+<<<<<<< Updated upstream
     {   
         //first spear
         if((Vector3.Distance(gameObject.transform.position, getPlayer().transform.position) <= msd.spearTriggerDistance) && !spear1_timer.runs()){
@@ -44,6 +44,10 @@ public class MantisShrimpBehaviour : Enemy
         }
         //second spear
         if((spear1_timer.getElapsedTime() >= msd.secondSpearDelay) && !spear2_timer.runs()){
+=======
+    {
+        if((Vector3.Distance(gameObject.transform.position, player.transform.position) <= msd.spearTriggerDistance) && !spear_timer.runs()){
+>>>>>>> Stashed changes
             GameObject spear = new GameObject();
             MantisShrimpSpear script = spear.AddComponent<MantisShrimpSpear>();
             script.Setup(gameObject, GameObject.FindGameObjectWithTag("Player"), shrimpSpear);
@@ -56,7 +60,6 @@ public class MantisShrimpBehaviour : Enemy
     }
 
     private void updateSprite(Sprite newSprite, float scale){
-        SpriteRenderer sr = getSpriteRenderer();
         sr.sprite = newSprite;
         sr.size = newSprite.bounds.extents*2;
         sr.size *= scale;

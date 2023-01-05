@@ -7,38 +7,36 @@ public class Enemy : MonoBehaviour
 {
     //HealthSystem
     private HealthSystem HS;
-    private HealthBar healthBar;
 
     //Gameplay Properties
     private float health;
     private float maxhealth;
-    private float damage;
     private float speed;
     private string _name;
 
     //Components
-    private SpriteRenderer sr;
     private Rigidbody2D rb;
     private BoxCollider2D bc;
     private Seeker seeker;
+    protected SpriteRenderer sr;
 
     //melee damage
     private float meleeDamage;
     private float meleeDistance;
     private float meleeCooldown;
     private TimerObject bite_timer;
+    protected bool nearPlayer;
 
-    //Misc
+    //Pathfinding
     private Path path;
     private int currentWaypoint;
     private float nextWaypointDistance;
     private float stoppingDistance;
-    private GameObject player;
-    private bool nearPlayer;
+    protected GameObject player;
+    
 
     public void initialSetup(float _health,
-                                float _maxhealth, 
-                                float _damage,
+                                float _maxhealth,
                                 float _meleeDamage,
                                 float _meleeCooldown,
                                 float _speed, 
@@ -51,7 +49,6 @@ public class Enemy : MonoBehaviour
         //setup properties
         health = _health;
         maxhealth = _maxhealth;
-        damage = _damage;
         meleeDamage = _meleeDamage;
         meleeCooldown = _meleeCooldown;
         _name = name;
@@ -72,7 +69,7 @@ public class Enemy : MonoBehaviour
 
         //setup HealthSystem
         HS = new HealthSystem((int) health, (int) maxhealth);
-        HealthBar healthBar = HS.attachHealthBar(gameObject, sr.size.y/2+.1f);
+        HS.attachHealthBar(gameObject, sr.size.y/2+.1f);
 
         //setup Rigidbody2D
         rb = gameObject.AddComponent<Rigidbody2D>();
@@ -149,7 +146,7 @@ public class Enemy : MonoBehaviour
         //melee damage a.k.a. fish biting the player
         nearPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position) <= meleeDistance;
         if(nearPlayer && !bite_timer.runs()){
-            player.GetComponent<BoxCollider2D>().SendMessage("addHealth", -getDamage(), SendMessageOptions.DontRequireReceiver);
+            player.GetComponent<BoxCollider2D>().SendMessage("addHealth", -meleeDamage, SendMessageOptions.DontRequireReceiver);
             bite_timer.start(meleeCooldown);
         }
     }
@@ -184,32 +181,5 @@ public class Enemy : MonoBehaviour
             Debug.Log("You killed a "+_name+"!");
             Destroy(gameObject);
         }
-    }
-
-    public Rigidbody2D getRigidbody(){
-        return rb;
-    }
-
-    public BoxCollider2D getCollider(){
-        return bc;
-    }
-
-    public SpriteRenderer getSpriteRenderer(){
-        return sr;
-    }
-
-    public float getSpeed(){
-        return speed;
-    }
-    public float getDamage(){
-        return damage;
-    }
-
-    public GameObject getPlayer(){
-        return player;
-    }
-
-    public bool getNearPlayer(){
-        return nearPlayer;
     }
 }
