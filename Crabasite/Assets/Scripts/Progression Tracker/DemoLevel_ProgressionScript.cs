@@ -6,6 +6,7 @@ using UnityEngine;
 public class DemoLevel_ProgressionScript : ProgressionDelegate
 {
     private Dictionary<string, Function> triggerMap = new Dictionary<string, Function>();
+    private TimerObject timer;
 
 
     private void Awake(){
@@ -19,6 +20,9 @@ public class DemoLevel_ProgressionScript : ProgressionDelegate
                 ProgressionTracker.setFlag("triggeredWhiteOrb", true);
             }
         });
+        timer = new TimerObject(autoDestroy: true);
+        timer.start(10);
+        ProgressionTracker.setFlag("timerRanOut", false);
     }
 
     void Start()
@@ -33,6 +37,10 @@ public class DemoLevel_ProgressionScript : ProgressionDelegate
     
     void Update()
     {
-        
+        if(!timer.runs() && !ProgressionTracker.isTrueAt("timerRanOut")){
+            Debug.Log("10sec Timer ran out!");
+            ProgressionTracker.setFlag("timerRanOut", true);
+        }
+
     }
 }
