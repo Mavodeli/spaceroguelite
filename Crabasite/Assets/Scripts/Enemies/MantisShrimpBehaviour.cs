@@ -48,6 +48,7 @@ public class MantisShrimpBehaviour : Enemy
         sr.sprite = newSprite;
         sr.size = newSprite.bounds.extents*2;
         sr.size *= scale;
+        bc.size = sr.size;
     }
 
     private static Sprite getSprite(Texture2D tex){

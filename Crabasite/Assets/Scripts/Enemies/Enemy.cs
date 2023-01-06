@@ -19,8 +19,12 @@ public class Enemy : MonoBehaviour
     //Components
     private SpriteRenderer sr;
     private Rigidbody2D rb;
-    private BoxCollider2D bc;
     private Seeker seeker;
+<<<<<<< Updated upstream
+=======
+    protected SpriteRenderer sr;
+    protected BoxCollider2D bc;
+>>>>>>> Stashed changes
 
     //melee damage
     private float meleeDamage;
@@ -36,9 +40,14 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     private bool nearPlayer;
 
+<<<<<<< Updated upstream
     public void initialSetup(float _health,
                                 float _maxhealth, 
                                 float _damage,
+=======
+    protected void initialSetup(float _health,
+                                float _maxhealth,
+>>>>>>> Stashed changes
                                 float _meleeDamage,
                                 float _meleeCooldown,
                                 float _speed, 
