@@ -18,9 +18,10 @@ MonoBehaviour:
   damage: 50
   meleeDamage: 20
   chaseSpeed: 400
-  spearSpeed: 500
+  spearSpeed: 300
   gameObjectName: Mantis shrimp emeny
   spearCooldown: 5
+  secondSpearDelay: 0.3
   meleeCooldown: 0.5
   stoppingDistance: 10
   spearTriggerDistance: 20

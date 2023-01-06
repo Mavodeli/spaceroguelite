@@ -21,8 +21,7 @@ public class AnglerFishBehaviour : Enemy
                                         SpriteMeshType.FullRect //mesh type
                                         );
         initialSetup(afd.health,//health 
-                        afd.health,//max health 
-                        afd.damage,//damage
+                        afd.health,//max health
                         afd.meleeDamage,//melee damage
                         afd.meleeCooldown,//melee cooldown
                         afd.chaseSpeed,//speed
@@ -38,12 +37,12 @@ public class AnglerFishBehaviour : Enemy
     void LateUpdate()//bc Enemy.cs already uses Update()!
     {
         /* makes the enemy pull the player towards it. */
-        float distance = Vector3.Distance(transform.position, getPlayer().transform.position);
+        float distance = Vector3.Distance(transform.position, player.transform.position);
 
-        if (distance < maxReachAttraction && !getNearPlayer())
+        if (distance < maxReachAttraction && !nearPlayer)
         {
-        Vector2 pullDirection = (Vector2)(transform.position - getPlayer().transform.position);
-        getPlayer().GetComponent<Rigidbody2D>().AddForce(pullDirection * AttractionForce);
+            Vector2 pullDirection = (Vector2)(transform.position - player.transform.position);
+            player.GetComponent<Rigidbody2D>().AddForce(pullDirection * AttractionForce);
         }
     }
 }

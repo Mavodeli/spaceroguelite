@@ -1829,10 +1829,10 @@ RectTransform:
   m_Father: {fileID: 1967652232}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &873214618
 MonoBehaviour:
@@ -4269,8 +4269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ba23d777898ee4ba828378d3cc52e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishiesCount: 3
-  enemyType: af
+  fishiesCount: 1
+  enemyType: ms
 --- !u!1 &1386464502 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7505136060297139516, guid: 0342059fc6e0f40248852b7bfd9ff004, type: 3}
@@ -5695,10 +5695,10 @@ RectTransform:
   m_Father: {fileID: 1967652232}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -200, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1688549064
 MonoBehaviour:
@@ -5913,10 +5913,10 @@ RectTransform:
   m_Father: {fileID: 1967652232}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 200, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1710901009
 MonoBehaviour:
@@ -6952,7 +6952,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 77, y: -276}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1967652233
 MonoBehaviour:
