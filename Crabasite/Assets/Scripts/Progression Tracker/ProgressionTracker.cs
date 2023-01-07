@@ -18,7 +18,7 @@ public class FlagDict
 
 public class ProgressionTracker
 {
-    ProgressionTracker(){
+    public static void initProgressionTracker(){
         SaveData(new Dictionary<string, bool>());
     }
 

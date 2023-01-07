@@ -11,6 +11,8 @@ public class DemoLevel_ProgressionScript : ProgressionDelegate
 
 
     private void Awake(){
+        PT.initProgressionTracker();//since the PT is persistent, it has to be reset at the start of the first level upon beginning a new game!
+
         triggerMap.Add("TriggerOrangeSwirl", delegate(){
             Debug.Log("Player reached Trigger 'TriggerOrangeSwirl', yay!");
             PT.setFlag("triggeredOrangeSwirl");
