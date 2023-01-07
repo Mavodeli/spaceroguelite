@@ -1,7 +1,7 @@
 ### What are all those objects?
 - **ProgressionTracker**: Keeps track of the player's progression using a Dictionary of booleans. Those booleans are called flags. 
   - setFlag(id, value): Sets the value of the flag 'id' to 'value'. This is for setting flags (a.k.a. telling the PT that the player has 'unlocked' smth).
-  - isTrueAt(flag): Returns true if the given flag 'flag' is set to true. This is for getting flags (a.k.a. asking the PT if the player has 'unlocked' smth).
+  - getFlag(id): Returns true if the given flag 'flag' is set to true. This is for getting flags (a.k.a. asking the PT if the player has 'unlocked' smth).
 
 - **ProgressionTrigger**: Provides the gameObject it is attached to with a OnTriggerEnter. The behaviour of OnTriggerEnter can be defined using a delegate (a.k.a. lambda function). **The gameObjects holding these script have to be placed manually in the Unity Editor as they are different for each level. Add a Collider2D manually. The script will automatically attach the rigidbody but not the collider! See the checklist below for how to set them up.**
   - Setup(_function): Sets the function that should be executed OnTriggerEnter. (only void functions with no arguments are supported!)

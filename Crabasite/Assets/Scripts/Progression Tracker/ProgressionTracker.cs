@@ -16,9 +16,9 @@ public class FlagDict
     }
 }
 
-public class ProgressionTracker : MonoBehaviour
+public class ProgressionTracker
 {
-    void Start(){
+    ProgressionTracker(){
         SaveData(new Dictionary<string, bool>());
     }
 
@@ -36,15 +36,15 @@ public class ProgressionTracker : MonoBehaviour
     /// <summary>
     /// Returns true if the given flag 'flag' is set to true in the ProgressionTracker, false if not or if it doesn't exist
     /// </summary>
-    /// <param name="flag">the name of the flag as string</param>
+    /// <param name="id">the name of the flag as string</param>
     /// <returns>true if the given flag is set to true</returns>
-    public static bool isTrueAt(string flag)
+    public static bool getFlag(string id)
     {
         Dictionary<string, bool> Flag = LoadData();
         bool b = false;
         try
         {
-            b = Flag[flag];
+            b = Flag[id];
         }
         catch (KeyNotFoundException)
         {
@@ -55,6 +55,7 @@ public class ProgressionTracker : MonoBehaviour
 
     private static void SaveData(Dictionary<string, bool> dict)
     {
+        //%userprofile%/AppData/LocalLow/DefaultCompany/Crabasite
         string destination = Application.persistentDataPath + "/FlagDictData.dat";
         FileStream file;
 

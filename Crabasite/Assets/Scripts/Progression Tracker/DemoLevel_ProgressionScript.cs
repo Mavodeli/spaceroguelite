@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PT = ProgressionTracker;
 
 
 public class DemoLevel_ProgressionScript : ProgressionDelegate
@@ -12,17 +13,17 @@ public class DemoLevel_ProgressionScript : ProgressionDelegate
     private void Awake(){
         triggerMap.Add("TriggerOrangeSwirl", delegate(){
             Debug.Log("Player reached Trigger 'TriggerOrangeSwirl', yay!");
-            ProgressionTracker.setFlag("triggeredOrangeSwirl");
+            PT.setFlag("triggeredOrangeSwirl");
         });
         triggerMap.Add("TriggerWhiteOrb", delegate(){
-            if(ProgressionTracker.isTrueAt("triggeredOrangeSwirl")){
+            if(PT.getFlag("triggeredOrangeSwirl") && !PT.getFlag("triggeredWhiteOrb")){
                 Debug.Log("Player also reached Trigger 'TriggerWhiteOrb', double yay!");
-                ProgressionTracker.setFlag("triggeredWhiteOrb", true);
+                PT.setFlag("triggeredWhiteOrb", true);
             }
         });
         timer = new TimerObject(autoDestroy: true);
         timer.start(10);
-        ProgressionTracker.setFlag("timerRanOut", false);
+        PT.setFlag("timerRanOut", false);
     }
 
     void Start()
@@ -37,10 +38,9 @@ public class DemoLevel_ProgressionScript : ProgressionDelegate
     
     void Update()
     {
-        if(!timer.runs() && !ProgressionTracker.isTrueAt("timerRanOut")){
+        if(!timer.runs() && !PT.getFlag("timerRanOut")){
             Debug.Log("10sec Timer ran out!");
-            ProgressionTracker.setFlag("timerRanOut", true);
+            PT.setFlag("timerRanOut", true);
         }
-
     }
 }
