@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
         dir_map.Add("d", new Vector2(1, 0));
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(gameObject.GetComponent<PlayerHealth>().isAlive()){
             //call Update() for each timer as Timer is just a plain script and not a MonoBehaviour
