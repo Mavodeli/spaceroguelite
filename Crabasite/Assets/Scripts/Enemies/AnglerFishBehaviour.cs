@@ -6,13 +6,13 @@ public class AnglerFishBehaviour : Enemy
 {
     public float maxReachAttraction = 7f; // defines the Reach Value of the Attraction
     public float maxReachDamage = 3f; // defines the Range in which the enemy starts to deal damage
-    public float AttractionForce = 50f; // defines the Force Value of the Attraction
-    
-    public float chaseSpeed = 5f;
+    public float AttractionForce = 40f; // defines the Force Value of the Attraction
+    private AnglerFishData afd;
 
     void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
     {
-        Texture2D _sprite = Resources.Load<Texture2D>("Sprites/AnglerFish_256x256_New3");
+        afd = Resources.Load<AnglerFishData>("Scriptable Objects/EnemyData/AnglerFishData");
+        Texture2D _sprite = Resources.Load<Texture2D>(afd.texturePath);
         Sprite sprite = Sprite.Create(_sprite, //texture
                                         new Rect(0.0f, 0.0f, _sprite.width, _sprite.height), //subpart of the texture to create the sprite from
                                         new Vector2(0.5f, 0.5f), //new sprite origin \in [0,1]^2
@@ -20,16 +20,15 @@ public class AnglerFishBehaviour : Enemy
                                         0, //amount by which the sprite mesh should be expanded outwards
                                         SpriteMeshType.FullRect //mesh type
                                         );
-        initialSetup(100,//health 
-                        100,//max health 
-                        10,//damage
-                        10,//melee damage
-                        .5f,//melee cooldown
-                        0.5f,//speed
-                        "Angler fish enemy",//name 
+        initialSetup(afd.health,//health 
+                        afd.health,//max health
+                        afd.meleeDamage,//melee damage
+                        afd.meleeCooldown,//melee cooldown
+                        afd.chaseSpeed,//speed
+                        afd.gameObjectName,//name 
                         sprite,//sprite 
-                        0.5f,//sprite scale modifier
-                        0.0f//stopping distance
+                        afd.textureScale,//sprite scale modifier
+                        afd.stoppingDistance//stopping distance
                         );
     }
 
@@ -38,16 +37,12 @@ public class AnglerFishBehaviour : Enemy
     void LateUpdate()//bc Enemy.cs already uses Update()!
     {
         /* makes the enemy pull the player towards it. */
-        float distance = Vector3.Distance(transform.position, getPlayer().transform.position);
+        float distance = Vector3.Distance(transform.position, player.transform.position);
 
-        if (distance < maxReachAttraction)
+        if (distance < maxReachAttraction && !nearPlayer)
         {
-        Vector2 pullDirection = (Vector2)(transform.position - getPlayer().transform.position);
-        getPlayer().GetComponent<Rigidbody2D>().AddForce(pullDirection * AttractionForce);
-        }
-        if (distance < maxReachDamage)
-        {
-            // make player loose health depending on tiks with the defined damage of the enemy.
+            Vector2 pullDirection = (Vector2)(transform.position - player.transform.position);
+            player.GetComponent<Rigidbody2D>().AddForce(pullDirection * AttractionForce);
         }
     }
 }
