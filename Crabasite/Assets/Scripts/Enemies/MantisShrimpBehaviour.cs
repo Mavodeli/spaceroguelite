@@ -8,7 +8,8 @@ public class MantisShrimpBehaviour : Enemy
     private Sprite shrimpWithSpear;
     private Sprite shrimpWithoutSpear;
     private Sprite shrimpSpear;
-    private TimerObject spear_timer;
+    private TimerObject spear1_timer;
+    private TimerObject spear2_timer;
 
     void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
     {
@@ -17,8 +18,7 @@ public class MantisShrimpBehaviour : Enemy
         shrimpWithoutSpear = getSprite(Resources.Load<Texture2D>(msd.texturePathNoSpear));
         shrimpSpear = getSprite(Resources.Load<Texture2D>(msd.texturePathSpear));
         initialSetup(msd.health,//health 
-                        msd.health,//max health 
-                        msd.damage,//damage
+                        msd.health,//max health
                         msd.meleeDamage,//melee 
                         msd.meleeCooldown,//melee cooldown
                         msd.chaseSpeed,//speed
@@ -27,27 +27,37 @@ public class MantisShrimpBehaviour : Enemy
                         msd.textureScale,//sprite scale modifier
                         msd.stoppingDistance//stopping distance
                         );
-        spear_timer = new TimerObject();
+        spear1_timer = new TimerObject();
+        spear2_timer = new TimerObject();
     }
 
     void LateUpdate()//bc Enemy.cs already uses Update()!
-    {
-        if((Vector3.Distance(gameObject.transform.position, getPlayer().transform.position) <= msd.spearTriggerDistance) && !spear_timer.runs()){
+    {   
+        //first spear
+        if((Vector3.Distance(gameObject.transform.position, player.transform.position) <= msd.spearTriggerDistance) && !spear1_timer.runs()){
             GameObject spear = new GameObject();
             MantisShrimpSpear script = spear.AddComponent<MantisShrimpSpear>();
-            script.Setup(gameObject, GameObject.FindGameObjectWithTag("Player"), shrimpSpear);
-            spear_timer.start(msd.spearCooldown);
-            updateSprite(shrimpWithoutSpear, msd.textureScaleNoSpear);
+            script.Setup(gameObject, player, shrimpSpear);
+            spear1_timer.start(msd.spearCooldown);
         }
-        if(spear_timer.getElapsedTime() >= msd.spearCooldown/2)
+        //second spear
+        if((spear1_timer.getElapsedTime() >= msd.secondSpearDelay) && !spear2_timer.runs()){
+            GameObject spear = new GameObject();
+            MantisShrimpSpear script = spear.AddComponent<MantisShrimpSpear>();
+            script.Setup(gameObject, player, shrimpSpear);
+            spear2_timer.start(msd.spearCooldown);
+            updateSprite(shrimpWithoutSpear, msd.textureScaleNoSpear);//update sprite only on second spear fired
+        }
+        //regrow comlete
+        if(spear1_timer.getElapsedTime() >= msd.spearCooldown/2)
             updateSprite(shrimpWithSpear, msd.textureScale);
     }
 
     private void updateSprite(Sprite newSprite, float scale){
-        SpriteRenderer sr = getSpriteRenderer();
         sr.sprite = newSprite;
         sr.size = newSprite.bounds.extents*2;
         sr.size *= scale;
+        bc.size = sr.size;
     }
 
     private static Sprite getSprite(Texture2D tex){

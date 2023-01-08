@@ -18,8 +18,7 @@ public class PufferFishBehaviour : Enemy
                                         SpriteMeshType.FullRect //mesh type
                                         );
         initialSetup(pfd.health,//health 
-                        pfd.health,//max health 
-                        pfd.damage,//damage
+                        pfd.health,//max health
                         pfd.meleeDamage,//melee damage
                         pfd.meleeCooldown,//melee cooldown
                         pfd.chaseSpeed,//speed
