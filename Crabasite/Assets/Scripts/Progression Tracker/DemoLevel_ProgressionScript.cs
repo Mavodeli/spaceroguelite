@@ -57,6 +57,7 @@ public class DemoLevel_ProgressionScript : ProgressionDelegate
 
         if(arrowIsInInventory && !PT.getFlag("collectedArrowMessageShown")){
             Debug.Log("Player picked up an arrow");
+            send_mail("HelloWorld");
             PT.setFlag("collectedArrowMessageShown");
         }
     }
