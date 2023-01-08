@@ -2,7 +2,8 @@
     "name": "ProgressionTracker",
     "rootNamespace": "",
     "references": [
-        "GUID:cd8710cdfd91074428d6412a0e873205"
+        "GUID:cd8710cdfd91074428d6412a0e873205",
+        "GUID:3bc27c1fc32a9b249a565b02cd514511"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

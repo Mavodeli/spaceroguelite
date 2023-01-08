@@ -6,11 +6,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 
 [System.Serializable]
-public class FlagDict
+public class DictionaryData
 {
     public Dictionary<string, bool> Flag;
 
-    public FlagDict(Dictionary<string, bool> dict)
+    public DictionaryData(Dictionary<string, bool> dict)
     {
         Flag = dict;
     }
@@ -56,13 +56,13 @@ public class ProgressionTracker
     private static void SaveData(Dictionary<string, bool> dict)
     {
         //%userprofile%/AppData/LocalLow/DefaultCompany/Crabasite
-        string destination = Application.persistentDataPath + "/FlagDictData.dat";
+        string destination = Application.persistentDataPath + "/DictionaryData.dat";
         FileStream file;
 
         if (File.Exists(destination)) file = File.OpenWrite(destination);
         else file = File.Create(destination);
 
-        FlagDict data = new FlagDict(dict);
+        DictionaryData data = new DictionaryData(dict);
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(file, data);
         file.Close();
@@ -70,7 +70,7 @@ public class ProgressionTracker
 
     private static Dictionary<string, bool> LoadData()
     {
-        string destination = Application.persistentDataPath + "/FlagDictData.dat";
+        string destination = Application.persistentDataPath + "/DictionaryData.dat";
         FileStream file;
 
         if (File.Exists(destination)) file = File.OpenRead(destination);
@@ -81,7 +81,7 @@ public class ProgressionTracker
         }
 
         BinaryFormatter bf = new BinaryFormatter();
-        FlagDict data = (FlagDict)bf.Deserialize(file);
+        DictionaryData data = (DictionaryData)bf.Deserialize(file);
         file.Close();
         return data.Flag;
     }
