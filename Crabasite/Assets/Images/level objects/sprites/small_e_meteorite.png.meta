@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e13f338b4e487a240a92963a6d6770ce
+guid: b1662dfd02caaa14498502505c1a59c0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -68,9 +68,9 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,148 +105,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Meteorit_silikon_gray_spritesheet_0
+      name: small_e_meteorite_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 226
-        width: 55
-        height: 49
+        x: 10
+        y: 114
+        width: 31
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e74ebf7d12b9b744a54b00e425fa321
-      internalID: -943734694
+      spriteID: d3bf320cac31ed74dad74d58e611f8bd
+      internalID: 1236002364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Meteorit_silikon_gray_spritesheet_1
+      name: small_e_meteorite_1
       rect:
         serializedVersion: 2
-        x: 122
-        y: 226
-        width: 55
-        height: 49
+        x: 59
+        y: 114
+        width: 31
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de7233f2e71c1884a9d0be0b2507e46a
-      internalID: -1177331825
+      spriteID: 0632d25c7aef2484fa52a547d2a621e8
+      internalID: 2126615305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Meteorit_silikon_gray_spritesheet_2
+      name: small_e_meteorite_2
       rect:
         serializedVersion: 2
-        x: 222
-        y: 226
-        width: 55
-        height: 49
+        x: 10
+        y: 64
+        width: 31
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e51623eb52b9f5a4d9e21a8eb603cff1
-      internalID: 1850073529
+      spriteID: 154ff520a733de84993a5c0bd9794d48
+      internalID: -1056701017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Meteorit_silikon_gray_spritesheet_3
+      name: small_e_meteorite_3
       rect:
         serializedVersion: 2
-        x: 30
-        y: 137
-        width: 39
-        height: 27
+        x: 60
+        y: 64
+        width: 30
+        height: 23
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8011525560f422d45a4e9dfb4925fa39
-      internalID: -743782013
+      spriteID: 75f3f792e2afcc5498dd0b3e6ae3edad
+      internalID: 1887515598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Meteorit_silikon_gray_spritesheet_4
+      name: small_e_meteorite_4
       rect:
         serializedVersion: 2
-        x: 136
-        y: 138
-        width: 27
-        height: 25
+        x: 10
+        y: 14
+        width: 30
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83746302b27b515489891efe8398e92d
-      internalID: -841381445
+      spriteID: 9574f7dbc461bca4cb4265c4e426829f
+      internalID: -931958213
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Meteorit_silikon_gray_spritesheet_5
+      name: small_e_meteorite_5
       rect:
         serializedVersion: 2
-        x: 235
-        y: 137
-        width: 29
-        height: 27
+        x: 60
+        y: 14
+        width: 30
+        height: 23
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 514b8c3186d719a429ca1bce23d48d92
-      internalID: -1029494791
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Meteorit_silikon_gray_spritesheet_6
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 42
-        width: 29
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9549f72176924f34bb091848080bd6c7
-      internalID: -1672917427
+      spriteID: 79eff03859d4a644ba898a17386073f8
+      internalID: -1978472022
       vertices: []
       indices: 
       edges: []
@@ -262,13 +241,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Meteorit_silikon_gray_spritesheet_1: -1177331825
-      Meteorit_silikon_gray_spritesheet_6: -1672917427
-      Meteorit_silikon_gray_spritesheet_0: -943734694
-      Meteorit_silikon_gray_spritesheet_2: 1850073529
-      Meteorit_silikon_gray_spritesheet_5: -1029494791
-      Meteorit_silikon_gray_spritesheet_3: -743782013
-      Meteorit_silikon_gray_spritesheet_4: -841381445
+      small_e_meteorite_4: -931958213
+      small_e_meteorite_0: 1236002364
+      small_e_meteorite_2: -1056701017
+      small_e_meteorite_3: 1887515598
+      small_e_meteorite_5: -1978472022
+      small_e_meteorite_1: 2126615305
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
