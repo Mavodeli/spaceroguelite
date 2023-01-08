@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PickupHandler : MonoBehaviour
 {
-    public GameObject _button;
     void Update()
     {
         //check if all collectables have the pickup script, if not, add missing scripts
@@ -12,7 +11,6 @@ public class PickupHandler : MonoBehaviour
             PickupEnabler script = item.GetComponent<PickupEnabler>();
             if(script == null){
                 item.AddComponent<PickupEnabler>();
-                item.GetComponent<PickupEnabler>().button = _button;
             }
         }
     }
