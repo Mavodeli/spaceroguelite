@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName ="Attract Two", menuName = "Ultimate/Create Attract Two")]
 public class AttractTwo : Ultimate
 {
-    GameObject player;
+    // GameObject player;
     
     public GameObject selectedObject1;
     public GameObject selectedObject2;

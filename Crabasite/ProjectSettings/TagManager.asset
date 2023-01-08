@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Collectable
   - GameHandler
+  - Enemy
+  - Timers
+  - Timer
+  - Inventory
   layers:
   - Default
   - TransparentFX
@@ -13,9 +17,9 @@ TagManager:
   - Player
   - Water
   - UI
-  - Enemies
+  - Raycast
   - Other
-  - 
+  - Obstacle
   - 
   - 
   - 
@@ -43,6 +47,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
+  - name: HealthBar
     uniqueID: 2197177389
+    locked: 0
+  - name: Inventory
+    uniqueID: 571075293
     locked: 0

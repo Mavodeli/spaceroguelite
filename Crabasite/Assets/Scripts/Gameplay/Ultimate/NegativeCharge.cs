@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName ="Negative Charge", menuName = "Ultimate/Create Negative Charge")]
 public class NegativeCharge : Ultimate
 {
     public GameObject selectedTarget;

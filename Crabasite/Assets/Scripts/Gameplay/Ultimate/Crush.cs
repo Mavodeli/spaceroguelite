@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName ="Crush", menuName = "Ultimate/Create Crush")]
 public class Crush : Ultimate
 {
-    public LayerMask layermask;
+    // public LayerMask layermask;
     public int radius;
     public float speed = 5;
 
@@ -13,8 +13,7 @@ public class Crush : Ultimate
     {
         Vector3 center = player.position;
         
-    
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius, layermask);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius, LayerMask.GetMask("Raycast"));
         
         foreach (var hitCollider in hitColliders)
         {
@@ -26,7 +25,7 @@ public class Crush : Ultimate
         foreach (var hitCollider in hitColliders)
         {
             hitCollider.SendMessage("EnemyTakeDmg", 5, SendMessageOptions.DontRequireReceiver);
-            Debug.Log(hitCollider);
+            // Debug.Log(hitCollider);
         }
 
         isActive = false;

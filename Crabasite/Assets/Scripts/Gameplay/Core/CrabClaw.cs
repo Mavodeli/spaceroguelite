@@ -14,7 +14,7 @@ public class CrabClaw : MonoBehaviour
     private MovementInterpolation PushMI;
     private MovementInterpolation PullMI;
     //the Layer in which the ray checks for intersections (default: 'Enemies')
-    public LayerMask DetectionLayer;
+    private LayerMask DetectionLayer;
 
     // inventory to check if active
     [SerializeField] private Transform inventory;
@@ -31,6 +31,7 @@ public class CrabClaw : MonoBehaviour
     void Start(){
         PushMI.Start(PushSpeed, StartDelayDuration, EndDelayDuration);
         PullMI.Start(PullSpeed, StartDelayDuration, EndDelayDuration);
+        DetectionLayer = LayerMask.GetMask("Raycast");
     }
     
     void Update()
