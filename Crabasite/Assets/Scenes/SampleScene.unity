@@ -4283,7 +4283,6 @@ GameObject:
   - component: {fileID: 1355689303}
   - component: {fileID: 1355689304}
   - component: {fileID: 1355689305}
-  - component: {fileID: 1355689306}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: GameHandler
@@ -4354,18 +4353,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a77abb4ff20f6645b4fcf8b19d0a8eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1355689306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355689300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f14b4a446478a0b4bad291452bd4f648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1386464502 stripped
