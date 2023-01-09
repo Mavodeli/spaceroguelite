@@ -3072,7 +3072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ccb1718eb075a4ebb4642ec6a2a4fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 750
+  Speed: 50000
   StartDelayDuration: 0.2
   EndDelayDuration: 0.15
   DashCooldown: 1
@@ -3164,14 +3164,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 10
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1091769806
 MonoBehaviour:
@@ -4508,8 +4508,8 @@ GameObject:
   - component: {fileID: 1355689302}
   - component: {fileID: 1355689301}
   - component: {fileID: 1355689303}
-  - component: {fileID: 1355689304}
   - component: {fileID: 1355689305}
+  - component: {fileID: 1355689306}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: GameHandler
@@ -4556,20 +4556,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c13e5073466abf44928ebd58cc20608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1355689304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355689300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41ba23d777898ee4ba828378d3cc52e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fishiesCount: 0
-  enemyType: pf
 --- !u!114 &1355689305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4582,6 +4568,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a77abb4ff20f6645b4fcf8b19d0a8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1355689306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355689300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ba23d777898ee4ba828378d3cc52e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishiesCount: 1
+  enemyType: af
 --- !u!1 &1386464502 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7505136060297139516, guid: 0342059fc6e0f40248852b7bfd9ff004, type: 3}
