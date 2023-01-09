@@ -6,7 +6,7 @@ public class AnglerFishBehaviour : Enemy
 {
     public float maxReachAttraction = 7f; // defines the Reach Value of the Attraction
     public float maxReachDamage = 3f; // defines the Range in which the enemy starts to deal damage
-    public float AttractionForce = 40f; // defines the Force Value of the Attraction
+    public float AttractionForce = 10f; // defines the Force Value of the Attraction
     private AnglerFishData afd;
 
     void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!

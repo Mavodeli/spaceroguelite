@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     private int maxhealth = 100;
     private HealthSystem HS;
     private HealthBar healthBar;
-    
+    public GameOverScreen GameOverScreen;
     void Start()
     {
         HS = new HealthSystem(health, maxhealth);
@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
         
         if(health == 0){
             Debug.Log("Player.health == 0 => Game Over");
-            //TODO: some kind of Game Over
+            GameOverScreen.Setup();
         }
     }
 
