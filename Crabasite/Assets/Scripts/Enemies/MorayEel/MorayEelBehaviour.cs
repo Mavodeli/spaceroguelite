@@ -10,7 +10,6 @@ public class MorayEelBehaviour : Enemy
     private Sprite projectile;
     private TimerObject projectile_timer;
     private TimerObject paralyze_timer;
-    private delegate void collision_delegate(Collision2D collision);
 
     void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
     {
