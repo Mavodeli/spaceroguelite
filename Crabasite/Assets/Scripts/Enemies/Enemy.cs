@@ -33,6 +33,9 @@ public class Enemy : MonoBehaviour
     private float nextWaypointDistance;
     private float stoppingDistance;
     protected GameObject player;
+
+    //Misc
+    private TimerObject paralyze_timer;
     
 
     public void initialSetup(float _health,
@@ -96,6 +99,8 @@ public class Enemy : MonoBehaviour
             (sr.size.x/2)+//~offset fish origin to collider edge
             (player.GetComponent<SpriteRenderer>().size.x/2)+//~offset player origin to collider edge
             .2f;//actual distance :)
+
+        paralyze_timer = new TimerObject();
     }
 
     private void Start(){
@@ -138,6 +143,12 @@ public class Enemy : MonoBehaviour
             Vector3 direction = map[Random.Range(0, map.Length-1)];
             force = direction*speed*Time.deltaTime;
         }
+
+        //paralyze?
+        if(paralyze_timer.runs()){
+            force *= 0.01f;
+        }
+
         rb.AddForce(force);
 
         // flip the Enemy sprite horizontally based on the player's position relative to the player's sprite position
@@ -181,5 +192,10 @@ public class Enemy : MonoBehaviour
             Debug.Log("You killed a "+_name+"!");
             Destroy(gameObject);
         }
+    }
+
+    public void paralyze(float duration){
+        if(!paralyze_timer.runs())
+            paralyze_timer.start(duration);
     }
 }

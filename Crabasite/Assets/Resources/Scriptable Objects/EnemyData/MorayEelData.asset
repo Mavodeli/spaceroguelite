@@ -13,16 +13,19 @@ MonoBehaviour:
   m_Name: MorayEelData
   m_EditorClassIdentifier: 
   texturePath: Sprites/GreenBubble
-  textureScale: 1
+  textureScale: 2
   health: 70
-  damage: 10
-  meleeDamage: 20
-  chaseSpeed: 800
-  projectileSpeed: 300
+  damage: 3
+  meleeDamage: 10
+  chaseSpeed: 1100
+  projectileSpeed: 700
+  projectileTriggerDistance: 12
   gameObjectName: Moray Eel emeny
-  projectileCooldown: 5
-  meleeCooldown: 0.5
-  stoppingDistance: 10
+  projectileCooldown: 2
+  meleeCooldown: 0.3
+  paralyzeDuration: 1.2
+  stoppingDistance: 8
   texturePathNoProjectile: Sprites/GreenBubble
+  textureScaleNoProjectile: 2
   texturePathProjectile: Sprites/GreenBubble
-  textureScaleProjectile: 1.5
+  textureScaleProjectile: 0.7

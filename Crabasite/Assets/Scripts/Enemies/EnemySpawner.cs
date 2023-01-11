@@ -5,46 +5,42 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private int fishiesCount = 5;
+    private int fishiesCount1 = 5;
     [SerializeField]
-    //private string enemyType = "pf";
+    private int fishiesCount2 = 5;
 
     enum Type
     {PufferFish,MantisShrimp,AnglerFish,MorayEel};
 
     [SerializeField]
-    Type EnemyType = new Type();
+    Type EnemyType1 = new Type();
+    [SerializeField]
+    Type EnemyType2 = new Type();
 
     void Start()
     {
-        switch (EnemyType)
-        {
-            case Type.PufferFish:
-                spawnFishies("pf");
-                break;
-            case Type.MantisShrimp:
-                spawnFishies("ms");
-                break;
-            case Type.AnglerFish:
-                spawnFishies("af");
-                break;
-            case Type.MorayEel:
-                spawnFishies("me");
-                break;  
-
-        }
+        spawnFishies(EnemyType1, EnemyType2);
     }
 
-    void spawnFishies(string enemy)
+    void spawnFishies(Type enemy1, Type enemy2)
     {
-        for (int i = 0; i < fishiesCount; i++)
+        for (int i = 0; i < fishiesCount1; i++)
         {
             GameObject fish = new GameObject();
-            if (enemy == "pf") fish.AddComponent<PufferFishBehaviour>();
-            if (enemy == "ms") fish.AddComponent<MantisShrimpBehaviour>();
-            if (enemy == "af") fish.AddComponent<AnglerFishBehaviour>();
-            if (enemy == "me") fish.AddComponent<MorayEelBehaviour>();
+            if (enemy1 == Type.PufferFish) fish.AddComponent<PufferFishBehaviour>();
+            if (enemy1 == Type.MantisShrimp) fish.AddComponent<MantisShrimpBehaviour>();
+            if (enemy1 == Type.AnglerFish) fish.AddComponent<AnglerFishBehaviour>();
+            if (enemy1 == Type.MorayEel) fish.AddComponent<MorayEelBehaviour>();
             fish.transform.position = new Vector3(Mathf.Pow((-1), i) * i, 2 * Mathf.Pow((-1), i) * i, 0);
+        }
+        for (int i = 0; i < fishiesCount2; i++)
+        {
+            GameObject fish = new GameObject();
+            if (enemy2 == Type.PufferFish) fish.AddComponent<PufferFishBehaviour>();
+            if (enemy2 == Type.MantisShrimp) fish.AddComponent<MantisShrimpBehaviour>();
+            if (enemy2 == Type.AnglerFish) fish.AddComponent<AnglerFishBehaviour>();
+            if (enemy2 == Type.MorayEel) fish.AddComponent<MorayEelBehaviour>();
+            fish.transform.position = new Vector3(Mathf.Pow((-1), i) * i+1, Mathf.Pow((-1), i) * i+1, 0);
         }
     }
 }

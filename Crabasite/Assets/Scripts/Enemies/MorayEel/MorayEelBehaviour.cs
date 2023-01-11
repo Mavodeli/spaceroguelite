@@ -9,6 +9,8 @@ public class MorayEelBehaviour : Enemy
     private Sprite morayEelwithoutProjectile;
     private Sprite projectile;
     private TimerObject projectile_timer;
+    private TimerObject paralyze_timer;
+    private delegate void collision_delegate(Collision2D collision);
 
     void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
     {
@@ -31,6 +33,21 @@ public class MorayEelBehaviour : Enemy
 
     void LateUpdate()//bc Enemy.cs already uses Update()!
     {
+        if((Vector3.Distance(gameObject.transform.position, player.transform.position) <= med.projectileTriggerDistance) && !projectile_timer.runs()){
+            GameObject obj = new GameObject();
+            EnemyProjectile script = obj.AddComponent<EnemyProjectile>();
+            script.Setup(gameObject, player, projectile, med.textureScaleProjectile, med.projectileSpeed, delegate (Collider2D other){
+                if ((other.gameObject.tag == "Player") || (other.gameObject.tag == "Enemy")){
+                    other.SendMessage("addHealth", -med.damage, SendMessageOptions.DontRequireReceiver);
+                    other.SendMessage("paralyze", med.paralyzeDuration, SendMessageOptions.DontRequireReceiver);
+                }
+            });
+            projectile_timer.start(med.projectileCooldown);
+            updateSprite(morayEelwithoutProjectile, med.textureScaleNoProjectile);
+        }
+        //regrow comlete
+        if(projectile_timer.getElapsedTime() >= med.projectileCooldown/2)
+            updateSprite(morayEelwithProjectile, med.textureScale);
     }
 
     private void updateSprite(Sprite newSprite, float scale)
