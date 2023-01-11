@@ -4269,8 +4269,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ba23d777898ee4ba828378d3cc52e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishiesCount: 1
-  EnemyType: 2
+  fishiesCount1: 5
+  fishiesCount2: 3
+  EnemyType1: 0
+  EnemyType2: 3
 --- !u!1 &1386464502 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7505136060297139516, guid: 0342059fc6e0f40248852b7bfd9ff004, type: 3}
