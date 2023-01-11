@@ -35,16 +35,12 @@ public class MantisShrimpBehaviour : Enemy
     {   
         //first spear
         if((Vector3.Distance(gameObject.transform.position, player.transform.position) <= msd.spearTriggerDistance) && !spear1_timer.runs()){
-            GameObject spear = new GameObject();
-            MantisShrimpSpear script = spear.AddComponent<MantisShrimpSpear>();
-            script.Setup(gameObject, player, shrimpSpear);
+            getSpear();
             spear1_timer.start(msd.spearCooldown);
         }
         //second spear
         if((spear1_timer.getElapsedTime() >= msd.secondSpearDelay) && !spear2_timer.runs()){
-            GameObject spear = new GameObject();
-            MantisShrimpSpear script = spear.AddComponent<MantisShrimpSpear>();
-            script.Setup(gameObject, player, shrimpSpear);
+            getSpear();
             spear2_timer.start(msd.spearCooldown);
             updateSprite(shrimpWithoutSpear, msd.textureScaleNoSpear);//update sprite only on second spear fired
         }
@@ -67,5 +63,15 @@ public class MantisShrimpBehaviour : Enemy
                                 0, //amount by which the sprite mesh should be expanded outwards
                                 SpriteMeshType.FullRect //mesh type
                                 );
+    }
+
+    private void getSpear(){
+        GameObject spear = new GameObject();
+        EnemyProjectile script = spear.AddComponent<EnemyProjectile>();
+        script.Setup(gameObject, player, shrimpSpear, msd.textureScaleSpear, msd.spearSpeed, delegate (Collider2D other){
+            if ((other.gameObject.tag == "Player") || (other.gameObject.tag == "Enemy")){
+                other.SendMessage("addHealth", -msd.damage, SendMessageOptions.DontRequireReceiver);
+            }
+        });
     }
 }

@@ -21,6 +21,8 @@ public class Movement : MonoBehaviour
     private Timer dash_cooldown;
     private Timer dash_active_frames;
 
+    private TimerObject paralyze_timer;
+
     void Awake(){
         MI = new MovementInterpolation();
         MI.Awake();
@@ -40,6 +42,7 @@ public class Movement : MonoBehaviour
         dir_map.Add("a", new Vector2(-1, 0));
         dir_map.Add("s", new Vector2(0, -1));
         dir_map.Add("d", new Vector2(1, 0));
+        paralyze_timer = new TimerObject();
     }
 
     void FixedUpdate()
@@ -74,6 +77,11 @@ public class Movement : MonoBehaviour
                 speed = speed*DashModifier;
             }
 
+            //paralyze?
+            if(paralyze_timer.runs()){
+                speed *= 0.01f;
+            }
+
             //update gameObject (player) position
             // direction = MI.getFrameDirection();
             direction.Normalize();
@@ -81,5 +89,10 @@ public class Movement : MonoBehaviour
             objectRigidbody.AddForce(dir*speed);
             // transform.position += dir * speed * Time.deltaTime;
         }
+    }
+
+    public void paralyze(float duration){
+        if(!paralyze_timer.runs())
+            paralyze_timer.start(duration);
     }
 }
