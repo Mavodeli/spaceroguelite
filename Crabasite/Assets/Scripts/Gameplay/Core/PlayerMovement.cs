@@ -7,10 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [Range(0f, 5000f)]
     public float speed = 2000f;
 
-
-
-    
-    private Rigidbody2D rb; 
+    private Rigidbody2D rb;
+    private SpriteRenderer sr;
     private Vector2 movement;
     private bool isDashing;
     public float dashDistance = 15f;
@@ -19,11 +17,16 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing) StartCoroutine(Dash(movement));
+
+        if (Input.GetKeyDown(KeyCode.A)) sr.flipX = false;
+        if (Input.GetKeyDown(KeyCode.D)) sr.flipX = true;
+
     }
 
     private void FixedUpdate()
