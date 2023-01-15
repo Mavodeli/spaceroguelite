@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public float speed;
+
     [SerializeField] private float Speed = 8;
     [SerializeField] private float StartDelayDuration = 0.2f;
     [SerializeField] private float EndDelayDuration = 0.15f;
@@ -66,7 +68,7 @@ public class Movement : MonoBehaviour
 
             MI.Update((direction != new Vector2(0, 0)), direction);
             // float speed = MI.getFrameSpeed();
-            float speed = Speed;
+            speed = Speed;
 
             //dash
             if(Input.GetKey("left shift") && !dash_cooldown.is_running()){

@@ -126,31 +126,37 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Update(){
+    private void FixedUpdate()
+    {
         //movement
         Vector3 force;
-        if(Vector3.Distance(gameObject.transform.position, player.transform.position) >= stoppingDistance){
-            if(path == null) return;
-            if(currentWaypoint >= path.vectorPath.Count) return;
+        if (Vector3.Distance(gameObject.transform.position, player.transform.position) >= stoppingDistance)
+        {
+            if (path == null) return;
+            if (currentWaypoint >= path.vectorPath.Count) return;
             Vector3 direction = path.vectorPath[currentWaypoint] - gameObject.transform.position;
             direction.Normalize();
-            force = direction*speed*Time.deltaTime;
-            if(Vector2.Distance(gameObject.transform.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)
+            force = direction * speed * Time.deltaTime;
+            if (Vector2.Distance(gameObject.transform.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)
                 currentWaypoint++;
         }
-        else{
+        else
+        {
             Vector3[] map = getNormalizedDirectionMap();
-            Vector3 direction = map[Random.Range(0, map.Length-1)];
-            force = direction*speed*Time.deltaTime;
+            Vector3 direction = map[Random.Range(0, map.Length - 1)];
+            force = direction * speed * Time.deltaTime;
         }
 
         //paralyze?
-        if(paralyze_timer.runs()){
+        if (paralyze_timer.runs())
+        {
             force *= 0.01f;
         }
 
         rb.AddForce(force);
+    }
 
+    private void Update(){
         // flip the Enemy sprite horizontally based on the player's position relative to the player's sprite position
         transform.localScale = new Vector3(Mathf.Sign((gameObject.transform.position - player.transform.position).x), 1, 1);
 

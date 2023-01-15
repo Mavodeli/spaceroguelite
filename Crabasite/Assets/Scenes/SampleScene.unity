@@ -2790,6 +2790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1091769800}
   - component: {fileID: 1091769799}
+  - component: {fileID: 1091769807}
   - component: {fileID: 1091769798}
   - component: {fileID: 1091769803}
   - component: {fileID: 1091769806}
@@ -2862,11 +2863,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091769795}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29ccb1718eb075a4ebb4642ec6a2a4fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
   Speed: 5000
   StartDelayDuration: 0.2
   EndDelayDuration: 0.15
@@ -2959,7 +2961,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 10
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -2980,6 +2982,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1fa185e5ecbad4c999b5118009aa3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1091769807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091769795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae3a6710de8c544dbd4bb6fe710140e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1000
+  dashDistance: 500
+  dashDuration: 0.1
 --- !u!1 &1117741797
 GameObject:
   m_ObjectHideFlags: 0
@@ -4264,13 +4281,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355689300}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41ba23d777898ee4ba828378d3cc52e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishiesCount1: 5
-  fishiesCount2: 3
+  fishiesCount1: 1
+  fishiesCount2: 1
   EnemyType1: 0
   EnemyType2: 3
 --- !u!1 &1386464502 stripped
