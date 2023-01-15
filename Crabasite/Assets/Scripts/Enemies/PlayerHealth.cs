@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDataPersistence
 {
     private int health = 100;
     private int maxhealth = 100;
@@ -34,5 +34,14 @@ public class PlayerHealth : MonoBehaviour
 
     public bool isAlive(){
         return health > 0;
+    }
+
+     public void LoadData(GameData data)
+    {
+        this.health = data.health;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.health = this.health;
     }
 }

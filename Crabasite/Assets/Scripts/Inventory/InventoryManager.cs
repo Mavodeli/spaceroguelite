@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour, IDataPersistence
 {
-    [Header("Health Settings")]
+    [Header("Inventory Settings")]
     public GameObject Inventory;
     public bool inventoryIsOpened;
 
@@ -158,6 +158,14 @@ public class InventoryManager : MonoBehaviour
         mailName.text = mail.mailName;
         mailIcon.sprite = mail.icon;
         mailDescription.text = mail.description;
+    }
+     public void LoadData(GameData data)
+    {
+        //this.Mails = data.Mails;
+    }
+    public void SaveData(ref GameData data)
+    {
+       //data.Mails = this.Mails;
     }
 
 }
