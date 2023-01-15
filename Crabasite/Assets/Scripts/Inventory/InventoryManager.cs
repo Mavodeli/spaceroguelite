@@ -11,8 +11,8 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     public bool inventoryIsOpened;
 
     public static InventoryManager Instance;
-    public List<Item> Items = new List<Item>();
-    public List<Mail> Mails = new List<Mail>();
+    public List<string> Items = new List<string>();
+    public List<string> Mails = new List<string>();
 
     public Transform ItemContent;
     public GameObject InventoryItem;
@@ -161,11 +161,11 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     }
      public void LoadData(GameData data)
     {
-        //this.Mails = data.Mails;
+        //
     }
     public void SaveData(ref GameData data)
     {
-       //data.Mails = this.Mails;
+       data.Mails = this.Mails;
     }
 
 }

@@ -6,13 +6,13 @@ using UnityEngine;
 public class GameData 
 {
    public int health;
-   //public List<Mail> Mails;
+   public List<string> Mails;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there is no data to Load
    public GameData()
    {
        this.health = 100;
-       //this.Mails = List<Mail>;
+       this.Mails = new List<string>();
    }
 }
