@@ -13,7 +13,7 @@ public class MantisShrimpBehaviour : Enemy
 
     void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
     {
-        msd = Resources.Load<MantisShrimpData>("Scriptable Objects/EnemyData/MantisShrimpData");
+        msd = Resources.Load<MantisShrimpData>("ScriptableObjects/EnemyData/MantisShrimpData");
         shrimpWithSpear = getSprite(Resources.Load<Texture2D>(msd.texturePath));
         shrimpWithoutSpear = getSprite(Resources.Load<Texture2D>(msd.texturePathNoSpear));
         shrimpSpear = getSprite(Resources.Load<Texture2D>(msd.texturePathSpear));

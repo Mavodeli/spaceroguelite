@@ -11,7 +11,7 @@ public class AnglerFishBehaviour : Enemy
 
     void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
     {
-        afd = Resources.Load<AnglerFishData>("Scriptable Objects/EnemyData/AnglerFishData");
+        afd = Resources.Load<AnglerFishData>("ScriptableObjects/EnemyData/AnglerFishData");
         Texture2D _sprite = Resources.Load<Texture2D>(afd.texturePath);
         Sprite sprite = Sprite.Create(_sprite, //texture
                                         new Rect(0.0f, 0.0f, _sprite.width, _sprite.height), //subpart of the texture to create the sprite from

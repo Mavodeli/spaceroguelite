@@ -8,7 +8,6 @@ public class ProgressionDelegate : MonoBehaviour
 
     protected void send_mail(string id){
         InventoryManager IM = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
-        Mail mail = Instantiate(Resources.Load<Mail>("Scriptable Objects/Mails/"+id));
-        IM.Add(mail);
+        IM.AddMail(id);
     }
 }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using log4net.Filter;
 
-
+/**
 [System.Serializable]
 public class DictionaryData
 {
@@ -15,11 +16,14 @@ public class DictionaryData
         Flag = dict;
     }
 }
+**/
 
-public class ProgressionTracker
+public class ProgressionTracker: MonoBehaviour, IDataPersistence
 {
-    public static void initProgressionTracker(){
-        SaveData(new Dictionary<string, bool>());
+    private Dictionary<string, bool> Flag;
+    
+    public void InitProgressionTracker(){
+        Flag = new Dictionary<string, bool>();
     }
 
     /// <summary>
@@ -27,10 +31,8 @@ public class ProgressionTracker
     /// </summary>
     /// <param name="id">the name of the flag as string</param>
     /// <param name="value">the bool value that the flag with the given id should be set to. default is true</param>
-    public static void setFlag(string id, bool value = true){
-        Dictionary<string, bool> Flag = LoadData();
-        Flag[id] = value;
-        SaveData(Flag);
+    public void setFlag(string id, bool value = true){
+        Flag.Add(id, value);
     }
 
     /// <summary>
@@ -38,9 +40,8 @@ public class ProgressionTracker
     /// </summary>
     /// <param name="id">the name of the flag as string</param>
     /// <returns>true if the given flag is set to true</returns>
-    public static bool getFlag(string id)
+    public bool getFlag(string id)
     {
-        Dictionary<string, bool> Flag = LoadData();
         bool b = false;
         try
         {
@@ -53,6 +54,16 @@ public class ProgressionTracker
         return b;
     }
 
+    public void LoadData(GameData data)
+    {
+        Flag = data.ProgressionDict;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.ProgressionDict = (SerializableDictionary<string, bool>) Flag;
+    }
+
+    /**
     private static void SaveData(Dictionary<string, bool> dict)
     {
         //%userprofile%/AppData/LocalLow/DefaultCompany/Crabasite
@@ -85,4 +96,5 @@ public class ProgressionTracker
         file.Close();
         return data.Flag;
     }
+    **/
 }

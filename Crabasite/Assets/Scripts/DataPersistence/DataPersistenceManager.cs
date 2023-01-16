@@ -10,7 +10,7 @@ public class DataPersistenceManager : MonoBehaviour
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
-    public static DataPersistenceManager instance { get; private set; }
+    public static DataPersistenceManager instance { get; set; }
 
     private void Awake()
     {

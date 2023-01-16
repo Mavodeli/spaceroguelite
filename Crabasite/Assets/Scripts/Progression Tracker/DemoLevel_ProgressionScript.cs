@@ -1,7 +1,7 @@
+using Codice.Client.BaseCommands;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using PT = ProgressionTracker;
 
 
 public class DemoLevel_ProgressionScript : ProgressionDelegate
@@ -9,14 +9,15 @@ public class DemoLevel_ProgressionScript : ProgressionDelegate
     private Dictionary<string, Function> triggerMap = new Dictionary<string, Function>();
     private TimerObject timer;
     private TimerObject orb_timer;
+    private ProgressionTracker PT;
 
 
     private void Awake(){
-        PT.initProgressionTracker();//since the PT is persistent, it has to be reset at the start of the first level upon beginning a new game!
+        PT.InitProgressionTracker();//since the PT is persistent, it has to be reset at the start of the first level upon beginning a new game!
 
         orb_timer = new TimerObject(autoDestroy: true);
 
-        triggerMap.Add("TriggerOrangeSwirl", delegate(){
+        triggerMap.Add("TriggerOrangeSwirl", delegate () {
             Debug.Log("Player reached Trigger 'TriggerOrangeSwirl', yay!");
             PT.setFlag("triggeredOrangeSwirl");
         });
@@ -53,12 +54,5 @@ public class DemoLevel_ProgressionScript : ProgressionDelegate
         }
 
         InventoryManager IM = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
-        bool arrowIsInInventory = IM.Items.Find((x) => x.itemName == "arrow");
-
-        if(arrowIsInInventory && !PT.getFlag("collectedArrowMessageShown")){
-            Debug.Log("Player picked up an arrow");
-            send_mail("HelloWorld");
-            PT.setFlag("collectedArrowMessageShown");
-        }
     }
 }
