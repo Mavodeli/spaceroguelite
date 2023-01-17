@@ -32,7 +32,7 @@ public class ProgressionTracker
     /// <param name="id">the name of the flag as string</param>
     /// <param name="value">the bool value that the flag with the given id should be set to. default is true</param>
     public void setFlag(string id, bool value = true){
-        Flag.Add(id, value);
+        Flag[id] = value;
     }
 
     /// <summary>

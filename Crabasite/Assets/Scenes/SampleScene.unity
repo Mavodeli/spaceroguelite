@@ -2198,12 +2198,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1091769800}
   - component: {fileID: 1091769799}
-  - component: {fileID: 1091769798}
   - component: {fileID: 1091769803}
   - component: {fileID: 1091769806}
   - component: {fileID: 1091769796}
   - component: {fileID: 1091769805}
   - component: {fileID: 1091769804}
+  - component: {fileID: 1091769807}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -2263,24 +2263,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1091769798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091769795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29ccb1718eb075a4ebb4642ec6a2a4fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 100000
-  StartDelayDuration: 0.2
-  EndDelayDuration: 0.15
-  DashCooldown: 1
-  DashDuration: 0.1
-  DashModifier: 4
 --- !u!114 &1091769799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2389,6 +2371,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverScreen: {fileID: 1266522454}
+--- !u!114 &1091769807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091769795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae3a6710de8c544dbd4bb6fe710140e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standard_speed: 3615
+  dashDistance: 15
+  dashDuration: 0.1
 --- !u!1 &1127989511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,37 +2624,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c91e97420318c45358e344f15ddbf4c5, type: 3}
---- !u!1 &1161225211
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1161225212}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1161225212
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161225211}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.8511698, y: -0.38827902, z: 0.04504037}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1164831371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3402,8 +3368,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ba23d777898ee4ba828378d3cc52e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishiesCount: 0
-  enemyType: pf
+  fishiesCount1: 0
+  fishiesCount2: 0
+  EnemyType1: 0
+  EnemyType2: 3
 --- !u!114 &1355689305
 MonoBehaviour:
   m_ObjectHideFlags: 0

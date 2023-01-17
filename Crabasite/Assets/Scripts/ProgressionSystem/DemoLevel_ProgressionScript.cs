@@ -12,11 +12,6 @@ public class DemoLevel_ProgressionScript : ProgressionDelegate
 
 
     private void Awake(){
-        
-        //TODO: implement 'New Game'
-        bool newGame = true;
-        if(newGame) PT.setFlagDict(new Dictionary<string, bool>());
-
         orb_timer = new TimerObject(autoDestroy: true);
 
         triggerMap.Add("TriggerOrangeSwirl", delegate () {
