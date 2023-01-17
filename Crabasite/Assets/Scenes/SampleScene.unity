@@ -2310,7 +2310,7 @@ MonoBehaviour:
   ultimate: {fileID: 11400000, guid: 2b2d4058bb8d24e48983b56467bd6243, type: 2}
   cooldownTimer: 0
   player: {fileID: 1091769800}
-  key: 49
+  key: 32
 --- !u!61 &1091769804
 BoxCollider2D:
   m_ObjectHideFlags: 0
