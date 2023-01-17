@@ -6,12 +6,12 @@ public class AnglerFishBehaviour : Enemy
 {
     public float maxReachAttraction = 7f; // defines the Reach Value of the Attraction
     public float maxReachDamage = 3f; // defines the Range in which the enemy starts to deal damage
-    public float AttractionForce = 40f; // defines the Force Value of the Attraction
+    public float AttractionForce = 10f; // defines the Force Value of the Attraction
     private AnglerFishData afd;
 
     void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
     {
-        afd = Resources.Load<AnglerFishData>("Scriptable Objects/EnemyData/AnglerFishData");
+        afd = Resources.Load<AnglerFishData>("ScriptableObjects/EnemyData/AnglerFishData");
         Texture2D _sprite = Resources.Load<Texture2D>(afd.texturePath);
         Sprite sprite = Sprite.Create(_sprite, //texture
                                         new Rect(0.0f, 0.0f, _sprite.width, _sprite.height), //subpart of the texture to create the sprite from

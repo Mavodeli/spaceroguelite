@@ -27,6 +27,8 @@ public class EnemyProjectile : MonoBehaviour
         //position + direction
         gameObject.transform.parent = parent.transform;
         gameObject.transform.position = parent.transform.position;
+
+        //determine facing direction
         targetDirection = (_target.transform.position-gameObject.transform.position).normalized;
 
         //rotation

@@ -8,7 +8,7 @@ public class PufferFishBehaviour : Enemy
 
     void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
     {
-        pfd = Resources.Load<PufferFishData>("Scriptable Objects/EnemyData/PufferFishData");
+        pfd = Resources.Load<PufferFishData>("ScriptableObjects/EnemyData/PufferFishData");
         Texture2D _sprite = Resources.Load<Texture2D>(pfd.texturePath);
         Sprite sprite = Sprite.Create(_sprite, //texture
                                         new Rect(0.0f, 0.0f, _sprite.width, _sprite.height), //subpart of the texture to create the sprite from

@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour
         paralyze_timer = new TimerObject();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if(gameObject.GetComponent<PlayerHealth>().isAlive()){
             //call Update() for each timer as Timer is just a plain script and not a MonoBehaviour
@@ -88,7 +88,7 @@ public class Movement : MonoBehaviour
             // direction = MI.getFrameDirection();
             direction.Normalize();
             Vector3 dir = new Vector3(direction.x, direction.y, 0);
-            objectRigidbody.AddForce(dir*speed);
+            objectRigidbody.AddForce(dir*speed * Time.deltaTime);
             // transform.position += dir * speed * Time.deltaTime;
         }
     }

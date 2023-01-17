@@ -1,18 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour, IDataPersistence
 {
-    [Header("Health Settings")]
+    [Header("Inventory Settings")]
     public GameObject Inventory;
     public bool inventoryIsOpened;
 
     public static InventoryManager Instance;
-    public List<Item> Items = new List<Item>();
-    public List<Mail> Mails = new List<Mail>();
+    public List<string> Items = new List<string>();
+    public List<string> Mails = new List<string>();
+
+    public Dictionary<string,int> ItemDict= new Dictionary<string,int>();
+    public Dictionary<string,bool> MailDict= new Dictionary<string, bool>();
 
     public Transform ItemContent;
     public GameObject InventoryItem;
@@ -54,24 +56,75 @@ public class InventoryManager : MonoBehaviour
         Instance = this;
     }
 
-    public void Add(Item item)
+    public bool ItemInDict(string name)
     {
-        Items.Add(item);
+        bool ItemExists = true;
+        try
+        {
+            int amount = ItemDict[name]; 
+        }
+        catch (KeyNotFoundException)
+        {
+            ItemExists = false;
+        }
+
+        return ItemExists;
+    }
+    public void AddItem(string name, int amount = 1)
+    {
+        try
+        {
+            ItemDict[name] += amount;
+        }
+        catch (KeyNotFoundException)
+        {
+            ItemDict.Add(name, amount);
+        }
     }
 
-    public void Remove(Item item)
+    public void RemoveItem(string name, int amount = 1)
     {
-        Items.Remove(item);
+        try
+        {
+            ItemDict[name] -= amount;
+            if (ItemDict[name] < 1) ItemDict.Remove(name);
+        }
+        catch (KeyNotFoundException)
+        {
+            return;
+        }
     }
 
-    public void Add(Mail mail)
+    public bool MailInDict(string name)
     {
-        Mails.Add(mail);
+        bool MailExists;
+        try
+        {
+            MailExists = MailDict[name];    
+        }
+        catch (KeyNotFoundException)
+        {
+            MailExists = false;
+        }
+        return MailExists;
     }
 
-    public void Remove(Mail mail)
+    public void AddMail(string name)
     {
-        Mails.Remove(mail);
+        MailDict.Add(name, true);
+    }
+
+    public void RemoveMail(string name)
+    {
+        try
+        {
+            MailDict.Remove(name);
+        }
+        catch (KeyNotFoundException)
+        {
+            return;
+        }
+        
     }
 
 
@@ -86,27 +139,34 @@ public class InventoryManager : MonoBehaviour
         }
 
         /* Creating a new object for each item in the list. */
-        foreach(var item in Items)
+        foreach(var entry in ItemDict)
         {
             GameObject obj = Instantiate(InventoryItem, ItemContent);
+            var itemController = obj.GetComponent<InventoryItemController>();
             var itemName = obj.transform.Find("ItemName").GetComponent<TMP_Text>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var itemDescription = obj.transform.Find("ItemDescription").GetComponent<TMP_Text>();
+            
 
+            string path = "ScriptableObjects/Items/" + entry.Key;
+            Item item = Resources.Load<Item>(path);
+
+            itemController.item = item;
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
-            itemDescription.text = item.description;
+            itemDescription.text = item.description; 
         }
 
     }
 
     /// It takes a string as a parameter, finds the item with the same name as the string, and then
     /// displays the item's name, icon, and description in the inventory description panel
-    public void ShowItems(string toFind)
+    public void ShowItem(string toFind)
     {
         Destroy(InventoryDescriptionContent.GetChild(0).gameObject);
 
-        Item item = Items.Find(x => x.itemName == toFind);
+        string path = "ScriptableObjects/Items/" + toFind;
+        Item item = Resources.Load<Item>(path);
 
         GameObject obj1 = Instantiate(InventoryItemDescription, InventoryDescriptionContent);
         var itemName = obj1.transform.Find("ItemName").GetComponent<TMP_Text>();
@@ -129,12 +189,15 @@ public class InventoryManager : MonoBehaviour
         }
 
         /* Creating a new object for each mail in the list. */
-        foreach(var mail in Mails)
+        foreach(var entry in MailDict)
         {
             GameObject obj = Instantiate(InventoryMail, MailContent);
             var mailName = obj.transform.Find("MailName").GetComponent<TMP_Text>();
             var mailIcon = obj.transform.Find("MailIcon").GetComponent<Image>();
             var mailDescription = obj.transform.Find("MailDescription").GetComponent<TMP_Text>();
+
+            string path = "ScriptableObjects/Mails/" + entry.Key;
+            Mail mail = Resources.Load<Mail>(path);
 
             mailName.text = mail.mailName;
             mailIcon.sprite = mail.icon;
@@ -144,11 +207,12 @@ public class InventoryManager : MonoBehaviour
 
       /// It takes a string as a parameter, finds the mail with the same name as the string, and then
       /// displays the mail's name, icon, and description
-      public void ShowMails(string toFind)
+    public void ShowMail(string toFind)
     {
         Destroy(MailDescriptionContent.GetChild(0).gameObject);
 
-        Mail mail = Mails.Find(x => x.mailName == toFind);
+        string path = "ScriptableObjects/Mails/" + toFind;
+        Mail mail = Resources.Load<Mail>(path);
 
         GameObject obj1 = Instantiate(InventoryMailDescription, MailDescriptionContent);
         var mailName = obj1.transform.Find("MailName").GetComponent<TMP_Text>();
@@ -158,6 +222,16 @@ public class InventoryManager : MonoBehaviour
         mailName.text = mail.mailName;
         mailIcon.sprite = mail.icon;
         mailDescription.text = mail.description;
+    }
+    public void LoadData(GameData data)
+    {
+        ItemDict = data.ItemsDict;
+        MailDict= data.MailDict;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.ItemsDict = (SerializableDictionary<string,int>)ItemDict;
+        data.MailDict= (SerializableDictionary<string, bool>)MailDict;
     }
 
 }

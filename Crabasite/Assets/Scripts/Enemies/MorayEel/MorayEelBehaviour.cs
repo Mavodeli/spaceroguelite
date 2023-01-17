@@ -13,7 +13,7 @@ public class MorayEelBehaviour : Enemy
 
     void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
     {
-        med = Resources.Load<MorayEelData>("Scriptable Objects/EnemyData/MorayEelData");
+        med = Resources.Load<MorayEelData>("ScriptableObjects/EnemyData/MorayEelData");
         morayEelwithProjectile = getSprite(Resources.Load<Texture2D>(med.texturePath));
         morayEelwithoutProjectile = getSprite(Resources.Load<Texture2D>(med.texturePathNoProjectile));
         projectile = getSprite(Resources.Load<Texture2D>(med.texturePathProjectile));
