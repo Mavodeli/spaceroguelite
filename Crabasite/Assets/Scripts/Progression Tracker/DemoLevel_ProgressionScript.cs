@@ -9,12 +9,13 @@ public class DemoLevel_ProgressionScript : ProgressionDelegate
     private Dictionary<string, OnTriggerEnterDelegate> triggerMap = new Dictionary<string, OnTriggerEnterDelegate>();
     private TimerObject timer;
     private TimerObject orb_timer;
-    private ProgressionTracker PT = new ProgressionTracker();
 
 
     private void Awake(){
-        PT.InitProgressionTracker();//since the PT is persistent, it has to be reset at the start of the first level upon beginning a new game!
-        Debug.Log(PT);
+        
+        //TODO: implement 'New Game'
+        bool newGame = true;
+        if(newGame) PT.setFlagDict(new Dictionary<string, bool>());
 
         orb_timer = new TimerObject(autoDestroy: true);
 

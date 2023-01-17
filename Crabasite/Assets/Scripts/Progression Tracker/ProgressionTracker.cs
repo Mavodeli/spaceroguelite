@@ -18,12 +18,12 @@ public class DictionaryData
 }
 **/
 
-public class ProgressionTracker : IDataPersistence
+public class ProgressionTracker
 {
     private Dictionary<string, bool> Flag;
     
-    public void InitProgressionTracker(){
-        Flag = new Dictionary<string, bool>();
+    public void setFlagDict(Dictionary<string, bool> newDict){
+        Flag = newDict;
     }
 
     /// <summary>
@@ -54,13 +54,8 @@ public class ProgressionTracker : IDataPersistence
         return b;
     }
 
-    public void LoadData(GameData data)
-    {
-        Flag = data.ProgressionDict;
-    }
-    public void SaveData(ref GameData data)
-    {
-        data.ProgressionDict = (SerializableDictionary<string, bool>) Flag;
+    public Dictionary<string, bool> getFlagDict(){
+        return Flag;
     }
 
     /**
