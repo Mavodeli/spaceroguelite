@@ -16,9 +16,9 @@ public class Enemy : MonoBehaviour
 
     //Components
     private Rigidbody2D rb;
-    private BoxCollider2D bc;
     private Seeker seeker;
     protected SpriteRenderer sr;
+    protected BoxCollider2D bc;
 
     //melee damage
     private float meleeDamage;
@@ -37,8 +37,8 @@ public class Enemy : MonoBehaviour
     //Misc
     private TimerObject paralyze_timer;
     
-
-    public void initialSetup(float _health,
+	
+    protected void initialSetup(float _health,
                                 float _maxhealth,
                                 float _meleeDamage,
                                 float _meleeCooldown,

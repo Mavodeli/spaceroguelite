@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PickupEnabler : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PickupEnabler : MonoBehaviour
         // SpriteRenderer renderer = button.AddComponent<SpriteRenderer>();
         // renderer.sprite = Resources.Load<Sprite>("Sprites/ShortKey");
         // button.SetActive(false);
+        Debug.Log(name);
     }
 
     void Update(){
@@ -50,16 +52,8 @@ public class PickupEnabler : MonoBehaviour
             //check if player presses button for pickup, if so, perform pickup 
 
             if(Input.GetKey("e") && hasButton && !GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>().inventoryIsOpened){
-                if(this.transform.gameObject.GetComponent<ItemPickup>() == null){
-                    ItemPickup ip = this.transform.gameObject.AddComponent<ItemPickup>();
-                    Item placeholder = ScriptableObject.CreateInstance<Item>();
-                    placeholder.id = 0;//time?
-                    placeholder.itemName = name;
-                    placeholder.description = "";//json dict?
-                    placeholder.icon = this.transform.gameObject.GetComponent<SpriteRenderer>().sprite;
-                    ip.target = placeholder;
-                    ip.Pickup();
-                }
+                InventoryManager.Instance.AddItem(name);
+                Destroy(gameObject);
             }
         }
     }

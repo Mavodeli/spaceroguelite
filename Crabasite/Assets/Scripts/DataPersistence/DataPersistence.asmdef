@@ -1,0 +1,16 @@
+{
+    "name": "DataPersistence",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1fcf3d935992442e39008ae979fb3473"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

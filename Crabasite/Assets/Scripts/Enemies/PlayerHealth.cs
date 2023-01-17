@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDataPersistence
 {
     private int health = 100;
     private int maxhealth = 100;
     private HealthSystem HS;
     private HealthBar healthBar;
-    
+    public GameOverScreen GameOverScreen;
     void Start()
     {
         HS = new HealthSystem(health, maxhealth);
@@ -28,11 +28,20 @@ public class PlayerHealth : MonoBehaviour
         
         if(health == 0){
             Debug.Log("Player.health == 0 => Game Over");
-            //TODO: some kind of Game Over
+            GameOverScreen.Setup();
         }
     }
 
     public bool isAlive(){
         return health > 0;
+    }
+
+     public void LoadData(GameData data)
+    {
+        this.health = data.health;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.health = this.health;
     }
 }

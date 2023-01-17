@@ -10,6 +10,6 @@ public class InventoryItemController : MonoBehaviour
 
     public void Show()
     {
-        InventoryManager.Instance.ShowItems(this.transform.Find("ItemName").GetComponent<TMP_Text>().text);
+        InventoryManager.Instance.ShowItem(item.name);
     }
 }
