@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProgressionDelegate : MonoBehaviour
 {
-    public delegate void Function();
+    public delegate void OnTriggerEnterDelegate();
 
     protected void send_mail(string id){
         InventoryManager IM = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();

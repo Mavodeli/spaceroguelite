@@ -18,7 +18,7 @@ public class DictionaryData
 }
 **/
 
-public class ProgressionTracker: MonoBehaviour, IDataPersistence
+public class ProgressionTracker : IDataPersistence
 {
     private Dictionary<string, bool> Flag;
     
