@@ -15,8 +15,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing;
     public float dashDistance = 15f;
     public float dashDuration = 0.1f;
+    public float dash_cooldown = 1f;
 
     private TimerObject paralyze_timer;
+    private TimerObject dash_cooldown_timer;
 
     void Start()
     {
@@ -24,11 +26,12 @@ public class PlayerMovement : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
 
         paralyze_timer = new TimerObject();
+        dash_cooldown_timer = new TimerObject();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing) StartCoroutine(Dash(movement));
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && !dash_cooldown_timer.runs()) StartCoroutine(Dash(movement));
         if (Input.GetKeyDown(KeyCode.A)) sr.flipX = false;
         if (Input.GetKeyDown(KeyCode.D)) sr.flipX = true;
 
@@ -58,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = rb.velocity;
         rb.AddForce(dir * dashDistance, ForceMode2D.Impulse);
         yield return new WaitForSeconds(dashDuration);
+        dash_cooldown_timer.start(dash_cooldown);
         isDashing = false;
     }
 

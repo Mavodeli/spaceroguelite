@@ -13,6 +13,11 @@ public class ProgressionTrigger : ProgressionDelegate
     public void Setup(OnTriggerEnterDelegate _delegate)
     {
         del = _delegate;
+    }
+
+    public void Start() {
+        //add Progression Trigger Tag
+        gameObject.tag = "ProgressionTrigger";
 
         //setup Rigidbody2D
         Rigidbody2D rb = gameObject.AddComponent<Rigidbody2D>();
