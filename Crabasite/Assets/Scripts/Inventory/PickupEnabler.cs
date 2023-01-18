@@ -26,7 +26,7 @@ public class PickupEnabler : MonoBehaviour
         // SpriteRenderer renderer = button.AddComponent<SpriteRenderer>();
         // renderer.sprite = Resources.Load<Sprite>("Sprites/ShortKey");
         // button.SetActive(false);
-        Debug.Log(name);
+        // Debug.Log(name);
     }
 
     void Update(){
