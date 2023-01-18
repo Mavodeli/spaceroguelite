@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Attract Two
   m_EditorClassIdentifier: 
   cooldown: 0
-  isActive: 0
+  isActive: 1
   player: {fileID: 0}
   selectedObject1: {fileID: 0}
   selectedObject2: {fileID: 0}
