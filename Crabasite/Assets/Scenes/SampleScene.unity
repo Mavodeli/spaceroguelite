@@ -1173,6 +1173,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2189086418208611762, guid: 704c85abfad8ca54eaa2c36d9d0e3808, type: 3}
+      propertyPath: fishiesCount1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189086418208611762, guid: 704c85abfad8ca54eaa2c36d9d0e3808, type: 3}
+      propertyPath: fishiesCount2
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2189086418208611772, guid: 704c85abfad8ca54eaa2c36d9d0e3808, type: 3}
       propertyPath: m_RootOrder
       value: 7

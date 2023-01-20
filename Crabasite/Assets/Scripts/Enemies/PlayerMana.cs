@@ -11,8 +11,13 @@ public class PlayerMana : MonoBehaviour, IDataPersistence
     void Start()
     {
         MS = new ManaSystem(mana, maxMana);
-        float ySize = gameObject.GetComponent<SpriteRenderer>().size.y;
-        manaBar = MS.attachManaBar(gameObject, ySize/3+0.7f);
+        GameObject pfManaBar = Resources.Load<GameObject>("Prefabs/ManaSystem/pfManaBar");
+        Transform manaBarTransform = Transform.Instantiate(pfManaBar.transform, Vector3.zero, Quaternion.identity);
+        ManaBar manaBar = manaBarTransform.GetComponent<ManaBar>();
+        manaBar.Setup(MS);
+        manaBar.transform.parent = GameObject.FindGameObjectWithTag("HUD").transform;
+        manaBar.name = "PlayerMana";
+        manaBar.transform.localPosition = new Vector3(0, -25, 0);
     }
 
     //negative mp uses, positive mp refills

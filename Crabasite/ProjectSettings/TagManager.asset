@@ -11,6 +11,7 @@ TagManager:
   - Timer
   - Inventory
   - ProgressionTrigger
+  - HUD
   layers:
   - Default
   - TransparentFX
