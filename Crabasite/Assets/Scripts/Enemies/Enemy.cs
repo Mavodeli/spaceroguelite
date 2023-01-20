@@ -64,34 +64,38 @@ public class Enemy : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Raycast");
 
         //setup SpriteRenderer
-        sr = gameObject.AddComponent<SpriteRenderer>();
+        // sr = gameObject.AddComponent<SpriteRenderer>();
+        sr = gameObject.GetComponent<SpriteRenderer>();
         sr.sprite = _sprite;
-        sr.drawMode = SpriteDrawMode.Sliced;//needed for scaling the sprite
+        // sr.drawMode = SpriteDrawMode.Sliced;//needed for scaling the sprite
         sr.size *= spriteScale;
-        sr.sortingOrder = 1;
+        // sr.sortingOrder = 1;
 
         //setup HealthSystem
         HS = new HealthSystem((int) health, (int) maxhealth);
         HS.attachHealthBar(gameObject, sr.size.y/2+.1f);
 
         //setup Rigidbody2D
-        rb = gameObject.AddComponent<Rigidbody2D>();
-        rb.gravityScale = 0;
-        rb.drag = 1;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        rb.sharedMaterial = Resources.Load<PhysicsMaterial2D>("Materials/EnemyMaterial");
+        // rb = gameObject.AddComponent<Rigidbody2D>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        // rb.gravityScale = 0;
+        // rb.drag = 1;
+        // rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        // rb.sharedMaterial = Resources.Load<PhysicsMaterial2D>("Materials/EnemyMaterial");
 
         //setup BoxCollider2D
-        bc = gameObject.AddComponent<BoxCollider2D>();
+        // bc = gameObject.AddComponent<BoxCollider2D>();
+        bc = gameObject.GetComponent<BoxCollider2D>();
         bc.size = sr.size;
 
         //setup Pathfinding
-        seeker = gameObject.AddComponent<Seeker>();
+        // seeker = gameObject.AddComponent<Seeker>();
+        seeker = gameObject.GetComponent<Seeker>();
         currentWaypoint = 0;
         nextWaypointDistance = 3.0f;
         stoppingDistance = _stoppingDistance;
         player = GameObject.FindGameObjectWithTag("Player");
-        gameObject.AddComponent<DynamicGridObstacle>();
+        // gameObject.AddComponent<DynamicGridObstacle>();
 
         //setup melee damage
         bite_timer = new TimerObject();
