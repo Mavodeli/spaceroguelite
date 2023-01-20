@@ -73,7 +73,7 @@ public class CrabClaw : MonoBehaviour
             else{
                 PullMI.Update(false, playerPos_relative_to_hit);
             }
-            if(Input.GetMouseButton(1)){
+            if(Input.GetMouseButton(1) && PM.hasMana()){
                 PushMI.Update(true, mousePos_relative_to_player);
                 objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
                 objectRigidbody.velocity = Vector3.zero;

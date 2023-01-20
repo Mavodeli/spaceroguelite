@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4705152366001522431}
   - component: {fileID: 4705152366001522422}
   - component: {fileID: 4705152366001522423}
+  - component: {fileID: -8628965672439775839}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -53,6 +54,7 @@ MonoBehaviour:
   standard_speed: 1000
   dashDistance: 500
   dashDuration: 0.1
+  dash_cooldown: 1
 --- !u!114 &4705152366001522428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +71,6 @@ MonoBehaviour:
   PushSpeed: 16
   StartDelayDuration: 0.5
   EndDelayDuration: 0.3
-  inventory: {fileID: 0}
 --- !u!114 &4705152366001522416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,3 +199,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0612533, y: 1.2369632}
   m_EdgeRadius: 0
+--- !u!114 &-8628965672439775839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705152366001522424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a779dfd61ed4dde8baa1062b71b607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
