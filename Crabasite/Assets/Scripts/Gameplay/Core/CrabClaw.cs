@@ -18,6 +18,13 @@ public class CrabClaw : MonoBehaviour
 
     Rigidbody2D objectRigidbody;
 
+    private PlayerMana PM;
+    protected GameObject player;
+    private TimerObject manaCooldown;
+
+
+
+
     void Awake(){
         PushMI = new MovementInterpolation();
         PullMI = new MovementInterpolation();
@@ -29,6 +36,9 @@ public class CrabClaw : MonoBehaviour
         PushMI.Start(PushSpeed, StartDelayDuration, EndDelayDuration);
         PullMI.Start(PullSpeed, StartDelayDuration, EndDelayDuration);
         DetectionLayer = LayerMask.GetMask("Raycast");
+        player = GameObject.FindGameObjectWithTag("Player");
+        PM = player.GetComponent<PlayerMana>();
+        manaCooldown = new TimerObject();
     }
     
     void Update()
@@ -53,7 +63,7 @@ public class CrabClaw : MonoBehaviour
 
             //update the position of the object hit by the ray
             // if(Input.GetMouseButton(0) && dist > PullSafetyDistance){
-            if(Input.GetMouseButton(0)){
+            if(Input.GetMouseButton(0) && PM.hasMana()){
                 PullMI.Update(true, playerPos_relative_to_hit);
                 objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
                 objectRigidbody.velocity = Vector3.zero;
@@ -77,6 +87,27 @@ public class CrabClaw : MonoBehaviour
         else{
             PushMI.Update(false, new Vector2(0, 0));
             PullMI.Update(false, new Vector2(0, 0));
+        }
+    }
+
+       void FixedUpdate()
+    {
+        if(Input.GetMouseButton(0) || Input.GetMouseButton(1))
+        {
+            PM.addMana(-2);
+            manaCooldownTimer(2.5f);
+        }
+        if(!manaCooldown.runs())
+        {
+            PM.addMana(1);
+        }
+    }
+
+    void manaCooldownTimer(float duration)
+    {
+        if (!manaCooldown.runs())
+        {
+            manaCooldown.start(duration);
         }
     }
 }
