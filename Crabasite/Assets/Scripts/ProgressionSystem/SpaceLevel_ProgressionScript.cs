@@ -7,11 +7,12 @@ using UnityEngine;
 public class SpaceLevel_ProgressionScript : ProgressionParentClass
 {
     private Dictionary<string, OnTriggerEnterDelegate> triggerMap = new Dictionary<string, OnTriggerEnterDelegate>();
+    private GameObject player;
 
 
     private void Awake(){
+        player = GameObject.FindGameObjectWithTag("Player");
         triggerMap.Add("PH black hole", delegate () {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
             player.SendMessage("addHealth", -Mathf.Infinity, SendMessageOptions.DontRequireReceiver);
         });
     }
