@@ -4060,7 +4060,7 @@ PrefabInstance:
     - target: {fileID: 4705152366001522416, guid: d8632563876686543a14bead3f0822d3, type: 3}
       propertyPath: ultimate
       value: 
-      objectReference: {fileID: 11400000, guid: beafc0b3ddf448142946a2246a085589, type: 2}
+      objectReference: {fileID: 11400000, guid: 816f299222196f94ca562296d11e6bc7, type: 2}
     - target: {fileID: 4705152366001522419, guid: d8632563876686543a14bead3f0822d3, type: 3}
       propertyPath: m_RootOrder
       value: 1
