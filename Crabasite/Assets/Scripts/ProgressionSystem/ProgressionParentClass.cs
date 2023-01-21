@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProgressionDelegate : MonoBehaviour, IDataPersistence
+public class ProgressionParentClass : MonoBehaviour, IDataPersistence
 {
     public delegate void OnTriggerEnterDelegate();
     protected ProgressionTracker PT = new ProgressionTracker();

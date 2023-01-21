@@ -13,5 +13,6 @@
 #### ProgressionTrigger GameObject Checklist
 - has the Gameobject a Collider2D?
 - has the Gameobject a ProgressionTrigger script attached?
+- has the Gameobject the "ProgressionTrigger" tag?
 - did you set the collider bounds correctly?
 - did you define the ProgressionTriggers' behaviour in the level's Level_ProgressionScript?
