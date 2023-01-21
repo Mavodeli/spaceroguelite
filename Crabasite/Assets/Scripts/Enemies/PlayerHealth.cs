@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
         }
         
         if(health == 0){
-            Debug.Log("Player.health == 0 => Game Over");
+            Debug.Log("YOU DIED");
             GameOverScreen.Setup();
         }
     }

@@ -933,9 +933,10 @@ GameObject:
   - component: {fileID: 308494417}
   - component: {fileID: 308494419}
   - component: {fileID: 308494418}
+  - component: {fileID: 308494420}
   m_Layer: 0
   m_Name: PH black hole
-  m_TagString: Untagged
+  m_TagString: ProgressionTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1023,6 +1024,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &308494420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308494416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f367e3205db692f43952dd4f29b3511c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &350298482
 GameObject:
   m_ObjectHideFlags: 0
@@ -4360,7 +4373,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameHandler
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 704c85abfad8ca54eaa2c36d9d0e3808, type: 3}
 --- !u!1001 &1617871123
 PrefabInstance:
@@ -4766,6 +4780,23 @@ Transform:
   m_Father: {fileID: 418115911}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -18.699}
+--- !u!1 &1791535482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2189086418208611774, guid: 704c85abfad8ca54eaa2c36d9d0e3808, type: 3}
+  m_PrefabInstance: {fileID: 1547753214}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1791535488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791535482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536b146c4817c1b489b81d2972060323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1842600518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 358676104386283867, guid: 37a2a1d323865b64d9475b34fdbce98f, type: 3}

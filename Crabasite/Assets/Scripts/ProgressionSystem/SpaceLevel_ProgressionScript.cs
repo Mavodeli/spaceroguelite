@@ -10,8 +10,9 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
 
 
     private void Awake(){
-        triggerMap.Add("BobTheTrigger", delegate () {
-            //TODO
+        triggerMap.Add("PH black hole", delegate () {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player.SendMessage("addHealth", -Mathf.Infinity, SendMessageOptions.DontRequireReceiver);
         });
     }
 
