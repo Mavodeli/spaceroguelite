@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2189086418208611775}
   - component: {fileID: 2189086418208611773}
   - component: {fileID: 2189086418208611762}
+  - component: {fileID: 4268284725903009204}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: GameHandler
@@ -74,3 +75,15 @@ MonoBehaviour:
   fishiesCount2: 0
   EnemyType1: 0
   EnemyType2: 3
+--- !u!114 &4268284725903009204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2189086418208611774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e3f1dc374804b4fa5a737d2a2b3582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

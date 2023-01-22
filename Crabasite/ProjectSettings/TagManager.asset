@@ -12,6 +12,7 @@ TagManager:
   - Inventory
   - ProgressionTrigger
   - HUD
+  - Interactable
   layers:
   - Default
   - TransparentFX

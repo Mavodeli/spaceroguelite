@@ -51,7 +51,6 @@ public class ProgressionTracker
         {
             b = false;
         }
-        Debug.Log("getFlag for '"+id+"' is "+b);
         return b;
     }
 

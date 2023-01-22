@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5e89876e2b9a4256bb7e09b9fb8318d, type: 3}
-  m_Name: arrow
+  m_Name: arrow of doom
   m_EditorClassIdentifier: 
   id: 0
   itemName: arrow of doom

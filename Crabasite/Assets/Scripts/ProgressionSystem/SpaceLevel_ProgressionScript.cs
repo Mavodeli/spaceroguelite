@@ -2,7 +2,6 @@ using Codice.Client.BaseCommands;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 public class SpaceLevel_ProgressionScript : ProgressionParentClass
@@ -21,14 +20,9 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
             //kill player upon entering the black hole
             player.SendMessage("addHealth", -Mathf.Infinity, SendMessageOptions.DontRequireReceiver);
         });
-        triggerMap.Add("TriggerSpaceshipEntrance", delegate () {
-            SceneManager.LoadScene("SampleScene");//TODO: set correct scene ;)
-            Time.timeScale = 1;
-            //TODO: show button instead of instant teleport!!!
-        });
         triggerMap.Add("TriggerElectroAsteroidsEnemySpawner", delegate () {
             if(!PT.getFlag("triggeredEnemySpawner")){
-                int count = 3;
+                int count = 0;
                 for(int i = 0; i < count; i++){
                     GameObject fish = Instantiate(Resources.Load<GameObject>("Prefabs/Enemy"));
                     fish.AddComponent<PufferFishBehaviour>();
