@@ -11,7 +11,7 @@ public class PlayerMana : MonoBehaviour, IDataPersistence
     void Start()
     {
         MS = new ManaSystem(mana, maxMana);
-        GameObject pfManaBar = Resources.Load<GameObject>("Prefabs/ManaSystem/pfManaBar");
+        GameObject pfManaBar = Resources.Load<GameObject>("Prefabs/ManaSystem/pfPlayerManaBar");
         Transform manaBarTransform = Transform.Instantiate(pfManaBar.transform, Vector3.zero, Quaternion.identity);
         ManaBar manaBar = manaBarTransform.GetComponent<ManaBar>();
         manaBar.Setup(MS);
