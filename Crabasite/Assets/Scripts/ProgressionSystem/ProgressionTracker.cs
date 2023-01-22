@@ -20,7 +20,7 @@ public class DictionaryData
 
 public class ProgressionTracker
 {
-    private Dictionary<string, bool> Flag;
+    private Dictionary<string, bool> Flag = new Dictionary<string, bool>();
     
     public void setFlagDict(Dictionary<string, bool> newDict){
         Flag = newDict;
@@ -51,6 +51,7 @@ public class ProgressionTracker
         {
             b = false;
         }
+        Debug.Log("getFlag for '"+id+"' is "+b);
         return b;
     }
 

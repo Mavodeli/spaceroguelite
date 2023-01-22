@@ -19,10 +19,7 @@ public class DataPersistenceManager : MonoBehaviour
             Debug.LogError("Found more than one Data Persistance Manager in the scene.");
         }
         instance = this;
-    }
-
-    private void Start()
-    {
+        
         // TODO LoadGame on Death or LoadGame on Button press aswell.
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();

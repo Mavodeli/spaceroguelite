@@ -70,4 +70,8 @@ public class PlayerMovement : MonoBehaviour
         if (!paralyze_timer.runs())
             paralyze_timer.start(duration);
     }
+
+    public Vector2 getMovement(){
+        return movement;
+    }
 }

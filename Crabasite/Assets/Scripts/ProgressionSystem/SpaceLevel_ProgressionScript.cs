@@ -11,7 +11,7 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
     private GameObject player;
 
 
-    private void Awake(){
+    private void Start(){
         player = GameObject.FindGameObjectWithTag("Player");
 
         //TODO: workaround until GameData resetting is implemented!
@@ -32,16 +32,19 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
                 for(int i = 0; i < count; i++){
                     GameObject fish = Instantiate(Resources.Load<GameObject>("Prefabs/Enemy"));
                     fish.AddComponent<PufferFishBehaviour>();
-                    Vector3 spawnOffset = new Vector3(0, 0, 0);
+                    Vector2 playerLastDirection = player.GetComponent<PlayerMovement>().getMovement();
+                    //offset still kinda WIP
+                    Vector3 spawnOffset = new Vector3(
+                        playerLastDirection.x*12+2*i, 
+                        playerLastDirection.y*12-2*i, 
+                        0
+                    );
                     fish.transform.position = player.transform.position + spawnOffset;
                 }
                 PT.setFlag("triggeredEnemySpawner");
             }
         });
-    }
 
-    void Start()
-    {   
         //fill the triggers in the scene with their behaviours according to the trigger map
         foreach(GameObject trigger in GameObject.FindGameObjectsWithTag("ProgressionTrigger")){
             ProgressionTrigger pt = trigger.GetComponent<ProgressionTrigger>();
@@ -52,5 +55,14 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
     void Update()
     {
         
+    }
+
+    public void printPTDict(){
+        string str = "FlagDict: [";
+        Dictionary<string, bool> dict = PT.getFlagDict();
+        foreach(KeyValuePair<string, bool> entry in dict){
+            str += "'"+entry.Key+"': "+entry.Value+", ";
+        }
+        Debug.Log(str+"]");
     }
 }
