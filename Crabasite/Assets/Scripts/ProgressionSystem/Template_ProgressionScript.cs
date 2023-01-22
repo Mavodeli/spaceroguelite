@@ -10,7 +10,7 @@ public class Template_ProgressionScript : ProgressionParentClass
     private GameObject player;
 
 
-    private void Awake(){
+    private void Start(){
         //save player GameObject for easy access
         player = GameObject.FindGameObjectWithTag("Player");
 
@@ -19,10 +19,7 @@ public class Template_ProgressionScript : ProgressionParentClass
         triggerMap.Add("BobTheTrigger", delegate () {
             //TODO
         });
-    }
-
-    void Start()
-    {   
+      
         //fill the triggers in the scene with their behaviours according to the trigger map
         foreach(GameObject trigger in GameObject.FindGameObjectsWithTag("ProgressionTrigger")){
             ProgressionTrigger pt = trigger.GetComponent<ProgressionTrigger>();
