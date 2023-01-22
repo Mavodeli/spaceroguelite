@@ -22,7 +22,7 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
         });
         triggerMap.Add("TriggerElectroAsteroidsEnemySpawner", delegate () {
             if(!PT.getFlag("triggeredEnemySpawner")){
-                int count = 0;
+                int count = 3;
                 for(int i = 0; i < count; i++){
                     GameObject fish = Instantiate(Resources.Load<GameObject>("Prefabs/Enemy"));
                     fish.AddComponent<PufferFishBehaviour>();
