@@ -52,6 +52,9 @@ TagManager:
   - name: HealthBar
     uniqueID: 2197177389
     locked: 0
+  - name: HUD
+    uniqueID: 3650480005
+    locked: 0
   - name: Inventory
     uniqueID: 571075293
     locked: 0

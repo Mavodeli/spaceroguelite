@@ -4306,7 +4306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2189086418208611762, guid: 704c85abfad8ca54eaa2c36d9d0e3808, type: 3}
       propertyPath: fishiesCount1
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2189086418208611762, guid: 704c85abfad8ca54eaa2c36d9d0e3808, type: 3}
       propertyPath: fishiesCount2

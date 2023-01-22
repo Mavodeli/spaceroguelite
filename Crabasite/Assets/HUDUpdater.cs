@@ -10,7 +10,12 @@ public class HUDUpdater : MonoBehaviour
 
     [SerializeField]
     private List<Transform> UltimateSprites;
-    
+
+    private void Start()
+    {
+        ChangeSprite(1);   
+    }
+
     public void ChangeSprite(int ult)
     {
         UltimateSprite.sprite = UltimateSprites[ult].GetComponent<Image>().sprite;

@@ -22,6 +22,8 @@ public class CrabClaw : MonoBehaviour
     protected GameObject player;
     private TimerObject manaCooldown;
 
+    private GameObject inventory;
+
 
 
 
@@ -39,6 +41,7 @@ public class CrabClaw : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         PM = player.GetComponent<PlayerMana>();
         manaCooldown = new TimerObject();
+        inventory = GameObject.FindGameObjectWithTag("Inventory");
     }
     
     void Update()
@@ -53,7 +56,6 @@ public class CrabClaw : MonoBehaviour
         //- direction: normalized Mouse Cursor Position
         //- maximal t: +infinity
         RaycastHit2D hit = Physics2D.Raycast(transform.position, mousePos_relative_to_player, Mathf.Infinity, DetectionLayer);
-        GameObject inventory = GameObject.FindGameObjectWithTag("Inventory");
         if(hit.collider != null && !inventory.GetComponent<InventoryManager>().inventoryIsOpened){ // check if inventory is off to enable crab claw 
             //playerPos_relative_to_hit: vector that points [location where the ray hits a collider] -> Player
             Vector2 playerPos_relative_to_hit = transform.position-hit.transform.position;
@@ -92,14 +94,17 @@ public class CrabClaw : MonoBehaviour
 
        void FixedUpdate()
     {
-        if(Input.GetMouseButton(0) || Input.GetMouseButton(1))
+        if (!inventory.GetComponent<InventoryManager>().inventoryIsOpened)
         {
-            PM.addMana(-2);
-            manaCooldownTimer(2.5f);
-        }
-        if(!manaCooldown.runs())
-        {
-            PM.addMana(1);
+            if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+            {
+                PM.addMana(-2);
+                manaCooldownTimer(2.5f);
+            }
+            if (!manaCooldown.runs())
+            {
+                PM.addMana(1);
+            }
         }
     }
 

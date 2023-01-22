@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     void Start()
     {
         HS = new HealthSystem(health, maxhealth);
-        GameObject pfHealthBar = Resources.Load<GameObject>("Prefabs/HealthSystem/pfHealthBar");
+        GameObject pfHealthBar = Resources.Load<GameObject>("Prefabs/HealthSystem/pfPlayerHealthBar");
         Transform healthBarTransform = Transform.Instantiate(pfHealthBar.transform, Vector3.zero, Quaternion.identity);
         HealthBar healthBar = healthBarTransform.GetComponent<HealthBar>();
         healthBar.Setup(HS);
