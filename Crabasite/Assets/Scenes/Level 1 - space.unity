@@ -1824,7 +1824,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.04, y: 15.79, z: -10}
+  m_LocalPosition: {x: -0.89, y: 14.43, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2132,7 +2132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795595067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.04, y: 15.79, z: -10}
+  m_LocalPosition: {x: -0.89, y: 14.43, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2845,6 +2845,67 @@ PolygonCollider2D:
   m_CorrespondingSourceObject: {fileID: 1027561612988426934, guid: 71fd6283efc0e504cac599fec0d916ad, type: 3}
   m_PrefabInstance: {fileID: 1027561613951576965}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1198246159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198246162}
+  - component: {fileID: 1198246161}
+  - component: {fileID: 1198246160}
+  m_Layer: 0
+  m_Name: TriggerElectroAsteroidsEnemySpawner
+  m_TagString: ProgressionTrigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1198246160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198246159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f367e3205db692f43952dd4f29b3511c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &1198246161
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198246159}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -23.159197, y: 4.1398196}
+  serializedVersion: 2
+  m_Radius: 22.616302
+--- !u!4 &1198246162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198246159}
+  m_LocalRotation: {x: -0, y: -0, z: 0.059274193, w: 0.9982417}
+  m_LocalPosition: {x: 100.6, y: 41.5, z: -1.1126839}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.796}
 --- !u!1 &1210154402
 GameObject:
   m_ObjectHideFlags: 0
@@ -4080,11 +4141,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522419, guid: d8632563876686543a14bead3f0822d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.04
+      value: -0.89
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522419, guid: d8632563876686543a14bead3f0822d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.79
+      value: 14.43
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522419, guid: d8632563876686543a14bead3f0822d3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4319,7 +4380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2189086418208611762, guid: 704c85abfad8ca54eaa2c36d9d0e3808, type: 3}
       propertyPath: fishiesCount1
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2189086418208611762, guid: 704c85abfad8ca54eaa2c36d9d0e3808, type: 3}
       propertyPath: fishiesCount2
@@ -5494,6 +5555,77 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &2114381838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2114381841}
+  - component: {fileID: 2114381840}
+  - component: {fileID: 2114381839}
+  m_Layer: 0
+  m_Name: TriggerSpaceshipEntrance
+  m_TagString: ProgressionTrigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2114381839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114381838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f367e3205db692f43952dd4f29b3511c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &2114381840
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114381838}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.5571015, y: 0.36084938}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1012912, y: 1.3925018}
+  m_EdgeRadius: 0
+--- !u!4 &2114381841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114381838}
+  m_LocalRotation: {x: -0, y: -0, z: 0.059274193, w: 0.9982417}
+  m_LocalPosition: {x: 5.54, y: 16.04, z: -1.1126839}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.796}
 --- !u!1 &2145658372
 GameObject:
   m_ObjectHideFlags: 0
