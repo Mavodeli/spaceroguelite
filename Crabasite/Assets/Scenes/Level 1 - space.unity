@@ -834,7 +834,7 @@ GameObject:
   - component: {fileID: 231225567}
   m_Layer: 6
   m_Name: blue blobby mass circle
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4857,6 +4857,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4705152366001522416, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
+      propertyPath: ultimate
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522419, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: m_RootOrder
       value: 2
