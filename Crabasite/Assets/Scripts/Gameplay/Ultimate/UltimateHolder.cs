@@ -27,8 +27,9 @@ public class UltimateHolder : MonoBehaviour
     void Start()
     {
         state = UltimateState.ready;
-        ultimate.player = player;
         ultimateList = Resources.LoadAll<ScriptableObject>("ScriptableObjects/Ultimates");
+        SwitchUltimate(3);
+        ultimate.player = player;
     }
 
     // Update is called once per frame

@@ -21,6 +21,20 @@ public class InteractablesHandler : MonoBehaviour
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
 
+                if(interactable.name == "blue blobby mass circle"){
+                    script.Setup(delegate () {
+                        int ult = 0;
+                        GameObject player = GameObject.FindGameObjectWithTag("Player");
+                        player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
+                        // GameObject hud = GameObject.FindGameObjectWithTag("HUD");
+                        // hud.SendMessage("ChangeSprite", ult, SendMessageOptions.DontRequireReceiver);
+                        GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
+                        IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);//TODO: not implemented yet!!!
+                        Destroy(GameObject.Find(interactable.name));//kinda tricky to get the delegate to destroy the correct gameObject ;)
+                    }, "e");
+                    script.setNewOffset(new Vector3(0, 0, 0));
+                }
+
                 //add more interactables here simply by using if checks
             }
         }

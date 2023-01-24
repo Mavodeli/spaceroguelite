@@ -223,6 +223,11 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         mailIcon.sprite = mail.icon;
         mailDescription.text = mail.description;
     }
+
+    public void unlockUltimate(int ult){
+        //TODO
+    }
+
     public void LoadData(GameData data)
     {
         ItemDict = data.ItemsDict;
