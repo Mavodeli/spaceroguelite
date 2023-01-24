@@ -28,12 +28,9 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
                     fish.AddComponent<PufferFishBehaviour>();
                     Vector2 playerLastDirection = player.GetComponent<PlayerMovement>().getMovement();
                     //offset still kinda WIP
-                    Vector3 spawnOffset = new Vector3(
-                        playerLastDirection.x*12+2*i, 
-                        playerLastDirection.y*12-2*i, 
-                        0
-                    );
-                    fish.transform.position = player.transform.position + spawnOffset;
+                    Vector3 spawnOffsetToPlayer = new Vector3(playerLastDirection.x*12, playerLastDirection.y*12, 0);
+                    Vector3 fishToFishOffset = new Vector3(2*i, -2*i, 0);
+                    fish.transform.position = player.transform.position + spawnOffsetToPlayer + fishToFishOffset;
                 }
                 PT.setFlag("triggeredEnemySpawner");
             }
