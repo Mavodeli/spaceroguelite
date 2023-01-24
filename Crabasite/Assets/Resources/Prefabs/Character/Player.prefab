@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1fb9a45ce6038d45bc058a3add5788e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ultimate: {fileID: 11400000, guid: 2b2d4058bb8d24e48983b56467bd6243, type: 2}
+  ultimate: {fileID: 0}
   cooldownTimer: 0
   player: {fileID: 4705152366001522419}
   key: 32
