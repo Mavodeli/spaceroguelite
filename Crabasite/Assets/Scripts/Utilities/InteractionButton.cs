@@ -11,13 +11,13 @@ public class InteractionButton : MonoBehaviour
     private GameObject button;
     private Vector3 offset = new Vector3(1, 1, 0);
     private bool hasButton = false;
-    private string buttonID;
+    private string inputKey;
     public delegate void OnButtonPressDelegate();
     private OnButtonPressDelegate onButtonPress;
 
-    public void Setup(OnButtonPressDelegate _delegate, string _buttonID = "e"){
+    public void Setup(OnButtonPressDelegate _delegate, string _inputKey = "e"){
         onButtonPress = _delegate;
-        buttonID = _buttonID;
+        inputKey = _inputKey;
     }
 
     void Start()
@@ -41,12 +41,12 @@ public class InteractionButton : MonoBehaviour
         //destroy button if player is too far away
         if ((distanceToPlayer > showDistanceMaximum) && hasButton)
         {
-            Destroy(transform.Find(button.name + "(Clone)").gameObject);
+            Destroy(transform.Find("InteractionButton of " + name + "(Clone)").gameObject);
             hasButton = false;
         }
         //check if player presses button, if so, perform onButtonPress
 
-        if (Input.GetKey("e") && hasButton)
+        if (Input.GetKey(inputKey) && hasButton)
         {
             onButtonPress();
         }
