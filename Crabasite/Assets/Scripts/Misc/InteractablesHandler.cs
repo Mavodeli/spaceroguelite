@@ -26,8 +26,6 @@ public class InteractablesHandler : MonoBehaviour
                         int ult = 0;
                         GameObject player = GameObject.FindGameObjectWithTag("Player");
                         player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
-                        // GameObject hud = GameObject.FindGameObjectWithTag("HUD");
-                        // hud.SendMessage("ChangeSprite", ult, SendMessageOptions.DontRequireReceiver);
                         GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
                         IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);//TODO: not implemented yet!!!
                         Destroy(GameObject.Find(interactable.name));//kinda tricky to get the delegate to destroy the correct gameObject ;)

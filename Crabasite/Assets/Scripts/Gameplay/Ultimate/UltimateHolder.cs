@@ -71,5 +71,7 @@ public class UltimateHolder : MonoBehaviour
     public void SwitchUltimate(int ult)
     {
         ultimate = (Ultimate)ultimateList[ult];
+        GameObject hud = GameObject.FindGameObjectWithTag("HUD");
+        hud.SendMessage("ChangeSprite", ult, SendMessageOptions.DontRequireReceiver);
     }
 }
