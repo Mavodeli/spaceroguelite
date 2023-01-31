@@ -27,10 +27,19 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     public Transform InventoryDescriptionContent;
     public Transform MailDescriptionContent;
 
+    public Transform UltimatesContent;
+
+    //TODO: save this dict persistently in GameData!!!
+    private Dictionary<int, bool> unlockedUltimates = new Dictionary<int, bool>();
 
     void Start() {
         inventoryIsOpened = false;
         Inventory.SetActive(false);
+
+        //TODO: only fill dict at newGame!!!
+        unlockedUltimates.Add(0, false);
+        unlockedUltimates.Add(1, false);
+        unlockedUltimates.Add(2, false);
     }
 
     /// If the player presses the "i" key, the inventory will open or close
@@ -42,7 +51,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
                 ListItems();
                 ListMails();
-                
+                updateUltimateButtons();
             }
             else {
                 Inventory.SetActive(false);
@@ -224,8 +233,26 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         mailDescription.text = mail.description;
     }
 
+    public void updateUltimateButtons(){
+        foreach(KeyValuePair<int, bool> entry in unlockedUltimates){
+
+            GameObject child = UltimatesContent.GetChild(entry.Key).gameObject;
+
+            //TODO: change loaded sprite (unlocked)
+            if(entry.Value){
+                child.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Inventory/UltimateSprite"+entry.Key);
+                child.GetComponent<Button>().onClick.RemoveListener(ButtonInactive);
+            }
+            else{
+                child.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Inventory/skill not unlocked yet resized");
+                child.GetComponent<Button>().onClick.AddListener(ButtonInactive);
+            }
+        }
+    }
+    void ButtonInactive(){}
+
     public void unlockUltimate(int ult){
-        //TODO
+        unlockedUltimates[ult] = true;
     }
 
     public void LoadData(GameData data)
