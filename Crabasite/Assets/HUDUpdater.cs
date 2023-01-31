@@ -13,12 +13,14 @@ public class HUDUpdater : MonoBehaviour
 
     private void Start()
     {
-        ChangeSprite(1);   
+        //TODO: only on newGame, else last equipped
+        ChangeSprite(3);
     }
 
     public void ChangeSprite(int ult)
     {
-        UltimateSprite.sprite = UltimateSprites[ult].GetComponent<Image>().sprite;
+        UltimateSprite.sprite = Resources.Load<Sprite>("Sprites/Inventory/UltimateSprite"+ult);
+        UltimateSprite.size *= .26f;
     }
     
 }
