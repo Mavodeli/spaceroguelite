@@ -30,16 +30,11 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     public Transform UltimatesContent;
 
     //TODO: save this dict persistently in GameData!!!
-    private Dictionary<int, bool> unlockedUltimates = new Dictionary<int, bool>();
+    private Dictionary<int, bool> UltimateDict;
 
     void Start() {
         inventoryIsOpened = false;
         Inventory.SetActive(false);
-
-        //TODO: only fill dict at newGame!!!
-        unlockedUltimates.Add(0, false);
-        unlockedUltimates.Add(1, false);
-        unlockedUltimates.Add(2, false);
     }
 
     /// If the player presses the "i" key, the inventory will open or close
@@ -234,7 +229,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     }
 
     public void updateUltimateButtons(){
-        foreach(KeyValuePair<int, bool> entry in unlockedUltimates){
+        foreach(KeyValuePair<int, bool> entry in UltimateDict){
 
             GameObject child = UltimatesContent.GetChild(entry.Key).gameObject;
 
@@ -252,18 +247,20 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     void ButtonInactive(){}
 
     public void unlockUltimate(int ult){
-        unlockedUltimates[ult] = true;
+        UltimateDict[ult] = true;
     }
 
     public void LoadData(GameData data)
     {
         ItemDict = data.ItemsDict;
-        MailDict= data.MailDict;
+        MailDict = data.MailDict;
+        UltimateDict = data.UltimateDict;
     }
     public void SaveData(ref GameData data)
     {
         data.ItemsDict = (SerializableDictionary<string,int>)ItemDict;
-        data.MailDict= (SerializableDictionary<string, bool>)MailDict;
+        data.MailDict = (SerializableDictionary<string, bool>)MailDict;
+        data.UltimateDict = (SerializableDictionary<int, bool>)UltimateDict;
     }
 
 }
