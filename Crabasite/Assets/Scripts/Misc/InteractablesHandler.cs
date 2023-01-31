@@ -23,7 +23,7 @@ public class InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "blue blobby mass circle"){
                     script.Setup(delegate () {
-                        int ult = 0;
+                        int ult = 0;//attract two
                         GameObject player = GameObject.FindGameObjectWithTag("Player");
                         player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
                         GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
