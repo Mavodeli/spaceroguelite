@@ -20,5 +20,6 @@ public class GameData
         this.ItemsDict = new SerializableDictionary<string, int>();
         this.MailDict= new SerializableDictionary<string, bool>();
         this.ProgressionDict = new SerializableDictionary<string, bool>();
+        ProgressionDict.Add("triggeredEnemySpawner", false);
     }
 }

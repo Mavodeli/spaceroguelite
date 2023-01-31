@@ -13,9 +13,6 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
     private void Start(){
         player = GameObject.FindGameObjectWithTag("Player");
 
-        //TODO: workaround until GameData resetting is implemented!
-        PT.setFlag("triggeredEnemySpawner", false);
-
         triggerMap.Add("PH black hole", delegate () {
             //kill player upon entering the black hole
             player.SendMessage("addHealth", -Mathf.Infinity, SendMessageOptions.DontRequireReceiver);

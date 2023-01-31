@@ -23,8 +23,8 @@ public class DataPersistenceManager : MonoBehaviour
         // TODO LoadGame on Death or LoadGame on Button press aswell.
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        //LoadGame();
-        NewGame();
+        LoadGame();
+        //NewGame();
     }
     public void NewGame()
     {
