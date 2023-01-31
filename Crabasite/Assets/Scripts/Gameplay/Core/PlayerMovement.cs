@@ -32,8 +32,8 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && !dash_cooldown_timer.runs()) StartCoroutine(Dash(movement));
-        if (Input.GetKeyDown(KeyCode.A)) sr.flipX = false;
-        if (Input.GetKeyDown(KeyCode.D)) sr.flipX = true;
+        if (Input.GetKeyDown(KeyCode.A)) sr.flipX = true;
+        if (Input.GetKeyDown(KeyCode.D)) sr.flipX = false;
 
     }
 
