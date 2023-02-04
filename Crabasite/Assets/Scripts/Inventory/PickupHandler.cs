@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PickupHandler : MonoBehaviour
 {
+
+    private AudioSource pickupSound;
+
+    void Start(){
+        pickupSound = (AudioSource) (GameObject.Find("PickupObject")).GetComponent(typeof (AudioSource));
+    }
+
     void Update()
     {
         //check if all collectables have the pickup script, if not, add missing scripts
@@ -12,6 +19,7 @@ public class PickupHandler : MonoBehaviour
             if(script == null){
                 script = item.AddComponent<InteractionButton>();
                 script.Setup(delegate () {
+                    pickupSound.Play();
                     if(!GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>().inventoryIsOpened){
                         InventoryManager.Instance.AddItem(item.name);
                         Destroy(item);
