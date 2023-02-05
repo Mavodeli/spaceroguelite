@@ -183,7 +183,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1760991938}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 2.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -920,16 +920,20 @@ PrefabInstance:
       value: -0.967
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522419, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0000000020807742
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705152366001522419, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999619
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522419, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522419, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.008727774
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522419, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: m_LocalRotation.z
@@ -941,16 +945,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522419, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522419, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4705152366001522420, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
+      propertyPath: dashDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705152366001522420, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
+      propertyPath: standard_speed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522421, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: GameOverScreen
       value: 
       objectReference: {fileID: 1934966104}
+    - target: {fileID: 4705152366001522422, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522424, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1275,6 +1291,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7948604452774695706, guid: 41a0d35a1ba36e5419626824478acba0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7948604452774695707, guid: 41a0d35a1ba36e5419626824478acba0, type: 3}
+      propertyPath: m_EdgeRadius
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7948604452774695707, guid: 41a0d35a1ba36e5419626824478acba0, type: 3}

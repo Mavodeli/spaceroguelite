@@ -57,7 +57,11 @@ public class PlayerMovement : MonoBehaviour
             current_speed *= 0.1f;
         }
 
-        rb.AddForce(dir * current_speed);
+        Vector2 force = dir * current_speed;
+        if(rb.gravityScale != 0) 
+            force.y = 0;
+
+        rb.AddForce(force);
     }
 
     IEnumerator Dash (Vector2 dir)
