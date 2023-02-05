@@ -30,8 +30,8 @@ public class PlayerMovement : MonoBehaviour
 
         dashSound = (AudioSource) (GameObject.Find("PlayerDashSound")).GetComponent(typeof (AudioSource));
 
-        paralyze_timer = new TimerObject();
-        dash_cooldown_timer = new TimerObject();
+        paralyze_timer = new TimerObject("Player paralyze_timer");
+        dash_cooldown_timer = new TimerObject("Player dash_cooldown_timer");
     }
 
     private void Update()
@@ -57,7 +57,11 @@ public class PlayerMovement : MonoBehaviour
             current_speed *= 0.1f;
         }
 
-        rb.AddForce(dir * current_speed);
+        Vector2 force = dir * current_speed;
+        if(rb.gravityScale != 0) 
+            force.y = 0;
+
+        rb.AddForce(force);
     }
 
     IEnumerator Dash (Vector2 dir)

@@ -27,7 +27,7 @@ public class MorayEelBehaviour : Enemy
                         med.textureScale,//sprite scale modifier
                         med.stoppingDistance//stopping distance
                         );
-        projectile_timer = new TimerObject();
+        projectile_timer = new TimerObject(med.gameObjectName+" projectile_timer");
     }
 
     void LateUpdate()//bc Enemy.cs already uses Update()!
