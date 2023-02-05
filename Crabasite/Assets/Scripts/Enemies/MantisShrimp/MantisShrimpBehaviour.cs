@@ -27,8 +27,8 @@ public class MantisShrimpBehaviour : Enemy
                         msd.textureScale,//sprite scale modifier
                         msd.stoppingDistance//stopping distance
                         );
-        spear1_timer = new TimerObject();
-        spear2_timer = new TimerObject();
+        spear1_timer = new TimerObject(msd.gameObjectName+" spear1_timer");
+        spear2_timer = new TimerObject(msd.gameObjectName+" spear2_timer");
     }
 
     void LateUpdate()//bc Enemy.cs already uses Update()!

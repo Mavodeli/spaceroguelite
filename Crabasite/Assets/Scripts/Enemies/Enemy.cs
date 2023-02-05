@@ -98,13 +98,13 @@ public class Enemy : MonoBehaviour
         // gameObject.AddComponent<DynamicGridObstacle>();
 
         //setup melee damage
-        bite_timer = new TimerObject();
+        bite_timer = new TimerObject(_name+" bite_timer");
         meleeDistance = 
             (sr.size.x/2)+//~offset fish origin to collider edge
             (player.GetComponent<SpriteRenderer>().size.x/2)+//~offset player origin to collider edge
             .2f;//actual distance :)
 
-        paralyze_timer = new TimerObject();
+        paralyze_timer = new TimerObject(_name+" paralyze_timer");
     }
 
     private void Start(){

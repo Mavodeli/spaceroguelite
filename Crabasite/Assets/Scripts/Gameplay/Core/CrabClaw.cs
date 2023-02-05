@@ -40,7 +40,7 @@ public class CrabClaw : MonoBehaviour
         DetectionLayer = LayerMask.GetMask("Raycast");
         player = GameObject.FindGameObjectWithTag("Player");
         PM = player.GetComponent<PlayerMana>();
-        manaCooldown = new TimerObject();
+        manaCooldown = new TimerObject("Player manaCooldown");
         inventory = GameObject.FindGameObjectWithTag("Inventory");
     }
     

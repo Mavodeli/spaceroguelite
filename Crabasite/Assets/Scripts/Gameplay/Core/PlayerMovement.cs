@@ -30,8 +30,8 @@ public class PlayerMovement : MonoBehaviour
 
         dashSound = (AudioSource) (GameObject.Find("PlayerDashSound")).GetComponent(typeof (AudioSource));
 
-        paralyze_timer = new TimerObject();
-        dash_cooldown_timer = new TimerObject();
+        paralyze_timer = new TimerObject("Player paralyze_timer");
+        dash_cooldown_timer = new TimerObject("Player dash_cooldown_timer");
     }
 
     private void Update()
