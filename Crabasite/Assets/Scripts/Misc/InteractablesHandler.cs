@@ -6,13 +6,7 @@ using UnityEngine.SceneManagement;
 public class InteractablesHandler : MonoBehaviour
 {
 
-    private AudioSource spaceShipDoor;
-    private AudioSource collectUltimate;
-
     void Start(){
-
-        spaceShipDoor = (AudioSource) (GameObject.Find("SpaceShipDoor")).GetComponent(typeof (AudioSource));
-        collectUltimate = (AudioSource) (GameObject.Find("PickupUlt")).GetComponent(typeof (AudioSource));
 
     }
 
@@ -26,7 +20,6 @@ public class InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "SpaceshipEntrance"){
                     script.Setup(delegate () {
-                        spaceShipDoor.Play(); // TODO Loading the scene right after this statement causes the sound to not play/interuppt
                         SceneManager.LoadScene("SampleScene");//TODO: set correct scene ;)
                         Time.timeScale = 1;
                     }, "e");
@@ -40,7 +33,6 @@ public class InteractablesHandler : MonoBehaviour
                         player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
                         GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
                         IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);//TODO: not implemented yet!!!
-                        collectUltimate.Play();
                         Destroy(GameObject.Find(interactable.name));//kinda tricky to get the delegate to destroy the correct gameObject ;)
                     }, "e");
                     script.setNewOffset(new Vector3(0, 0, 0));

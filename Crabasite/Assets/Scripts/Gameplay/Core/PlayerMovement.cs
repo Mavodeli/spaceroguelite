@@ -20,15 +20,10 @@ public class PlayerMovement : MonoBehaviour
     private TimerObject paralyze_timer;
     private TimerObject dash_cooldown_timer;
 
-    // Sound section
-    private AudioSource dashSound;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-
-        dashSound = (AudioSource) (GameObject.Find("PlayerDashSound")).GetComponent(typeof (AudioSource));
 
         paralyze_timer = new TimerObject("Player paralyze_timer");
         dash_cooldown_timer = new TimerObject("Player dash_cooldown_timer");
@@ -66,7 +61,6 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Dash (Vector2 dir)
     {
-        dashSound.Play();
         isDashing = true;
         rb.velocity = rb.velocity;
         rb.AddForce(dir * dashDistance, ForceMode2D.Impulse);
