@@ -111,10 +111,6 @@ public class SoundController : MonoBehaviour
 
     void Update(){
 
-        if(Input.GetKeyDown("e")){
-            playSound("PlayerDashSound", player, false, true);
-        }
-
         frameCounter++;
         if(frameCounter == 60){
             for(int i = activeSounds.Count - 1; i >= 0; i--)
