@@ -39,7 +39,7 @@ public class SoundController : MonoBehaviour
     /**
      * Loads a new sound and replaces it with an old sound if one with the same name already exists
      */
-    public void loadSoundReplace(string name, AudioClip){
+    public void loadSoundReplace(string name, AudioClip clip){
         Sound s = new Sound(name, clip);
         sounds[name] = s;
     }
@@ -51,7 +51,7 @@ public class SoundController : MonoBehaviour
         Component[] audioSources = GetComponentsInChildren(typeof (AudioSource));
         sounds.Clear();
         foreach(Component audioSource in audioSources){
-            Soudn s = new Sound(audioSource.name, ((AudioSource) audioSource).clip);
+            Sound s = new Sound(audioSource.name, ((AudioSource) audioSource).clip);
             sounds[audioSource.name] = s;
         }
     }
