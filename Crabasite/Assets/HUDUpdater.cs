@@ -20,7 +20,6 @@ public class HUDUpdater : MonoBehaviour
     public void ChangeSprite(int ult)
     {
         UltimateSprite.sprite = Resources.Load<Sprite>("Sprites/Inventory/UltimateSprite"+ult);
-        UltimateSprite.size *= .26f;
     }
     
 }
