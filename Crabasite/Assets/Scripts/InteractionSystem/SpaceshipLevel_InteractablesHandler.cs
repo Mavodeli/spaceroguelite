@@ -25,6 +25,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                 if(interactable.name == "Windshield"){
                     script.Setup(delegate () {
                         //TODO
+                        Debug.Log("not implemented yet");
                     }, "e", newShowDistanceMaximum+.2f);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
@@ -32,6 +33,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                 if(interactable.name == "Hyperdrive"){
                     script.Setup(delegate () {
                         //TODO
+                        Debug.Log("not implemented yet");
                     }, "e", newShowDistanceMaximum);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
@@ -48,6 +50,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                 if(interactable.name == "Workbench"){
                     script.Setup(delegate () {
                         //TODO
+                        Debug.Log("not implemented yet");
                     }, "e", newShowDistanceMaximum);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
