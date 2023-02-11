@@ -12,28 +12,54 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
             InteractionButton script = interactable.GetComponent<InteractionButton>();
             if(script == null){
                 script = interactable.AddComponent<InteractionButton>();
+                float newShowDistanceMaximum = .8f;
 
                 if(interactable.name == "SpaceshipEntrance"){
                     script.Setup(delegate () {
                         SceneManager.LoadScene("Level 1 - space");
                         Time.timeScale = 1;
-                    }, "e");
+                    }, "e", newShowDistanceMaximum+.5f);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
 
-                if(interactable.name == "blue blobby mass circle"){
+                if(interactable.name == "Windshield"){
                     script.Setup(delegate () {
-                        int ult = 0;//attract two
-                        GameObject player = GameObject.FindGameObjectWithTag("Player");
-                        player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
-                        GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
-                        IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);//TODO: not implemented yet!!!
-                        Destroy(GameObject.Find(interactable.name));//kinda tricky to get the delegate to destroy the correct gameObject ;)
-                    }, "e");
+                        //TODO
+                    }, "e", newShowDistanceMaximum+.2f);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
 
-                //add more interactables here simply by using if checks
+                if(interactable.name == "Hyperdrive"){
+                    script.Setup(delegate () {
+                        //TODO
+                    }, "e", newShowDistanceMaximum);
+                    script.setNewOffset(new Vector3(0, 0, 0));
+                }
+
+                if(interactable.name == "Computer"){
+                    script.Setup(delegate () {
+                        GameObject dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager");
+                        dpm.SendMessage("SaveGame", SendMessageOptions.DontRequireReceiver);
+                        Debug.Log("Game saved.");
+                    }, "e", newShowDistanceMaximum);
+                    script.setNewOffset(new Vector3(0, 0, 0));
+                }
+
+                if(interactable.name == "Workbench"){
+                    script.Setup(delegate () {
+                        //TODO
+                    }, "e", newShowDistanceMaximum);
+                    script.setNewOffset(new Vector3(0, 0, 0));
+                }
+
+                if(interactable.name == "Bed"){
+                    script.Setup(delegate () {
+                        GameObject player = GameObject.FindGameObjectWithTag("Player");
+                        player.SendMessage("addHealth", Mathf.Infinity, SendMessageOptions.DontRequireReceiver);
+                        Debug.Log("Health restored.");
+                    }, "e", newShowDistanceMaximum);
+                    script.setNewOffset(new Vector3(0, 0, 0));
+                }
             }
         }
     }

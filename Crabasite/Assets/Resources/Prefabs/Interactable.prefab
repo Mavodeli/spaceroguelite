@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3191035220333458696}
   - component: {fileID: 3191035220333458697}
   m_Layer: 0
-  m_Name: SpaceshipEntrance
+  m_Name: Interactable
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
