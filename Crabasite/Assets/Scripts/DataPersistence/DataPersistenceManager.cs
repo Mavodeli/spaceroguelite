@@ -29,7 +29,7 @@ public class DataPersistenceManager : MonoBehaviour
         
     }
 
-    private void onEnable()
+    private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
