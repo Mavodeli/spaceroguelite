@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
+public class SpaceLevel_InteractablesHandler : MonoBehaviour
 {
     void Update()
     {
@@ -15,7 +15,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "SpaceshipEntrance"){
                     script.Setup(delegate () {
-                        SceneManager.LoadScene("SampleScene");//TODO: set correct scene ;)
+                        SceneManager.LoadScene("Level 0 - spaceship");
                         Time.timeScale = 1;
                     }, "e");
                     script.setNewOffset(new Vector3(0, 0, 0));

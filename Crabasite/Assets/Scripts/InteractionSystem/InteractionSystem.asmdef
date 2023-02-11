@@ -1,5 +1,5 @@
 {
-    "name": "Misc",
+    "name": "InteractionSystem",
     "rootNamespace": "",
     "references": [
         "GUID:cd8710cdfd91074428d6412a0e873205"
