@@ -16,6 +16,9 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Button optionsGameButton;
     [SerializeField] private Button quitGameButton;
 
+    private string level = "level 1 - space";
+
+
     // New Game starts with fresh GameData
     private void Start()
     {
@@ -28,7 +31,7 @@ public class MainMenuManager : MonoBehaviour
     {
         DisableMenuButtons();
         DataPersistenceManager.instance.NewGame();
-        SceneManager.LoadSceneAsync("Level 1 - space");
+        SceneManager.LoadSceneAsync(level);
     }
 
     // Game will be loaded from saved GameData
@@ -36,7 +39,7 @@ public class MainMenuManager : MonoBehaviour
     {
         DisableMenuButtons();
         // DPM.instance.LoadGame();
-        SceneManager.LoadSceneAsync("Level 1 - space");
+        SceneManager.LoadSceneAsync(level);
     }
 
     public void OptionsMenu()
@@ -60,4 +63,14 @@ public class MainMenuManager : MonoBehaviour
         optionsGameButton.interactable = false;
         quitGameButton.interactable = false;
     }
+
+        public void LoadData(GameData data)
+    {
+        this.level = data.level;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.level = this.level;
+    }
+
 }
