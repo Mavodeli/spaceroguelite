@@ -15,8 +15,6 @@ public class HUDUpdater : MonoBehaviour
     {
         //TODO: only on newGame, else last equipped
         ChangeSprite(3);
-        UltimateSprite.size *= .26f; //0.26f
-        UltimateSprite.size *= .26f;
     }
 
     public void ChangeSprite(int ult)
