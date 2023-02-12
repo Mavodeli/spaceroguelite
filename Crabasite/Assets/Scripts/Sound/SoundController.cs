@@ -71,31 +71,26 @@ public class SoundController : MonoBehaviour
         playSound(name, gameObject, true);
     }
 
-    /**
-     * name: the name of the sound that should be played
-     * gameObject: the gameObject which should "play" the sound, meaning on it's position it will be played
-     * looping: if true, the sound will loop and also will be destroyed upon loading a new scene
-     * dontDestroyOnLoad: if true, the sound will keep playing upon loading new scene
-     */
-    private void playSound(string name, GameObject gameObject, bool looping, bool dontDestroyOnLoad){
+    private AudioSource playSound(string name, GameObject gameObject, bool looping, bool dontDestroyOnLoad){
         AudioSource source = gameObject.AddComponent<AudioSource>();
         source.clip = sounds[name].clip;
         source.loop = looping;
         source.Play();
         if(!looping){
             activeSounds.Add(source);
-        } // looping sounds will automatically be destroyed upon loading a new scene, or never since they play indefinitely
+        } // looping sounds will automatically be destroyed upon loading a new scene, or when they are stopped
         if(dontDestroyOnLoad){
             DontDestroyOnLoad(source);
         }
+        return source;
     }
 
     /**
      * Plays sound indefinitely
      * Sound can only be stopped via stopSound
      */
-    public void playSoundUntilStopped(string name, GameObject gameObject){
-        playSound(name, gameObject, true, true);
+    public AudioSource playSoundUntilStopped(string name, GameObject gameObject){
+        return playSound(name, gameObject, true, true);
     }
 
     /**
