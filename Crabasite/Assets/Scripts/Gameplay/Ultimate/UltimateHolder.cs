@@ -28,8 +28,6 @@ public class UltimateHolder : MonoBehaviour
     {
         state = UltimateState.ready;
         ultimateList = Resources.LoadAll<ScriptableObject>("ScriptableObjects/Ultimates");
-        SwitchUltimate(3);
-        ultimate.player = player;
     }
 
     // Update is called once per frame
@@ -71,6 +69,7 @@ public class UltimateHolder : MonoBehaviour
     public void SwitchUltimate(int ult)
     {
         ultimate = (Ultimate)ultimateList[ult];
+        if(ult == 1) { ultimate.player = player; }
         GameObject hud = GameObject.FindGameObjectWithTag("HUD");
         hud.SendMessage("ChangeSprite", ult, SendMessageOptions.DontRequireReceiver);
     }

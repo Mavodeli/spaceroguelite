@@ -14,7 +14,6 @@ public class HUDUpdater : MonoBehaviour
     private void Start()
     {
         //TODO: only on newGame, else last equipped
-        ChangeSprite(3);
     }
 
     public void ChangeSprite(int ult)
