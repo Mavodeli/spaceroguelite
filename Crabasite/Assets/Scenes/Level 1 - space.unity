@@ -3474,6 +3474,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 81558175279977139, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1760991939}
+    - target: {fileID: 81558175279977139, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitPauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 771291155802291002, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1760991939}
+    - target: {fileID: 771291155802291002, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitPauseMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 1166729734571782225, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3498,6 +3514,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1562015793139144854, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562015793139144854, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562015793139144854, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562015793139144854, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562015793139144854, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1621807370320541273, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_DrawMode
       value: 0
@@ -3506,6 +3542,14 @@ PrefabInstance:
       propertyPath: UltimatesContent
       value: 
       objectReference: {fileID: 425724458}
+    - target: {fileID: 2317329428802775915, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1760991939}
+    - target: {fileID: 2317329428802775915, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnPauseMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 2993701106588836173, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4982,6 +5026,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5734913992523488922, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
+      propertyPath: PausePanel
+      value: 
+      objectReference: {fileID: 1890726439}
+    - target: {fileID: -5734913992523488922, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
+      propertyPath: pausePanel
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522416, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: ultimate
       value: 
@@ -5041,6 +5093,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4705152366001522419, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
   m_PrefabInstance: {fileID: 1760991937}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1760991939 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -5734913992523488922, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
+  m_PrefabInstance: {fileID: 1760991937}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c389136544bf47799f9a1ee83249463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1760991944 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4705152366001522416, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
@@ -5180,6 +5243,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!1 &1890726439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4601348912798976159, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+  m_PrefabInstance: {fileID: 1335324342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1919678449
 GameObject:
   m_ObjectHideFlags: 3

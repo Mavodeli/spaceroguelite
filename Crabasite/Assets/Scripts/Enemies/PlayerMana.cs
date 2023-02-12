@@ -8,6 +8,7 @@ public class PlayerMana : MonoBehaviour, IDataPersistence
     private int maxMana = 100;
     private ManaSystem MS;
     private ManaBar manaBar;
+    
     void Start()
     {
         MS = new ManaSystem(mana, maxMana);

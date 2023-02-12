@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     private int maxhealth = 100;
     private HealthSystem HS;
     public GameOverScreen GameOverScreen;
+
     void Start()
     {
         HS = new HealthSystem(health, maxhealth);
@@ -31,8 +32,9 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
             HS.Heal(hp);
         }
         
-        if(health == 0){
+        if(!isAlive()){
             Debug.Log("YOU DIED");
+            DataPersistenceManager.instance.LoadGame();
             GameOverScreen.Setup();
         }
     }
