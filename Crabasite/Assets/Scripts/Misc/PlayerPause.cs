@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerPause : MonoBehaviour
 {
-    public GameObject pausePanel;
+    public GameObject PausePanel;
     // Update is called once per framepublic GameObject pausePanel;
     // Checks if pause Menu has been opened, if so freeze time => Maybe later not freezing?
     void Update()
@@ -15,25 +15,25 @@ public class PlayerPause : MonoBehaviour
             if (Time.timeScale == 1)
             {
                 Time.timeScale = 0;
-                pausePanel.SetActive(true);
+                PausePanel.SetActive(true);
             }
             else
             {
                 Time.timeScale = 1;
-                pausePanel.SetActive(false);
+                PausePanel.SetActive(false);
             }
         }
     }
 
     public void UnPauseMenu()
     {
-        pausePanel.SetActive(false);
+        PausePanel.SetActive(false);
         Time.timeScale = 1;
     }
 
     public void ExitPauseMenu()
     {
-        pausePanel.SetActive(false);
+        PausePanel.SetActive(false);
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }

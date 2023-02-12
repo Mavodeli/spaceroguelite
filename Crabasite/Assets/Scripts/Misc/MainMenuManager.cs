@@ -8,7 +8,7 @@ using UnityEditor;
 using UnityEngine.UI;
 
 
-public class MainMenuManager : MonoBehaviour
+public class MainMenuManager : MonoBehaviour, IDataPersistence
 {
     [Header("Menu Buttons")]
     [SerializeField] private Button newGameButton;
@@ -16,8 +16,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Button optionsGameButton;
     [SerializeField] private Button quitGameButton;
 
-    private string level = "level 1 - space";
-
+    private string level = "Level 1 - space";
 
     // New Game starts with fresh GameData
     private void Start()
@@ -31,15 +30,15 @@ public class MainMenuManager : MonoBehaviour
     {
         DisableMenuButtons();
         DataPersistenceManager.instance.NewGame();
-        SceneManager.LoadSceneAsync(level);
+        SceneManager.LoadSceneAsync("Level 1 - space");
     }
 
     // Game will be loaded from saved GameData
     public void LoadGameMenu()
     {
         DisableMenuButtons();
-        // DPM.instance.LoadGame();
-        SceneManager.LoadSceneAsync(level);
+        DataPersistenceManager.instance.LoadGame();
+        SceneManager.LoadSceneAsync(this.level);
     }
 
     public void OptionsMenu()
@@ -64,7 +63,7 @@ public class MainMenuManager : MonoBehaviour
         quitGameButton.interactable = false;
     }
 
-        public void LoadData(GameData data)
+    public void LoadData(GameData data)
     {
         this.level = data.level;
     }

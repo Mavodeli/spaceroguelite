@@ -71,7 +71,6 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.LoadData(gameData);
         }
-        // Debug.Log("Loaded Health = " + gameData.health);
     }
     public void SaveGame()
     {
@@ -84,7 +83,6 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
-        // Debug.Log("Saved Health = " + gameData.health);
         dataHandler.Save(gameData);
     }
 
