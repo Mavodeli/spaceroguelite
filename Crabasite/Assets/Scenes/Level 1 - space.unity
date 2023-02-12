@@ -3477,6 +3477,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ExitPauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 317313143909130252, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 317313143909130252, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 748581653826846156, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_Name
       value: MailSide
@@ -3491,6 +3499,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1166729734571782224, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235673962041294745, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1562015793139144854, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
@@ -3517,6 +3529,18 @@ PrefabInstance:
       propertyPath: m_DrawMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2243675858571574332, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243675858571574332, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243675858571574332, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2317329428802775915, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3524,6 +3548,10 @@ PrefabInstance:
     - target: {fileID: 2317329428802775915, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UnPauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633194225267859933, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_Name
+      value: PlayerManaBar
       objectReference: {fileID: 0}
     - target: {fileID: 2837809137079940181, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_IsActive
@@ -3536,6 +3564,10 @@ PrefabInstance:
     - target: {fileID: 3215014033347614263, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360863224852801021, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_Name
+      value: PlayerHealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 4060487279577385411, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -3552,6 +3584,14 @@ PrefabInstance:
     - target: {fileID: 4060487279577385411, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: HUDUpdater, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389568797800237517, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389568797800237517, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4542380645345211853, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3860,6 +3900,10 @@ PrefabInstance:
     - target: {fileID: 5841770098574473242, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244500784974597109, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7301721130376619386, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
