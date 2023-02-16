@@ -39,7 +39,7 @@ public class SoundController : MonoBehaviour
     /**
      * Loads a new sound and replaces it with an old sound if one with the same name already exists
      */
-    public void loadSoundReplace(string name, AudioClip clip){
+    public void loadSoundAndReplace(string name, AudioClip clip){
         Sound s = new Sound(name, clip);
         sounds[name] = s;
     }
@@ -56,19 +56,12 @@ public class SoundController : MonoBehaviour
         }
     }
 
-    // Plays sound once on gameObject
-    public void playSound(string name, GameObject gameObject){
-        playSound(name, gameObject, false);
+    public AudioSource playSound(SoundParameter parameters){
+        return playSound(parameters.soundName, parameters.gameObject, false, parameters.dontDestroyOnLoad);
     }
 
-    // Plays sound once on gameObject, if dontDestroyOnLoad is true sound wont be destoryed upon loading new scene
-    public void playSound(string name, GameObject gameObject, bool dontDestroyOnLoad){
-        playSound(name, gameObject, false, dontDestroyOnLoad);
-    }
-
-    // Plays sound in looping on gameObject
-    public void playSoundLooping(string name, GameObject gameObject){
-        playSound(name, gameObject, true);
+    public AudioSource playSoundLooping(SoundParameter parameters){
+        return playSound(parameters.soundName, parameters.gameObject, true, parameters.dontDestroyOnLoad);
     }
 
     private AudioSource playSound(string name, GameObject gameObject, bool looping, bool dontDestroyOnLoad){
@@ -86,14 +79,6 @@ public class SoundController : MonoBehaviour
     }
 
     /**
-     * Plays sound indefinitely
-     * Sound can only be stopped via stopSound
-     */
-    public AudioSource playSoundUntilStopped(string name, GameObject gameObject){
-        return playSound(name, gameObject, true, true);
-    }
-
-    /**
      * Stops any sound
      * Can be useful if there is a looping sound which should not be destroyed on load
      */
@@ -105,7 +90,6 @@ public class SoundController : MonoBehaviour
     private int frameCounter = 0;
 
     void Update(){
-
         frameCounter++;
         if(frameCounter == 60){
             for(int i = activeSounds.Count - 1; i >= 0; i--)
