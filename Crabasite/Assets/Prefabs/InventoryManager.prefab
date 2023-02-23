@@ -50,7 +50,10 @@ MonoBehaviour:
   Mails: []
   ItemContent: {fileID: 0}
   InventoryItem: {fileID: 5685155740975866673, guid: 85a0fea1a0f8d4e8186d9699eafcfd2d, type: 3}
+  InventoryItemDescription: {fileID: 0}
   MailContent: {fileID: 0}
   InventoryMail: {fileID: 19825244090399675, guid: d2e2b0eb35ab94498a2703e55a5b08c7, type: 3}
-  ItemDescriptionContent: {fileID: 0}
+  InventoryMailDescription: {fileID: 6630050178027339758, guid: 9f17d04254c50e643892f267339488a3, type: 3}
+  InventoryDescriptionContent: {fileID: 0}
   MailDescriptionContent: {fileID: 0}
+  UltimatesContent: {fileID: 0}
