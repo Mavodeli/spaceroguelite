@@ -55,8 +55,8 @@ public class HealthSystem {
     //returns a HealthBar attached to the given GameObject with the given offset in y direction
     public HealthBar attachHealthBar(GameObject _parent, float offsetY){
         GameObject pfHealthBar = Resources.Load<GameObject>("Prefabs/HealthSystem/pfHealthBar");
-        Transform healtBarTransform = Transform.Instantiate(pfHealthBar.transform, Vector3.zero, Quaternion.identity); 
-        HealthBar healthBar = healtBarTransform.GetComponent<HealthBar>();
+        Transform healthBarTransform = Transform.Instantiate(pfHealthBar.transform, Vector3.zero, Quaternion.identity); 
+        HealthBar healthBar = healthBarTransform.GetComponent<HealthBar>();
         healthBar.Setup(this);
         healthBar.transform.parent = _parent.transform;
         healthBar.name = _parent.name+"'s healthBar";

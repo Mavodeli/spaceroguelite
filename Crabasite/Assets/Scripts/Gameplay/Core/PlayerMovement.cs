@@ -15,22 +15,30 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing;
     public float dashDistance = 15f;
     public float dashDuration = 0.1f;
+    public float dash_cooldown = 1f;
 
     private TimerObject paralyze_timer;
+    private TimerObject dash_cooldown_timer;
+
+    // Sound section
+    private AudioSource dashSound;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
 
-        paralyze_timer = new TimerObject();
+        dashSound = (AudioSource) (GameObject.Find("PlayerDashSound")).GetComponent(typeof (AudioSource));
+
+        paralyze_timer = new TimerObject("Player paralyze_timer");
+        dash_cooldown_timer = new TimerObject("Player dash_cooldown_timer");
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing) StartCoroutine(Dash(movement));
-        if (Input.GetKeyDown(KeyCode.A)) sr.flipX = false;
-        if (Input.GetKeyDown(KeyCode.D)) sr.flipX = true;
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && !dash_cooldown_timer.runs()) StartCoroutine(Dash(movement));
+        if (Input.GetKeyDown(KeyCode.A)) sr.flipX = true;
+        if (Input.GetKeyDown(KeyCode.D)) sr.flipX = false;
 
     }
 
@@ -49,15 +57,21 @@ public class PlayerMovement : MonoBehaviour
             current_speed *= 0.1f;
         }
 
-        rb.AddForce(dir * current_speed);
+        Vector2 force = dir * current_speed;
+        if(rb.gravityScale != 0) 
+            force.y = 0;
+
+        rb.AddForce(force);
     }
 
     IEnumerator Dash (Vector2 dir)
     {
+        dashSound.Play();
         isDashing = true;
         rb.velocity = rb.velocity;
         rb.AddForce(dir * dashDistance, ForceMode2D.Impulse);
         yield return new WaitForSeconds(dashDuration);
+        dash_cooldown_timer.start(dash_cooldown);
         isDashing = false;
     }
 
@@ -65,5 +79,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!paralyze_timer.runs())
             paralyze_timer.start(duration);
+    }
+
+    public Vector2 getMovement(){
+        return movement;
     }
 }

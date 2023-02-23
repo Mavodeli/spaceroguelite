@@ -71,5 +71,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# custom additions
+# custom additions: 
+# vscode
 /Crabasite/.vscode/*
+# dotnet-tools
+.config/

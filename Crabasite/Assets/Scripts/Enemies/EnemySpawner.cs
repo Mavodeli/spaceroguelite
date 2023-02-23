@@ -26,7 +26,8 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < fishiesCount1; i++)
         {
-            GameObject fish = new GameObject();
+            // GameObject fish = new GameObject();
+            GameObject fish = Instantiate(Resources.Load<GameObject>("Prefabs/Enemy"));
             if (enemy1 == Type.PufferFish) fish.AddComponent<PufferFishBehaviour>();
             if (enemy1 == Type.MantisShrimp) fish.AddComponent<MantisShrimpBehaviour>();
             if (enemy1 == Type.AnglerFish) fish.AddComponent<AnglerFishBehaviour>();
@@ -35,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
         }
         for (int i = 0; i < fishiesCount2; i++)
         {
-            GameObject fish = new GameObject();
+            GameObject fish = Instantiate(Resources.Load<GameObject>("Prefabs/Enemy"));
             if (enemy2 == Type.PufferFish) fish.AddComponent<PufferFishBehaviour>();
             if (enemy2 == Type.MantisShrimp) fish.AddComponent<MantisShrimpBehaviour>();
             if (enemy2 == Type.AnglerFish) fish.AddComponent<AnglerFishBehaviour>();

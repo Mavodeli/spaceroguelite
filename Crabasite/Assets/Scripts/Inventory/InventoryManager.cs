@@ -27,6 +27,10 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     public Transform InventoryDescriptionContent;
     public Transform MailDescriptionContent;
 
+    public Transform UltimatesContent;
+
+    //TODO: save this dict persistently in GameData!!!
+    private Dictionary<int, bool> UltimateDict;
 
     void Start() {
         inventoryIsOpened = false;
@@ -42,7 +46,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
                 ListItems();
                 ListMails();
-                
+                updateUltimateButtons();
             }
             else {
                 Inventory.SetActive(false);
@@ -223,15 +227,40 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         mailIcon.sprite = mail.icon;
         mailDescription.text = mail.description;
     }
+
+    public void updateUltimateButtons(){
+        foreach(KeyValuePair<int, bool> entry in UltimateDict){
+
+            GameObject child = UltimatesContent.GetChild(entry.Key).gameObject;
+
+            //TODO: change loaded sprite (unlocked)
+            if(entry.Value){
+                child.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Inventory/UltimateSprite"+entry.Key);
+                child.GetComponent<Button>().onClick.RemoveListener(ButtonInactive);
+            }
+            else{
+                child.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Inventory/skill not unlocked yet resized");
+                child.GetComponent<Button>().onClick.AddListener(ButtonInactive);
+            }
+        }
+    }
+    void ButtonInactive(){}
+
+    public void unlockUltimate(int ult){
+        UltimateDict[ult] = true;
+    }
+
     public void LoadData(GameData data)
     {
         ItemDict = data.ItemsDict;
-        MailDict= data.MailDict;
+        MailDict = data.MailDict;
+        UltimateDict = data.UltimateDict;
     }
     public void SaveData(ref GameData data)
     {
         data.ItemsDict = (SerializableDictionary<string,int>)ItemDict;
-        data.MailDict= (SerializableDictionary<string, bool>)MailDict;
+        data.MailDict = (SerializableDictionary<string, bool>)MailDict;
+        data.UltimateDict = (SerializableDictionary<int, bool>)UltimateDict;
     }
 
 }

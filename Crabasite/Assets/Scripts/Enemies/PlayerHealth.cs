@@ -7,13 +7,19 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     private int health = 100;
     private int maxhealth = 100;
     private HealthSystem HS;
-    private HealthBar healthBar;
     public GameOverScreen GameOverScreen;
+
     void Start()
     {
         HS = new HealthSystem(health, maxhealth);
-        float ySize = gameObject.GetComponent<SpriteRenderer>().size.y;
-        healthBar = HS.attachHealthBar(gameObject, ySize/2+.5f);
+        GameObject pfHealthBar = Resources.Load<GameObject>("Prefabs/HealthSystem/pfPlayerHealthBar");
+        Transform healthBarTransform = Transform.Instantiate(pfHealthBar.transform, Vector3.zero, Quaternion.identity);
+        HealthBar healthBar = healthBarTransform.GetComponent<HealthBar>();
+        healthBar.Setup(HS);
+
+        healthBar.transform.parent = GameObject.FindGameObjectWithTag("HUD").transform;
+        healthBar.name = "PlayerHealth";
+        healthBar.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     //negative hp damages, positive hp heals
@@ -26,8 +32,9 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
             HS.Heal(hp);
         }
         
-        if(health == 0){
-            Debug.Log("Player.health == 0 => Game Over");
+        if(!isAlive()){
+            Debug.Log("YOU DIED");
+            DataPersistenceManager.instance.LoadGame();
             GameOverScreen.Setup();
         }
     }

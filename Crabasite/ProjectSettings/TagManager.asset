@@ -11,6 +11,8 @@ TagManager:
   - Timer
   - Inventory
   - ProgressionTrigger
+  - HUD
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -50,6 +52,9 @@ TagManager:
     locked: 0
   - name: HealthBar
     uniqueID: 2197177389
+    locked: 0
+  - name: HUD
+    uniqueID: 3650480005
     locked: 0
   - name: Inventory
     uniqueID: 571075293

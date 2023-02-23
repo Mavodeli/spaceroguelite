@@ -8,7 +8,7 @@ public class TimerObject
 
     //creates a new GameObject for the timer. does *not* start the timer!!!
     //if autoDestroy is set: deletes the GameObject automatically when the timer runs out
-    public TimerObject(bool autoDestroy = false){
+    public TimerObject(string name = "Timer", bool autoDestroy = false){
         if(GameObject.FindWithTag("Timers") == null){
             // Debug.Log("Beep");
             GameObject new_timers = new GameObject();
@@ -18,7 +18,7 @@ public class TimerObject
         GameObject timers = GameObject.FindWithTag("Timers");//gameobj that holds all runnning timers
         go.transform.parent = timers.transform;
         go.tag = "Timer";
-        go.name = "Timer";
+        go.name = name;
         go.AddComponent<Timer2>();
         if(autoDestroy)
             go.GetComponent<Timer2>().autoDestroy = autoDestroy;

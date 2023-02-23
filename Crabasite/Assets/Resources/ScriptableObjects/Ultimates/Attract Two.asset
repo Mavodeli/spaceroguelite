@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95da718bd0d9e8f48b538266306e7dda, type: 3}
   m_Name: Attract Two
   m_EditorClassIdentifier: 
-  cooldown: 2
-  isActive: 0
+  cooldown: 0
+  isActive: 1
+  player: {fileID: 0}
   selectedObject1: {fileID: 0}
   selectedObject2: {fileID: 0}
   object1Speed: 0
   object2Speed: 0
-  key: 50
+  key: 32
