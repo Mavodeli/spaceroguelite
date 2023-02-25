@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 358468957086447513}
   - component: {fileID: 8159520336041167600}
   m_Layer: 0
-  m_Name: PlayerMana
+  m_Name: PlayerManaBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1008,7 +1008,7 @@ GameObject:
   - component: {fileID: 8509013501524051779}
   - component: {fileID: 7244500784974597109}
   m_Layer: 0
-  m_Name: PlayerHealth
+  m_Name: PlayerHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
