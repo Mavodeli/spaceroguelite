@@ -8,6 +8,7 @@ public class GameData
     public int health;
     public int mana;
     public string level;
+    public int lastEquippedUltimate;
     public SerializableDictionary<string, int> ItemsDict;
     public SerializableDictionary<string, bool> MailDict;
     public SerializableDictionary<string, bool> ProgressionDict;
@@ -21,6 +22,7 @@ public class GameData
         this.health = 100;
         this.mana = 100;
         this.level = "Level 1 - space";
+        this.lastEquippedUltimate = 3;//'empty' ultimate
         this.ItemsDict = new SerializableDictionary<string, int>();
         this.MailDict = new SerializableDictionary<string, bool>();
         this.ProgressionDict = new SerializableDictionary<string, bool>();

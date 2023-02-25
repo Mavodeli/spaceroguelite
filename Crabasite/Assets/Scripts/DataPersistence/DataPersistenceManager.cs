@@ -83,14 +83,15 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
+        Debug.Log(gameData.health);
         dataHandler.Save(gameData);
     }
 
     private void OnApplicationQuit()
     {
         //TODO change later to Save at specific time in Spaceship, so save on button press.
-        SaveGame();
-        Debug.Log("Saved Game");
+        // SaveGame();
+        // Debug.Log("Saved Game");
     }
     
 
@@ -104,5 +105,11 @@ public class DataPersistenceManager : MonoBehaviour
     public bool HasGameData()
     {
         return gameData != null;
+    }
+
+    public GameData getGameData(){
+        if(HasGameData())
+            return gameData;
+        return null;
     }
 }
