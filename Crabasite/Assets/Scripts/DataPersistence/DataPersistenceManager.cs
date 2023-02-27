@@ -44,12 +44,12 @@ public class DataPersistenceManager : MonoBehaviour
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+        LoadGame(false);
     }
     // Called when switching Scenes
     public void OnSceneUnloaded(Scene scene)
     {
-        // SaveGame();
+        SaveGame(false);
     }
 
     public void NewGame()
@@ -57,9 +57,9 @@ public class DataPersistenceManager : MonoBehaviour
         this.gameData = new GameData();
         Debug.Log("New Game");
     }
-    public void LoadGame()
+    public void LoadGame(bool fromFile)
     {
-        this.gameData = dataHandler.Load();
+        if(fromFile) this.gameData = dataHandler.Load();
         if (this.gameData == null)
         {
             Debug.Log("No data was found. A New Game has to be started first.");
@@ -72,7 +72,7 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObj.LoadData(gameData);
         }
     }
-    public void SaveGame()
+    public void SaveGame(bool toFile)
     {
         if (this.gameData == null)
         {
@@ -83,7 +83,7 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
-        dataHandler.Save(gameData);
+        if(toFile) dataHandler.Save(gameData);
     }
 
     private void OnApplicationQuit()

@@ -259,25 +259,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     
     public void SaveData(ref GameData data)
     {
-        data.ItemsDict = (SerializableDictionary<string,int>)ItemDict;
-
-        //idea for a solution for issue #68 (doesn't work ;) )
-        //https://github.com/Mavodeli/spaceroguelite/issues/68
-
-        // Dictionary<string, int> items = (Dictionary<string, int>)data.ItemsDict;
-        // foreach(KeyValuePair<string, int> entry in ItemDict){
-        //     Debug.Log(entry.Key+" "+entry.Value);
-        //     try
-        //     {
-        //         items[entry.Key] += entry.Value;
-        //     }
-        //     catch (KeyNotFoundException)
-        //     {
-        //         items[entry.Key] = entry.Value;
-        //     }
-        // }
-        // data.ItemsDict = (SerializableDictionary<string, int>)items;
-        
+        data.ItemsDict = (SerializableDictionary<string,int>)ItemDict;        
         data.MailDict = (SerializableDictionary<string, bool>)MailDict;
         data.UltimateDict = (SerializableDictionary<int, bool>)UltimateDict;
     }

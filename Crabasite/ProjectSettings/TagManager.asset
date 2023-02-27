@@ -14,6 +14,7 @@ TagManager:
   - HUD
   - Interactable
   - DataPersistenceManager
+  - PausePanel
   layers:
   - Default
   - TransparentFX

@@ -37,7 +37,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     public void LoadGameMenu()
     {
         DisableMenuButtons();
-        DataPersistenceManager.instance.LoadGame();
+        DataPersistenceManager.instance.LoadGame(true);
         SceneManager.LoadSceneAsync(this.level);
     }
 

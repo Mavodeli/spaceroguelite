@@ -6,6 +6,17 @@ using UnityEngine.SceneManagement;
 public class PlayerPause : MonoBehaviour
 {
     public GameObject PausePanel;
+
+    void Start(){
+        GameObject[] obj = GameObject.FindObjectsOfType<GameObject>(true);
+        foreach(GameObject go in obj){
+            if(go.tag == "PausePanel"){
+                PausePanel = go;
+                break;
+            }
+        }
+    }
+    
     // Update is called once per framepublic GameObject pausePanel;
     // Checks if pause Menu has been opened, if so freeze time => Maybe later not freezing?
     void Update()
