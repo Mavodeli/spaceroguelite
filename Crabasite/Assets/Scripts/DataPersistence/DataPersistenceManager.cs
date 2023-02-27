@@ -49,7 +49,7 @@ public class DataPersistenceManager : MonoBehaviour
     // Called when switching Scenes
     public void OnSceneUnloaded(Scene scene)
     {
-        SaveGame();
+        // SaveGame();
     }
 
     public void NewGame()
@@ -83,7 +83,6 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
-        Debug.Log(gameData.health);
         dataHandler.Save(gameData);
     }
 
