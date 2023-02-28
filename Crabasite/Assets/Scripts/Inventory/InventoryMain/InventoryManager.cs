@@ -74,6 +74,14 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
         return ItemExists;
     }
+
+    public int ItemAmountInDict(string name){
+        int amount = 0;
+        if(ItemInDict(name))
+            amount = ItemDict[name];
+        return amount;
+    }
+
     public void AddItem(string name, int amount = 1)
     {
         try

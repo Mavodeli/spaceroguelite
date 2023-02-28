@@ -8,10 +8,13 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
 {
     private Dictionary<string, OnTriggerEnterDelegate> triggerMap = new Dictionary<string, OnTriggerEnterDelegate>();
     private GameObject player;
+    private InventoryManager IM;
 
-
+    private int arrowsToCollect = 5;
+    
     private void Start(){
         player = GameObject.FindGameObjectWithTag("Player");
+        IM = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
 
         triggerMap.Add("PH black hole", delegate () {
             //kill player upon entering the black hole
@@ -38,11 +41,24 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
             ProgressionTrigger pt = trigger.GetComponent<ProgressionTrigger>();
             pt.Setup(triggerMap[trigger.name]);
         }
+
+        int count = 10;
+        for(int i = 0; i < count; i++){
+
+            GameObject arrow = Instantiate(Resources.Load<GameObject>("Prefabs/DefaultItem"));
+            ItemBehaviour script = arrow.AddComponent<ItemBehaviour>();
+            script.Setup("arrow of doom");
+
+            arrow.transform.position = new Vector3(2*i, -2*i, 0);
+        }
     }
     
     void Update()
     {
-        
+        if(!PT.getFlag("arrowMessageShown") && IM.ItemAmountInDict("arrow of doom") >= arrowsToCollect){
+            Debug.Log("Congrats on collectiong 5 arrows of doom!");
+            PT.setFlag("arrowMessageShown");
+        }
     }
 
     public void printPTDict(){

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: arrow of doom
   m_EditorClassIdentifier: 
   id: 0
-  itemName: arrow of doom
-  description: This is a great arrow!
-  icon: {fileID: 21300000, guid: 32fc46fa3f0e8b349b777fc008066ece, type: 3}
+  itemName: 
+  description: 
+  icon: {fileID: 0}
+  iconScale: 0
