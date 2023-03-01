@@ -12,7 +12,7 @@ public class QuestJournal : MonoBehaviour//, IDataPersistence
     void Update(){
         foreach(Quest quest in activeQuests){
             if(quest.checkCompletion()){
-                activeQuests.Remove(quest);
+                activeQuests.Remove(quest);//TODO doesnt get removed properly
                 completedQuests.Add(quest);
             }
         }

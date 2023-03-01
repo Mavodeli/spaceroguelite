@@ -48,14 +48,13 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
         }
 
         List<completionCriterion> ccList = new List<completionCriterion>();
-        ccList.Add(delegate(){return !PT.getFlag("arrowMessageShown") && (IM.ItemAmountInDict("arrow of doom") >= 5);});
+        ccList.Add(delegate(){return IM.ItemAmountInDict("arrow of doom") >= 5;});
 
         QJ.addNewQuest(new Quest(
             "collectArrows", 
             ccList, 
             delegate(){
                 Debug.Log("Congrats on collectiong 5 arrows of doom!");
-                PT.setFlag("arrowMessageShown");
         }));
     }
     
