@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: arrow of doom
   m_EditorClassIdentifier: 
   id: 0
-  itemName: 
+  itemName: arrow of doom
   description: 
-  icon: {fileID: 0}
-  iconScale: 0
+  icon: {fileID: 21300000, guid: 32fc46fa3f0e8b349b777fc008066ece, type: 3}
+  iconScale: 1

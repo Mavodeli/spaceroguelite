@@ -18,7 +18,7 @@ public class ItemBehaviour : PhysicalEntity
         }
         catch (System.NullReferenceException)
         {
-            Debug.LogError("The corresponding ScriptableObject for the Item "+name+" was not found. Aborting ItemBehaviour Setup.");
+            Debug.Log("ERROR: The corresponding ScriptableObject for the Item "+name+" was not found. Aborting ItemBehaviour Setup.");
             return;
         }
 

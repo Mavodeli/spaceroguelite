@@ -24,13 +24,12 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
             if(!PT.getFlag("triggeredEnemySpawner")){
                 int count = 3;
                 for(int i = 0; i < count; i++){
-                    GameObject fish = Instantiate(Resources.Load<GameObject>("Prefabs/Enemy"));
-                    fish.AddComponent<PufferFishBehaviour>();
                     Vector2 playerLastDirection = player.GetComponent<PlayerMovement>().getMovement();
                     //offset still kinda WIP
                     Vector3 spawnOffsetToPlayer = new Vector3(playerLastDirection.x*12, playerLastDirection.y*12, 0);
                     Vector3 fishToFishOffset = new Vector3(2*i, -2*i, 0);
-                    fish.transform.position = player.transform.position + spawnOffsetToPlayer + fishToFishOffset;
+                    Vector3 position = player.transform.position + spawnOffsetToPlayer + fishToFishOffset;
+                    Spawn.Enemy("PufferFish", position);
                 }
                 PT.setFlag("triggeredEnemySpawner");
             }
@@ -44,12 +43,7 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
 
         int count = 10;
         for(int i = 0; i < count; i++){
-
-            GameObject arrow = Instantiate(Resources.Load<GameObject>("Prefabs/DefaultItem"));
-            ItemBehaviour script = arrow.AddComponent<ItemBehaviour>();
-            script.Setup("arrow of doom");
-
-            arrow.transform.position = new Vector3(2*i, -2*i, 0);
+            Spawn.Item("arrow of doom", new Vector3(2*i, -2*i, 0));
         }
     }
     
