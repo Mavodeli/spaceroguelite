@@ -6,6 +6,7 @@ public class QuestJournal : MonoBehaviour//, IDataPersistence
 {
     private List<Quest> activeQuests = new List<Quest>();
     private List<Quest> completedQuests = new List<Quest>();
+    public delegate bool completionCriterion();
     //serializable quests???
 
     void Update(){
@@ -25,7 +26,6 @@ public class QuestJournal : MonoBehaviour//, IDataPersistence
     {
         public string identifier;
         private bool completed;
-        public delegate bool completionCriterion();
         public delegate void OnCompletion();
         private OnCompletion onCompletion;
 

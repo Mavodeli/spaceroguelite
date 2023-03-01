@@ -2,6 +2,7 @@ using Codice.Client.BaseCommands;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static QuestJournal;
 
 
 public class SpaceLevel_ProgressionScript : ProgressionParentClass
@@ -9,12 +10,12 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
     private Dictionary<string, OnTriggerEnterDelegate> triggerMap = new Dictionary<string, OnTriggerEnterDelegate>();
     private GameObject player;
     private InventoryManager IM;
-
-    private int arrowsToCollect = 5;
+    private QuestJournal QJ;
     
     private void Start(){
         player = GameObject.FindGameObjectWithTag("Player");
         IM = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
+        QJ = gameObject.GetComponent<QuestJournal>();
 
         triggerMap.Add("PH black hole", delegate () {
             //kill player upon entering the black hole
@@ -45,14 +46,22 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
         for(int i = 0; i < count; i++){
             Spawn.Item("arrow of doom", new Vector3(2*i, -2*i, 0));
         }
+
+        List<completionCriterion> ccList = new List<completionCriterion>();
+        ccList.Add(delegate(){return !PT.getFlag("arrowMessageShown") && (IM.ItemAmountInDict("arrow of doom") >= 5);});
+
+        QJ.addNewQuest(new Quest(
+            "collectArrows", 
+            ccList, 
+            delegate(){
+                Debug.Log("Congrats on collectiong 5 arrows of doom!");
+                PT.setFlag("arrowMessageShown");
+        }));
     }
     
     void Update()
     {
-        if(!PT.getFlag("arrowMessageShown") && IM.ItemAmountInDict("arrow of doom") >= arrowsToCollect){
-            Debug.Log("Congrats on collectiong 5 arrows of doom!");
-            PT.setFlag("arrowMessageShown");
-        }
+        
     }
 
     public void printPTDict(){
