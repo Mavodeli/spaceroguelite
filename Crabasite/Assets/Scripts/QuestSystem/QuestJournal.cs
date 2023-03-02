@@ -4,53 +4,63 @@ using UnityEngine;
 
 public class QuestJournal : MonoBehaviour//, IDataPersistence
 {
-    private List<Quest> activeQuests = new List<Quest>();
-    private List<Quest> completedQuests = new List<Quest>();
-    public delegate bool completionCriterion();
+    private Dictionary<string, Quest> activeQuests = new Dictionary<string, Quest>();
+    private Dictionary<string, Quest> completedQuests = new Dictionary<string, Quest>();
     //serializable quests???
 
     void Update(){
-        foreach(Quest quest in activeQuests){
-            if(quest.checkCompletion()){
-                activeQuests.Remove(quest);//TODO doesnt get removed properly
-                completedQuests.Add(quest);
+        // the next two lines I pulled straight from the deepest chasm of the performance hell
+        // this way everything works fine but we might run into trouble with it later, depending 
+        // on how many active quests we will end up with at the same time ;)
+        Dictionary<string, Quest> activeQuests_copy = new Dictionary<string, Quest>(activeQuests);
+        foreach(KeyValuePair<string, Quest> entry in activeQuests_copy){
+            if(entry.Value.checkCompletion()){
+                completedQuests.Add(entry.Key, entry.Value);
+                activeQuests.Remove(entry.Key);
             }
         }
     }
 
     public void addNewQuest(Quest quest){
-        activeQuests.Add(quest);
+        activeQuests.Add(quest.identifier, quest);
+    }
+
+    public bool QuestIsCompleted(string quest_identifier){
+        bool b;
+        try
+        {
+            Quest tmp = completedQuests[quest_identifier];
+            b = true;
+        }
+        catch (KeyNotFoundException)
+        {
+            b = false;
+        }
+        return b;
     }
 
     public struct Quest
     {
         public string identifier;
-        private bool completed;
+        public delegate bool CompletionCriterion();
         public delegate void OnCompletion();
+
+        private bool completed;
         private OnCompletion onCompletion;
+        private CompletionCriterion completionCriterion;
 
-        private List<completionCriterion> completionCriteria;
-
-        public Quest(string name, List<completionCriterion> _completionCriteria = null, OnCompletion _onCompletion = null){
+        public Quest(string name, CompletionCriterion _completionCriterion = null, OnCompletion _onCompletion = null){
             identifier = name;
             completed = false;
-            completionCriteria = _completionCriteria != null ? _completionCriteria : new List<completionCriterion>();
+            completionCriterion = _completionCriterion != null ? _completionCriterion : delegate(){return true;};
             onCompletion = _onCompletion != null ? _onCompletion : delegate(){};
         }
 
         public bool checkCompletion(){
-            bool meets = meetsCompletionCriteria();//compute once bc O(n)
-            if(!completed && meets) onCompletion();//do if just completed
-            completed = completed || meets;
+            bool meetsCompletionCriterion = completionCriterion();
+            if(!completed && meetsCompletionCriterion) onCompletion();//do if just completed
+            completed = completed || meetsCompletionCriterion;
             return completed;
-        }
-
-        private bool meetsCompletionCriteria(){
-            bool b = true;
-            foreach(completionCriterion cc in completionCriteria){
-                b = b && cc();
-            }
-            return b;
         }
     }
 }

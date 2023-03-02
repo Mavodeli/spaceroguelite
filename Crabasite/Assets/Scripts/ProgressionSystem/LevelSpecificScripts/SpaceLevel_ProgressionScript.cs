@@ -47,12 +47,11 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
             Spawn.Item("arrow of doom", new Vector3(2*i, -2*i, 0));
         }
 
-        List<completionCriterion> ccList = new List<completionCriterion>();
-        ccList.Add(delegate(){return IM.ItemAmountInDict("arrow of doom") >= 5;});
-
         QJ.addNewQuest(new Quest(
-            "collectArrows", 
-            ccList, 
+            "collect_five_arrows", 
+            delegate(){
+                return IM.ItemAmountInDict("arrow of doom") >= 5;
+            },
             delegate(){
                 Debug.Log("Congrats on collectiong 5 arrows of doom!");
         }));
