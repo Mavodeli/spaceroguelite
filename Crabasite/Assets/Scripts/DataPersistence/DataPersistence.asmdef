@@ -2,7 +2,8 @@
     "name": "DataPersistence",
     "rootNamespace": "",
     "references": [
-        "GUID:1fcf3d935992442e39008ae979fb3473"
+        "GUID:1fcf3d935992442e39008ae979fb3473",
+        "GUID:9b655524a946b6348ba982917e14b53d"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

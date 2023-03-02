@@ -77,4 +77,3 @@ crashlytics-build.properties
 # dotnet-tools
 .config/
 datagame_link.lnk
-Crabasite/Packages/packages-lock.json

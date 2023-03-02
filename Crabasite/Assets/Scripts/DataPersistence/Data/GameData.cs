@@ -13,6 +13,8 @@ public class GameData
     public SerializableDictionary<string, bool> MailDict;
     public SerializableDictionary<string, bool> ProgressionDict;
     public SerializableDictionary<int, bool> UltimateDict;
+    public SerializableDictionary<string, SerializableQuest> activeQuests;
+    public SerializableDictionary<string, SerializableQuest> completedQuests;
     
 
     // the values defined in this constructor will be the default values
@@ -31,5 +33,7 @@ public class GameData
         UltimateDict.Add(0, false);
         UltimateDict.Add(1, false);
         UltimateDict.Add(2, false);
+        this.activeQuests = new SerializableDictionary<string, SerializableQuest>();
+        this.completedQuests = new SerializableDictionary<string, SerializableQuest>();
     }
 }

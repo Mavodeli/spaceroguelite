@@ -48,7 +48,9 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
         }
 
         QJ.addNewQuest(new Quest(
-            "collect_five_arrows", 
+            "collect_five_arrows",
+            QJ.Event_moveItemToInventory,
+            gameObject,//GameHandler
             delegate(){
                 return IM.ItemAmountInDict("arrow of doom") >= 5;
             },

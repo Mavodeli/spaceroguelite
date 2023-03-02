@@ -29,12 +29,14 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
     public Transform UltimatesContent;
 
-    //TODO: save this dict persistently in GameData!!!
     private Dictionary<int, bool> UltimateDict;
+
+    private QuestJournal QJ;
 
     void Start() {
         inventoryIsOpened = false;
         Inventory.SetActive(false);
+        QJ = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<QuestJournal>();
     }
 
     /// If the player presses the "i" key, the inventory will open or close
@@ -92,6 +94,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         {
             ItemDict.Add(name, amount);
         }
+        QJ.SendMessage("InvokeEvent_moveItemToInventory", SendMessageOptions.DontRequireReceiver);
     }
 
     public void RemoveItem(string name, int amount = 1)
