@@ -42,9 +42,9 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                     script.Setup(delegate () {
                         GameObject dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager");
                         dpm.SendMessage("SaveGame", true, SendMessageOptions.DontRequireReceiver);
-                        Debug.Log("Game saved to file.");
+                        // Debug.Log("Game saved to file.");
                         dpm.SendMessage("LoadGame", true, SendMessageOptions.DontRequireReceiver);
-                        Debug.Log("Game loaded from file.");
+                        // Debug.Log("Game loaded from file.");
                     }, "e", newShowDistanceMaximum);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }

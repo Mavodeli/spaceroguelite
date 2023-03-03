@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class QuestJournal : MonoBehaviour, IDataPersistence
-{
+{   
     private Dictionary<string, Quest> activeQuests = new Dictionary<string, Quest>();
     private Dictionary<string, Quest> completedQuests = new Dictionary<string, Quest>();
 
-    //Listener Events
-    public UnityEvent Event_moveItemToInventory = new UnityEvent();
-
+    // Events (don't forget to modify GameData.cs)
+    public SerializableEvent Event_moveItemToInventory = new SerializableEvent();
 
     private void InvokeEvent_moveItemToInventory(){
-        Event_moveItemToInventory.Invoke();
+        Event_moveItemToInventory?.Invoke();
     }
 
     private void updateStatusForCompletedQuest(string quest_identifier){
@@ -38,6 +37,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         try
         {
             activeQuests.Add(quest.identifier, quest);
+            quest.activate();//took 3 days to add this line ;) (hopefully everything works fine now...)
         }
         catch (System.ArgumentException)
         {
@@ -61,9 +61,13 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
+        // Events (don't forget to modify GameData.cs)
+        Event_moveItemToInventory = data.Event_moveItemToInventory;
+
         activeQuests.Clear();
         foreach(KeyValuePair<string, SerializableQuest> entry in data.activeQuests){
             activeQuests.Add(entry.Key, entry.Value);
+            entry.Value.activate();//!!!
         }
         completedQuests.Clear();
         foreach(KeyValuePair<string, SerializableQuest> entry in data.completedQuests){
@@ -81,5 +85,8 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         foreach(KeyValuePair<string, Quest> entry in completedQuests){
             data.completedQuests.Add(entry.Key, new SerializableQuest(entry.Value));
         }
+
+        // Events (don't forget to modify GameData.cs)
+        data.Event_moveItemToInventory = Event_moveItemToInventory;
     }
 }
