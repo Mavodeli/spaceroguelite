@@ -16,22 +16,21 @@ public class Quest
         public GameObject GameHandler;
         public UnityEvent eventToListenFor;
 
-        public Quest(){}
-
-        public Quest(string _identifier, UnityEvent _eventToListenFor, GameObject _GameHandler, CompletionCriterion completionCriterion, OnCompletion _onCompletion = null){
+        public Quest(string _identifier, UnityEvent _eventToListenFor, GameObject _GameHandler, CompletionCriterion completionCriterion, OnCompletion _onCompletion){
             identifier = _identifier;
             completed = false;
             modifyCompletion = delegate(){
                 completed = completionCriterion();
             };
-            onCompletion = _onCompletion != null ? _onCompletion : delegate(){};
+            onCompletion = _onCompletion;
             GameHandler = _GameHandler;
-
             eventToListenFor = _eventToListenFor;
             eventToListenFor.AddListener(checkCompletion);
         }
 
-        public void checkCompletion(){
+        public Quest(){}
+
+        protected void checkCompletion(){
             bool previous_completed = completed;
             modifyCompletion();
             if(!previous_completed && completed){//do if just completed

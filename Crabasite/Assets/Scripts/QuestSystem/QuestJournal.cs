@@ -7,23 +7,10 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
 {
     private Dictionary<string, Quest> activeQuests = new Dictionary<string, Quest>();
     private Dictionary<string, Quest> completedQuests = new Dictionary<string, Quest>();
-    //serializable quests???
 
     //Listener Events
     public UnityEvent Event_moveItemToInventory = new UnityEvent();
 
-    void Update(){
-        // the next two lines I pulled straight from the deepest chasm of the performance hell
-        // this way everything works fine but we might run into trouble with it later, depending 
-        // on how many active quests we will end up with at the same time ;)
-        // Dictionary<string, Quest> activeQuests_copy = new Dictionary<string, Quest>(activeQuests);
-        // foreach(KeyValuePair<string, Quest> entry in activeQuests_copy){
-        //     if(entry.Value.checkCompletion()){
-        //         completedQuests.Add(entry.Key, entry.Value);
-        //         activeQuests.Remove(entry.Key);
-        //     }
-        // }
-    }
 
     private void InvokeEvent_moveItemToInventory(){
         Event_moveItemToInventory.Invoke();
@@ -37,18 +24,24 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         }
         catch (KeyNotFoundException)
         {
-            Debug.Log("The quest "+quest_identifier+" is not an active Quest!");
+            // Debug.LogWarning("The quest "+quest_identifier+" is not an active Quest!");
         }
     }
 
     public void addNewQuest(Quest quest){
+
+        if(QuestIsCompleted(quest.identifier)){
+            // Debug.LogWarning("Tried to add the Quest "+quest.identifier+" which has already been completed. The new Quest was not added.");
+            return;
+        }
+
         try
         {
             activeQuests.Add(quest.identifier, quest);
         }
         catch (System.ArgumentException)
         {
-            Debug.Log("Tried to add the Quest "+quest.identifier+" which already existed in activeQuests.");
+            // Debug.LogWarning("Tried to add the Quest "+quest.identifier+" which already existed in activeQuests. The new Quest was not added.");
         }
     }
 
@@ -80,27 +73,13 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
     
     public void SaveData(ref GameData data)
     {
-        // data.activeQuests = (SerializableDictionary<string, Quest>)activeQuests;        
-        // data.completedQuests = (SerializableDictionary<string, Quest>)completedQuests;
         data.activeQuests = new SerializableDictionary<string, SerializableQuest>();
         foreach(KeyValuePair<string, Quest> entry in activeQuests){
-            SerializableQuest sq = new SerializableQuest(
-                entry.Value.identifier,
-                entry.Value.eventToListenFor,
-                entry.Value.GameHandler,
-                delegate(){entry.Value.onCompletion();}
-            );
-            data.activeQuests.Add(entry.Key, sq);
+            data.activeQuests.Add(entry.Key, new SerializableQuest(entry.Value));
         }
         data.completedQuests = new SerializableDictionary<string, SerializableQuest>();
         foreach(KeyValuePair<string, Quest> entry in completedQuests){
-            SerializableQuest sq = new SerializableQuest(
-                entry.Value.identifier,
-                entry.Value.eventToListenFor,
-                entry.Value.GameHandler,
-                delegate(){entry.Value.onCompletion();}
-            );
-            data.completedQuests.Add(entry.Key, sq);
+            data.completedQuests.Add(entry.Key, new SerializableQuest(entry.Value));
         }
     }
 }
