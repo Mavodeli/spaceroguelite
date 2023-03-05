@@ -30,7 +30,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                 return;
             }
             else{
-                if(debug_mode)Debug.LogWarning("Tried to add the Quest "+identifier+" which has already been completed. The new Quest was not added.");
+                if(debug_mode) Debug.LogWarning("Tried to add the Quest "+identifier+" which has already been completed. The new Quest was not added.");
                 return;
             }
         }

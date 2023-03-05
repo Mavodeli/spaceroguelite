@@ -3186,16 +3186,16 @@ MonoBehaviour:
   loadGameButton: {fileID: 779514421}
   optionsGameButton: {fileID: 1571708222}
   quitGameButton: {fileID: 1850496147}
-  graphicsDD: {fileID: 697950172}
-  resolutionsDD: {fileID: 1082431126}
-  backToMenu: {fileID: 929517626}
-  volumeSlider: {fileID: 1195094042}
-  fullscreenToggle: {fileID: 1449249695}
-  volumeText: {fileID: 955674669}
-  settingsText: {fileID: 1858957532}
-  graphicsText: {fileID: 1828038392}
-  resolutionsText: {fileID: 1633439718}
-  audioMixer: {fileID: 24100000, guid: 006fffa392dab42dea1807580855ea38, type: 2}
+  graphicsDD: {fileID: 0}
+  resolutionsDD: {fileID: 0}
+  backToMenu: {fileID: 0}
+  volumeSlider: {fileID: 0}
+  fullscreenToggle: {fileID: 0}
+  volumeText: {fileID: 0}
+  settingsText: {fileID: 0}
+  graphicsText: {fileID: 0}
+  resolutionsText: {fileID: 0}
+  audioMixer: {fileID: 0}
   isFullscreen: 0
   resolutionsIndex: 0
 --- !u!1 &1281224195
@@ -3550,6 +3550,63 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
+--- !u!1001 &1456544895
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6284664120491818774, guid: 75a98b8e234aca8469b9143f2272f008, type: 3}
+      propertyPath: m_Name
+      value: QuestEventsContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576427184352709898, guid: 75a98b8e234aca8469b9143f2272f008, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576427184352709898, guid: 75a98b8e234aca8469b9143f2272f008, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576427184352709898, guid: 75a98b8e234aca8469b9143f2272f008, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576427184352709898, guid: 75a98b8e234aca8469b9143f2272f008, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576427184352709898, guid: 75a98b8e234aca8469b9143f2272f008, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576427184352709898, guid: 75a98b8e234aca8469b9143f2272f008, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576427184352709898, guid: 75a98b8e234aca8469b9143f2272f008, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576427184352709898, guid: 75a98b8e234aca8469b9143f2272f008, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576427184352709898, guid: 75a98b8e234aca8469b9143f2272f008, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576427184352709898, guid: 75a98b8e234aca8469b9143f2272f008, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576427184352709898, guid: 75a98b8e234aca8469b9143f2272f008, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 75a98b8e234aca8469b9143f2272f008, type: 3}
 --- !u!1 &1488902151
 GameObject:
   m_ObjectHideFlags: 0

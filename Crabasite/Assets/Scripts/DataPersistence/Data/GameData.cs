@@ -13,6 +13,8 @@ public class GameData
     public SerializableDictionary<string, bool> MailDict;
     public SerializableDictionary<string, bool> ProgressionDict;
     public SerializableDictionary<int, bool> UltimateDict;
+    public int lastEquippedUltimate;
+    public SerializableDictionary<string, bool> activeQuests;
 
     // Options related Savedata
     public int graphicsIndex;
@@ -35,6 +37,8 @@ public class GameData
         UltimateDict.Add(0, false);
         UltimateDict.Add(1, false);
         UltimateDict.Add(2, false);
+        this.lastEquippedUltimate = 3;
+        this.activeQuests = new SerializableDictionary<string, bool>();
         this.graphicsIndex = 0;
         this.soundVolume = 0;
         this.isFullscreen = true;
