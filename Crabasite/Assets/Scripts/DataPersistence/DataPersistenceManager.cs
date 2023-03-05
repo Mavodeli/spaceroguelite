@@ -17,7 +17,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogError("Found more than one Data Persistance Manager in the scene. Destroying the newest one.");
+            // Debug.LogError("Found more than one Data Persistance Manager in the scene. Destroying the newest one.");
             Destroy(this.gameObject);
             return;
         }
@@ -44,12 +44,12 @@ public class DataPersistenceManager : MonoBehaviour
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+        LoadGame(false);
     }
     // Called when switching Scenes
     public void OnSceneUnloaded(Scene scene)
     {
-        SaveGame();
+        SaveGame(false);
     }
 
     public void NewGame()
@@ -57,9 +57,9 @@ public class DataPersistenceManager : MonoBehaviour
         this.gameData = new GameData();
         Debug.Log("New Game");
     }
-    public void LoadGame()
+    public void LoadGame(bool fromFile)
     {
-        this.gameData = dataHandler.Load();
+        if(fromFile) this.gameData = dataHandler.Load();
         if (this.gameData == null)
         {
             Debug.Log("No data was found. A New Game has to be started first.");
@@ -72,7 +72,7 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObj.LoadData(gameData);
         }
     }
-    public void SaveGame()
+    public void SaveGame(bool toFile)
     {
         if (this.gameData == null)
         {
@@ -83,14 +83,14 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
-        dataHandler.Save(gameData);
+        if(toFile) dataHandler.Save(gameData);
     }
 
     private void OnApplicationQuit()
     {
         //TODO change later to Save at specific time in Spaceship, so save on button press.
-        SaveGame();
-        Debug.Log("Saved Game");
+        // SaveGame();
+        // Debug.Log("Saved Game");
     }
     
 
@@ -104,5 +104,11 @@ public class DataPersistenceManager : MonoBehaviour
     public bool HasGameData()
     {
         return gameData != null;
+    }
+
+    public GameData getGameData(){
+        if(HasGameData())
+            return gameData;
+        return null;
     }
 }

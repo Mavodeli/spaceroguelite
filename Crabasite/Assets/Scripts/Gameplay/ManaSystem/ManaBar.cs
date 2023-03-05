@@ -17,7 +17,7 @@ public class ManaBar : MonoBehaviour
         transform.Find("Bar").localScale = new Vector3(manaSystem.GetManaPercent(),1);
         if (transform.parent.tag == "HUD")
         {
-            GameObject.FindGameObjectWithTag("HUD").transform.Find("PlayerManaBar").GetComponent<Slider>().value = manaSystem.GetManaPercent();
+            transform.parent.Find("PlayerManaBar").GetComponent<Slider>().value = manaSystem.GetManaPercent();
         }
     }
 }

@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2189086418208611772}
   - component: {fileID: 2189086418208611775}
-  - component: {fileID: 2189086418208611773}
-  - component: {fileID: 2189086418208611762}
-  - component: {fileID: 4268284725903009204}
+  - component: {fileID: 7284334030974455436}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: GameHandler
@@ -47,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a251424e8669f45af45e5849378154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2189086418208611773
+--- !u!114 &7284334030974455436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,34 +54,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2189086418208611774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c13e5073466abf44928ebd58cc20608, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2189086418208611762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2189086418208611774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41ba23d777898ee4ba828378d3cc52e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fishiesCount1: 0
-  fishiesCount2: 0
-  EnemyType1: 0
-  EnemyType2: 3
---- !u!114 &4268284725903009204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2189086418208611774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95e3f1dc374804b4fa5a737d2a2b3582, type: 3}
+  m_Script: {fileID: 11500000, guid: 859157228459d4344a7534be9df735d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
