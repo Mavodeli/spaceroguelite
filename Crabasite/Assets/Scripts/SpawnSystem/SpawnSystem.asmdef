@@ -1,9 +1,9 @@
 {
-    "name": "DataPersistence",
+    "name": "SpawnSystem",
     "rootNamespace": "",
     "references": [
-        "GUID:1fcf3d935992442e39008ae979fb3473",
-        "GUID:9b655524a946b6348ba982917e14b53d"
+        "GUID:7c5bcb46a07408749b6ddc2f804b50b3",
+        "GUID:db1d1ee2cdafa5540a971b65e5d37851"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

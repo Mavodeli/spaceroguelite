@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
         
         if(!isAlive()){
             Debug.Log("YOU DIED");
-            DataPersistenceManager.instance.LoadGame();
+            DataPersistenceManager.instance.LoadGame(true);
             GameOverScreen.Setup();
         }
     }
@@ -45,6 +45,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
 
      public void LoadData(GameData data)
     {
+        // Debug.Log("loaded health is "+data.health);
         this.health = data.health;
     }
     public void SaveData(ref GameData data)

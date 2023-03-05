@@ -68,9 +68,13 @@ public class UltimateHolder : MonoBehaviour
 
     public void SwitchUltimate(int ult)
     {
-        ultimate = (Ultimate)ultimateList[ult];
-        if(ult == 1) { ultimate.player = player; }
-        GameObject hud = GameObject.FindGameObjectWithTag("HUD");
-        hud.SendMessage("ChangeSprite", ult, SendMessageOptions.DontRequireReceiver);
+        DataPersistenceManager dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager").GetComponent<DataPersistenceManager>();
+        bool unlocked = dpm.getGameData().UltimateDict[ult];
+        if(unlocked){
+            ultimate = (Ultimate)ultimateList[ult];
+            if(ult == 1) { ultimate.player = player; }
+            GameObject hud = GameObject.FindGameObjectWithTag("HUD");
+            hud.SendMessage("ChangeSprite", ult, SendMessageOptions.DontRequireReceiver);
+        }
     }
 }

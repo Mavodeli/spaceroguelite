@@ -1,0 +1,23 @@
+{
+    "name": "ProgressionTracker",
+    "rootNamespace": "",
+    "references": [
+        "GUID:cd8710cdfd91074428d6412a0e873205",
+        "GUID:1fcf3d935992442e39008ae979fb3473",
+        "GUID:0081ddeb97a3442839480d7dffa8d9e4",
+        "GUID:159c99fea7ac4bf4d9a07bba0162bcaf",
+        "GUID:e8e7e62f1dddeff41ac3538a6c0af4cb",
+        "GUID:db1d1ee2cdafa5540a971b65e5d37851",
+        "GUID:26711c4b28a6cab41b6e0cafc4779c95",
+        "GUID:3bc27c1fc32a9b249a565b02cd514511"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

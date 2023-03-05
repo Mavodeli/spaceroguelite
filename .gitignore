@@ -76,3 +76,4 @@ crashlytics-build.properties
 /Crabasite/.vscode/*
 # dotnet-tools
 .config/
+datagame_link.lnk
