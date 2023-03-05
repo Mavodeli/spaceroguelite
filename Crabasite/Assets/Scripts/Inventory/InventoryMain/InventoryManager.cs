@@ -31,12 +31,12 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
     private Dictionary<int, bool> UltimateDict;
 
-    private QuestJournal QJ;
+    private GameObject GameHandler;
 
     void Start() {
         inventoryIsOpened = false;
         Inventory.SetActive(false);
-        QJ = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<QuestJournal>();
+        GameHandler = GameObject.FindGameObjectWithTag("GameHandler");
     }
 
     /// If the player presses the "i" key, the inventory will open or close
@@ -94,7 +94,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         {
             ItemDict.Add(name, amount);
         }
-        QJ.SendMessage("InvokeEvent_moveItemToInventory", SendMessageOptions.DontRequireReceiver);
+        GameHandler.SendMessage("InvokeEvent_moveItemToInventory", SendMessageOptions.DontRequireReceiver);
     }
 
     public void RemoveItem(string name, int amount = 1)
@@ -270,7 +270,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     
     public void SaveData(ref GameData data)
     {
-        data.ItemsDict = (SerializableDictionary<string,int>)ItemDict;        
+        data.ItemsDict = (SerializableDictionary<string, int>)ItemDict;        
         data.MailDict = (SerializableDictionary<string, bool>)MailDict;
         data.UltimateDict = (SerializableDictionary<int, bool>)UltimateDict;
     }

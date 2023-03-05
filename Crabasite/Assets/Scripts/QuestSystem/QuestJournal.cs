@@ -5,88 +5,123 @@ using UnityEngine.Events;
 
 public class QuestJournal : MonoBehaviour, IDataPersistence
 {   
-    private Dictionary<string, Quest> activeQuests = new Dictionary<string, Quest>();
-    private Dictionary<string, Quest> completedQuests = new Dictionary<string, Quest>();
+    private Dictionary<string, bool> activeQuests = new Dictionary<string, bool>();
+    //true if quest active, false if completed, not in dict if never started
+    private QuestGlossary questGlossary;
 
-    // Events (don't forget to modify GameData.cs)
-    public SerializableEvent Event_moveItemToInventory = new SerializableEvent();
+    private UnityEvent Event_moveItemToInventory;
 
     private void InvokeEvent_moveItemToInventory(){
+        if(Event_moveItemToInventory==null){
+            Debug.Log("InvokeEvent_moveItemToInventory: event not found");
+        }
         Event_moveItemToInventory?.Invoke();
     }
 
     private void updateStatusForCompletedQuest(string quest_identifier){
         try
         {
-            completedQuests.Add(quest_identifier, activeQuests[quest_identifier]);
-            activeQuests.Remove(quest_identifier);
+            activeQuests[quest_identifier] = false;
         }
         catch (KeyNotFoundException)
         {
-            // Debug.LogWarning("The quest "+quest_identifier+" is not an active Quest!");
+            Debug.LogWarning("The quest "+quest_identifier+" is not an active Quest!");
         }
     }
 
-    public void addNewQuest(Quest quest){
+    public void addNewQuest(string identifier){
 
-        if(QuestIsCompleted(quest.identifier)){
-            // Debug.LogWarning("Tried to add the Quest "+quest.identifier+" which has already been completed. The new Quest was not added.");
+        try//check if the Quest exists in the glossary
+        {
+            questGlossary.at(identifier).activate();
+        }
+        catch (KeyNotFoundException)
+        {
+            Debug.LogWarning("Tried to add the Quest "+identifier+" which doesn't exist in the Quest Glossary. The new Quest was not added.");
             return;
         }
 
+        //check the status of the Quest (is it active or completed?)
         try
         {
-            activeQuests.Add(quest.identifier, quest);
-            quest.activate();//took 3 days to add this line ;) (hopefully everything works fine now...)
-        }
-        catch (System.ArgumentException)
-        {
-            // Debug.LogWarning("Tried to add the Quest "+quest.identifier+" which already existed in activeQuests. The new Quest was not added.");
-        }
-    }
-
-    public bool QuestIsCompleted(string quest_identifier){
-        bool b;
-        try
-        {
-            Quest tmp = completedQuests[quest_identifier];
-            b = true;
+            if(activeQuests[identifier]){
+                Debug.LogWarning("Tried to add the Quest "+identifier+" which already existed in activeQuests. The new Quest was not added.");
+                return;
+            }
+            else{
+                Debug.LogWarning("Tried to add the Quest "+identifier+" which has already been completed. The new Quest was not added.");
+                return;
+            }
         }
         catch (KeyNotFoundException)
         {
-            b = false;
+            //actually add the Quest :)
+            activeQuests[identifier] = true;
         }
-        return b;
     }
 
     public void LoadData(GameData data)
     {
-        // Events (don't forget to modify GameData.cs)
+        if(Event_moveItemToInventory==null){
+            Debug.Log("LoadData: event not found");
+        }
         Event_moveItemToInventory = data.Event_moveItemToInventory;
+        Event_moveItemToInventory.RemoveAllListeners();
+
+        questGlossary = new QuestGlossary(gameObject, GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>(),
+            // Events
+            Event_moveItemToInventory
+        );
 
         activeQuests.Clear();
-        foreach(KeyValuePair<string, SerializableQuest> entry in data.activeQuests){
+        foreach(KeyValuePair<string, bool> entry in data.activeQuests){
             activeQuests.Add(entry.Key, entry.Value);
-            entry.Value.activate();//!!!
-        }
-        completedQuests.Clear();
-        foreach(KeyValuePair<string, SerializableQuest> entry in data.completedQuests){
-            completedQuests.Add(entry.Key, entry.Value);
+            if(entry.Value) questGlossary.at(entry.Key).activate();
         }
     }
     
     public void SaveData(ref GameData data)
     {
-        data.activeQuests = new SerializableDictionary<string, SerializableQuest>();
-        foreach(KeyValuePair<string, Quest> entry in activeQuests){
-            data.activeQuests.Add(entry.Key, new SerializableQuest(entry.Value));
+        data.activeQuests.Clear();
+        foreach(KeyValuePair<string, bool> entry in activeQuests){
+            data.activeQuests.Add(entry.Key, entry.Value);
         }
-        data.completedQuests = new SerializableDictionary<string, SerializableQuest>();
-        foreach(KeyValuePair<string, Quest> entry in completedQuests){
-            data.completedQuests.Add(entry.Key, new SerializableQuest(entry.Value));
+        if(Event_moveItemToInventory==null){
+            Debug.Log("SaveData: event not found");
+        }
+        data.Event_moveItemToInventory = Event_moveItemToInventory;
+    }
+
+    private struct QuestGlossary{
+        private Dictionary<string, Quest> data;
+
+        public QuestGlossary(
+            GameObject GameHandler,
+            InventoryManager IM,
+            UnityEvent Event_moveItemToInventory,
+            Dictionary<string, Quest> old_glossary = null
+        ){
+            data = old_glossary == null ? new Dictionary<string, Quest>() : old_glossary;
+
+            string quest_identifier = "collect_five_arrows";
+            data.Add(
+                quest_identifier,
+                new Quest(
+                    quest_identifier,//identifier
+                    Event_moveItemToInventory,//eventToListenFor
+                    GameHandler,//GameHandler
+                    delegate(){//completionCriterion
+                        return IM.ItemAmountInDict("arrow of doom") >= 5;
+                    },
+                    delegate(){//onCompletion
+                        Debug.Log("Congrats on collectiong 5 arrows of doom!");
+                })
+            );
+
+            quest_identifier = "new Quest";
+            //TODO
         }
 
-        // Events (don't forget to modify GameData.cs)
-        data.Event_moveItemToInventory = Event_moveItemToInventory;
+        public Quest at(string key){ return data[key];}
     }
 }

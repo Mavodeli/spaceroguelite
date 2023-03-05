@@ -9,12 +9,10 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
 {
     private Dictionary<string, OnTriggerEnterDelegate> triggerMap = new Dictionary<string, OnTriggerEnterDelegate>();
     private GameObject player;
-    private InventoryManager IM;
     private QuestJournal QJ;
     
     private void Start(){
         player = GameObject.FindGameObjectWithTag("Player");
-        IM = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
         QJ = gameObject.GetComponent<QuestJournal>();
 
         triggerMap.Add("PH black hole", delegate () {
@@ -47,16 +45,7 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
             Spawn.Item("arrow of doom", new Vector3(2*i, -2*i, 0));
         }
 
-        QJ.addNewQuest(new Quest(
-            "collect_five_arrows",//identifier
-            QJ.Event_moveItemToInventory,//eventToListenFor
-            gameObject,//GameHandler
-            delegate(){//completionCriterion
-                return IM.ItemAmountInDict("arrow of doom") >= 5;
-            },
-            delegate(){//onCompletion
-                Debug.Log("Congrats on collectiong 5 arrows of doom!");
-        }));
+        QJ.addNewQuest("collect_five_arrows");
     }
 
     public void printPTDict(){
