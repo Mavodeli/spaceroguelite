@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313a120d437ce3946abfb09d06b9ba7c, type: 3}
   m_Name: PufferFishData
   m_EditorClassIdentifier: 
-  texturePath: Sprites/EnemyPlaceholder_256x256
-  textureScale: 0.38
+  texturePath: Sprites/PUFFERFISH_Single
+  textureScale: 0.85
   health: 100
   damage: 25
   meleeDamage: 25
@@ -21,3 +21,4 @@ MonoBehaviour:
   gameObjectName: Puffer fish emeny
   meleeCooldown: 0.5
   stoppingDistance: 0
+  path_to_controller: Animation/Enemies/AC_Pufferfish
