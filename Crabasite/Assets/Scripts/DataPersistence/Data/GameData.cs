@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameData 
 {
+    // Gameplay related Savedata
     public int health;
     public int mana;
     public string level;
@@ -12,7 +13,12 @@ public class GameData
     public SerializableDictionary<string, bool> MailDict;
     public SerializableDictionary<string, bool> ProgressionDict;
     public SerializableDictionary<int, bool> UltimateDict;
-    
+
+    // Options related Savedata
+    public int graphicsIndex;
+    public float soundVolume;
+    public bool isFullscreen;
+    public int resolutionsIndex;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there is no data to Load
@@ -29,5 +35,9 @@ public class GameData
         UltimateDict.Add(0, false);
         UltimateDict.Add(1, false);
         UltimateDict.Add(2, false);
+        this.graphicsIndex = 0;
+        this.soundVolume = 0;
+        this.isFullscreen = true;
+        this.resolutionsIndex = 0;
     }
 }
