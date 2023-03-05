@@ -15,6 +15,7 @@ TagManager:
   - Interactable
   - DataPersistenceManager
   - PausePanel
+  - QuestEventsContainer
   layers:
   - Default
   - TransparentFX

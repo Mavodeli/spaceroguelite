@@ -8,17 +8,9 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
     private Dictionary<string, bool> activeQuests = new Dictionary<string, bool>();
     //true if quest active, false if completed, not in dict if never started
     private QuestGlossary questGlossary;
+    private QuestEvents questEvents;
 
-    private UnityEvent Event_moveItemToInventory;
-
-    private void InvokeEvent_moveItemToInventory(){
-        if(Event_moveItemToInventory==null){
-            Debug.Log("InvokeEvent_moveItemToInventory: event not found");
-        }
-        Event_moveItemToInventory?.Invoke();
-    }
-
-    private void updateStatusForCompletedQuest(string quest_identifier){
+    public void updateStatusForCompletedQuest(string quest_identifier){
         try
         {
             activeQuests[quest_identifier] = false;
@@ -30,17 +22,6 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
     }
 
     public void addNewQuest(string identifier){
-
-        try//check if the Quest exists in the glossary
-        {
-            questGlossary.at(identifier).activate();
-        }
-        catch (KeyNotFoundException)
-        {
-            Debug.LogWarning("Tried to add the Quest "+identifier+" which doesn't exist in the Quest Glossary. The new Quest was not added.");
-            return;
-        }
-
         //check the status of the Quest (is it active or completed?)
         try
         {
@@ -55,6 +36,15 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         }
         catch (KeyNotFoundException)
         {
+            try//check if the Quest exists in the glossary
+            {
+                questGlossary.at(identifier).activate();
+            }
+            catch (KeyNotFoundException)
+            {
+                Debug.LogWarning("Tried to add the Quest "+identifier+" which doesn't exist in the Quest Glossary. The new Quest was not added.");
+                return;
+            }
             //actually add the Quest :)
             activeQuests[identifier] = true;
         }
@@ -62,16 +52,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        if(Event_moveItemToInventory==null){
-            Debug.Log("LoadData: event not found");
-        }
-        Event_moveItemToInventory = data.Event_moveItemToInventory;
-        Event_moveItemToInventory.RemoveAllListeners();
-
-        questGlossary = new QuestGlossary(gameObject, GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>(),
-            // Events
-            Event_moveItemToInventory
-        );
+        questGlossary = new QuestGlossary(gameObject, GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>());
 
         activeQuests.Clear();
         foreach(KeyValuePair<string, bool> entry in data.activeQuests){
@@ -86,10 +67,6 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         foreach(KeyValuePair<string, bool> entry in activeQuests){
             data.activeQuests.Add(entry.Key, entry.Value);
         }
-        if(Event_moveItemToInventory==null){
-            Debug.Log("SaveData: event not found");
-        }
-        data.Event_moveItemToInventory = Event_moveItemToInventory;
     }
 
     private struct QuestGlossary{
@@ -98,7 +75,6 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         public QuestGlossary(
             GameObject GameHandler,
             InventoryManager IM,
-            UnityEvent Event_moveItemToInventory,
             Dictionary<string, Quest> old_glossary = null
         ){
             data = old_glossary == null ? new Dictionary<string, Quest>() : old_glossary;
@@ -107,9 +83,8 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
             data.Add(
                 quest_identifier,
                 new Quest(
-                    quest_identifier,//identifier
-                    Event_moveItemToInventory,//eventToListenFor
-                    GameHandler,//GameHandler
+                    quest_identifier,
+                    "moveItemToInventory",
                     delegate(){//completionCriterion
                         return IM.ItemAmountInDict("arrow of doom") >= 5;
                     },

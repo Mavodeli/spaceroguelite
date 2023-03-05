@@ -32,11 +32,13 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     private Dictionary<int, bool> UltimateDict;
 
     private GameObject GameHandler;
+    private GameObject QE;
 
     void Start() {
         inventoryIsOpened = false;
         Inventory.SetActive(false);
         GameHandler = GameObject.FindGameObjectWithTag("GameHandler");
+        QE = GameObject.FindGameObjectWithTag("QuestEventsContainer");
     }
 
     /// If the player presses the "i" key, the inventory will open or close
@@ -94,7 +96,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         {
             ItemDict.Add(name, amount);
         }
-        GameHandler.SendMessage("InvokeEvent_moveItemToInventory", SendMessageOptions.DontRequireReceiver);
+        QE.SendMessage("InvokeEvent", "moveItemToInventory", SendMessageOptions.DontRequireReceiver);
     }
 
     public void RemoveItem(string name, int amount = 1)

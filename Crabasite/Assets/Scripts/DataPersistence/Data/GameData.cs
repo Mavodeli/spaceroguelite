@@ -17,7 +17,6 @@ public class GameData
 
     // QuestSystem
     public SerializableDictionary<string, bool> activeQuests;
-    public UnityEvent Event_moveItemToInventory;
     
 
     // the values defined in this constructor will be the default values
@@ -39,6 +38,5 @@ public class GameData
 
         // QuestSystem
         this.activeQuests = new SerializableDictionary<string, bool>();
-        this.Event_moveItemToInventory = new UnityEvent();
     }
 }
