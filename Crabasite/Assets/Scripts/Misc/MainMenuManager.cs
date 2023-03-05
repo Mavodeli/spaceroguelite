@@ -114,10 +114,10 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     
     public void BackToMenu()
     {
-        //DisableOptionButtos();
+        DisableOptionButtons();
         VisibleMenuButtons();
         InvisibleOptionScreen();
-        //EnableOptionButtons();
+        EnableOptionButtons();
     }
 
     public void SetVolume(float volume)
@@ -158,6 +158,22 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         loadGameButton.interactable = true;
         optionsGameButton.interactable = true;
         quitGameButton.interactable = true;
+    }
+    public void DisableOptionButtons()
+    {
+        backToMenu.interactable = false;
+        volumeSlider.interactable = false;
+        graphicsDD.interactable = false;
+        resolutionsDD.interactable = false;
+        fullscreenToggle.interactable = false;
+    }
+    public void EnableOptionButtons()
+    {
+        backToMenu.interactable = true;
+        volumeSlider.interactable = true;
+        graphicsDD.interactable = true;
+        resolutionsDD.interactable = true;
+        fullscreenToggle.interactable = true;
     }
     private void InvisibleMenuButtons()
     {
