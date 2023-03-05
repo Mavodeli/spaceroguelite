@@ -21,16 +21,16 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void addNewQuest(string identifier){
+    public void addNewQuest(string identifier, bool debug_mode = false){
         //check the status of the Quest (is it active or completed?)
         try
         {
             if(activeQuests[identifier]){
-                Debug.LogWarning("Tried to add the Quest "+identifier+" which already existed in activeQuests. The new Quest was not added.");
+                if(debug_mode) Debug.LogWarning("Tried to add the Quest "+identifier+" which already existed in activeQuests. The new Quest was not added.");
                 return;
             }
             else{
-                Debug.LogWarning("Tried to add the Quest "+identifier+" which has already been completed. The new Quest was not added.");
+                if(debug_mode)Debug.LogWarning("Tried to add the Quest "+identifier+" which has already been completed. The new Quest was not added.");
                 return;
             }
         }
@@ -42,7 +42,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
             }
             catch (KeyNotFoundException)
             {
-                Debug.LogWarning("Tried to add the Quest "+identifier+" which doesn't exist in the Quest Glossary. The new Quest was not added.");
+                if(debug_mode)Debug.LogWarning("Tried to add the Quest "+identifier+" which doesn't exist in the Quest Glossary. The new Quest was not added.");
                 return;
             }
             //actually add the Quest :)
