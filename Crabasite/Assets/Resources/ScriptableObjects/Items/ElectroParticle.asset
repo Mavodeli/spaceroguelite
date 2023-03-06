@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 0
   itemName: 
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: af43187fe78bf4124b5b3d89ceae73e6, type: 3}
   iconScale: 0
