@@ -9,6 +9,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
     //true if quest active, false if completed, not in dict if never started
     private QuestGlossary questGlossary;
     private QuestEvents questEvents;
+    private bool debug_mode = false;
 
     public void updateStatusForCompletedQuest(string quest_identifier){
         try
@@ -21,7 +22,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void addNewQuest(string identifier, bool debug_mode = false){
+    public void addNewQuest(string identifier){
         //check the status of the Quest (is it active or completed?)
         try
         {
@@ -48,6 +49,20 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
             //actually add the Quest :)
             activeQuests[identifier] = true;
         }
+    }
+
+    public bool questIsCompletedOrActive(string identifier){
+        bool b;
+        try
+        {
+            bool tmp = activeQuests[identifier];
+            b = true;
+        }
+        catch (KeyNotFoundException)
+        {
+            b = false;
+        }
+        return b;
     }
 
     public void LoadData(GameData data)
@@ -93,6 +108,31 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                         Debug.Log("Congrats on collectiong 5 arrows of doom!");
                 })
             );
+
+            quest_identifier = "RepairWindshield";
+            data.Add(
+                quest_identifier,
+                new Quest(
+                    quest_identifier,
+                    "moveItemToInventory",
+                    delegate(){//completionCriterion
+                        return IM.ItemAmountInDict("Silicone") >= 5;
+                    },
+                    delegate(){//onCompletion
+                        Debug.Log("Repairing windshield...");
+                        Spawn.NewSprite("Spaceship_patchedWindshield", GameObject.FindGameObjectWithTag("ShipHull"));
+                        CommentarySystem.displayComment("completedRepairWindshield");
+                })
+            );
+
+            quest_identifier = "GetAttractTwo";
+            //TODO
+
+            quest_identifier = "RechargeThrusters";
+            //TODO
+
+            quest_identifier = "RepairSpaceship";
+            //TODO
 
             quest_identifier = "new Quest";
             //TODO

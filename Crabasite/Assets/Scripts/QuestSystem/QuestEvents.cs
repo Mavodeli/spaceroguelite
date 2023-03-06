@@ -14,6 +14,7 @@ public class QuestEvents : MonoBehaviour
         if(Events == null){
             Events = new Dictionary<string, UnityEvent>();
             Events.Add("moveItemToInventory", new UnityEvent());
+            Events.Add("interactedWithWindshield", new UnityEvent());
         }
     }
 
