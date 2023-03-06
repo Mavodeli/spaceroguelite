@@ -5,7 +5,6 @@ using UnityEngine;
 public class Spawn
 {
     public delegate void addEnemyBehaviour(GameObject enemy);
-    InventoryManager IM = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
 
     public static void Enemy(string type, Vector3 position){
         Dictionary<string, addEnemyBehaviour> EnemyBehaviourMap = new Dictionary<string, addEnemyBehaviour>();
@@ -27,10 +26,20 @@ public class Spawn
     }
 
     public static void Mail(string id){
+        InventoryManager IM = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
         IM.AddMail(id);
     }
 
-    public static void QuestDescription(string id){
+    public static void Quest(string id){
+        InventoryManager IM = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
+        QuestJournal QJ = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<QuestJournal>();
         IM.AddQuestDescription(id);
+        QJ.addNewQuest(id);
+    }
+
+    public static void NewSprite(string name, GameObject go){
+        SpriteRenderer sr = go.GetComponent<SpriteRenderer>();
+        Sprite sprite = Resources.Load<Sprite>("Sprites/"+name);
+        sr.sprite = sprite;
     }
 }
