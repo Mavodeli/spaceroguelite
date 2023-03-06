@@ -144,6 +144,11 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         
     }
 
+    public void AddQuestDescription(string id){
+        // TODO: implement this
+        Debug.Log("Adding Quest Description for Quest "+id);
+    }
+
 
    /// This function is used to list all the items in the inventory tab
     public void ListItems()

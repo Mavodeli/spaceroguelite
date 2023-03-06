@@ -66,6 +66,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         data.activeQuests.Clear();
         foreach(KeyValuePair<string, bool> entry in activeQuests){
             data.activeQuests.Add(entry.Key, entry.Value);
+            questGlossary.at(entry.Key).deactivate();
         }
     }
 

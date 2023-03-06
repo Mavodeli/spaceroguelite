@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawn
 {
     public delegate void addEnemyBehaviour(GameObject enemy);
+    InventoryManager IM = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
 
     public static void Enemy(string type, Vector3 position){
         Dictionary<string, addEnemyBehaviour> EnemyBehaviourMap = new Dictionary<string, addEnemyBehaviour>();
@@ -23,5 +24,13 @@ public class Spawn
         ItemBehaviour script = item.AddComponent<ItemBehaviour>();
         script.Setup(type, onPickup);
         item.transform.position = position;
+    }
+
+    public static void Mail(string id){
+        IM.AddMail(id);
+    }
+
+    public static void QuestDescription(string id){
+        IM.AddQuestDescription(id);
     }
 }

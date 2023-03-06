@@ -32,10 +32,15 @@ public class Quest
         }
 
         public void activate(){
-            QE.removeListener(eventToListenFor, QuestListener());
+            // QE.removeListener(eventToListenFor, QuestListener());
             QE.addListener(eventToListenFor, QuestListener());
         }
 
+        public void deactivate(){
+            QE.removeListener(eventToListenFor, QuestListener());
+            // QE.addListener(eventToListenFor, QuestListener());
+        }
+        
         private Action QuestListener(){
             return (Action)(() => checkCompletion());
         }
