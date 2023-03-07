@@ -19,7 +19,7 @@ public class BlackHole : MonoBehaviour
 
     private const float MAX_ATTRACTION_SPEED = 0.18f;
     private const float MIN_ATTRACTION_SPEED = 0.02f;
-    private const float SPEED_MULTIPLIER = 7f;
+    public float SPEED_MULTIPLIER = 6f;
 
     /**
      * Function used to calculate the speed at which an object should be attracted to the black hole, given a certain distance
