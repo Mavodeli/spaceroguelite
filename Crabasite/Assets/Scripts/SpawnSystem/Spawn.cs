@@ -21,9 +21,30 @@ public class Spawn
 
     public static void Item(string type, Vector3 position, string scene){
         GameObject item = Object.Instantiate(Resources.Load<GameObject>("Prefabs/DefaultItem"));
+        Item so = Resources.Load<Item>("ScriptableObjects/Items/"+type);
+
+        SpriteRenderer sr = item.GetComponent<SpriteRenderer>();
+        sr.sprite = so.icon;
+        sr.drawMode = SpriteDrawMode.Sliced;
+        sr.size *= so.iconScale;
+
         ItemBehaviour script = item.AddComponent<ItemBehaviour>();
         item.transform.position = position;
-        SceneManager.MoveGameObjectToScene(item, SceneManager.GetSceneByName(scene));
+        item.name = so.itemName;
+
+        // // The Application loads the Scene in the background at the same time as the current Scene.
+        // AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+
+        // //wait for scene to load
+        // while(!asyncLoad.isDone){
+        //     Debug.Log("loading scene "+scene);
+        // }
+
+        // // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
+        // SceneManager.MoveGameObjectToScene(item, SceneManager.GetSceneByName(scene));
+
+        // // Unload the Scene
+        // SceneManager.UnloadSceneAsync(scene);
     }
 
     public static void Mail(string id){
