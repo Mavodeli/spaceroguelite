@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Spawn : MonoBehaviour
+public class SpawnMonoBehaviour : MonoBehaviour
 {
     public delegate void addEnemyBehaviour(GameObject enemy);
     private bool loading_scene;
@@ -35,9 +35,9 @@ public class Spawn : MonoBehaviour
         item.transform.position = position;
         item.name = so.itemName;
 
-        object_to_move = item;
-        scene_to_move_to = scene;
-        loading_scene = true;
+        // object_to_move = item;
+        // scene_to_move_to = scene;
+        // loading_scene = true;
     }
 
     public static void Mail(string id){
@@ -81,7 +81,7 @@ public class Spawn : MonoBehaviour
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
         SceneManager.MoveGameObjectToScene(obj, SceneManager.GetSceneByName(scene));
         // Unload the previous Scene
-        SceneManager.UnloadSceneAsync(scene);
+        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(scene));
 
         object_to_move = null;
         scene_to_move_to = null;

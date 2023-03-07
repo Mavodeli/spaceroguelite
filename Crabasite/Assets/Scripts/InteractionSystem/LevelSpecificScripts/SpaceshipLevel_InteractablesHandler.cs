@@ -34,11 +34,12 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                             CommentarySystem.displayComment("startRepairWindshield");
 
                             //spawn Quest-related items
-                            Spawn.Item("Silicone", new Vector3(-27.5743427f,11.0001459f,0.0f), "Level 1 - space");
-                            Spawn.Item("Silicone", new Vector3(-39.5380859f,5.4468565f,0.0f), "Level 1 - space");
-                            Spawn.Item("Silicone", new Vector3(-21.5161381f,4.44077635f,0.0f), "Level 1 - space");
-                            Spawn.Item("Silicone", new Vector3(-36.1542168f,22.2319221f,0.0f), "Level 1 - space");
-                            Spawn.Item("Silicone", new Vector3(-36.1542168f,28.5499992f,0.0f), "Level 1 - space");
+                            SpawnMonoBehaviour smb = gameObject.GetComponent<SpawnMonoBehaviour>();
+                            smb.Item("Silicone", new Vector3(-27.5743427f,11.0001459f,0.0f), "Level 1 - space");
+                            // Spawn.Item("Silicone", new Vector3(-39.5380859f,5.4468565f,0.0f), "Level 1 - space");
+                            // Spawn.Item("Silicone", new Vector3(-21.5161381f,4.44077635f,0.0f), "Level 1 - space");
+                            // Spawn.Item("Silicone", new Vector3(-36.1542168f,22.2319221f,0.0f), "Level 1 - space");
+                            // Spawn.Item("Silicone", new Vector3(-36.1542168f,28.5499992f,0.0f), "Level 1 - space");
                         }
 
                         //fire event interactedWithWindshieldw
