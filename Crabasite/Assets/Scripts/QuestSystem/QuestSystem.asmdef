@@ -1,9 +1,10 @@
 {
-    "name": "DataPersistence",
+    "name": "QuestSystem",
     "rootNamespace": "",
     "references": [
-        "GUID:1fcf3d935992442e39008ae979fb3473",
-        "GUID:9b655524a946b6348ba982917e14b53d"
+        "GUID:9b655524a946b6348ba982917e14b53d",
+        "GUID:0081ddeb97a3442839480d7dffa8d9e4",
+        "GUID:3bc27c1fc32a9b249a565b02cd514511"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
