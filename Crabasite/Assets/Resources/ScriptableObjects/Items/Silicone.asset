@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Silicone
   m_EditorClassIdentifier: 
   id: 0
-  itemName: 
+  itemName: Silicone
   description: 
   icon: {fileID: 21300000, guid: 140b055f49860469181046ce27a0e8ea, type: 3}
-  iconScale: 0
+  iconScale: 1

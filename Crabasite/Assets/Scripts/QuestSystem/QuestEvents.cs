@@ -15,6 +15,8 @@ public class QuestEvents : MonoBehaviour
             Events = new Dictionary<string, UnityEvent>();
             Events.Add("moveItemToInventory", new UnityEvent());
             Events.Add("interactedWithWindshield", new UnityEvent());
+            Events.Add("interactedWithWorkbench", new UnityEvent());
+            Events.Add("interactedWithHyperdrive", new UnityEvent());
         }
     }
 

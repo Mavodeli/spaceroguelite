@@ -16,8 +16,18 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "SpaceshipEntrance"){
                     script.Setup(delegate () {
-                        SceneManager.LoadScene("Level 1 - space");
-                        Time.timeScale = 1;
+
+                        if(//ensure that the player 'collected' all quests for the space level
+                            QuestIsCompletedOrActive("RepairWindshield") &&
+                            QuestIsCompletedOrActive("RepairSpaceship") &&
+                            QuestIsCompletedOrActive("RechargeThrusters")
+                        ){
+                            SceneManager.LoadScene("Level 1 - space");
+                            Time.timeScale = 1;
+                        }
+                        else{
+                            CommentarySystem.displayComment("PlayerShouldInspectAllBrokenShipParts");
+                        }
                     }, "e", newShowDistanceMaximum+.5f);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
@@ -32,17 +42,9 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                             //Comment
                             CommentarySystem.displayComment("startRepairWindshield");
-
-                            //spawn Quest-related items
-                            SpawnMonoBehaviour smb = gameObject.GetComponent<SpawnMonoBehaviour>();
-                            smb.Item("Silicone", new Vector3(-27.5743427f,11.0001459f,0.0f), "Level 1 - space");
-                            // Spawn.Item("Silicone", new Vector3(-39.5380859f,5.4468565f,0.0f), "Level 1 - space");
-                            // Spawn.Item("Silicone", new Vector3(-21.5161381f,4.44077635f,0.0f), "Level 1 - space");
-                            // Spawn.Item("Silicone", new Vector3(-36.1542168f,22.2319221f,0.0f), "Level 1 - space");
-                            // Spawn.Item("Silicone", new Vector3(-36.1542168f,28.5499992f,0.0f), "Level 1 - space");
                         }
 
-                        //fire event interactedWithWindshieldw
+                        //fire event interactedWithWindshield
                         fireEvent("interactedWithWindshield");
                         
                     }, "e", newShowDistanceMaximum+.2f);
@@ -51,8 +53,19 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "Hyperdrive"){
                     script.Setup(delegate () {
-                        //TODO
-                        Debug.Log("not implemented yet");
+                        
+                        if(!QuestIsCompletedOrActive("RechargeThrusters")){
+
+                            //Quest
+                            Spawn.Quest("RechargeThrusters");
+
+                            //Comment
+                            CommentarySystem.displayComment("startRechargeThrusters");
+                        }
+
+                        //fire event interactedWithWindshield
+                        fireEvent("interactedWithHyperdrive");
+
                     }, "e", newShowDistanceMaximum);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
@@ -70,8 +83,19 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "Workbench"){
                     script.Setup(delegate () {
-                        //TODO
-                        Debug.Log("not implemented yet");
+                        
+                        if(!QuestIsCompletedOrActive("RepairSpaceship")){
+
+                            //Quest
+                            Spawn.Quest("RepairSpaceship");
+
+                            //Comment
+                            CommentarySystem.displayComment("startRepairSpaceship");
+                        }
+
+                        //fire event interactedWithWorkbench
+                        fireEvent("interactedWithWorkbench");
+
                     }, "e", newShowDistanceMaximum);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
