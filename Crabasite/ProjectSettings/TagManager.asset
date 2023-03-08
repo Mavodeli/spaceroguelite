@@ -16,6 +16,7 @@ TagManager:
   - DataPersistenceManager
   - PausePanel
   - QuestEventsContainer
+  - ShipHull
   layers:
   - Default
   - TransparentFX

@@ -16,24 +16,56 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "SpaceshipEntrance"){
                     script.Setup(delegate () {
-                        SceneManager.LoadScene("Level 1 - space");
-                        Time.timeScale = 1;
+
+                        if(//ensure that the player 'collected' all quests for the space level
+                            QuestIsCompletedOrActive("RepairWindshield") &&
+                            QuestIsCompletedOrActive("RepairSpaceship") &&
+                            QuestIsCompletedOrActive("RechargeThrusters")
+                        ){
+                            SceneManager.LoadScene("Level 1 - space");
+                            Time.timeScale = 1;
+                        }
+                        else{
+                            CommentarySystem.displayComment("PlayerShouldInspectAllBrokenShipParts");
+                        }
                     }, "e", newShowDistanceMaximum+.5f);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
 
                 if(interactable.name == "Windshield"){
                     script.Setup(delegate () {
-                        //TODO
-                        Debug.Log("not implemented yet");
+
+                        if(!QuestIsCompletedOrActive("RepairWindshield")){
+
+                            //Quest
+                            Spawn.Quest("RepairWindshield");
+
+                            //Comment
+                            CommentarySystem.displayComment("startRepairWindshield");
+                        }
+
+                        //fire event interactedWithWindshield
+                        fireEvent("interactedWithWindshield");
+                        
                     }, "e", newShowDistanceMaximum+.2f);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
 
                 if(interactable.name == "Hyperdrive"){
                     script.Setup(delegate () {
-                        //TODO
-                        Debug.Log("not implemented yet");
+                        
+                        if(!QuestIsCompletedOrActive("RechargeThrusters")){
+
+                            //Quest
+                            Spawn.Quest("RechargeThrusters");
+
+                            //Comment
+                            CommentarySystem.displayComment("startRechargeThrusters");
+                        }
+
+                        //fire event interactedWithWindshield
+                        fireEvent("interactedWithHyperdrive");
+
                     }, "e", newShowDistanceMaximum);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
@@ -51,8 +83,19 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "Workbench"){
                     script.Setup(delegate () {
-                        //TODO
-                        Debug.Log("not implemented yet");
+                        
+                        if(!QuestIsCompletedOrActive("RepairSpaceship")){
+
+                            //Quest
+                            Spawn.Quest("RepairSpaceship");
+
+                            //Comment
+                            CommentarySystem.displayComment("startRepairSpaceship");
+                        }
+
+                        //fire event interactedWithWorkbench
+                        fireEvent("interactedWithWorkbench");
+
                     }, "e", newShowDistanceMaximum);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
@@ -67,5 +110,13 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                 }
             }
         }
+    }
+
+    private bool QuestIsCompletedOrActive(string id){
+        return GameObject.FindGameObjectWithTag("GameHandler").GetComponent<QuestJournal>().questIsCompletedOrActive(id);
+    }
+
+    private void fireEvent(string id){
+        GameObject.FindGameObjectWithTag("QuestEventsContainer").SendMessage("InvokeEvent", id, SendMessageOptions.DontRequireReceiver);
     }
 }

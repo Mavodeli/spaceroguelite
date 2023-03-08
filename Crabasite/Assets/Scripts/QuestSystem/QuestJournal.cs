@@ -9,6 +9,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
     //true if quest active, false if completed, not in dict if never started
     private QuestGlossary questGlossary;
     private QuestEvents questEvents;
+    private bool debug_mode = false;
 
     public void updateStatusForCompletedQuest(string quest_identifier){
         try
@@ -21,7 +22,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void addNewQuest(string identifier, bool debug_mode = false){
+    public void addNewQuest(string identifier){
         //check the status of the Quest (is it active or completed?)
         try
         {
@@ -50,6 +51,20 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         }
     }
 
+    public bool questIsCompletedOrActive(string identifier){
+        bool b;
+        try
+        {
+            bool tmp = activeQuests[identifier];
+            b = true;
+        }
+        catch (KeyNotFoundException)
+        {
+            b = false;
+        }
+        return b;
+    }
+
     public void LoadData(GameData data)
     {
         questGlossary = new QuestGlossary(gameObject, GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>());
@@ -66,6 +81,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         data.activeQuests.Clear();
         foreach(KeyValuePair<string, bool> entry in activeQuests){
             data.activeQuests.Add(entry.Key, entry.Value);
+            questGlossary.at(entry.Key).deactivate();
         }
     }
 
@@ -79,17 +95,53 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         ){
             data = old_glossary == null ? new Dictionary<string, Quest>() : old_glossary;
 
-            string quest_identifier = "collect_five_arrows";
+            string quest_identifier = "RepairWindshield";
             data.Add(
                 quest_identifier,
                 new Quest(
                     quest_identifier,
-                    "moveItemToInventory",
+                    "interactedWithWindshield",
                     delegate(){//completionCriterion
-                        return IM.ItemAmountInDict("arrow of doom") >= 5;
+                        return IM.ItemAmountInDict("Silicone") >= 12;//maybeTODO: update amount
                     },
                     delegate(){//onCompletion
-                        Debug.Log("Congrats on collectiong 5 arrows of doom!");
+                        Debug.Log("Repairing windshield...");
+                        Spawn.NewSprite("Spaceship_patchedWindshield", GameObject.FindGameObjectWithTag("ShipHull"));//TODO: change to actual sprite name!!!
+                        CommentarySystem.displayComment("completedRepairWindshield");//maybeTODO: use correct identifier
+                })
+            );
+
+            quest_identifier = "GetAttractTwo";
+            //TODO (get this quest when near the silicone asteroids)
+
+            quest_identifier = "RechargeThrusters";
+            data.Add(
+                quest_identifier,
+                new Quest(
+                    quest_identifier,
+                    "interactedWithHyperdrive",
+                    delegate(){//completionCriterion
+                        return IM.ItemAmountInDict("ElectroParticle") >= 8;//maybeTODO: update amount
+                    },
+                    delegate(){//onCompletion
+                        Debug.Log("Recharging Thrusters...");
+                        CommentarySystem.displayComment("completedRechargeThrusters");//maybeTODO: use correct identifier
+                })
+            );
+
+            quest_identifier = "RepairSpaceship";
+            data.Add(
+                quest_identifier,
+                new Quest(
+                    quest_identifier,
+                    "interactedWithWorkbench",
+                    delegate(){//completionCriterion
+                        return IM.ItemAmountInDict("SpaceshipDebris") >= 8;//maybeTODO: update amount
+                    },
+                    delegate(){//onCompletion
+                        Debug.Log("Repairing spaceship...");
+                        Spawn.NewSprite("Spaceship_repaired", GameObject.FindGameObjectWithTag("ShipHull"));//TODO: change to actual sprite name!!!
+                        CommentarySystem.displayComment("completedRepairSpaceship");//maybeTODO: use correct identifier
                 })
             );
 

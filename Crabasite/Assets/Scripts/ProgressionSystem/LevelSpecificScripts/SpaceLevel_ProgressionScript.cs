@@ -39,13 +39,6 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
             ProgressionTrigger pt = trigger.GetComponent<ProgressionTrigger>();
             pt.Setup(triggerMap[trigger.name]);
         }
-
-        int count = 10;
-        for(int i = 0; i < count; i++){
-            Spawn.Item("arrow of doom", new Vector3(2*i, -2*i, 0));
-        }
-
-        QJ.addNewQuest("collect_five_arrows");
     }
 
     public void printPTDict(){

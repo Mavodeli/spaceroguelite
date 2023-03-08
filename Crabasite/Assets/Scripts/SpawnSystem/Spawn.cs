@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Spawn
 {
@@ -18,10 +19,31 @@ public class Spawn
         enemy.transform.position = position;
     }
 
-    public static void Item(string type, Vector3 position, PhysicalEntity.OnPickup onPickup = null){
+    public static void Item(string type, Vector3 position, string scene){
         GameObject item = Object.Instantiate(Resources.Load<GameObject>("Prefabs/DefaultItem"));
+        Item so = Resources.Load<Item>("ScriptableObjects/Items/"+type);
+
         ItemBehaviour script = item.AddComponent<ItemBehaviour>();
-        script.Setup(type, onPickup);
+        script.Setup(type);
+
         item.transform.position = position;
+    }
+
+    public static void Mail(string id){
+        InventoryManager IM = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
+        IM.AddMail(id);
+    }
+
+    public static void Quest(string id){
+        InventoryManager IM = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
+        GameObject GH = GameObject.FindGameObjectWithTag("GameHandler");
+        IM.AddQuestDescription(id);
+        GH.SendMessage("addNewQuest", id, SendMessageOptions.DontRequireReceiver);
+    }
+
+    public static void NewSprite(string name, GameObject go){
+        SpriteRenderer sr = go.GetComponent<SpriteRenderer>();
+        Sprite sprite = Resources.Load<Sprite>(name);
+        sr.sprite = sprite;
     }
 }
