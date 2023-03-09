@@ -9,6 +9,9 @@ public class SilicateBehaviour : PhysicalEntity
 
     public void Start(){
 
+        //fix sprite scaling
+        GetComponent<SpriteRenderer>().size *= 8;
+
         //setup sound
         pickupSound = (AudioSource) (GameObject.Find("PickupObject")).GetComponent(typeof (AudioSource));
 
