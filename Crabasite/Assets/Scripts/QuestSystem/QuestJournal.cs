@@ -132,7 +132,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     quest_identifier,
                     "interactedWithHyperdrive",
                     delegate(){//completionCriterion
-                        return IM.ItemAmountInDict("ElectroParticle") >= 8;//maybeTODO: update amount
+                        return IM.ItemAmountInDict("ElectroParticle") >= 4;//maybeTODO: update amount
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayComment("completedRechargeThrusters");//maybeTODO: use correct identifier
