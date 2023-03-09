@@ -115,7 +115,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     quest_identifier,
                     "interactedWithWindshield",
                     delegate(){//completionCriterion
-                        return IM.ItemAmountInDict("Silicone") >= 12;//maybeTODO: update amount
+                        return IM.ItemAmountInDict("Silicate") >= 8;//maybeTODO: update amount
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayComment("completedRepairWindshield");//maybeTODO: use correct identifier

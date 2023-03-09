@@ -20,7 +20,7 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
             player.SendMessage("addHealth", -Mathf.Infinity, SendMessageOptions.DontRequireReceiver);
         });
         triggerMap.Add("TriggerElectroAsteroidsEnemySpawner", delegate () {
-            if(!PT.getFlag("triggeredEnemySpawner")){
+            if(!PT.getFlag("triggeredEnemySpawner")){//maybeTODO: remove flag dark souls spawning behaviour
                 int count = 3;
                 for(int i = 0; i < count; i++){
                     Vector2 playerLastDirection = player.GetComponent<PlayerMovement>().getMovement();

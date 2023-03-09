@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElectroParticleBehaviour : PhysicalEntity
+public class SilicateBehaviour : PhysicalEntity
 {
     private AudioSource pickupSound;
     private InteractionButton ib;
@@ -16,13 +16,9 @@ public class ElectroParticleBehaviour : PhysicalEntity
         ib = gameObject.AddComponent<InteractionButton>();
         ib.Setup(delegate () {
             pickupSound.Play();
-            
-            //optional
-            // GameObject player = GameObject.FindGameObjectWithTag("Player");
-            // player.SendMessage("addHealth", -10, SendMessageOptions.DontRequireReceiver);
 
             if(!GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>().inventoryIsOpened){
-                InventoryManager.Instance.AddItem("ElectroParticle");
+                InventoryManager.Instance.AddItem("Silicate");
                 Destroy(gameObject);
             }
         }, "e");

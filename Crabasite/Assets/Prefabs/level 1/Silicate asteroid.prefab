@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 6845474543563127173}
   - component: {fileID: 6845474543563127172}
   - component: {fileID: 6845474543563127174}
+  - component: {fileID: 3119877030590211921}
   m_Layer: 6
-  m_Name: Meteorit_silikon_gray_spritesheet_4
-  m_TagString: Untagged
+  m_Name: Silicate
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,6 +179,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMultiplier: 10
+--- !u!114 &3119877030590211921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845474543563127225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c69eaf3465972c45ba9abf6333c7f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6845474543644122617
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,9 +513,10 @@ GameObject:
   - component: {fileID: 6845474544291419868}
   - component: {fileID: 6845474544291419859}
   - component: {fileID: 6845474544291419869}
+  - component: {fileID: 8708275040943296752}
   m_Layer: 6
-  m_Name: Meteorit_silikon_gray_spritesheet_3
-  m_TagString: Untagged
+  m_Name: Silicate
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -664,6 +678,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMultiplier: 10
+--- !u!114 &8708275040943296752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845474544291419856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c69eaf3465972c45ba9abf6333c7f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6845474544414116928
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,9 +917,10 @@ GameObject:
   - component: {fileID: 6845474545075378786}
   - component: {fileID: 6845474545075378785}
   - component: {fileID: 6845474545075378787}
+  - component: {fileID: 1141728091584052861}
   m_Layer: 6
-  m_Name: Meteorit_silikon_gray_spritesheet_5
-  m_TagString: Untagged
+  m_Name: Silicate
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1053,6 +1080,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMultiplier: 10
+--- !u!114 &1141728091584052861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845474545075378790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c69eaf3465972c45ba9abf6333c7f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6845474545153823673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,9 +1105,10 @@ GameObject:
   - component: {fileID: 6845474545153823621}
   - component: {fileID: 6845474545153823620}
   - component: {fileID: 6845474545153823622}
+  - component: {fileID: 4272173102671705754}
   m_Layer: 6
-  m_Name: Meteorit_silikon_gray_spritesheet_6
-  m_TagString: Untagged
+  m_Name: Silicate
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1227,3 +1267,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMultiplier: 10
+--- !u!114 &4272173102671705754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845474545153823673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c69eaf3465972c45ba9abf6333c7f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
