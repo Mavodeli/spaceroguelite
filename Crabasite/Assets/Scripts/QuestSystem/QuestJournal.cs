@@ -65,6 +65,19 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         return b;
     }
 
+    public bool questIsCompleted(string identifier){
+        bool b;
+        try
+        {
+            b = !activeQuests[identifier];
+        }
+        catch (KeyNotFoundException)
+        {
+            b = false;
+        }
+        return b;
+    }
+
     public void LoadData(GameData data)
     {
         questGlossary = new QuestGlossary(gameObject, GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>());
@@ -105,8 +118,6 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                         return IM.ItemAmountInDict("Silicone") >= 12;//maybeTODO: update amount
                     },
                     delegate(){//onCompletion
-                        Debug.Log("Repairing windshield...");
-                        Spawn.NewSprite("Spaceship_patchedWindshield", GameObject.FindGameObjectWithTag("ShipHull"));//TODO: change to actual sprite name!!!
                         CommentarySystem.displayComment("completedRepairWindshield");//maybeTODO: use correct identifier
                 })
             );
@@ -124,7 +135,6 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                         return IM.ItemAmountInDict("ElectroParticle") >= 8;//maybeTODO: update amount
                     },
                     delegate(){//onCompletion
-                        Debug.Log("Recharging Thrusters...");
                         CommentarySystem.displayComment("completedRechargeThrusters");//maybeTODO: use correct identifier
                 })
             );
@@ -139,8 +149,6 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                         return IM.ItemAmountInDict("SpaceshipDebris") >= 8;//maybeTODO: update amount
                     },
                     delegate(){//onCompletion
-                        Debug.Log("Repairing spaceship...");
-                        Spawn.NewSprite("Spaceship_repaired", GameObject.FindGameObjectWithTag("ShipHull"));//TODO: change to actual sprite name!!!
                         CommentarySystem.displayComment("completedRepairSpaceship");//maybeTODO: use correct identifier
                 })
             );
