@@ -5,14 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 {
-    private Dictionary<string, bool> questWasNotCompleted = new Dictionary<string, bool>();//stores the completion state of a quest on the last interaction, for checking if a quest has just been completed
-
-    void Start(){
-        questWasNotCompleted.Add("RepairWindshield", true);
-        questWasNotCompleted.Add("RepairSpaceship", true);
-        questWasNotCompleted.Add("RechargeThrusters", true);
-    }
-
     void Update()
     {
         //check if all interactables have the button script, if not, add missing scripts
@@ -52,12 +44,6 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                             CommentarySystem.displayComment("startRepairWindshield");
                         }
 
-                        if(QuestIsCompleted("RepairWindshield") && questWasNotCompleted["RepairWindshield"]){
-                            Debug.Log("Repairing windshield...");
-                            Spawn.NewSprite("Spaceship_patchedWindshield", GameObject.FindGameObjectWithTag("ShipHull"));//TODO: change to actual sprite name!!!
-                            questWasNotCompleted["RepairWindshield"] = false;
-                        }
-
                         //fire event interactedWithWindshield
                         fireEvent("interactedWithWindshield");
                         
@@ -75,11 +61,6 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                             //Comment
                             CommentarySystem.displayComment("startRechargeThrusters");
-                        }
-
-                        if(QuestIsCompleted("RechargeThrusters") && questWasNotCompleted["RechargeThrusters"]){
-                            CommentarySystem.displayComment("RechargedThrustersSuccessfully");//maybeTODO: use correct identifier
-                            questWasNotCompleted["RechargeThrusters"] = false;
                         }
 
                         //fire event interactedWithWindshield
@@ -110,12 +91,6 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                             //Comment
                             CommentarySystem.displayComment("startRepairSpaceship");
-                        }
-
-                        if(QuestIsCompleted("RepairSpaceship") && questWasNotCompleted["RepairSpaceship"]){
-                            Debug.Log("Repairing spaceship...");
-                            Spawn.NewSprite("Spaceship_repaired", GameObject.FindGameObjectWithTag("ShipHull"));//TODO: change to actual sprite name!!!
-                            questWasNotCompleted["RepairSpaceship"] = false;
                         }
 
                         //fire event interactedWithWorkbench

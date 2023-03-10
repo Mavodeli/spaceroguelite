@@ -27,7 +27,7 @@ public class SpaceLevel_InteractablesHandler : MonoBehaviour
                         GameObject player = GameObject.FindGameObjectWithTag("Player");
                         player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
                         GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
-                        IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);//TODO: not implemented yet!!!
+                        IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);
                         Destroy(GameObject.Find(interactable.name));//kinda tricky to get the delegate to destroy the correct gameObject ;)
                     }, "e");
                     script.setNewOffset(new Vector3(0, 0, 0));

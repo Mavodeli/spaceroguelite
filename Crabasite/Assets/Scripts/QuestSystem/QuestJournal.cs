@@ -119,11 +119,23 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayComment("completedRepairWindshield");//maybeTODO: use correct identifier
+                        Spawn.NewSprite("Spaceship_patchedWindshield", GameObject.FindGameObjectWithTag("ShipHull"));//TODO: change to actual sprite name!!!
                 })
             );
 
             quest_identifier = "GetAttractTwo";
-            //TODO (get this quest when near the silicone asteroids)
+            data.Add(
+                quest_identifier,
+                new Quest(
+                    quest_identifier,
+                    "unlockUltimate",
+                    delegate(){//completionCriterion
+                        return IM.ultimateIsUnlocked(0);
+                    },
+                    delegate(){//onCompletion
+                        CommentarySystem.displayComment("completedGetAttractTwo");//maybeTODO: use correct identifier
+                })
+            );
 
             quest_identifier = "RechargeThrusters";
             data.Add(
@@ -150,6 +162,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayComment("completedRepairSpaceship");//maybeTODO: use correct identifier
+                        Spawn.NewSprite("Spaceship_repaired", GameObject.FindGameObjectWithTag("ShipHull"));//TODO: change to actual sprite name!!!
                 })
             );
 

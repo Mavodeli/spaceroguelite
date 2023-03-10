@@ -266,6 +266,11 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
     public void unlockUltimate(int ult){
         UltimateDict[ult] = true;
+        QE.SendMessage("InvokeEvent", "unlockUltimate", SendMessageOptions.DontRequireReceiver);
+    }
+
+    public bool ultimateIsUnlocked(int ult){
+        return UltimateDict[ult];
     }
 
     public void LoadData(GameData data)
