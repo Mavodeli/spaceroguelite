@@ -24,6 +24,7 @@ public class ItemBehaviour : PhysicalEntity
 
         //setup gameObject
         gameObject.name = name;
+        gameObject.name = name;
         gameObject.tag = "Collectable";
 
         //setup SpriteRenderer

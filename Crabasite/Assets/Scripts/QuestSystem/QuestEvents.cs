@@ -17,6 +17,7 @@ public class QuestEvents : MonoBehaviour
             Events.Add("interactedWithWindshield", new UnityEvent());
             Events.Add("interactedWithWorkbench", new UnityEvent());
             Events.Add("interactedWithHyperdrive", new UnityEvent());
+            Events.Add("unlockUltimate", new UnityEvent());
         }
     }
 

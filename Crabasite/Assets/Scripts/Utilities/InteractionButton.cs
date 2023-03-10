@@ -37,7 +37,7 @@ public class InteractionButton : MonoBehaviour
         if ((distanceToPlayer <= showDistanceMaximum) && !hasButton)
         {
             button.name = "InteractionButton of " + name;
-            button.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            button.GetComponent<SpriteRenderer>().sortingOrder = 3;
             Instantiate(button, transform.position + offset, Quaternion.identity, transform);
             hasButton = true;
         }

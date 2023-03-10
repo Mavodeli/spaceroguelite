@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 6845474543563127173}
   - component: {fileID: 6845474543563127172}
   - component: {fileID: 6845474543563127174}
+  - component: {fileID: 3119877030590211921}
   m_Layer: 6
-  m_Name: Meteorit_silikon_gray_spritesheet_4
-  m_TagString: Untagged
+  m_Name: Silicate
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6845474543563127225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.09287262, y: -0.6289387, z: 0.27445555}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6845474543644122618}
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 0.27, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -128,7 +129,7 @@ PolygonCollider2D:
     oldSize: {x: 0.27, y: 0.25}
     newSize: {x: 0.27, y: 0.25}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
@@ -178,6 +179,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMultiplier: 10
+--- !u!114 &3119877030590211921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845474543563127225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c69eaf3465972c45ba9abf6333c7f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6845474543644122617
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,9 +513,10 @@ GameObject:
   - component: {fileID: 6845474544291419868}
   - component: {fileID: 6845474544291419859}
   - component: {fileID: 6845474544291419869}
+  - component: {fileID: 8708275040943296752}
   m_Layer: 6
-  m_Name: Meteorit_silikon_gray_spritesheet_3
-  m_TagString: Untagged
+  m_Name: Silicate
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -516,7 +530,7 @@ Transform:
   m_GameObject: {fileID: 6845474544291419856}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.6671276, y: 0.49106073, z: 0.27445555}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6845474543644122618}
@@ -567,7 +581,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 0.39, y: 0.27}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -615,7 +629,7 @@ PolygonCollider2D:
     oldSize: {x: 0.39, y: 0.27}
     newSize: {x: 0.39, y: 0.27}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
@@ -664,6 +678,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMultiplier: 10
+--- !u!114 &8708275040943296752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845474544291419856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c69eaf3465972c45ba9abf6333c7f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6845474544414116928
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +724,7 @@ Transform:
   - {fileID: 6845474543658705856}
   - {fileID: 6845474543951634190}
   - {fileID: 6845474543644122618}
+  - {fileID: 5281573817245109846}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -891,9 +918,10 @@ GameObject:
   - component: {fileID: 6845474545075378786}
   - component: {fileID: 6845474545075378785}
   - component: {fileID: 6845474545075378787}
+  - component: {fileID: 1141728091584052861}
   m_Layer: 6
-  m_Name: Meteorit_silikon_gray_spritesheet_5
-  m_TagString: Untagged
+  m_Name: Silicate
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -907,7 +935,7 @@ Transform:
   m_GameObject: {fileID: 6845474545075378790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.8251286, y: -1.2689385, z: 0.27445555}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6845474543644122618}
@@ -958,7 +986,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 0.29, y: 0.27}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -1006,7 +1034,7 @@ PolygonCollider2D:
     oldSize: {x: 0.29, y: 0.27}
     newSize: {x: 0.29, y: 0.27}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
@@ -1053,6 +1081,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMultiplier: 10
+--- !u!114 &1141728091584052861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845474545075378790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c69eaf3465972c45ba9abf6333c7f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6845474545153823673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,9 +1106,10 @@ GameObject:
   - component: {fileID: 6845474545153823621}
   - component: {fileID: 6845474545153823620}
   - component: {fileID: 6845474545153823622}
+  - component: {fileID: 4272173102671705754}
   m_Layer: 6
-  m_Name: Meteorit_silikon_gray_spritesheet_6
-  m_TagString: Untagged
+  m_Name: Silicate
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1082,7 +1123,7 @@ Transform:
   m_GameObject: {fileID: 6845474545153823673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.012872696, y: -1.7069387, z: 0.27445555}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6845474543644122618}
@@ -1133,7 +1174,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 0.29, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -1181,7 +1222,7 @@ PolygonCollider2D:
     oldSize: {x: 0.29, y: 0.16}
     newSize: {x: 0.29, y: 0.16}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
@@ -1227,3 +1268,77 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMultiplier: 10
+--- !u!114 &4272173102671705754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845474545153823673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c69eaf3465972c45ba9abf6333c7f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &6307370205588352339
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6845474544414116929}
+    m_Modifications:
+    - target: {fileID: 562446905272957141, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+      propertyPath: m_Name
+      value: SilicateTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216805313059742469, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216805313059742469, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216805313059742469, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216805313059742469, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216805313059742469, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216805313059742469, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216805313059742469, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216805313059742469, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216805313059742469, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216805313059742469, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216805313059742469, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+--- !u!4 &5281573817245109846 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2216805313059742469, guid: 9ebf30a4ad670974b89db120c8206214, type: 3}
+  m_PrefabInstance: {fileID: 6307370205588352339}
+  m_PrefabAsset: {fileID: 0}

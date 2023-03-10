@@ -103,7 +103,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                 if(interactable.name == "Bed"){
                     script.Setup(delegate () {
                         GameObject player = GameObject.FindGameObjectWithTag("Player");
-                        player.SendMessage("addHealth", Mathf.Infinity, SendMessageOptions.DontRequireReceiver);
+                        player.SendMessage("addHealth", 100, SendMessageOptions.DontRequireReceiver);
                         Debug.Log("Health restored.");
                     }, "e", newShowDistanceMaximum);
                     script.setNewOffset(new Vector3(0, 0, 0));
@@ -114,6 +114,10 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
     private bool QuestIsCompletedOrActive(string id){
         return GameObject.FindGameObjectWithTag("GameHandler").GetComponent<QuestJournal>().questIsCompletedOrActive(id);
+    }
+
+    private bool QuestIsCompleted(string id){
+        return GameObject.FindGameObjectWithTag("GameHandler").GetComponent<QuestJournal>().questIsCompleted(id);
     }
 
     private void fireEvent(string id){

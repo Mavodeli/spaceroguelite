@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5e89876e2b9a4256bb7e09b9fb8318d, type: 3}
-  m_Name: Silicone
+  m_Name: Silicate
   m_EditorClassIdentifier: 
   id: 0
-  itemName: Silicone
+  itemName: Silicate
   description: 
-  icon: {fileID: 21300000, guid: 140b055f49860469181046ce27a0e8ea, type: 3}
+  icon: {fileID: 21300000, guid: 4a66ce75bb2d6af4ab35fec780157e4e, type: 2}
   iconScale: 1
