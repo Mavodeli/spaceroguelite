@@ -24,10 +24,10 @@ public class SpaceLevel_InteractablesHandler : MonoBehaviour
                 if(interactable.name == "blue blobby mass circle"){
                     script.Setup(delegate () {
                         int ult = 0;//attract two
-                        GameObject player = GameObject.FindGameObjectWithTag("Player");
-                        player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
                         GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
                         IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);
+                        GameObject player = GameObject.FindGameObjectWithTag("Player");
+                        player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
                         Destroy(GameObject.Find(interactable.name));//kinda tricky to get the delegate to destroy the correct gameObject ;)
                     }, "e");
                     script.setNewOffset(new Vector3(0, 0, 0));
