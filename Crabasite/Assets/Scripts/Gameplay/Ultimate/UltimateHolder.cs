@@ -28,6 +28,7 @@ public class UltimateHolder : MonoBehaviour
     {
         state = UltimateState.ready;
         ultimateList = Resources.LoadAll<ScriptableObject>("ScriptableObjects/Ultimates");
+        SwitchUltimate(3);
     }
 
     // Update is called once per frame
@@ -68,6 +69,12 @@ public class UltimateHolder : MonoBehaviour
 
     public void SwitchUltimate(int ult)
     {
+        if(ult == 3){//empty
+            ultimate = (Ultimate)ultimateList[ult];
+            GameObject hud = GameObject.FindGameObjectWithTag("HUD");
+            hud.SendMessage("ChangeSprite", ult, SendMessageOptions.DontRequireReceiver);
+            return;
+        }
         DataPersistenceManager dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager").GetComponent<DataPersistenceManager>();
         bool unlocked = dpm.getGameData().UltimateDict[ult];
         if(unlocked){
