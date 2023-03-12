@@ -158,7 +158,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     quest_identifier,
                     "interactedWithWorkbench",
                     delegate(){//completionCriterion
-                        return IM.ItemAmountInDict("SpaceshipDebris") >= 8;//maybeTODO: update amount
+                        return IM.ItemAmountInDict("SpaceshipDebris") >= 7;//maybeTODO: update amount
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayComment("completedRepairSpaceship");//maybeTODO: use correct identifier
