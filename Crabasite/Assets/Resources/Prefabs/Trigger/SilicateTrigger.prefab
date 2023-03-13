@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2216805313059742469}
   - component: {fileID: 8065624548994096123}
   - component: {fileID: 5123370231571686127}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SilicateTrigger
   m_TagString: ProgressionTrigger
   m_Icon: {fileID: 0}

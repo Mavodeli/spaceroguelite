@@ -1,0 +1,13 @@
+{
+    "PlayerShouldInspectAllBrokenShipParts" : "",
+    "startRepairWindshield" : "I can't see where I am, the window is broken.",
+    "completedRepairWindshield" : "",
+    "startRepairSpaceship" : "",
+    "completedRepairSpaceship" : "",
+    "startRechargeThrusters" : "Also, the ship seems to be running on the emergency generator. I need to find something to charge it.",
+    "completedRechargeThrusters" : "",
+    "firstTimeSeeingSilicateAsteroidWithUltimate" : "",
+    "firstTimeSeeingSilicateAsteroidWithoutUltimate" : "",
+    "firstTimeSeeingElectroAsteroid" : "",
+    "completedGetAttractTwo" : ""
+}
