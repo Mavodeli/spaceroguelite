@@ -8,6 +8,7 @@ public class Mail : ScriptableObject
 {
     public int id;
     public string mailName;
+    public string senderName;
     public string description;
     public Sprite icon;
 }
