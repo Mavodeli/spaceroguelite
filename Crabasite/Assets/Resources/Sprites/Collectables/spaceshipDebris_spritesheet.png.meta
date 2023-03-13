@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,7 +103,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: spaceshipDebris_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 282
+        width: 72
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c3dfc92889636649a756fe5280ea039
+      internalID: 360197177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spaceshipDebris_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 314
+        width: 84
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc859fc5def29564a9e4195fd6a505f4
+      internalID: 2027119309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spaceshipDebris_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 175
+        width: 124
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a68ba70f79a52f489aaaab02ffa3666
+      internalID: 1829204018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spaceshipDebris_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 231
+        width: 52
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b096bb3d4a244a748b0a92f32c9126ba
+      internalID: 1287412457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spaceshipDebris_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 145
+        width: 64
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c67018f2c23d7e458f6bd1461cb880a
+      internalID: 84761494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spaceshipDebris_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 59
+        width: 88
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d0ae77dfc7119f488807b050ebbc075
+      internalID: -976467152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spaceshipDebris_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 59
+        width: 80
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9bcd59a059f92b409b7a970b90b28ff
+      internalID: 378420652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +261,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spaceshipDebris_spritesheet_1: 2027119309
+      spaceshipDebris_spritesheet_3: 1287412457
+      spaceshipDebris_spritesheet_5: -976467152
+      spaceshipDebris_spritesheet_6: 378420652
+      spaceshipDebris_spritesheet_2: 1829204018
+      spaceshipDebris_spritesheet_0: 360197177
+      spaceshipDebris_spritesheet_4: 84761494
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
