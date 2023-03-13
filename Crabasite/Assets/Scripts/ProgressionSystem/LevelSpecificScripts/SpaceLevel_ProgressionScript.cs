@@ -39,7 +39,7 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
                     CommentarySystem.displayComment("firstTimeSeeingSilicateAsteroidWithUltimate");
                 }
                 else{
-                    CommentarySystem.displayComment("firstTimeSeeingSilicateAsteroidWithoutUltimate");
+                    CommentarySystem.displayComment("firstTimeSeeingSilicateAsteroidWithoutUltimate");//maybe remove for the sake of better game design?
                     if(!QJ.questIsCompletedOrActive("GetAttractTwo"))
                         QJ.addNewQuest("GetAttractTwo");
                 }
