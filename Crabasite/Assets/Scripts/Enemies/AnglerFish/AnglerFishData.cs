@@ -14,4 +14,5 @@ public class AnglerFishData : ScriptableObject
     public string gameObjectName = "Angler fish emeny";
     public float meleeCooldown = .5f;
     public float stoppingDistance = 0.0f;
+    public string path_to_controller = "Animation/Enemies/AC_Anglerfish";
 }

@@ -28,7 +28,8 @@ public class AnglerFishBehaviour : Enemy
                         afd.gameObjectName,//name 
                         sprite,//sprite 
                         afd.textureScale,//sprite scale modifier
-                        afd.stoppingDistance//stopping distance
+                        afd.stoppingDistance,//stopping distance
+                        afd.path_to_controller// path to animator controller
                         );
     }
 
