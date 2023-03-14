@@ -69,9 +69,7 @@ public class SoundController : MonoBehaviour
         source.clip = sounds[name].clip;
         source.loop = looping;
         source.Play();
-        if(!looping){
-            activeSounds.Add(source);
-        } // looping sounds will automatically be destroyed upon loading a new scene, or when they are stopped
+        activeSounds.Add(source);
         if(dontDestroyOnLoad){
             DontDestroyOnLoad(source);
         }
@@ -79,7 +77,7 @@ public class SoundController : MonoBehaviour
     }
 
     /**
-     * Stops any sound
+     * Stops sound
      * Can be useful if there is a looping sound which should not be destroyed on load
      */
     public void stopSound(AudioSource sound){
@@ -90,6 +88,7 @@ public class SoundController : MonoBehaviour
     private int frameCounter = 0;
 
     void Update(){
+
         frameCounter++;
         if(frameCounter == 60){
             for(int i = activeSounds.Count - 1; i >= 0; i--)
