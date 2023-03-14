@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 {
+    private SpaceshipLevel_ProgressionScript progressionScript;
+
+    void Start(){
+        progressionScript = gameObject.GetComponent<SpaceshipLevel_ProgressionScript>();
+    }
+
     void Update()
     {
         //check if all interactables have the button script, if not, add missing scripts
@@ -16,6 +22,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "SpaceshipEntrance"){
                     script.Setup(delegate () {
+                        showCommentOnInspectingCrabasite();
 
                         if(//ensure that the player 'collected' all quests for the space level
                             QuestIsCompletedOrActive("RepairWindshield") &&
@@ -34,6 +41,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "Windshield"){
                     script.Setup(delegate () {
+                        showCommentOnInspectingCrabasite();
 
                         if(!QuestIsCompletedOrActive("RepairWindshield")){
 
@@ -42,6 +50,8 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                             //Comment
                             CommentarySystem.displayComment("startRepairWindshield");
+
+                            showCommentOnAllQuestsCollected();
                         }
 
                         //fire event interactedWithWindshield
@@ -53,6 +63,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "Hyperdrive"){
                     script.Setup(delegate () {
+                        showCommentOnInspectingCrabasite();
                         
                         if(!QuestIsCompletedOrActive("RechargeThrusters")){
 
@@ -63,7 +74,17 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                             CommentarySystem.displayComment("startRechargeThrusters");
                         }
 
-                        //fire event interactedWithWindshield
+                        if(!QuestIsCompletedOrActive("FindANewHyperdriveCore")){
+                            Spawn.Quest("FindANewHyperdriveCore");
+                            CommentarySystem.displayComment("startFindANewHyperdriveCore");
+
+                            showCommentOnAllQuestsCollected();
+                        }
+
+                        if(QuestIsCompleted("InstallNewHyperdriveCore")){
+                            CommentarySystem.displayComment("HyperdriveCoreIsInstalled");
+                        }
+
                         fireEvent("interactedWithHyperdrive");
 
                     }, "e", newShowDistanceMaximum);
@@ -72,6 +93,8 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "Computer"){
                     script.Setup(delegate () {
+                        showCommentOnInspectingCrabasite();
+
                         GameObject dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager");
                         dpm.SendMessage("SaveGame", true, SendMessageOptions.DontRequireReceiver);
                         // Debug.Log("Game saved to file.");
@@ -83,6 +106,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "Workbench"){
                     script.Setup(delegate () {
+                        showCommentOnInspectingCrabasite();
                         
                         if(!QuestIsCompletedOrActive("RepairSpaceship")){
 
@@ -91,6 +115,8 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                             //Comment
                             CommentarySystem.displayComment("startRepairSpaceship");
+
+                            showCommentOnAllQuestsCollected();
                         }
 
                         //fire event interactedWithWorkbench
@@ -102,6 +128,8 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "Bed"){
                     script.Setup(delegate () {
+                        showCommentOnInspectingCrabasite();
+
                         GameObject player = GameObject.FindGameObjectWithTag("Player");
                         player.SendMessage("addHealth", 100, SendMessageOptions.DontRequireReceiver);
                         Debug.Log("Health restored.");
@@ -122,5 +150,26 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
     private void fireEvent(string id){
         GameObject.FindGameObjectWithTag("QuestEventsContainer").SendMessage("InvokeEvent", id, SendMessageOptions.DontRequireReceiver);
+    }
+
+    private void showCommentOnAllQuestsCollected(){
+        if(
+            !progressionScript.getFlag("protagonistCollectedAllSpaceshipQuests") &&
+            QuestIsCompletedOrActive("RepairWindshield") &&
+            QuestIsCompletedOrActive("RepairSpaceship") &&
+            QuestIsCompletedOrActive("RechargeThrusters")
+        ){
+            CommentarySystem.displayComment("protagonistCollectedAllSpaceshipQuests");
+            progressionScript.setFlag("protagonistCollectedAllSpaceshipQuests");
+        }
+    }
+
+    private void showCommentOnInspectingCrabasite(){
+        if(!progressionScript.getFlag("protagonistInspectedCrabasite")){
+            CommentarySystem.displayComment("protagonistInspectsCrabasite");
+            CommentarySystem.displayComment("startFindACure");
+            Spawn.Quest("FindACure");
+            progressionScript.setFlag("protagonistInspectedCrabasite");
+        }
     }
 }

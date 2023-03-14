@@ -33,7 +33,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     Resolution[] resolutions;
 
     // Added for the GameData to save
-    private string level = "Level 1 - space";
+    private string level = "Level 0 - spaceship";
     private int graphicsIndex = 0;
     private float soundVolume = 0;
     public bool isFullscreen;
@@ -81,7 +81,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     {
         DisableMenuButtons();
         DataPersistenceManager.instance.NewGame();
-        SceneManager.LoadSceneAsync("Level 1 - space");
+        SceneManager.LoadSceneAsync("Level 0 - spaceship");
     }
 
     // Game will be loaded from saved GameData

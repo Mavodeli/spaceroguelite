@@ -2,12 +2,21 @@
     "PlayerShouldInspectAllBrokenShipParts" : "",
     "startRepairWindshield" : "I can't see where I am, the window is broken.",
     "completedRepairWindshield" : "",
-    "startRepairSpaceship" : "",
+    "startRepairSpaceship" : "And lastly, there are small repairs I will need to make around the ship.",
     "completedRepairSpaceship" : "",
     "startRechargeThrusters" : "Also, the ship seems to be running on the emergency generator. I need to find something to charge it.",
     "completedRechargeThrusters" : "",
     "firstTimeSeeingSilicateAsteroidWithUltimate" : "",
     "firstTimeSeeingSilicateAsteroidWithoutUltimate" : "",
     "firstTimeSeeingElectroAsteroid" : "",
-    "completedGetAttractTwo" : ""
+    "completedGetAttractTwo" : "",
+    "startFindANewHyperdriveCore" : "Looking at the hyperdrive, it got destroyed completely because of the malfunction. If I want to get home, I will need to replace it somehow.",
+    "completedFindANewHyperdriveCore" : "",
+    "completedInstallNewHyperdriveCore" : "",
+    "HyperdriveCoreIsInstalled" : "",
+    "startFindACure" : "It's ok. It's ok. Stay calm. You are here to get the cure for this anyway. Get it quickly, and you'll be able to get cured too. Just make it quick... ye... just need to make it quick.",
+    "completedFindACure" : "",
+    "protagonistWakesUp" : "Ugh... What happened? I should have a look around.",
+    "protagonistInspectsCrabasite" : "Huh?...!!! This can't be! They told me I'd be safe, that they had taken all the needed precautions!!! FUCK! As if all this wasn't bad enough already!",
+    "protagonistCollectedAllSpaceshipQuests" : "I should go outside and see where I am. If I'm lucky, I can find something to fix up the spaceship."
 }

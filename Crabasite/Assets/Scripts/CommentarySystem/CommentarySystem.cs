@@ -8,7 +8,7 @@ public class CommentarySystem : MonoBehaviour
 {
     public static void displayComment(string id){
         //TODO: implement this
-        // Debug.Log("Showing Comment with identifier "+id);
+        //@Rico: the string obtained with LoadFromFile(id) should appear in a textbox ingame and not as a debug log ;)
         Debug.Log(LoadFromFile(id));
     }
 
@@ -16,7 +16,7 @@ public class CommentarySystem : MonoBehaviour
     {
         // using Path.Combine because of different Paths of different OS's
         string path = Path.Combine(Application.persistentDataPath, "english.json");
-        string result = "";
+        string result = "DEFAULT COMMENT: should not appear!";
         if(File.Exists(path))
         {
             Dictionary<string, string> deserializedData = new Dictionary<string, string>();
