@@ -16,7 +16,7 @@ public class CommentarySystem : MonoBehaviour
     {
         // using Path.Combine because of different Paths of different OS's
         string path = Path.Combine(Application.persistentDataPath, "english.json");
-        string result = "";
+        string result = "DEFAULT COMMENT: should not appear!";
         if(File.Exists(path))
         {
             Dictionary<string, string> deserializedData = new Dictionary<string, string>();

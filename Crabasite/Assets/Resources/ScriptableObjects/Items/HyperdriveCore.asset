@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HyperdriveCore
   m_EditorClassIdentifier: 
   id: 0
-  itemName: 
+  itemName: Hyperdrive Core
   description: 
   icon: {fileID: 0}
-  iconScale: 0
+  iconScale: 1
