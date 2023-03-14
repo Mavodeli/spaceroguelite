@@ -119,7 +119,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayComment("completedRepairWindshield");//maybeTODO: use correct identifier
-                        Spawn.NewSprite("Sprites/clean_interior", GameObject.FindGameObjectWithTag("ShipHull"));
+                        Spawn.NewSprite("Sprites/Spaceship/clean_interior", GameObject.FindGameObjectWithTag("ShipHull"));
                 })
             );
 
