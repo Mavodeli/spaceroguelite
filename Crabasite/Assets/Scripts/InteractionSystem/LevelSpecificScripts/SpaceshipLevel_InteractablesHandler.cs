@@ -63,7 +63,15 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                             CommentarySystem.displayComment("startRechargeThrusters");
                         }
 
-                        //fire event interactedWithWindshield
+                        if(!QuestIsCompletedOrActive("FindANewHyperdriveCore")){
+                            Spawn.Quest("FindANewHyperdriveCore");
+                            CommentarySystem.displayComment("startFindANewHyperdriveCore");
+                        }
+
+                        if(QuestIsCompleted("InstallNewHyperdriveCore")){
+                            CommentarySystem.displayComment("HyperdriveCoreIsInstalled");
+                        }
+
                         fireEvent("interactedWithHyperdrive");
 
                     }, "e", newShowDistanceMaximum);

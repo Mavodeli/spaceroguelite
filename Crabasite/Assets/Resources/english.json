@@ -9,5 +9,10 @@
     "firstTimeSeeingSilicateAsteroidWithUltimate" : "",
     "firstTimeSeeingSilicateAsteroidWithoutUltimate" : "",
     "firstTimeSeeingElectroAsteroid" : "",
-    "completedGetAttractTwo" : ""
+    "completedGetAttractTwo" : "",
+    "startFindANewHyperdriveCore" : "",
+    "completedFindANewHyperdriveCore" : "",
+    "completedInstallNewHyperdriveCore" : "",
+    "HyperdriveCoreIsInstalled" : "",
+    "completedFindACure" : ""
 }

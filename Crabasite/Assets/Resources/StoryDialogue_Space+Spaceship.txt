@@ -11,11 +11,13 @@ Event: Looks at his arm for the first time when trying to open the door of the s
 Dialogue: Huh?...!!! This can't be! They told me I'd be safe, that they had taken all the needed precautions!!! FUCK! As if all this wasn't bad enough already!
 Dialogue: It's ok. It's ok. Stay calm. You are here to get the cure for this anyway. Get it quickly, and you'll be able to get cured too. Just make it quick... ye... just need to make it quick.
 
+
 Scene: Outside the spaceship for the first time
 
 Event: Leaving the spaceship
 Dialogue: Now I understand why the spaceship malfunctioned. And no wonder it was in the middle of nowhere. A black hole. Talk about making it quick... If I don't the parasite will be the least of my concerns.
 Dialogue: I should have a look around to see if I can find anything useful in these big asteroids.
+
 
 Scene: Outside the spaceship
 
@@ -34,6 +36,7 @@ Dialogue: These strange rocks seem to be charged with some kind of energy, I sho
 Event: Seeing the silicon meteoroid for the first time
 Dialogue: This meteoroid seems to have some silicon inside it. If I bring it back to the workbench, I could use it to repair the glass.
 
+
 Scene: Inside the spaceship after repairing everything in time
 
 Event: Repaired last ship part in time to make it out
@@ -41,6 +44,7 @@ Dialogue: Finally. I have to get out of here before I die.
 
 Event: After leaving the black hole behind and finding the abandoned spaceship we have been looking for that holds the cure
 Dialogue: There it is. Didn't think I would make it this far with all that has happened today, I'm not going to lie. Let's get in there and out before it's too late.
+
 
 Scene: E-Mails
 

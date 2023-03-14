@@ -162,12 +162,54 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayComment("completedRepairSpaceship");//maybeTODO: use correct identifier
-                        // Spawn.NewSprite("Spaceship_repaired", GameObject.FindGameObjectWithTag("ShipHull"));//done in the DPM on scene load
+                        // Spawn.NewSprite("Spaceship_repaired", GameObject.FindGameObjectWithTag("ShipHull"));//done in the DPM on scene load bc this is only relevant for the space scene (and this quest is completed in the spaceship)
                 })
             );
 
-            quest_identifier = "new Quest";
-            //TODO
+            quest_identifier = "FindANewHyperdriveCore";
+            data.Add(
+                quest_identifier,
+                new Quest(
+                    quest_identifier,
+                    "moveItemToInventory",
+                    delegate(){//completionCriterion
+                        return IM.ItemAmountInDict("HyperdriveCore") >= 1;
+                    },
+                    delegate(){//onCompletion
+                        CommentarySystem.displayComment("completedFindANewHyperdriveCore");
+                        GameHandler.GetComponent<QuestJournal>().addNewQuest("InstallNewHyperdriveCore");
+                })
+            );
+
+            quest_identifier = "InstallNewHyperdriveCore";
+            data.Add(
+                quest_identifier,
+                new Quest(
+                    quest_identifier,
+                    "interactedWithHyperdrive",
+                    delegate(){//completionCriterion
+                        return IM.ItemAmountInDict("HyperdriveCore") >= 1;
+                    },
+                    delegate(){//onCompletion
+                        IM.RemoveItem("HyperdriveCore");
+                        Spawn.NewSprite("Spaceship_repaired_withHyperdriveCore", GameObject.FindGameObjectWithTag("ShipHull"));//TODO: change to actual sprite name!!!
+                        CommentarySystem.displayComment("completedInstallNewHyperdriveCore");
+                })
+            );
+
+            quest_identifier = "FindACure";
+            data.Add(
+                quest_identifier,
+                new Quest(
+                    quest_identifier,
+                    "moveItemToInventory",
+                    delegate(){//completionCriterion
+                        return IM.ItemAmountInDict("TheCure") >= 1;
+                    },
+                    delegate(){//onCompletion
+                        CommentarySystem.displayComment("completedFindACure");
+                })
+            );
         }
 
         public Quest at(string key){ return data[key];}
