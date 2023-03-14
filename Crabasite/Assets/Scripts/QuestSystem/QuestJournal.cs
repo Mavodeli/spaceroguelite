@@ -119,7 +119,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayComment("completedRepairWindshield");//maybeTODO: use correct identifier
-                        Spawn.NewSprite("Spaceship_patchedWindshield", GameObject.FindGameObjectWithTag("ShipHull"));//TODO: change to actual sprite name!!!
+                        Spawn.NewSprite("Sprites/clean_interior", GameObject.FindGameObjectWithTag("ShipHull"));
                 })
             );
 
@@ -162,7 +162,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayComment("completedRepairSpaceship");//maybeTODO: use correct identifier
-                        Spawn.NewSprite("Spaceship_repaired", GameObject.FindGameObjectWithTag("ShipHull"));//TODO: change to actual sprite name!!!
+                        // Spawn.NewSprite("Spaceship_repaired", GameObject.FindGameObjectWithTag("ShipHull"));//done in the DPM on scene load
                 })
             );
 

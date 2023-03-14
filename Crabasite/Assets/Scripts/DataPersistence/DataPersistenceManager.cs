@@ -45,6 +45,27 @@ public class DataPersistenceManager : MonoBehaviour
     {
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame(false);
+
+        //makeshift sprite changer
+        //maybeTODO: obsolete when level state persistence is implemented ;)
+        bool completed = false;
+        try{ completed = !gameData.activeQuests["RepairSpaceship"]; }
+        catch(KeyNotFoundException){}
+        catch(System.NullReferenceException){}
+
+        Sprite sprite = null;
+        if(completed && scene.name == "Level 1 - space")
+            sprite = Resources.Load<Sprite>("Sprites/Spaceship/clean_exterior");
+        else if(completed && scene.name == "Level 0 - spaceship")
+            sprite = Resources.Load<Sprite>("Sprites/Spaceship/clean_interior");
+        else if(!completed && scene.name == "Level 1 - space")
+            sprite = Resources.Load<Sprite>("Sprites/Spaceship/broken_exterior");
+        else if(!completed && scene.name == "Level 0 - spaceship")
+            sprite = Resources.Load<Sprite>("Sprites/Spaceship/broken_interior");
+
+        if(sprite != null)
+            GameObject.FindGameObjectWithTag("ShipHull").GetComponent<SpriteRenderer>().sprite = sprite;
+
     }
     // Called when switching Scenes
     public void OnSceneUnloaded(Scene scene)
