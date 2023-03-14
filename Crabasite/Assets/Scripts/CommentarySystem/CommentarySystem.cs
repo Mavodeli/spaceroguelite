@@ -8,7 +8,7 @@ public class CommentarySystem : MonoBehaviour
 {
     public static void displayComment(string id){
         //TODO: implement this
-        // Debug.Log("Showing Comment with identifier "+id);
+        //@Rico: the string obtained with LoadFromFile(id) should appear in a textbox ingame and not as a debug log ;)
         Debug.Log(LoadFromFile(id));
     }
 
