@@ -56,6 +56,8 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                         //fire event interactedWithWindshield
                         fireEvent("interactedWithWindshield");
+
+                        showCommentOnEmergencyRepairsCompleted();
                         
                     }, "e", newShowDistanceMaximum+.2f);
                     script.setNewOffset(new Vector3(0, 0, 0));
@@ -86,6 +88,8 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                         }
 
                         fireEvent("interactedWithHyperdrive");
+
+                        showCommentOnEmergencyRepairsCompleted();
 
                     }, "e", newShowDistanceMaximum);
                     script.setNewOffset(new Vector3(0, 0, 0));
@@ -121,6 +125,8 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                         //fire event interactedWithWorkbench
                         fireEvent("interactedWithWorkbench");
+
+                        showCommentOnEmergencyRepairsCompleted();
 
                     }, "e", newShowDistanceMaximum);
                     script.setNewOffset(new Vector3(0, 0, 0));
