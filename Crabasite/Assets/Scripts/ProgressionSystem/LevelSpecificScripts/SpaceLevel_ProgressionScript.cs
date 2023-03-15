@@ -53,10 +53,24 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
             }
         });
 
+        triggerMap.Add("AttractTwoAsteroidTrigger", delegate () {
+            if(!PT.getFlag("triggeredAttractTwoAsteroidTrigger")){
+                CommentarySystem.displayComment("firstTimeSeeingAttractTwoAsteroid");
+                PT.setFlag("triggeredAttractTwoAsteroidTrigger");
+            }
+        });
+
         //fill the triggers in the scene with their behaviours according to the trigger map
         foreach(GameObject trigger in GameObject.FindGameObjectsWithTag("ProgressionTrigger")){
             ProgressionTrigger pt = trigger.GetComponent<ProgressionTrigger>();
             pt.Setup(triggerMap[trigger.name]);
+        }
+
+        if(!PT.getFlag("FirstTimeLeavingSpaceship")){
+            CommentarySystem.displayComment("firstTimeLeavingSpaceship");
+            CommentarySystem.displayComment("firstTimeLeavingSpaceshipContinued");
+            CommentarySystem.displayComment("firstTimeSeeingSpaceshipParts");
+            PT.setFlag("FirstTimeLeavingSpaceship");
         }
     }
 

@@ -164,6 +164,18 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
         }
     }
 
+    private void showCommentOnEmergencyRepairsCompleted(){
+        if(
+            !progressionScript.getFlag("ProtagonistCompletedEmergencyRepairs") &&
+            QuestIsCompleted("RepairWindshield") &&
+            QuestIsCompleted("RepairSpaceship") &&
+            QuestIsCompleted("RechargeThrusters")
+        ){
+            CommentarySystem.displayComment("protagonistCompletedEmergencyRepairs");
+            progressionScript.setFlag("ProtagonistCompletedEmergencyRepairs");
+        }
+    }
+
     private void showCommentOnInspectingCrabasite(){
         if(!progressionScript.getFlag("protagonistInspectedCrabasite")){
             CommentarySystem.displayComment("protagonistInspectsCrabasite");
