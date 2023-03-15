@@ -1,22 +1,52 @@
 {
-    "PlayerShouldInspectAllBrokenShipParts" : "",
-    "startRepairWindshield" : "I can't see where I am, the window is broken.",
-    "completedRepairWindshield" : "",
-    "startRepairSpaceship" : "And lastly, there are small repairs I will need to make around the ship.",
-    "completedRepairSpaceship" : "",
-    "startRechargeThrusters" : "Also, the ship seems to be running on the emergency generator. I need to find something to charge it.",
-    "completedRechargeThrusters" : "",
-    "firstTimeSeeingSilicateAsteroidWithUltimate" : "",
-    "firstTimeSeeingSilicateAsteroidWithoutUltimate" : "",
-    "firstTimeSeeingElectroAsteroid" : "",
-    "completedGetAttractTwo" : "",
-    "startFindANewHyperdriveCore" : "Looking at the hyperdrive, it got destroyed completely because of the malfunction. If I want to get home, I will need to replace it somehow.",
-    "completedFindANewHyperdriveCore" : "",
-    "completedInstallNewHyperdriveCore" : "",
-    "HyperdriveCoreIsInstalled" : "",
-    "startFindACure" : "It's ok. It's ok. Stay calm. You are here to get the cure for this anyway. Get it quickly, and you'll be able to get cured too. Just make it quick... ye... just need to make it quick.",
-    "completedFindACure" : "",
-    "protagonistWakesUp" : "Ugh... What happened? I should have a look around.",
-    "protagonistInspectsCrabasite" : "Huh?...!!! This can't be! They told me I'd be safe, that they had taken all the needed precautions!!! FUCK! As if all this wasn't bad enough already!",
-    "protagonistCollectedAllSpaceshipQuests" : "I should go outside and see where I am. If I'm lucky, I can find something to fix up the spaceship."
+    "PlayerShouldInspectAllBrokenShipParts" : 
+    "",
+    "startRepairWindshield" : 
+    "I can't see where I am, the window is broken.",
+    "completedRepairWindshield" : 
+    "",
+    "startRepairSpaceship" : 
+    "And lastly, there are small repairs I will need to make around the ship.",
+    "completedRepairSpaceship" : 
+    "",
+    "startRechargeThrusters" : 
+    "Also, the ship seems to be running on the emergency generator. I need to find something to charge it.",
+    "completedRechargeThrusters" : 
+    "",
+    "firstTimeSeeingSilicateAsteroidWithUltimate" : 
+    "There seem to be large silicate deposits in these strange rocks, I should be able repair the windshield with it.",
+    "firstTimeSeeingSilicateAsteroidWithoutUltimate" : 
+    "There seem to be large silicate deposits in these strange rocks, I should be able repair the windshield with it. But I don't have anything to smash them with. I should have a look around for something.",
+    "firstTimeSeeingElectroAsteroid" : 
+    "This meteoroid seems to be charged with some kind of energy. If I bring it back to the hyperdrive, I should be able to recharge the engine with it and get at least the thrusters working again.",
+    "firstTimeSeeingAttractTwoAsteroid" :
+    "What is this glowing thing in the middle, I should check it out.",
+    "completedGetAttractTwo" : 
+    "",
+    "startFindANewHyperdriveCore" : 
+    "Looking at the hyperdrive, it got destroyed completely because of the malfunction. If I want to get home, I will need to replace it somehow.",
+    "completedFindANewHyperdriveCore" : 
+    "",
+    "completedInstallNewHyperdriveCore" : 
+    "",
+    "HyperdriveCoreIsInstalled" : 
+    "",
+    "startFindACure" : 
+    "It's ok. It's ok. Stay calm. You are here to get the cure for this anyway. Get it quickly, and you'll be able to get cured too. Just make it quick... ye... just need to make it quick.",
+    "completedFindACure" : 
+    "",
+    "protagonistWakesUp" : 
+    "Ugh... What happened? I should have a look around.",
+    "protagonistInspectsCrabasite" : 
+    "Huh?...!!! This can't be! They told me I'd be safe, that they had taken all the needed precautions!!! FUCK! As if all this wasn't bad enough already!",
+    "protagonistCollectedAllSpaceshipQuests" : 
+    "I should go outside and see where I am. If I'm lucky, I can find something to fix up the spaceship.",
+    "firstTimeLeavingSpaceship" : 
+    "Now I understand why the spaceship malfunctioned. And no wonder it was in the middle of nowhere. A black hole. Talk about making it quick... If I don't the parasite will be the least of my concerns.",
+    "firstTimeLeavingSpaceshipContinued" : 
+    "I should have a look around to see if I can find anything useful in these big asteroids.",
+    "firstTimeSeeingSpaceshipParts" : 
+    "Those parts look perfect to patch up some of the small repairs I need to make around the ship. I should bring them to the workbench.",
+    "protagonistCompletedEmergencyRepairs" :
+    "Finally. I have to get out of here before I die."
 }
