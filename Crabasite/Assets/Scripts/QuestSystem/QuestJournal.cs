@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class QuestJournal : MonoBehaviour, IDataPersistence
 {   
@@ -107,6 +108,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
             Dictionary<string, Quest> old_glossary = null
         ){
             data = old_glossary == null ? new Dictionary<string, Quest>() : old_glossary;
+            QuestJournal QJ = GameHandler.GetComponent<QuestJournal>();
 
             string quest_identifier = "RepairWindshield";
             data.Add(
@@ -115,11 +117,16 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     quest_identifier,
                     "interactedWithWindshield",
                     delegate(){//completionCriterion
-                        return IM.ItemAmountInDict("Silicate") >= 8;//maybeTODO: update amount
+                        return IM.ItemAmountInDict("Silicate") >= 0;//maybeTODO: update amount
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayComment("completedRepairWindshield");//maybeTODO: use correct identifier
-                        Spawn.NewSprite("Sprites/Spaceship/clean_interior", GameObject.FindGameObjectWithTag("ShipHull"));
+                        Spawn.NewSprite(ConstructSpriteString.Spaceship(
+                            SceneManager.GetActiveScene().name,
+                            true,
+                            QJ.questIsCompleted("RepairSpaceship"),
+                            QJ.questIsCompleted("InstallNewHyperdriveCore")
+                        ), GameObject.FindGameObjectWithTag("ShipHull"));
                 })
             );
 
@@ -192,7 +199,12 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         IM.RemoveItem("HyperdriveCore");
-                        Spawn.NewSprite("Spaceship_repaired_withHyperdriveCore", GameObject.FindGameObjectWithTag("ShipHull"));//TODO: change to actual sprite name!!!
+                        Spawn.NewSprite(ConstructSpriteString.Spaceship(
+                            SceneManager.GetActiveScene().name,
+                            QJ.questIsCompleted("RepairWindshield"),
+                            QJ.questIsCompleted("RepairSpaceship"),
+                            true
+                        ), GameObject.FindGameObjectWithTag("ShipHull"));
                         CommentarySystem.displayComment("completedInstallNewHyperdriveCore");
                 })
             );

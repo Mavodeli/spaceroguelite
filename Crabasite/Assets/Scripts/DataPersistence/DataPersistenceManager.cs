@@ -40,6 +40,18 @@ public class DataPersistenceManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
+
+    private bool QuestIsCompleted(string id){
+        bool b = false;
+        try
+        {
+            b = !gameData.activeQuests[id];
+        }
+        catch(KeyNotFoundException){}
+        catch(System.NullReferenceException){}
+        return b;
+    }
+
     // Called when switching Scenes
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -48,24 +60,22 @@ public class DataPersistenceManager : MonoBehaviour
 
         //makeshift sprite changer
         //maybeTODO: obsolete when level state persistence is implemented ;)
-        bool completed = false;
-        try{ completed = !gameData.activeQuests["RepairSpaceship"]; }
-        catch(KeyNotFoundException){}
-        catch(System.NullReferenceException){}
+        Sprite sprite = Resources.Load<Sprite>(ConstructSpriteString.Spaceship(
+            scene.name,
+            QuestIsCompleted("RepairWindshield"),
+            QuestIsCompleted("RepairSpaceship"),
+            QuestIsCompleted("InstallNewHyperdriveCore")
+        ));
 
-        Sprite sprite = null;
-        if(completed && scene.name == "Level 1 - space")
-            sprite = Resources.Load<Sprite>("Sprites/Spaceship/clean_exterior");
-        else if(completed && scene.name == "Level 0 - spaceship")
-            sprite = Resources.Load<Sprite>("Sprites/Spaceship/clean_interior");
-        else if(!completed && scene.name == "Level 1 - space")
-            sprite = Resources.Load<Sprite>("Sprites/Spaceship/broken_exterior");
-        else if(!completed && scene.name == "Level 0 - spaceship")
-            sprite = Resources.Load<Sprite>("Sprites/Spaceship/broken_interior");
+        GameObject hull = null;
+        try
+        {
+            hull = GameObject.FindGameObjectWithTag("ShipHull");
+        }
+        catch (System.NullReferenceException){}
 
-        if(sprite != null)
-            GameObject.FindGameObjectWithTag("ShipHull").GetComponent<SpriteRenderer>().sprite = sprite;
-
+        if(hull != null)
+            hull.GetComponent<SpriteRenderer>().sprite = sprite;
     }
     // Called when switching Scenes
     public void OnSceneUnloaded(Scene scene)
