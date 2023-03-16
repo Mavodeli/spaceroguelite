@@ -99,19 +99,6 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                     script.Setup(delegate () {
                         showCommentOnInspectingCrabasite();
 
-                        GameObject dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager");
-                        dpm.SendMessage("SaveGame", true, SendMessageOptions.DontRequireReceiver);
-                        // Debug.Log("Game saved to file.");
-                        dpm.SendMessage("LoadGame", true, SendMessageOptions.DontRequireReceiver);
-                        // Debug.Log("Game loaded from file.");
-                    }, "e", newShowDistanceMaximum);
-                    script.setNewOffset(new Vector3(0, 0, 0));
-                }
-
-                if(interactable.name == "Workbench"){
-                    script.Setup(delegate () {
-                        showCommentOnInspectingCrabasite();
-                        
                         if(!QuestIsCompletedOrActive("RepairSpaceship")){
 
                             //Quest
@@ -122,6 +109,18 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                             showCommentOnAllQuestsCollected();
                         }
+
+                        GameObject dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager");
+                        dpm.SendMessage("SaveGame", true, SendMessageOptions.DontRequireReceiver);
+                        dpm.SendMessage("LoadGame", true, SendMessageOptions.DontRequireReceiver);
+                        CommentarySystem.displayComment("gameSaved");
+                    }, "e", newShowDistanceMaximum);
+                    script.setNewOffset(new Vector3(0, 0, 0));
+                }
+
+                if(interactable.name == "Workbench"){
+                    script.Setup(delegate () {
+                        showCommentOnInspectingCrabasite();
 
                         //fire event interactedWithWorkbench
                         fireEvent("interactedWithWorkbench");
