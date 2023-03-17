@@ -25,7 +25,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                         showCommentOnInspectingCrabasite();
 
                         if(//ensure that the player 'collected' all quests for the space level
-                            QuestIsCompletedOrActive("RepairWindshield") &&
+                            QuestIsCompletedOrActive("FindSilicate") &&
                             QuestIsCompletedOrActive("RepairSpaceship") &&
                             QuestIsCompletedOrActive("RechargeThrusters")
                         ){
@@ -43,13 +43,13 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                     script.Setup(delegate () {
                         showCommentOnInspectingCrabasite();
 
-                        if(!QuestIsCompletedOrActive("RepairWindshield")){
+                        if(!QuestIsCompletedOrActive("FindSilicate")){
 
                             //Quest
-                            Spawn.Quest("RepairWindshield");
+                            Spawn.Quest("FindSilicate");
 
                             //Comment
-                            CommentarySystem.displayComment("startRepairWindshield");
+                            CommentarySystem.displayComment("startFindSilicate");
 
                             showCommentOnAllQuestsCollected();
                         }
@@ -160,7 +160,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
     private void showCommentOnAllQuestsCollected(){
         if(
             !progressionScript.getFlag("protagonistCollectedAllSpaceshipQuests") &&
-            QuestIsCompletedOrActive("RepairWindshield") &&
+            QuestIsCompletedOrActive("FindSilicate") &&
             QuestIsCompletedOrActive("RepairSpaceship") &&
             QuestIsCompletedOrActive("RechargeThrusters")
         ){

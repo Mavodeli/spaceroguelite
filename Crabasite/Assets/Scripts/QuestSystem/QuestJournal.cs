@@ -109,17 +109,51 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         ){
             data = old_glossary == null ? new Dictionary<string, Quest>() : old_glossary;
             QuestJournal QJ = GameHandler.GetComponent<QuestJournal>();
+            string quest_identifier;
 
-            string quest_identifier = "RepairWindshield";
+            quest_identifier = "FindSilicate";
+            data.Add(
+                quest_identifier,
+                new Quest(
+                    quest_identifier,
+                    "moveItemToInventory",
+                    delegate(){//completionCriterion
+                        return IM.ItemAmountInDict("Silicate") >= 8;
+                    },
+                    delegate(){//onCompletion
+                        CommentarySystem.displayComment("completedFindSilicate");
+                        QJ.addNewQuest("RefineSilicate");
+                })
+            );
+
+            quest_identifier = "RefineSilicate";
+            data.Add(
+                quest_identifier,
+                new Quest(
+                    quest_identifier,
+                    "interactedWithHyperdrive",
+                    delegate(){//completionCriterion
+                        return IM.ItemAmountInDict("Silicate") >= 8;
+                    },
+                    delegate(){//onCompletion
+                        IM.RemoveItem("Silicate", 8);
+                        IM.AddItem("Silicone");
+                        CommentarySystem.displayComment("completedRefineSilicate");
+                        QJ.addNewQuest("RepairWindshield");
+                })
+            );
+
+            quest_identifier = "RepairWindshield";
             data.Add(
                 quest_identifier,
                 new Quest(
                     quest_identifier,
                     "interactedWithWindshield",
                     delegate(){//completionCriterion
-                        return IM.ItemAmountInDict("Silicate") >= 8;//maybeTODO: update amount
+                        return IM.ItemAmountInDict("Silicone") >= 1;
                     },
                     delegate(){//onCompletion
+                        IM.RemoveItem("Silicone");
                         CommentarySystem.displayComment("completedRepairWindshield");//maybeTODO: use correct identifier
                         Spawn.NewSprite(ConstructSpriteString.Spaceship(
                             SceneManager.GetActiveScene().name,
@@ -154,6 +188,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                         return IM.ItemAmountInDict("ElectroParticle") >= 4;//maybeTODO: update amount
                     },
                     delegate(){//onCompletion
+                        IM.RemoveItem("ElectroParticle", 4);
                         CommentarySystem.displayComment("completedRechargeThrusters");//maybeTODO: use correct identifier
                 })
             );
@@ -168,8 +203,8 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                         return IM.ItemAmountInDict("SpaceshipDebris") >= 7;//maybeTODO: update amount
                     },
                     delegate(){//onCompletion
-                        CommentarySystem.displayComment("completedRepairSpaceship");//maybeTODO: use correct identifier
-                        // Spawn.NewSprite("Spaceship_repaired", GameObject.FindGameObjectWithTag("ShipHull"));//done in the DPM on scene load bc this is only relevant for the space scene (and this quest is completed in the spaceship)
+                        IM.RemoveItem("SpaceshipDebris", 7);
+                        CommentarySystem.displayComment("completedRepairSpaceship");
                 })
             );
 
