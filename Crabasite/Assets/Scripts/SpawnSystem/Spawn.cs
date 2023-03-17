@@ -46,4 +46,26 @@ public class Spawn
         Sprite sprite = Resources.Load<Sprite>(name);
         sr.sprite = sprite;
     }
+
+    public static bool gravityIsEnabled(){
+        return GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().gravityScale > 0;
+    }
+
+    public static void Gravity(bool enable){
+        foreach(Rigidbody2D rb in GameObject.FindObjectsOfType<Rigidbody2D>()){
+            rb.gravityScale = enable ? 1 : 0;
+
+            if(enable){
+                rb.AddForce(new Vector2(0, -5*rb.mass));
+            }
+
+            //slightly lift the player/loose objects if gravity is turned off
+            //if((!enable) && ((rb.gameObject.tag == "Player") || (rb.tag == "Collectable"))){
+            if(!enable){
+                float lift_force = 100;
+                float rnd = Random.Range(0, lift_force/20);
+                rb.AddForce(new Vector2(0, (lift_force+rnd)/rb.mass));
+            }
+        }
+    }
 }

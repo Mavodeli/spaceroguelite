@@ -15,11 +15,13 @@ public class InteractionButton : MonoBehaviour
     public delegate void OnButtonPressDelegate();
     private OnButtonPressDelegate onButtonPress;
     private bool lastFrameGetKey;
+    private TimerObject buttonPressCooldown;
 
     public void Setup(OnButtonPressDelegate _delegate, string _inputKey = "e", float _showDistanceMaximum = 3){
         onButtonPress = _delegate;
         inputKey = _inputKey;
         showDistanceMaximum = _showDistanceMaximum;
+        buttonPressCooldown = new TimerObject();
     }
 
     void Start()
@@ -49,8 +51,9 @@ public class InteractionButton : MonoBehaviour
         }
         //check if player presses button, if so, perform onButtonPress
 
-        if (Input.GetKey(inputKey) && !lastFrameGetKey && hasButton)
+        if (Input.GetKey(inputKey) && !lastFrameGetKey && hasButton && !buttonPressCooldown.runs())
         {
+            buttonPressCooldown.start(1.5f);
             onButtonPress();
         }
         lastFrameGetKey = Input.GetKey(inputKey);
