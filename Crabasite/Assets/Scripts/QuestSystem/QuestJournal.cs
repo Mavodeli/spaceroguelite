@@ -122,7 +122,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayComment("completedFindSilicate");
-                        QJ.addNewQuest("RefineSilicate");
+                        Spawn.Quest("RefineSilicate");
                 })
             );
 
@@ -139,7 +139,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                         IM.RemoveItem("Silicate", 8);
                         IM.AddItem("Silicone");
                         CommentarySystem.displayComment("completedRefineSilicate");
-                        QJ.addNewQuest("RepairWindshield");
+                        Spawn.Quest("RepairWindshield");
                 })
             );
 
@@ -219,7 +219,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayComment("completedFindANewHyperdriveCore");
-                        GameHandler.GetComponent<QuestJournal>().addNewQuest("InstallNewHyperdriveCore");
+                        Spawn.Quest("InstallNewHyperdriveCore");
                 })
             );
 
