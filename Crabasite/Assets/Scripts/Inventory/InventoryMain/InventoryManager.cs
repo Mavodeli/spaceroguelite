@@ -239,6 +239,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         foreach(var entry in MailDict)
         {
             GameObject obj = Instantiate(InventoryMail, MailContent);
+            var mailController = obj.GetComponent<InventoryMailController>();
             var mailName = obj.transform.Find("MailName").GetComponent<TMP_Text>();
             var mailIcon = obj.transform.Find("MailIcon").GetComponent<Image>();
             var mailDescription = obj.transform.Find("MailDescription").GetComponent<TMP_Text>();
@@ -246,6 +247,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
             string path = "ScriptableObjects/Mails/" + entry.Key;
             Mail mail = Resources.Load<Mail>(path);
 
+            mailController.mail = mail;
             mailName.text = mail.mailName;
             mailIcon.sprite = mail.icon;
             mailDescription.text = mail.description;
@@ -305,22 +307,21 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     public void ShowQuest(string toFind)
     {
         Destroy(QuestDescriptionContent.GetChild(0).gameObject);
-        Debug.Log(InventoryQuestDescription);
+        // Debug.Log(InventoryQuestDescription);
 
         string path = "ScriptableObjects/QuestDescriptions/" + toFind;
         QuestDescription quest = Resources.Load<QuestDescription>(path);
 
-        GameObject obj1 = Instantiate(InventoryQuestDescription, QuestDescriptionContent);
-        InventoryQuestDescription = obj1;
-        var questHeader = obj1.transform.Find("QuestHeader").GetComponent<TMP_Text>();
-        var questIcon = obj1.transform.Find("QuestIcon").GetComponent<Image>();
-        var questDescription = obj1.transform.Find("QuestDescription").GetComponent<TMP_Text>();
+        GameObject obj = Instantiate(InventoryQuestDescription, QuestDescriptionContent);
+        var questHeader = obj.transform.Find("QuestHeader").GetComponent<TMP_Text>();
+        var questIcon = obj.transform.Find("QuestIcon").GetComponent<Image>();
+        var questDescription = obj.transform.Find("QuestDescription").GetComponent<TMP_Text>();
+
+        Debug.Log(obj);
 
         questHeader.text = quest.header;
         questIcon.sprite = quest.icon;
         questDescription.text = quest.description;
-
-        
     }
 
     public void updateUltimateButtons(){

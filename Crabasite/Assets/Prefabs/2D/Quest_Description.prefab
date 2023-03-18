@@ -176,7 +176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 682.75, y: 323.25}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 680}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3910438441111384201
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 6018997799666997935}
   - component: {fileID: 4664816060748496240}
   m_Layer: 5
-  m_Name: QuestName
+  m_Name: QuestHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
