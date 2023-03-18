@@ -154,7 +154,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         IM.RemoveItem("Silicone");
-                        CommentarySystem.displayComment("completedRepairWindshield");//maybeTODO: use correct identifier
+                        CommentarySystem.displayComment("completedRepairWindshield");
                         Spawn.NewSprite(ConstructSpriteString.Spaceship(
                             SceneManager.GetActiveScene().name,
                             true,

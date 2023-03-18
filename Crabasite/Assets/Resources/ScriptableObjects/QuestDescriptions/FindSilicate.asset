@@ -16,4 +16,4 @@ MonoBehaviour:
   header: 
   description: 
   icon: {fileID: 0}
-  iconScale: 0
+  iconScale: 1
