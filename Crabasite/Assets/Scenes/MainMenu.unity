@@ -3186,16 +3186,16 @@ MonoBehaviour:
   loadGameButton: {fileID: 779514421}
   optionsGameButton: {fileID: 1571708222}
   quitGameButton: {fileID: 1850496147}
-  graphicsDD: {fileID: 0}
-  resolutionsDD: {fileID: 0}
-  backToMenu: {fileID: 0}
-  volumeSlider: {fileID: 0}
-  fullscreenToggle: {fileID: 0}
-  volumeText: {fileID: 0}
-  settingsText: {fileID: 0}
-  graphicsText: {fileID: 0}
-  resolutionsText: {fileID: 0}
-  audioMixer: {fileID: 0}
+  graphicsDD: {fileID: 697950172}
+  resolutionsDD: {fileID: 1082431126}
+  backToMenu: {fileID: 929517626}
+  volumeSlider: {fileID: 1195094042}
+  fullscreenToggle: {fileID: 1449249695}
+  volumeText: {fileID: 955674669}
+  settingsText: {fileID: 1858957532}
+  graphicsText: {fileID: 1828038392}
+  resolutionsText: {fileID: 1633439718}
+  audioMixer: {fileID: 24100000, guid: 006fffa392dab42dea1807580855ea38, type: 2}
   isFullscreen: 0
   resolutionsIndex: 0
 --- !u!1 &1281224195
