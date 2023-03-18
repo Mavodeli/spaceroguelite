@@ -10,11 +10,11 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     public bool inventoryIsOpened;
 
     public static InventoryManager Instance;
-    public List<string> Items = new List<string>();
-    public List<string> Mails = new List<string>();
 
     public Dictionary<string,int> ItemDict= new Dictionary<string,int>();
     public Dictionary<string,bool> MailDict= new Dictionary<string, bool>();
+
+    public Dictionary<string, bool> QuestDict = new Dictionary<string, bool>();
 
     public Transform ItemContent;
     public GameObject InventoryItem;
@@ -24,8 +24,13 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     public GameObject InventoryMail;
     public GameObject InventoryMailDescription;
 
+    public Transform QuestContent;
+    public GameObject InventoryQuest;
+    public GameObject InventoryQuestDescription;
+
     public Transform InventoryDescriptionContent;
     public Transform MailDescriptionContent;
+    public Transform QuestDescriptionContent;
 
     public Transform UltimatesContent;
 
@@ -50,6 +55,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
                 ListItems();
                 ListMails();
+                ListQuests();
                 updateUltimateButtons();
             }
             else {
@@ -144,10 +150,29 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         
     }
 
-    public void AddQuestDescription(string id){
-        // TODO: implement this
+      public void AddQuestDescription(string id)
+    {
+        QuestDict.Add(id, true);
         Debug.Log("Adding Quest Description for Quest "+id);
     }
+
+    public void RemoveQuestDescription(string id)
+    {
+        try
+        {
+            QuestDict.Remove(id);
+        }
+        catch (KeyNotFoundException)
+        {
+            return;
+        }
+        
+    }
+
+    //public void AddQuestDescription(string id){
+        // TODO: implement this
+    //    Debug.Log("Adding Quest Description for Quest "+id);
+    //}
 
 
    /// This function is used to list all the items in the inventory tab
@@ -227,8 +252,8 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         }
     }
 
-      /// It takes a string as a parameter, finds the mail with the same name as the string, and then
-      /// displays the mail's name, icon, and description
+    /// It takes a string as a parameter, finds the mail with the same name as the string, and then
+    /// displays the mail's name, icon, and description
     public void ShowMail(string toFind)
     {
         Destroy(MailDescriptionContent.GetChild(0).gameObject);
@@ -244,6 +269,58 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         mailName.text = mail.mailName;
         mailIcon.sprite = mail.icon;
         mailDescription.text = mail.description;
+    }
+
+    /// This function is used to list all the quests in the quest tab
+    public void ListQuests()
+    {
+        /* Destroying all the quests in the quest tab and then adding all the quests from the list to the
+        quest tab. */
+        foreach (Transform quest in QuestContent)
+        {
+            Destroy(quest.gameObject);
+        }
+
+        /* Creating a new object for each quest in the list. */
+        foreach(var entry in QuestDict)
+        {
+            GameObject obj = Instantiate(InventoryQuest, QuestContent);
+            var questController = obj.GetComponent<InventoryQuestController>();
+            var questHeader = obj.transform.Find("QuestHeader").GetComponent<TMP_Text>();
+            var questIcon = obj.transform.Find("QuestIcon").GetComponent<Image>();
+            var questDescription = obj.transform.Find("QuestDescription").GetComponent<TMP_Text>();
+
+            string path = "ScriptableObjects/QuestDescriptions/" + entry.Key;
+            QuestDescription quest = Resources.Load<QuestDescription>(path);
+
+            questController.quest = quest;
+            questHeader.text = quest.header;
+            questIcon.sprite = quest.icon;
+            questDescription.text = quest.description;
+        }
+    }
+
+    /// It takes a string as a parameter, finds the quest with the same name as the string, and then
+    /// displays the quest's name, icon, and description
+    public void ShowQuest(string toFind)
+    {
+        Destroy(QuestDescriptionContent.GetChild(0).gameObject);
+        Debug.Log(InventoryQuestDescription);
+
+        string path = "ScriptableObjects/QuestDescriptions/" + toFind;
+        QuestDescription quest = Resources.Load<QuestDescription>(path);
+
+        GameObject obj1 = Instantiate(InventoryQuestDescription, QuestDescriptionContent);
+        InventoryQuestDescription = obj1;
+        var questHeader = obj1.transform.Find("QuestHeader").GetComponent<TMP_Text>();
+        var questIcon = obj1.transform.Find("QuestIcon").GetComponent<Image>();
+        var questDescription = obj1.transform.Find("QuestDescription").GetComponent<TMP_Text>();
+
+        questHeader.text = quest.header;
+        questIcon.sprite = quest.icon;
+        questDescription.text = quest.description;
+
+        
     }
 
     public void updateUltimateButtons(){
@@ -277,6 +354,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     {
         ItemDict = data.ItemsDict;
         MailDict = data.MailDict;
+        QuestDict = data.QuestDict;
         UltimateDict = data.UltimateDict;
     }
     
@@ -284,6 +362,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     {
         data.ItemsDict = (SerializableDictionary<string, int>)ItemDict;        
         data.MailDict = (SerializableDictionary<string, bool>)MailDict;
+        data.QuestDict = (SerializableDictionary<string, bool>)QuestDict;
         data.UltimateDict = (SerializableDictionary<int, bool>)UltimateDict;
     }
 

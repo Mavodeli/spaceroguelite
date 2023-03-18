@@ -11,6 +11,7 @@ public class GameData
     public string level;
     public SerializableDictionary<string, int> ItemsDict;
     public SerializableDictionary<string, bool> MailDict;
+    public SerializableDictionary<string, bool> QuestDict;
     public SerializableDictionary<string, bool> ProgressionDict;
     public SerializableDictionary<int, bool> UltimateDict;
     public int lastEquippedUltimate;
@@ -31,6 +32,7 @@ public class GameData
         this.level = "Level 1 - space";
         this.ItemsDict = new SerializableDictionary<string, int>();
         this.MailDict = new SerializableDictionary<string, bool>();
+        this.QuestDict = new SerializableDictionary<string, bool>();
         this.ProgressionDict = new SerializableDictionary<string, bool>();
         ProgressionDict.Add("triggeredEnemySpawner", false);
         this.UltimateDict = new SerializableDictionary<int, bool>();

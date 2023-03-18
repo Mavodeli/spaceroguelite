@@ -10,6 +10,6 @@ public class InventoryMailController : MonoBehaviour
 
     public void Show()
     {
-        InventoryManager.Instance.ShowMail(this.transform.Find("MailName").GetComponent<TMP_Text>().text);
+        InventoryManager.Instance.ShowMail(mail.name);
     }
 }
