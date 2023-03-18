@@ -20,17 +20,14 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
             player.SendMessage("addHealth", -99999999, SendMessageOptions.DontRequireReceiver);//creates only problems when using infinity
         });
         triggerMap.Add("TriggerElectroAsteroidsEnemySpawner", delegate () {
-            if(!PT.getFlag("triggeredEnemySpawner")){//maybeTODO: remove flag for dark souls spawning behaviour
-                int count = 3;
-                for(int i = 0; i < count; i++){
-                    Vector2 playerLastDirection = player.GetComponent<PlayerMovement>().getMovement();
-                    //offset still kinda WIP
-                    Vector3 spawnOffsetToPlayer = new Vector3(playerLastDirection.x*15, playerLastDirection.y*15, 0);
-                    Vector3 fishToFishOffset = new Vector3(2*i, -2*i, 0);
-                    Vector3 position = player.transform.position + spawnOffsetToPlayer + fishToFishOffset;
-                    Spawn.Enemy("PufferFish", position);
-                }
-                PT.setFlag("triggeredEnemySpawner");
+            int count = 3;
+            for(int i = 0; i < count; i++){
+                Vector2 playerLastDirection = player.GetComponent<PlayerMovement>().getMovement();
+                //offset still kinda WIP
+                Vector3 spawnOffsetToPlayer = new Vector3(playerLastDirection.x*15, playerLastDirection.y*15, 0);
+                Vector3 fishToFishOffset = new Vector3(2*i, -2*i, 0);
+                Vector3 position = player.transform.position + spawnOffsetToPlayer + fishToFishOffset;
+                Spawn.Enemy("PufferFish", position);
             }
         });
         triggerMap.Add("SilicateTrigger", delegate () {

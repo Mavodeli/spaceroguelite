@@ -50,6 +50,7 @@ public class Quest
             modifyCompletion();
             if(!previous_completed && completed){//do if just completed
                 onCompletion();
+                GameObject.FindGameObjectWithTag("Inventory").SendMessage("RemoveQuestDescription", identifier, SendMessageOptions.DontRequireReceiver);
                 QE.removeListener(eventToListenFor, QuestListener());
                 QJ.updateStatusForCompletedQuest(identifier);
             }

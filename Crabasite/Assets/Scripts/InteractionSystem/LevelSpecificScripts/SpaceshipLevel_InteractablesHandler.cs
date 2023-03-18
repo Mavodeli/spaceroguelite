@@ -47,6 +47,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                             //Quest
                             Spawn.Quest("FindSilicate");
+                            Spawn.Mail("HyperdriveReplacement");
 
                             //Comment
                             CommentarySystem.displayComment("startFindSilicate");
