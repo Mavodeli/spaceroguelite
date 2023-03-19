@@ -21,6 +21,8 @@ public class ElectroParticleBehaviour : PhysicalEntity
             // GameObject player = GameObject.FindGameObjectWithTag("Player");
             // player.SendMessage("addHealth", -10, SendMessageOptions.DontRequireReceiver);
 
+            // Spawn.Gravity(!Spawn.gravityIsEnabled());
+
             if(!GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>().inventoryIsOpened){
                 InventoryManager.Instance.AddItem("ElectroParticle");
                 Destroy(gameObject);
