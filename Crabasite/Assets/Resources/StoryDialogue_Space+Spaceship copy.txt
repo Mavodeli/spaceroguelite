@@ -1,9 +1,0 @@
-
-Event: After leaving the black hole behind and finding the abandoned spaceship we have been looking for that holds the cure
-Dialogue: There it is. Didn't think I would make it this far with all that has happened today, I'm not going to lie. Let's get in there and out before it's too late.
-
-
-Scene: E-Mails
-
-Event: Finished reading first E-Mail 
-Dialogue: Sigh... I need to make it out alive. They need me.
