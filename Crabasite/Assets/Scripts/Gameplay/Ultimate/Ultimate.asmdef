@@ -2,7 +2,8 @@
     "name": "Ultimate",
     "rootNamespace": "",
     "references": [
-        "GUID:d74dccdce14465e45a79a6e7a628b35c"
+        "GUID:d74dccdce14465e45a79a6e7a628b35c",
+        "GUID:0081ddeb97a3442839480d7dffa8d9e4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -16,54 +17,129 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogError("Found more than one Data Persistance Manager in the scene.");
+            // Debug.LogError("Found more than one Data Persistance Manager in the scene. Destroying the newest one.");
+            Destroy(this.gameObject);
+            return;
         }
         instance = this;
+        DontDestroyOnLoad(this.gameObject);
         
         // TODO LoadGame on Death or LoadGame on Button press aswell.
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+        
     }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+
+    private bool QuestIsCompleted(string id){
+        bool b = false;
+        try
+        {
+            b = !gameData.activeQuests[id];
+        }
+        catch(KeyNotFoundException){}
+        catch(System.NullReferenceException){}
+        return b;
+    }
+
+    // Called when switching Scenes
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
+        LoadGame(false);
+
+        //makeshift sprite changer
+        //maybeTODO: obsolete when level state persistence is implemented ;)
+        Sprite sprite = Resources.Load<Sprite>(ConstructSpriteString.Spaceship(
+            scene.name,
+            QuestIsCompleted("RepairWindshield"),
+            QuestIsCompleted("RepairSpaceship"),
+            QuestIsCompleted("InstallNewHyperdriveCore")
+        ));
+
+        GameObject hull = null;
+        try
+        {
+            hull = GameObject.FindGameObjectWithTag("ShipHull");
+        }
+        catch (System.NullReferenceException){}
+
+        if(hull != null)
+            hull.GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+    // Called when switching Scenes
+    public void OnSceneUnloaded(Scene scene)
+    {
+        SaveGame(false);
+    }
+
     public void NewGame()
     {
         this.gameData = new GameData();
+        Debug.Log("New Game");
     }
-    public void LoadGame()
+    public void LoadGame(bool fromFile)
     {
-        this.gameData = dataHandler.Load();
+        if(fromFile) this.gameData = dataHandler.Load();
         if (this.gameData == null)
         {
-            Debug.Log("No data was found. Initializing to default values");
-            NewGame();
+            Debug.Log("No data was found. A New Game has to be started first.");
+            return;
+            //NewGame();
         }
         
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.LoadData(gameData);
         }
-        // Debug.Log("Loaded Health = " + gameData.health);
     }
-    public void SaveGame()
+    public void SaveGame(bool toFile)
     {
+        if (this.gameData == null)
+        {
+            Debug.LogWarning("No data was found. A New Game needs to be started before data can be saved.");
+            return;
+        }
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
-        // Debug.Log("Saved Health = " + gameData.health);
-        dataHandler.Save(gameData);
+        if(toFile) dataHandler.Save(gameData);
     }
 
     private void OnApplicationQuit()
     {
         //TODO change later to Save at specific time in Spaceship, so save on button press.
-        SaveGame();
+        // SaveGame();
+        // Debug.Log("Saved Game");
     }
+    
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<Object>().OfType<IDataPersistence>();
 
         return new List<IDataPersistence>(dataPersistenceObjects);
+    }
+
+    public bool HasGameData()
+    {
+        return gameData != null;
+    }
+
+    public GameData getGameData(){
+        if(HasGameData())
+            return gameData;
+        return null;
     }
 }

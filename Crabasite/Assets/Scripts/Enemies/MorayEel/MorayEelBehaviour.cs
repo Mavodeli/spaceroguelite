@@ -25,7 +25,8 @@ public class MorayEelBehaviour : Enemy
                         med.gameObjectName,//name 
                         morayEelwithProjectile,//sprite 
                         med.textureScale,//sprite scale modifier
-                        med.stoppingDistance//stopping distance
+                        med.stoppingDistance,//stopping distance
+                        med.path_to_controller
                         );
         projectile_timer = new TimerObject(med.gameObjectName+" projectile_timer");
     }

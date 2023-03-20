@@ -1,0 +1,19 @@
+{
+    "name": "SpawnSystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7c5bcb46a07408749b6ddc2f804b50b3",
+        "GUID:3bc27c1fc32a9b249a565b02cd514511",
+        "GUID:1fcf3d935992442e39008ae979fb3473",
+        "GUID:cd8710cdfd91074428d6412a0e873205"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

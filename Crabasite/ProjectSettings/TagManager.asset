@@ -13,6 +13,10 @@ TagManager:
   - ProgressionTrigger
   - HUD
   - Interactable
+  - DataPersistenceManager
+  - PausePanel
+  - QuestEventsContainer
+  - ShipHull
   layers:
   - Default
   - TransparentFX

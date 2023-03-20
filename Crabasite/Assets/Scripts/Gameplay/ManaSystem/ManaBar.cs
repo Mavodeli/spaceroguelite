@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ManaBar : MonoBehaviour
 {
@@ -14,5 +15,9 @@ public class ManaBar : MonoBehaviour
     // event for changing manabarsize
     private void ManaSystem_OnManaChanged(object sender, System.EventArgs e){
         transform.Find("Bar").localScale = new Vector3(manaSystem.GetManaPercent(),1);
+        if (transform.parent.tag == "HUD")
+        {
+            transform.parent.Find("PlayerManaBar").GetComponent<Slider>().value = manaSystem.GetManaPercent();
+        }
     }
 }

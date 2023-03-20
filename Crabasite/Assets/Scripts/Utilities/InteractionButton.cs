@@ -6,7 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 public class InteractionButton : MonoBehaviour
 {
     private float distanceToPlayer = Mathf.Infinity;
-    private float showDistanceMaximum = 3;
+    private float showDistanceMaximum;
     private GameObject player;
     private GameObject button;
     private Vector3 offset = new Vector3(1, 1, 0);
@@ -14,16 +14,21 @@ public class InteractionButton : MonoBehaviour
     private string inputKey;
     public delegate void OnButtonPressDelegate();
     private OnButtonPressDelegate onButtonPress;
+    private bool lastFrameGetKey;
+    private TimerObject buttonPressCooldown;
 
-    public void Setup(OnButtonPressDelegate _delegate, string _inputKey = "e"){
+    public void Setup(OnButtonPressDelegate _delegate, string _inputKey = "e", float _showDistanceMaximum = 3){
         onButtonPress = _delegate;
         inputKey = _inputKey;
+        showDistanceMaximum = _showDistanceMaximum;
+        buttonPressCooldown = new TimerObject();
     }
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         button = Resources.Load<GameObject>("Prefabs/Inventory/button");
+        lastFrameGetKey = false;
     }
 
     void Update()
@@ -34,7 +39,7 @@ public class InteractionButton : MonoBehaviour
         if ((distanceToPlayer <= showDistanceMaximum) && !hasButton)
         {
             button.name = "InteractionButton of " + name;
-            button.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            button.GetComponent<SpriteRenderer>().sortingOrder = 3;
             Instantiate(button, transform.position + offset, Quaternion.identity, transform);
             hasButton = true;
         }
@@ -46,10 +51,12 @@ public class InteractionButton : MonoBehaviour
         }
         //check if player presses button, if so, perform onButtonPress
 
-        if (Input.GetKey(inputKey) && hasButton)
+        if (Input.GetKey(inputKey) && !lastFrameGetKey && hasButton && !buttonPressCooldown.runs())
         {
+            buttonPressCooldown.start(1.5f);
             onButtonPress();
         }
+        lastFrameGetKey = Input.GetKey(inputKey);
     }
 
     public void setNewOffset(Vector3 newOffset){

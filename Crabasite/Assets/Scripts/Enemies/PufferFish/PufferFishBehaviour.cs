@@ -25,7 +25,8 @@ public class PufferFishBehaviour : Enemy
                         pfd.gameObjectName,//name 
                         sprite,//sprite 
                         pfd.textureScale,//sprite scale modifier
-                        pfd.stoppingDistance//stopping distance
+                        pfd.stoppingDistance,//stopping distance
+                        pfd.path_to_controller// path to animator controller
                         );
     }
 

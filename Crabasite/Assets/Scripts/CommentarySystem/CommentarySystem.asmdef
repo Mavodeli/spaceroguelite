@@ -1,0 +1,16 @@
+{
+    "name": "CommentarySystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bf58f315b7432404c92ac861a11017e6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

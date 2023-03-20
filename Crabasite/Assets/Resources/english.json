@@ -1,0 +1,58 @@
+{
+    "PlayerShouldInspectAllBrokenShipParts" : 
+    "I should inspect all of the ships' components before heading out.",
+    "startRepairSpaceship" : 
+    "Judging from all the warnings and error messages the bord computer throws at me the ship took quite the beating when it was pulled out of hyper space. Seems like many smaller components were ripped off when it crashed into some of the smaller asteroids before coming to a halt. It's a miracle that the hull is mostly intact and the artificial atmosphere is still stable. Once I get outside I should have a look around and see what can be salvaged in the vicinity.",
+    "completedRepairSpaceship" : 
+    "Finally, the minor ship repairs are done. Considering that I slept through most of the engineering lectures at the imperial academy I think I did quite a decent job. Let's get outside and have a quick look at the fruits of my labor.",
+    "startRechargeThrusters" : 
+    "Ok, that looks really bad. The power plant is completely down, all systems are currently drawing on the emergency generator. I need to find a way to recharge it, the generator won't run forever. Hell, it's not even strong enough to supply the thrusters so I can't move the ship an inch. I knew I shouldn't have gone with the civilian model...",
+    "completedRechargeThrusters" : 
+    "The power plant is purring like a kitten again. Who would've thought that this crappy black market refinery module would come in handy someday...",
+    "startFindSilicate" :
+    "Wow, the windshield is pretty badly damaged. Good thing I took the extra effort and scrubbed the security shutters' guide rails before heading out. But with the view obstructed like this there's no way of getting the ship out of the asteroid field in one piece. I have to make some kind of adhesive to seal the cracks in the windshield.",
+    "firstTimeSeeingSilicateAsteroidWithUltimate" : 
+    "There seem to be large silicate deposits in these asteroids. That's exactly what I need to repair the windshield. Good thing I recently bought that engine-powered refinery module, I can use that to make the adhesive for the windshield. But first I have to collect enough silicate.",
+    "firstTimeSeeingSilicateAsteroidWithoutUltimate" : 
+    "There seem to be large silicate deposits in these asteroids. This is exactly what I need to repair the windshield. Good thing I recently bought that engine-powered refinery module, I can use that to make the adhesive for the windshield. But first I have to find a way to break down the asteroids into smaller pieces that I can carry back to the ship.",
+    "completedFindSilicate" :
+    "This should be enough silicate. If I bring it to the engine I can use the refinery module to make the adhesive for the windshield.",
+    "completedRefineSilicate" :
+    "Got the adhesive. Time to head over to the windshield and seal the cracks.",
+    "completedRepairWindshield" : 
+    "Ok, that should do it. Still can't believe how incredibly lucky I was to strand right next to those silicate deposits... Mental note: start saving up for one of these reinforced solid windshields with an environmental projection system.",
+    "firstTimeSeeingElectroAsteroid" : 
+    "Those meteoroids seems to be charged with some kind of energy. If I bring them back to the engine, I should be able use my new refinery module to extract the energy and recharge the ships' power plant.",
+    "firstTimeSeeingAttractTwoAsteroid" :
+    "Wow, that's a really large piece of rock. It appears to be heavily fractured, maybe it collided with another asteroid... wait, what's that strange glow in the center? Looks like an energy field of some kind? Let's check it out, maybe there is some valuable ore inside.",
+    "completedGetAttractTwo" : 
+    "What the hell? The parasite seems to have absorbed the energy...",
+    "startFindANewHyperdriveCore" : 
+    "Apart from that... the shield is only at half capacity 'cause most of the emitters are damaged but the coolers are still running, the hyperdrive looks fine too... wait, where's the hyperdrive core? I mean... how? How is that even possible? That's... not good at all, without the core module the hyperdrive is completely useless. If I ever want to get home, I'll somehow have to find a new hyperdrive core.",
+    "completedFindANewHyperdriveCore" : 
+    "This hyperdrive core is a truly ancient model, it must be at least twenty years old. But with some tinkering I should be able to mount it on my own hyperdrive.",
+    "completedInstallNewHyperdriveCore" : 
+    "Ok, installing the hyperdrive core was actually very straight forward. Let's try turning it on... 0 errors and 283 warnings. Great, that means it works! Well, at least it should be enough to get me back home.",
+    "HyperdriveCoreIsInstalled" : 
+    "The hyperdrive is fully functional again.",
+    "protagonistWakesUp" : 
+    "Ugh, my head... This doesn't feel like the migraine I usually get from cryo sleep. What happened? Seems like something pulled the ship out of hyper space. I should have a look around, see if anything got damaged...",
+    "protagonistInspectsCrabasite" : 
+    "Huh? Why does my arm feel so numb all of a sudden? What the... no no no, this can't be!!! They told me I'd be safe, that I wouldn't catch it because of all the precautions they took! FUCK! As if stranding in the middle of nowhere wasn't enough already!",
+    "startFindACure" : 
+    "Ok, stay calm... it's ok. Deep breaths. You are here to get a cure for this anyway. The only issue is that now I have to find the cure quickly, before the parasite reaches my brain. Just be quick about it... yeah... I just have to hurry.",
+    "completedFindACure" : 
+    "Finally, I've got my hands, well... hand on the cure. However, I'm quite surprised there's so little of it... I'm not sure how Qarea intends to heal the huge number of infected with this little antidote... But I am not the scientist here, so who am I to judge?",
+    "protagonistCollectedAllSpaceshipQuests" : 
+    "Now I've got a good overview of the situation. I should head outside and have a look around, see where I am and if I'm lucky, I can find just what I need to fix up the spaceship and continue my mission.",
+    "firstTimeLeavingSpaceship" : 
+    "Well, that explains a lot. The scanner shows that there is a massive black hole in the vicinity. That's what must've pulled the ship out of hyper space. Talkin' 'bout makin' it quick... if I don't manage to repair the ship in time, that parasite will be the least of my concerns.",
+    "firstTimeLeavingSpaceshipContinued" : 
+    "Let's have a look around, see if there's anything useful nearby...",
+    "firstTimeSeeingSpaceshipParts" : 
+    "Some hull sheathing, an antenna and even a whole thruster, those parts look like just what I need to patch up the chassis. I should collect some of it and see what I can cobble together at the workbench.",
+    "protagonistCompletedEmergencyRepairs" :
+    "Finally. The ship's 'ready for lift-off' again. Well, not really, but the thrusters should be enough to get me to that abandoned spaceship Qarea mentioned.",
+    "gameSaved" :
+    "Game saved."
+}

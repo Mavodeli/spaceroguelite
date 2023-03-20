@@ -22,4 +22,5 @@ public class MorayEelData : ScriptableObject
     public float textureScaleNoProjectile = 2;
     public string texturePathProjectile = "Sprites/GreenBubble";
     public float textureScaleProjectile = .7f;
+    public string path_to_controller = "Animation/Enemies/AC_Morey_Eel";
 }

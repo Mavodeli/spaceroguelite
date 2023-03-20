@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     //Components
     private Rigidbody2D rb;
     private Seeker seeker;
+    protected Animator animator;
     protected SpriteRenderer sr;
     protected BoxCollider2D bc;
 
@@ -46,7 +47,8 @@ public class Enemy : MonoBehaviour
                                 string name,
                                 Sprite _sprite, 
                                 float spriteScale,
-                                float _stoppingDistance
+                                float _stoppingDistance,
+                                string path_to_controller = null
                                 )
     {
         //setup properties
@@ -57,6 +59,14 @@ public class Enemy : MonoBehaviour
         _name = name;
         speed = _speed;
         nearPlayer = false;
+
+        // animator
+        Animator animator = GetComponent<Animator>();
+        RuntimeAnimatorController controller = Resources.Load<RuntimeAnimatorController>(path_to_controller);
+        animator.runtimeAnimatorController = controller;
+
+
+
 
         //setup name, tag & layer
         gameObject.name = _name;
