@@ -30,7 +30,8 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                             QuestIsCompletedOrActive("RepairSpaceship") &&
                             QuestIsCompletedOrActive("RechargeThrusters")
                         ){
-                            SceneManager.LoadScene("Level 1 - space");
+                            // SceneManager.LoadScene("Level 1 - space");
+                            SceneManager.LoadScene("Level 2 - abandoned spaceship");
                             Time.timeScale = 1;
                         }
                         else{

@@ -15,9 +15,8 @@ public class SpaceshipDebrisBehaviour : PhysicalEntity
         //setup Pickup (formerly done by the PickupHandler)
         ib = gameObject.AddComponent<InteractionButton>();
         ib.Setup(delegate () {
-            pickupSound.Play();
-
             if(!GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>().inventoryIsOpened){
+                pickupSound.Play();
                 InventoryManager.Instance.AddItem("SpaceshipDebris");
                 Destroy(gameObject);
             }

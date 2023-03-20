@@ -30,9 +30,8 @@ public class AnglerFishBehaviour : Enemy
                         afd.textureScale,//sprite scale modifier
                         afd.stoppingDistance,//stopping distance
                         afd.path_to_controller// path to animator controller
-                        );
+                        );//Sprites/AnglerFish_256x256_New3
     }
-
 
     // Update is called once per frame
     void LateUpdate()//bc Enemy.cs already uses Update()!

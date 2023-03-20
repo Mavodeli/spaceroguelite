@@ -7,7 +7,7 @@ public class Spawn
 {
     public delegate void addEnemyBehaviour(GameObject enemy);
 
-    public static void Enemy(string type, Vector3 position){
+    public static GameObject Enemy(string type, Vector3 position){
         Dictionary<string, addEnemyBehaviour> EnemyBehaviourMap = new Dictionary<string, addEnemyBehaviour>();
         EnemyBehaviourMap.Add("PufferFish", delegate(GameObject e){e.AddComponent<PufferFishBehaviour>();});
         EnemyBehaviourMap.Add("AnglerFish", delegate(GameObject e){e.AddComponent<AnglerFishBehaviour>();});
@@ -17,15 +17,16 @@ public class Spawn
         GameObject enemy = Object.Instantiate(Resources.Load<GameObject>("Prefabs/Enemy"));
         EnemyBehaviourMap[type](enemy);
         enemy.transform.position = position;
+        return enemy;
     }
 
-    public static void Item(string type, Vector3 position, string scene){
+    public static void Item(string type, Vector3 position, ItemBehaviour.OnPickup onPickup = null){
         GameObject item = Object.Instantiate(Resources.Load<GameObject>("Prefabs/DefaultItem"));
         Item so = Resources.Load<Item>("ScriptableObjects/Items/"+type);
 
         ItemBehaviour script = item.AddComponent<ItemBehaviour>();
-        script.Setup(type);
-
+        script.Setup(type, onPickup == null ? delegate(){} : onPickup);
+        
         item.transform.position = position;
     }
 
@@ -56,7 +57,7 @@ public class Spawn
             rb.gravityScale = enable ? 1 : 0;
 
             if(enable){
-                rb.AddForce(new Vector2(0, -5*rb.mass));
+                rb.AddForce(new Vector2(0, -10*rb.mass));
             }
 
             //slightly lift the player/loose objects if gravity is turned off

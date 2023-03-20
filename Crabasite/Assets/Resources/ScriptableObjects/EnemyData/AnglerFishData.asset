@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b6cb42936254bf9863c495d13db89f, type: 3}
   m_Name: AnglerFishData
   m_EditorClassIdentifier: 
-  texturePath: Sprites/AnglerFish_256x256_New3
+  texturePath: Sprites/angler_sheet
   textureScale: 1
   health: 100
   damage: 25
@@ -21,3 +21,4 @@ MonoBehaviour:
   gameObjectName: Angler fish emeny
   meleeCooldown: 0.5
   stoppingDistance: 0
+  path_to_controller: Animation/Enemies/AC_Anglerfish

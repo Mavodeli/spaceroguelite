@@ -15,15 +15,12 @@ public class ElectroParticleBehaviour : PhysicalEntity
         //setup Pickup (formerly done by the PickupHandler)
         ib = gameObject.AddComponent<InteractionButton>();
         ib.Setup(delegate () {
-            pickupSound.Play();
-            
             //optional
             // GameObject player = GameObject.FindGameObjectWithTag("Player");
             // player.SendMessage("addHealth", -10, SendMessageOptions.DontRequireReceiver);
 
-            // Spawn.Gravity(!Spawn.gravityIsEnabled());
-
             if(!GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>().inventoryIsOpened){
+                pickupSound.Play();
                 InventoryManager.Instance.AddItem("ElectroParticle");
                 Destroy(gameObject);
             }

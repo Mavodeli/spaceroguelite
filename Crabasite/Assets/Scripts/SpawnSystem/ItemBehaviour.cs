@@ -42,9 +42,9 @@ public class ItemBehaviour : PhysicalEntity
         //setup Pickup (formerly done by the PickupHandler)
         ib = gameObject.AddComponent<InteractionButton>();
         ib.Setup(delegate () {
-            pickupSound.Play();
-            onPickup();
             if(!GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>().inventoryIsOpened){
+                pickupSound.Play();
+                onPickup();
                 InventoryManager.Instance.AddItem(gameObject.name);
                 Destroy(gameObject);
             }

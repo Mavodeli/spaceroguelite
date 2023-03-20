@@ -37,6 +37,8 @@ public class Enemy : MonoBehaviour
 
     //Misc
     private TimerObject paralyze_timer;
+    public delegate void OnDeath();
+    private OnDeath onDeath;
     
 	
     protected void initialSetup(float _health,
@@ -48,7 +50,8 @@ public class Enemy : MonoBehaviour
                                 Sprite _sprite, 
                                 float spriteScale,
                                 float _stoppingDistance,
-                                string path_to_controller = null
+                                string path_to_controller = null,
+                                OnDeath _onDeath = null
                                 )
     {
         //setup properties
@@ -115,6 +118,8 @@ public class Enemy : MonoBehaviour
             .2f;//actual distance :)
 
         paralyze_timer = new TimerObject(_name+" paralyze_timer");
+
+        onDeath = _onDeath == null ? delegate(){} : _onDeath;
     }
 
     private void Start(){
@@ -209,7 +214,8 @@ public class Enemy : MonoBehaviour
         }
         
         if(health == 0){
-            Debug.Log("You killed a "+_name+"!");
+            // Debug.Log("You killed a "+_name+"!");
+            onDeath();
             Destroy(gameObject);
         }
     }
@@ -217,5 +223,9 @@ public class Enemy : MonoBehaviour
     public void paralyze(float duration){
         if(!paralyze_timer.runs())
             paralyze_timer.start(duration);
+    }
+
+    public void changeOnDeath(OnDeath _onDeath){
+        onDeath = _onDeath;
     }
 }

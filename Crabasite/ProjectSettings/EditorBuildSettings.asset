@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 0 - spaceship.unity
     guid: da7097cf34804be4b88d18700aac199e
+  - enabled: 1
+    path: Assets/Scenes/Level 2 - abandoned spaceship.unity
+    guid: 9a22f60b135a99f458bafb1317a21e0e
   m_configObjects: {}
