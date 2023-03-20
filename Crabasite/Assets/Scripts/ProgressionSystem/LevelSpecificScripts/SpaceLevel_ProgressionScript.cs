@@ -33,10 +33,10 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
         triggerMap.Add("SilicateTrigger", delegate () {
             if(!PT.getFlag("triggeredSilicateTrigger")){
                 if((player.GetComponent<UltimateHolder>().ultimate).GetType().ToString() == "AttractTwo"){
-                    CommentarySystem.displayComment("firstTimeSeeingSilicateAsteroidWithUltimate");
+                    CommentarySystem.displayProtagonistComment("firstTimeSeeingSilicateAsteroidWithUltimate");
                 }
                 else{
-                    CommentarySystem.displayComment("firstTimeSeeingSilicateAsteroidWithoutUltimate");//maybe remove for the sake of better game design?
+                    CommentarySystem.displayProtagonistComment("firstTimeSeeingSilicateAsteroidWithoutUltimate");//maybe remove for the sake of better game design?
                     if(!QJ.questIsCompletedOrActive("GetAttractTwo"))
                         QJ.addNewQuest("GetAttractTwo");
                 }
@@ -45,14 +45,14 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
         });
         triggerMap.Add("ElectroParticleTrigger", delegate () {
             if(!PT.getFlag("triggeredElectroParticleTrigger")){
-                CommentarySystem.displayComment("firstTimeSeeingElectroAsteroid");
+                CommentarySystem.displayProtagonistComment("firstTimeSeeingElectroAsteroid");
                 PT.setFlag("triggeredElectroParticleTrigger");
             }
         });
 
         triggerMap.Add("AttractTwoAsteroidTrigger", delegate () {
             if(!PT.getFlag("triggeredAttractTwoAsteroidTrigger")){
-                CommentarySystem.displayComment("firstTimeSeeingAttractTwoAsteroid");
+                CommentarySystem.displayProtagonistComment("firstTimeSeeingAttractTwoAsteroid");
                 PT.setFlag("triggeredAttractTwoAsteroidTrigger");
             }
         });
@@ -64,9 +64,9 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
         }
 
         if(!PT.getFlag("FirstTimeLeavingSpaceship")){
-            CommentarySystem.displayComment("firstTimeLeavingSpaceship");
-            CommentarySystem.displayComment("firstTimeLeavingSpaceshipContinued");
-            CommentarySystem.displayComment("firstTimeSeeingSpaceshipParts");
+            CommentarySystem.displayProtagonistComment("firstTimeLeavingSpaceship");
+            CommentarySystem.displayProtagonistComment("firstTimeLeavingSpaceshipContinued");
+            CommentarySystem.displayProtagonistComment("firstTimeSeeingSpaceshipParts");
             PT.setFlag("FirstTimeLeavingSpaceship");
         }
     }

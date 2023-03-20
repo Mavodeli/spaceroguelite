@@ -169,11 +169,6 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         
     }
 
-    //public void AddQuestDescription(string id){
-        // TODO: implement this
-    //    Debug.Log("Adding Quest Description for Quest "+id);
-    //}
-
 
    /// This function is used to list all the items in the inventory tab
     public void ListItems()
@@ -307,7 +302,6 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     public void ShowQuest(string toFind)
     {
         Destroy(QuestDescriptionContent.GetChild(0).gameObject);
-        // Debug.Log(InventoryQuestDescription);
 
         string path = "ScriptableObjects/QuestDescriptions/" + toFind;
         QuestDescription quest = Resources.Load<QuestDescription>(path);
@@ -316,8 +310,6 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         var questHeader = obj.transform.Find("QuestHeader").GetComponent<TMP_Text>();
         var questIcon = obj.transform.Find("QuestIcon").GetComponent<Image>();
         var questDescription = obj.transform.Find("QuestDescription").GetComponent<TMP_Text>();
-
-        Debug.Log(obj);
 
         questHeader.text = quest.header;
         questIcon.sprite = quest.icon;
@@ -328,11 +320,11 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         foreach(KeyValuePair<int, bool> entry in UltimateDict){
 
             GameObject child = UltimatesContent.GetChild(entry.Key).gameObject;
+            child.GetComponent<Button>().onClick.RemoveAllListeners();
 
-            //TODO: change loaded sprite (unlocked)
             if(entry.Value){
                 child.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Inventory/UltimateSprite"+entry.Key);
-                child.GetComponent<Button>().onClick.RemoveListener(ButtonInactive);
+                child.GetComponent<Button>().onClick.AddListener(delegate(){ButtonSwitchUltimate(entry.Key);});
             }
             else{
                 child.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Inventory/skill not unlocked yet resized");
@@ -341,6 +333,11 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         }
     }
     void ButtonInactive(){}
+
+    void ButtonSwitchUltimate(int ult){
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
+    }
 
     public void unlockUltimate(int ult){
         UltimateDict[ult] = true;

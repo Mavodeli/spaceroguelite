@@ -27,7 +27,7 @@ public class SpaceshipLevel_ProgressionScript : ProgressionParentClass
         }
 
         if(!PT.getFlag("ProtagonistWokeUp")){
-            CommentarySystem.displayComment("protagonistWakesUp");
+            CommentarySystem.displayProtagonistComment("protagonistWakesUp");
             PT.setFlag("ProtagonistWokeUp");
         }
     }

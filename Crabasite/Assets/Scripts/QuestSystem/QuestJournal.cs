@@ -121,7 +121,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                         return IM.ItemAmountInDict("Silicate") >= 8;
                     },
                     delegate(){//onCompletion
-                        CommentarySystem.displayComment("completedFindSilicate");
+                        CommentarySystem.displayProtagonistComment("completedFindSilicate");
                         Spawn.Quest("RefineSilicate");
                 })
             );
@@ -138,7 +138,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     delegate(){//onCompletion
                         IM.RemoveItem("Silicate", 8);
                         IM.AddItem("Silicone");
-                        CommentarySystem.displayComment("completedRefineSilicate");
+                        CommentarySystem.displayProtagonistComment("completedRefineSilicate");
                         Spawn.Quest("RepairWindshield");
                 })
             );
@@ -154,7 +154,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         IM.RemoveItem("Silicone");
-                        CommentarySystem.displayComment("completedRepairWindshield");
+                        CommentarySystem.displayProtagonistComment("completedRepairWindshield");
                         Spawn.NewSprite(ConstructSpriteString.Spaceship(
                             SceneManager.GetActiveScene().name,
                             true,
@@ -174,7 +174,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                         return IM.ultimateIsUnlocked(0);
                     },
                     delegate(){//onCompletion
-                        CommentarySystem.displayComment("completedGetAttractTwo");//maybeTODO: use correct identifier
+                        CommentarySystem.displayProtagonistComment("completedGetAttractTwo");//maybeTODO: use correct identifier
                 })
             );
 
@@ -189,7 +189,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         IM.RemoveItem("ElectroParticle", 12);
-                        CommentarySystem.displayComment("completedRechargeThrusters");//maybeTODO: use correct identifier
+                        CommentarySystem.displayProtagonistComment("completedRechargeThrusters");//maybeTODO: use correct identifier
                 })
             );
 
@@ -204,7 +204,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         IM.RemoveItem("SpaceshipDebris", 7);
-                        CommentarySystem.displayComment("completedRepairSpaceship");
+                        CommentarySystem.displayProtagonistComment("completedRepairSpaceship");
                 })
             );
 
@@ -218,7 +218,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                         return IM.ItemAmountInDict("HyperdriveCore") >= 1;
                     },
                     delegate(){//onCompletion
-                        CommentarySystem.displayComment("completedFindANewHyperdriveCore");
+                        CommentarySystem.displayProtagonistComment("completedFindANewHyperdriveCore");
                         Spawn.Quest("InstallNewHyperdriveCore");
                 })
             );
@@ -240,7 +240,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                             QJ.questIsCompleted("RepairSpaceship"),
                             true
                         ), GameObject.FindGameObjectWithTag("ShipHull"));
-                        CommentarySystem.displayComment("completedInstallNewHyperdriveCore");
+                        CommentarySystem.displayProtagonistComment("completedInstallNewHyperdriveCore");
                 })
             );
 
@@ -254,7 +254,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                         return IM.ItemAmountInDict("TheCure") >= 1;
                     },
                     delegate(){//onCompletion
-                        CommentarySystem.displayComment("completedFindACure");
+                        CommentarySystem.displayProtagonistComment("completedFindACure");
                 })
             );
         }

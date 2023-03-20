@@ -7,12 +7,13 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 {
     private SpaceshipLevel_ProgressionScript progressionScript;
 
-    void Start(){
-        progressionScript = gameObject.GetComponent<SpaceshipLevel_ProgressionScript>();
-    }
+    // void Start(){
+    //     progressionScript = gameObject.GetComponent<SpaceshipLevel_ProgressionScript>();
+    // }
 
-    void Update()
+    void Start()
     {
+        progressionScript = gameObject.GetComponent<SpaceshipLevel_ProgressionScript>();
         //check if all interactables have the button script, if not, add missing scripts
         foreach(GameObject interactable in GameObject.FindGameObjectsWithTag("Interactable")){
             InteractionButton script = interactable.GetComponent<InteractionButton>();
@@ -33,7 +34,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                             Time.timeScale = 1;
                         }
                         else{
-                            CommentarySystem.displayComment("PlayerShouldInspectAllBrokenShipParts");
+                            CommentarySystem.displayProtagonistComment("PlayerShouldInspectAllBrokenShipParts");
                         }
                     }, "e", newShowDistanceMaximum+.5f);
                     script.setNewOffset(new Vector3(0, 0, 0));
@@ -50,7 +51,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                             Spawn.Mail("HyperdriveReplacement");
 
                             //Comment
-                            CommentarySystem.displayComment("startFindSilicate");
+                            CommentarySystem.displayProtagonistComment("startFindSilicate");
 
                             showCommentOnAllQuestsCollected();
                         }
@@ -74,18 +75,18 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                             Spawn.Quest("RechargeThrusters");
 
                             //Comment
-                            CommentarySystem.displayComment("startRechargeThrusters");
+                            CommentarySystem.displayProtagonistComment("startRechargeThrusters");
                         }
 
                         if(!QuestIsCompletedOrActive("FindANewHyperdriveCore")){
                             Spawn.Quest("FindANewHyperdriveCore");
-                            CommentarySystem.displayComment("startFindANewHyperdriveCore");
+                            CommentarySystem.displayProtagonistComment("startFindANewHyperdriveCore");
 
                             showCommentOnAllQuestsCollected();
                         }
 
                         if(QuestIsCompleted("InstallNewHyperdriveCore")){
-                            CommentarySystem.displayComment("HyperdriveCoreIsInstalled");
+                            CommentarySystem.displayProtagonistComment("HyperdriveCoreIsInstalled");
                         }
 
                         fireEvent("interactedWithHyperdrive");
@@ -106,7 +107,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                             Spawn.Quest("RepairSpaceship");
 
                             //Comment
-                            CommentarySystem.displayComment("startRepairSpaceship");
+                            CommentarySystem.displayProtagonistComment("startRepairSpaceship");
 
                             showCommentOnAllQuestsCollected();
                         }
@@ -114,7 +115,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                         GameObject dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager");
                         dpm.SendMessage("SaveGame", true, SendMessageOptions.DontRequireReceiver);
                         dpm.SendMessage("LoadGame", true, SendMessageOptions.DontRequireReceiver);
-                        CommentarySystem.displayComment("gameSaved");
+                        CommentarySystem.displayProtagonistComment("gameSaved");
                     }, "e", newShowDistanceMaximum);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
@@ -165,7 +166,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
             QuestIsCompletedOrActive("RepairSpaceship") &&
             QuestIsCompletedOrActive("RechargeThrusters")
         ){
-            CommentarySystem.displayComment("protagonistCollectedAllSpaceshipQuests");
+            CommentarySystem.displayProtagonistComment("protagonistCollectedAllSpaceshipQuests");
             progressionScript.setFlag("protagonistCollectedAllSpaceshipQuests");
         }
     }
@@ -177,15 +178,15 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
             QuestIsCompleted("RepairSpaceship") &&
             QuestIsCompleted("RechargeThrusters")
         ){
-            CommentarySystem.displayComment("protagonistCompletedEmergencyRepairs");
+            CommentarySystem.displayProtagonistComment("protagonistCompletedEmergencyRepairs");
             progressionScript.setFlag("ProtagonistCompletedEmergencyRepairs");
         }
     }
 
     private void showCommentOnInspectingCrabasite(){
         if(!progressionScript.getFlag("protagonistInspectedCrabasite")){
-            CommentarySystem.displayComment("protagonistInspectsCrabasite");
-            CommentarySystem.displayComment("startFindACure");
+            CommentarySystem.displayProtagonistComment("protagonistInspectsCrabasite");
+            CommentarySystem.displayProtagonistComment("startFindACure");
             Spawn.Quest("FindACure");
             progressionScript.setFlag("protagonistInspectedCrabasite");
         }
