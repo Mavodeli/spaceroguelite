@@ -94,10 +94,18 @@ public class CrabClaw : MonoBehaviour
                 PushMI.Update(false, mousePos_relative_to_player);
             }
 
+            if((Input.GetMouseButton(0) || Input.GetMouseButton(1)) && !PM.hasMana()){
+                soundController.SendMessage("playSoundSafe", new SoundParameter("PlayerManaEmpty", player, 1f, false));
+            }
+
             if(Input.GetMouseButtonUp(0)){
                 soundController.SendMessage("stopSound", "PlayerPullSound");
             }
             if(Input.GetMouseButtonUp(1)){
+                soundController.SendMessage("stopSound", "PlayerPushSound");
+            }
+            if(!PM.hasMana()){
+                soundController.SendMessage("stopSound", "PlayerPullSound");
                 soundController.SendMessage("stopSound", "PlayerPushSound");
             }
 

@@ -42,6 +42,7 @@ public class HealthSystem {
     }
 
     public void Damage(int damageAmount){
+        GameObject.Find("Sounds").SendMessage("playSound", new SoundParameter("GetDamagedSound", GameObject.Find("Player"), 1f, false));
         if(_currentHealth > 0) _currentHealth -= damageAmount;
         if(OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty); //trigger Event
     }

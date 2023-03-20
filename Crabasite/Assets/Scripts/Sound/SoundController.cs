@@ -56,8 +56,8 @@ public class SoundController : MonoBehaviour
         }
     }
 
-    public AudioSource playSound(SoundParameter parameters){
-        return playSound(parameters.soundName, parameters.gameObject, parameters.volume, parameters.dontDestroyOnLoad);
+    public void playSound(SoundParameter parameters){
+        playSound(parameters.soundName, parameters.gameObject, parameters.volume, parameters.dontDestroyOnLoad);
     }
 
     /**
@@ -79,7 +79,16 @@ public class SoundController : MonoBehaviour
         activeSounds.Add(audio);
     }
 
-    private AudioSource playSound(string name, GameObject gameObject, float volume, bool dontDestroyOnLoad){
+    public void playSoundSafe(SoundParameter parameters){
+        foreach(NamedAudioSource nas in activeSounds){
+            if(nas.name == parameters.soundName){
+                return;
+            }
+        }
+        playSound(parameters);
+    }
+
+    private void playSound(string name, GameObject gameObject, float volume, bool dontDestroyOnLoad){
         AudioSource source = gameObject.AddComponent<AudioSource>();
         source.clip = sounds[name].clip;
         source.volume = volume;
@@ -88,7 +97,6 @@ public class SoundController : MonoBehaviour
         if(dontDestroyOnLoad){
             DontDestroyOnLoad(source);
         }
-        return source;
     }
 
     /**

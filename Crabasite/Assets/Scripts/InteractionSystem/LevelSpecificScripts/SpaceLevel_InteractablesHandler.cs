@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SpaceLevel_InteractablesHandler : MonoBehaviour
 {
+
+    private GameObject soundController;
+
+    void Awake(){
+        soundController = GameObject.Find("Sounds");
+    }
+
     void Update()
     {
         //check if all interactables have the button script, if not, add missing scripts
@@ -15,6 +22,8 @@ public class SpaceLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "SpaceshipEntrance"){
                     script.Setup(delegate () {
+                        //soundController.SendMessage("playSound", new SoundParameter("SpaceShipDoor", GameObject.Find("Player"), 1f, true));
+                        // the above line of code duplicates the player
                         SceneManager.LoadScene("Level 0 - spaceship");
                         Time.timeScale = 1;
                     }, "e");
@@ -26,6 +35,7 @@ public class SpaceLevel_InteractablesHandler : MonoBehaviour
                         int ult = 0;//attract two
                         GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
                         IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);
+                        soundController.SendMessage("playSound", new SoundParameter("PickupUlt", GameObject.Find("Player"), 1f, false));
                         GameObject player = GameObject.FindGameObjectWithTag("Player");
                         player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
                         Destroy(GameObject.Find(interactable.name));//kinda tricky to get the delegate to destroy the correct gameObject ;)
