@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UltimateHolder : MonoBehaviour
+public class UltimateHolder : MonoBehaviour, IDataPersistence
 {
     public Ultimate ultimate;
     private ScriptableObject[] ultimateList; // array for all ultimates
+
+    private int equippedUltimate;
 
     // timer for remaining cooldown
     public float cooldownTimer;
@@ -28,7 +30,7 @@ public class UltimateHolder : MonoBehaviour
     {
         state = UltimateState.ready;
         ultimateList = Resources.LoadAll<ScriptableObject>("ScriptableObjects/Ultimates");
-        SwitchUltimate(3);
+        SwitchUltimate(equippedUltimate);
     }
 
     // Update is called once per frame
@@ -69,19 +71,32 @@ public class UltimateHolder : MonoBehaviour
 
     public void SwitchUltimate(int ult)
     {
+        DataPersistenceManager dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager").GetComponent<DataPersistenceManager>();
+        GameObject hud = GameObject.FindGameObjectWithTag("HUD");
+
         if(ult == 3){//empty
             ultimate = (Ultimate)ultimateList[ult];
-            GameObject hud = GameObject.FindGameObjectWithTag("HUD");
             hud.SendMessage("ChangeSprite", ult, SendMessageOptions.DontRequireReceiver);
+            equippedUltimate = ult;
             return;
         }
-        DataPersistenceManager dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager").GetComponent<DataPersistenceManager>();
+
         bool unlocked = dpm.getGameData().UltimateDict[ult];
         if(unlocked){
             ultimate = (Ultimate)ultimateList[ult];
             if(ult == 1) { ultimate.player = player; }
-            GameObject hud = GameObject.FindGameObjectWithTag("HUD");
             hud.SendMessage("ChangeSprite", ult, SendMessageOptions.DontRequireReceiver);
+            equippedUltimate = ult;
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        equippedUltimate = data.lastEquippedUltimate;
+    }
+    
+    public void SaveData(ref GameData data)
+    {
+        data.lastEquippedUltimate = equippedUltimate;
     }
 }
