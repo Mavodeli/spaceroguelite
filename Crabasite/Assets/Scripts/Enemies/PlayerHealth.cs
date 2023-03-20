@@ -45,7 +45,6 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
 
      public void LoadData(GameData data)
     {
-        Debug.Log("loaded health is "+data.health);
         this.health = data.health;
     }
     public void SaveData(ref GameData data)
