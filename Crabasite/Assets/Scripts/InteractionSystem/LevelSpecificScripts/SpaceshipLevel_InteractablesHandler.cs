@@ -7,10 +7,6 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 {
     private SpaceshipLevel_ProgressionScript progressionScript;
 
-    // void Start(){
-    //     progressionScript = gameObject.GetComponent<SpaceshipLevel_ProgressionScript>();
-    // }
-
     void Start()
     {
         progressionScript = gameObject.GetComponent<SpaceshipLevel_ProgressionScript>();
@@ -30,8 +26,8 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                             QuestIsCompletedOrActive("RepairSpaceship") &&
                             QuestIsCompletedOrActive("RechargeThrusters")
                         ){
-                            // SceneManager.LoadScene("Level 1 - space");
-                            SceneManager.LoadScene("Level 2 - abandoned spaceship");
+                            SceneManager.LoadScene("Level 1 - space");
+                            // SceneManager.LoadScene("Level 2 - abandoned spaceship");
                             Time.timeScale = 1;
                         }
                         else{
