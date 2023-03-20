@@ -9,7 +9,7 @@ public class SoundController : MonoBehaviour
 
     private GameObject player;
 
-    private List<AudioSource> activeSounds;
+    private List<NamedAudioSource> activeSounds;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class SoundController : MonoBehaviour
 
         player = GameObject.Find("Player");
 
-        activeSounds = new List<AudioSource>();
+        activeSounds = new List<NamedAudioSource>();
 
         DontDestroyOnLoad(this);
 
@@ -57,19 +57,34 @@ public class SoundController : MonoBehaviour
     }
 
     public AudioSource playSound(SoundParameter parameters){
-        return playSound(parameters.soundName, parameters.gameObject, false, parameters.dontDestroyOnLoad);
+        return playSound(parameters.soundName, parameters.gameObject, parameters.volume, parameters.dontDestroyOnLoad);
     }
 
-    public AudioSource playSoundLooping(SoundParameter parameters){
-        return playSound(parameters.soundName, parameters.gameObject, true, parameters.dontDestroyOnLoad);
+    /**
+     * plays sound looping only if sound is not playing yet
+     */
+    public void playSoundLoopingSafe(SoundParameter parameters){
+        foreach(NamedAudioSource nas in activeSounds){
+            if(nas.name == parameters.soundName)
+            {
+                return;
+            }
+        }
+        AudioSource source = parameters.gameObject.AddComponent<AudioSource>();
+        source.clip = sounds[parameters.soundName].clip;
+        source.loop = true;
+        source.volume = parameters.volume;
+        source.Play();
+        NamedAudioSource audio = new NamedAudioSource(parameters.soundName, source);
+        activeSounds.Add(audio);
     }
 
-    private AudioSource playSound(string name, GameObject gameObject, bool looping, bool dontDestroyOnLoad){
+    private AudioSource playSound(string name, GameObject gameObject, float volume, bool dontDestroyOnLoad){
         AudioSource source = gameObject.AddComponent<AudioSource>();
         source.clip = sounds[name].clip;
-        source.loop = looping;
+        source.volume = volume;
         source.Play();
-        activeSounds.Add(source);
+        activeSounds.Add(new NamedAudioSource(name, source));
         if(dontDestroyOnLoad){
             DontDestroyOnLoad(source);
         }
@@ -77,12 +92,15 @@ public class SoundController : MonoBehaviour
     }
 
     /**
-     * Stops sound
-     * Can be useful if there is a looping sound which should not be destroyed on load
+     * stops every sound with the soundName
+     * should only be used to stop looping sounds, which should already only play once
      */
-    public void stopSound(AudioSource sound){
-        sound.Stop();
-        Destroy(sound);
+    public void stopSound(string soundName){
+        foreach(NamedAudioSource activeSound in activeSounds){
+            if(activeSound.name == soundName){
+                activeSound.source.Stop();
+            }
+        }
     }
 
     private int frameCounter = 0;
@@ -93,7 +111,7 @@ public class SoundController : MonoBehaviour
         if(frameCounter == 60){
             for(int i = activeSounds.Count - 1; i >= 0; i--)
             {
-                AudioSource activeSound = activeSounds[i];
+                AudioSource activeSound = activeSounds[i].source;
                 if(!activeSound.isPlaying){
                     activeSounds.RemoveAt(i);
                     Destroy(activeSound);

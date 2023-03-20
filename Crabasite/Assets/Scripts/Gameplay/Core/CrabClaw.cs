@@ -23,7 +23,7 @@ public class CrabClaw : MonoBehaviour
     private TimerObject manaCooldown;
 
     private GameObject inventory;
-
+    private GameObject soundController;
 
 
 
@@ -42,6 +42,7 @@ public class CrabClaw : MonoBehaviour
         PM = player.GetComponent<PlayerMana>();
         manaCooldown = new TimerObject("Player manaCooldown");
         inventory = GameObject.FindGameObjectWithTag("Inventory");
+        soundController = GameObject.Find("Sounds");
     }
     
     void Update()
@@ -71,20 +72,35 @@ public class CrabClaw : MonoBehaviour
                 objectRigidbody.velocity = Vector3.zero;
                 objectRigidbody.AddForce(PullMI.getFrameDirection()*PullMI.getFrameSpeed());
                 // hit.transform.position += PullMI.getFrameDirection()*PullMI.getFrameSpeed()*Time.deltaTime;
+
+                soundController.SendMessage("playSoundLoopingSafe", new SoundParameter("PlayerPullSound", player, 0.5f, false));
+
             }
             else{
                 PullMI.Update(false, playerPos_relative_to_hit);
             }
+
             if(Input.GetMouseButton(1) && PM.hasMana()){
                 PushMI.Update(true, mousePos_relative_to_player);
                 objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
                 objectRigidbody.velocity = Vector3.zero;
                 objectRigidbody.AddForce(PushMI.getFrameDirection()*PushMI.getFrameSpeed());
                 // hit.transform.position += PushMI.getFrameDirection()*PushMI.getFrameSpeed()*Time.deltaTime;
+
+                soundController.SendMessage("playSoundLoopingSafe", new SoundParameter("PlayerPushSound", player, 0.5f, false));
+
             }
             else{
                 PushMI.Update(false, mousePos_relative_to_player);
             }
+
+            if(Input.GetMouseButtonUp(0)){
+                soundController.SendMessage("stopSound", "PlayerPullSound");
+            }
+            if(Input.GetMouseButtonUp(1)){
+                soundController.SendMessage("stopSound", "PlayerPushSound");
+            }
+
         }
         else{
             PushMI.Update(false, new Vector2(0, 0));
