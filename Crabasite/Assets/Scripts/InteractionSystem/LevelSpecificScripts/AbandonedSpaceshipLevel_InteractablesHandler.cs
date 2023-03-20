@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class AbandonedSpaceshipLevel_InteractablesHandler : MonoBehaviour
 {
-    void Update()
+    void Start()
     {
         //check if all interactables have the button script, if not, add missing scripts
         foreach(GameObject interactable in GameObject.FindGameObjectsWithTag("Interactable")){
@@ -20,18 +20,6 @@ public class AbandonedSpaceshipLevel_InteractablesHandler : MonoBehaviour
                     }, "e");
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
-
-                // if(interactable.name == "GetCrush"){
-                //     script.Setup(delegate () {
-                //         int ult = 1;//crush
-                //         GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
-                //         IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);
-                //         GameObject player = GameObject.FindGameObjectWithTag("Player");
-                //         player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
-                //         Destroy(GameObject.Find(interactable.name));
-                //     }, "e");
-                //     script.setNewOffset(new Vector3(0, 0, 0));
-                // }
 
                 if(interactable.name == "GravitySwitch"){
                     script.Setup(delegate () {

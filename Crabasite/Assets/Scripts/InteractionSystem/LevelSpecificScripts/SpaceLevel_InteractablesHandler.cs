@@ -12,7 +12,7 @@ public class SpaceLevel_InteractablesHandler : MonoBehaviour
         soundController = GameObject.Find("Sounds");
     }
 
-    void Update()
+    void Start()
     {
         //check if all interactables have the button script, if not, add missing scripts
         foreach(GameObject interactable in GameObject.FindGameObjectsWithTag("Interactable")){
