@@ -28,9 +28,9 @@ public class break_asteroid : MonoBehaviour
     {
         if (
             breakState < splitState
-            & !breakTimer.is_running()
-            & collision.gameObject != player
-            & collision.relativeVelocity.magnitude > requiredForce
+            && !breakTimer.is_running()
+            && collision.gameObject != player
+            && collision.relativeVelocity.magnitude > requiredForce
         )
         {
             breakState += 1;

@@ -31,16 +31,27 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && !dash_cooldown_timer.runs()) StartCoroutine(Dash(movement));
-        if (Input.GetKeyDown(KeyCode.A)) sr.flipX = true;
-        if (Input.GetKeyDown(KeyCode.D)) sr.flipX = false;
-
+        if (
+            Input.GetKeyDown(KeyCode.LeftShift)
+            && !isDashing
+            && !dash_cooldown_timer.runs()
+            && (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        )
+            StartCoroutine(Dash(movement));
+        if (Input.GetKeyDown(KeyCode.A))
+            sr.flipX = true;
+        if (Input.GetKeyDown(KeyCode.D))
+            sr.flipX = false;
     }
 
     private void FixedUpdate()
     {
-        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-        if(!isDashing) movePlayer(movement);
+        movement = new Vector2(
+            Input.GetAxisRaw("Horizontal"),
+            Input.GetAxisRaw("Vertical")
+        ).normalized;
+        if (!isDashing)
+            movePlayer(movement);
     }
 
     void movePlayer(Vector2 dir)
@@ -53,18 +64,23 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Vector2 force = dir * current_speed;
-        if(rb.gravityScale != 0) 
+        if (rb.gravityScale != 0)
             force.y = 0;
 
         rb.AddForce(force);
     }
 
-    IEnumerator Dash (Vector2 dir)
+    IEnumerator Dash(Vector2 dir)
     {
         isDashing = true;
         rb.velocity = rb.velocity;
         rb.AddForce(dir * dashDistance, ForceMode2D.Impulse);
-        GameObject.Find("Sounds").SendMessage("playSound", new SoundParameter("PlayerDashSound", GameObject.Find("Player"), 1f, false));
+        GameObject
+            .Find("Sounds")
+            .SendMessage(
+                "playSound",
+                new SoundParameter("PlayerDashSound", GameObject.Find("Player"), 1f, false)
+            );
         yield return new WaitForSeconds(dashDuration);
         dash_cooldown_timer.start(dash_cooldown);
         isDashing = false;
@@ -76,7 +92,8 @@ public class PlayerMovement : MonoBehaviour
             paralyze_timer.start(duration);
     }
 
-    public Vector2 getMovement(){
+    public Vector2 getMovement()
+    {
         return movement;
     }
 }
