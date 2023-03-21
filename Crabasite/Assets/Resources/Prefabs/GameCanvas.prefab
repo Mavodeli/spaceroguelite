@@ -599,7 +599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.6877136, y: 0.73}
+  m_AnchoredPosition: {x: -4.6877136, y: 0.59}
   m_SizeDelta: {x: 155.71, y: 48.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &953382071793220986
@@ -858,7 +858,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 71f3ddc09475570469f2ab6986ad703b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27450d334878427499fa12a37b78d6b6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3515,7 +3515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dc6e1b263b0d1a04fa50e8ce8d4fa08c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2f29e4fa711cb44da733c10bcca1be1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4034,7 +4034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.6877136, y: 1.2636566}
+  m_AnchoredPosition: {x: -4.6877136, y: 1.23}
   m_SizeDelta: {x: 155.71, y: 48.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5490913796000241524
@@ -5033,7 +5033,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e2d4f8d39a766fe4d9f503e055502723, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de64168df042aca4e9fa348839693245, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5257,7 +5257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 71f3ddc09475570469f2ab6986ad703b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 159521bc877c9944198a5d37ee9656f8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5401,7 +5401,7 @@ GameObject:
   - component: {fileID: 476870669339971026}
   - component: {fileID: 2078825397886395304}
   m_Layer: 5
-  m_Name: Mail icon
+  m_Name: Quest icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5455,7 +5455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3d2ce5bc35de9ca4b9715ce014a24efc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee0f7554ee7c63e469bfe78f2979b5cd, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6581,6 +6581,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8180531894020797454, guid: 9f17d04254c50e643892f267339488a3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8374758378805899735, guid: 9f17d04254c50e643892f267339488a3, type: 3}
       propertyPath: m_Name
       value: MailIcon
@@ -6599,6 +6603,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5482849644442427429}
     m_Modifications:
+    - target: {fileID: 3223331561508683266, guid: 54104aa36d67c4ae3aa2a09eb6af7a30, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3358784720018612410, guid: 54104aa36d67c4ae3aa2a09eb6af7a30, type: 3}
       propertyPath: m_Name
       value: Quest_Description
@@ -6610,6 +6618,10 @@ PrefabInstance:
     - target: {fileID: 3900264489479664093, guid: 54104aa36d67c4ae3aa2a09eb6af7a30, type: 3}
       propertyPath: m_Name
       value: QuestHeader
+      objectReference: {fileID: 0}
+    - target: {fileID: 6795043445330972439, guid: 54104aa36d67c4ae3aa2a09eb6af7a30, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8060680235390587809, guid: 54104aa36d67c4ae3aa2a09eb6af7a30, type: 3}
       propertyPath: m_Pivot.x
