@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     //HealthSystem
     private HealthSystem HS;
 
+    //Sound Controller
+    protected GameObject soundController;
+
     //Gameplay Properties
     private float health;
     private float maxhealth;
@@ -123,6 +126,7 @@ public class Enemy : MonoBehaviour
     }
 
     private void Start(){
+        soundController = GameObject.Find("Sounds");
         StartCoroutine(UpdateCoroutine(.5f));
     }
 
@@ -182,6 +186,7 @@ public class Enemy : MonoBehaviour
         //melee damage a.k.a. fish biting the player
         nearPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position) <= meleeDistance;
         if(nearPlayer && !bite_timer.runs()){
+            soundController.SendMessage("playSound", new SoundParameter("EnemySound_MeleeAttack", this.gameObject, 0.15f, false));
             player.GetComponent<BoxCollider2D>().SendMessage("addHealth", -meleeDamage, SendMessageOptions.DontRequireReceiver);
             bite_timer.start(meleeCooldown);
         }
@@ -215,6 +220,7 @@ public class Enemy : MonoBehaviour
         
         if(health == 0){
             // Debug.Log("You killed a "+_name+"!");
+            soundController.SendMessage("playSound", new SoundParameter("EnemyDeath", this.gameObject, 1f, false));
             onDeath();
             Destroy(gameObject);
         }

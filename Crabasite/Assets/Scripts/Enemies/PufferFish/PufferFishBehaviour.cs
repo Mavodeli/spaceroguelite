@@ -28,10 +28,13 @@ public class PufferFishBehaviour : Enemy
                         pfd.stoppingDistance,//stopping distance
                         pfd.path_to_controller// path to animator controller
                         );
+
     }
 
     void LateUpdate()//bc Enemy.cs already uses Update()!
     {
-        
+        if(Random.Range(-1f, 140f * 7f) < 0){ // with approximatly 140 updates per second a sound will be emitted approximatly every 7 seconds per enemy
+            soundController.SendMessage("playSound", new SoundParameter("EnemySound_1", this.gameObject, 1f, false));
+        }
     }
 }
