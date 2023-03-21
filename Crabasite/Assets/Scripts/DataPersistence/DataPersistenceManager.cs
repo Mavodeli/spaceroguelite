@@ -90,7 +90,23 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void LoadGame(bool fromFile)
     {
-        if(fromFile) this.gameData = dataHandler.Load();
+        if(fromFile){
+            this.gameData = dataHandler.Load();
+
+            //reset all enemySpawn flags if loaded from file
+            Dictionary<string, bool> copy = gameData.ProgressionDict;
+            List<int> spawn_indices = new List<int>();
+            int i = 0;
+            foreach(KeyValuePair<string, bool> entry in gameData.ProgressionDict){
+                string[] substrings = entry.Key.Split("_");
+                if(substrings[0] == "EnemySpawn")
+                    spawn_indices.Add(i);
+                i++;
+            }
+            foreach(int idx in spawn_indices){
+                gameData.ProgressionDict[gameData.ProgressionDict.ElementAt<KeyValuePair<string, bool>>(idx).Key] = false; 
+            }
+        }
         if (this.gameData == null)
         {
             Debug.Log("No data was found. A New Game has to be started first.");

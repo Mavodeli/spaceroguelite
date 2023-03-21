@@ -7,13 +7,9 @@ using UnityEngine;
 public class SpaceshipLevel_ProgressionScript : ProgressionParentClass
 {
     private Dictionary<string, OnTriggerEnterDelegate> triggerMap = new Dictionary<string, OnTriggerEnterDelegate>();
-    private GameObject player;
 
 
     private void Start(){
-        //save player GameObject for easy access
-        player = GameObject.FindGameObjectWithTag("Player");
-
         //1st parameter: the name of the GameObject (the 'trigger' object with the ProgressionTrigger script)
         //2nd parameter: the function that should be executed OnTriggerEnter
         triggerMap.Add("BobTheTrigger", delegate () {

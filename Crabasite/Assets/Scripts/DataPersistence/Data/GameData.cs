@@ -34,7 +34,6 @@ public class GameData
         this.MailDict = new SerializableDictionary<string, bool>();
         this.QuestDict = new SerializableDictionary<string, bool>();
         this.ProgressionDict = new SerializableDictionary<string, bool>();
-        ProgressionDict.Add("triggeredEnemySpawner", false);
         this.UltimateDict = new SerializableDictionary<int, bool>();
         UltimateDict.Add(0, false);
         UltimateDict.Add(1, false);

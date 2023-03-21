@@ -7,7 +7,7 @@ public class Spawn
 {
     public delegate void addEnemyBehaviour(GameObject enemy);
 
-    public static GameObject Enemy(string type, Vector3 position){
+    public static void Enemy(string type, Vector3 position, string[] itemsToDrop = null){
         Dictionary<string, addEnemyBehaviour> EnemyBehaviourMap = new Dictionary<string, addEnemyBehaviour>();
         EnemyBehaviourMap.Add("PufferFish", delegate(GameObject e){e.AddComponent<PufferFishBehaviour>();});
         EnemyBehaviourMap.Add("AnglerFish", delegate(GameObject e){e.AddComponent<AnglerFishBehaviour>();});
@@ -17,11 +17,11 @@ public class Spawn
         GameObject enemy = Object.Instantiate(Resources.Load<GameObject>("Prefabs/Enemy"));
         EnemyBehaviourMap[type](enemy);
         enemy.transform.position = position;
-        return enemy;
+        enemy.SendMessage("setItemsToDrop", itemsToDrop, SendMessageOptions.DontRequireReceiver);
     }
 
     public static void Item(string type, Vector3 position, ItemBehaviour.OnPickup onPickup = null){
-        GameObject item = Object.Instantiate(Resources.Load<GameObject>("Prefabs/DefaultItem"));
+        GameObject item = Object.Instantiate(Resources.Load<GameObject>("Prefabs/Collectables/DefaultItem"));
         Item so = Resources.Load<Item>("ScriptableObjects/Items/"+type);
 
         ItemBehaviour script = item.AddComponent<ItemBehaviour>();

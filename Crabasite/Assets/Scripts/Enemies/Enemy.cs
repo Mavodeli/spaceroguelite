@@ -40,8 +40,7 @@ public class Enemy : MonoBehaviour
 
     //Misc
     private TimerObject paralyze_timer;
-    public delegate void OnDeath();
-    private OnDeath onDeath;
+    private string[] itemsToDrop;
     
 	
     protected void initialSetup(float _health,
@@ -53,8 +52,7 @@ public class Enemy : MonoBehaviour
                                 Sprite _sprite, 
                                 float spriteScale,
                                 float _stoppingDistance,
-                                string path_to_controller = null,
-                                OnDeath _onDeath = null
+                                string path_to_controller = null
                                 )
     {
         //setup properties
@@ -70,9 +68,6 @@ public class Enemy : MonoBehaviour
         Animator animator = GetComponent<Animator>();
         RuntimeAnimatorController controller = Resources.Load<RuntimeAnimatorController>(path_to_controller);
         animator.runtimeAnimatorController = controller;
-
-
-
 
         //setup name, tag & layer
         gameObject.name = _name;
@@ -122,7 +117,7 @@ public class Enemy : MonoBehaviour
 
         paralyze_timer = new TimerObject(_name+" paralyze_timer");
 
-        onDeath = _onDeath == null ? delegate(){} : _onDeath;
+        itemsToDrop = new string[0];
     }
 
     private void Start(){
@@ -219,9 +214,13 @@ public class Enemy : MonoBehaviour
         }
         
         if(health == 0){
-            // Debug.Log("You killed a "+_name+"!");
             soundController.SendMessage("playSound", new SoundParameter("EnemyDeath", this.gameObject, 1f, false));
-            onDeath();
+            
+            foreach(string id in itemsToDrop){
+                GameObject GH = GameObject.FindGameObjectWithTag("GameHandler");
+                object[] args = new object[]{id, transform.position};
+                GH.SendMessage("spawnItem", args, SendMessageOptions.DontRequireReceiver);
+            }
             Destroy(gameObject);
         }
     }
@@ -231,7 +230,7 @@ public class Enemy : MonoBehaviour
             paralyze_timer.start(duration);
     }
 
-    public void changeOnDeath(OnDeath _onDeath){
-        onDeath = _onDeath;
+    public void setItemsToDrop(string[] IDs){
+        itemsToDrop = IDs;
     }
 }

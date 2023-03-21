@@ -152,8 +152,13 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
       public void AddQuestDescription(string id)
     {
-        QuestDict.Add(id, true);
-        Debug.Log("Adding Quest Description for Quest "+id);
+        // QuestDict.Add(id, true);
+        // Debug.Log("Adding Quest Description for Quest "+id);
+        try
+        {
+            QuestDict.Add(id, true);
+        }
+        catch (System.ArgumentException){}
     }
 
     public void RemoveQuestDescription(string id)

@@ -9,13 +9,13 @@ public class CommentarySystem : MonoBehaviour
     public static void displayProtagonistComment(string id){
         //TODO: implement this
         //@Rico: the string obtained with LoadFromFile(id) should appear in a textbox ingame and not as a debug log ;)
-        Debug.Log(LoadFromFile(id));
+        // Debug.Log(LoadFromFile(id));
     }
 
     public static void displayAIComment(string id){
         //TODO: implement this
         //@Rico: different text box
-        Debug.Log("Rogue AI: "+LoadFromFile(id));//the "Rogue AI: " prefix is for debugging only ;)
+        // Debug.Log("Rogue AI: "+LoadFromFile(id));//the "Rogue AI: " prefix is for debugging only
     }
 
     private static string LoadFromFile(string identifier)

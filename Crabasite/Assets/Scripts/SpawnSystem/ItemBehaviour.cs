@@ -49,5 +49,6 @@ public class ItemBehaviour : PhysicalEntity
                 Destroy(gameObject);
             }
         }, "e");
+        ib.setNewOffset(new Vector3(0, 0, 0));
     }
 }

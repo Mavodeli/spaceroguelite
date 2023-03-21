@@ -27,4 +27,12 @@ public class SerializableDictionary<Tkey,TValue> : Dictionary<Tkey,TValue>, ISer
             this.Add(keys[i], values[i]);
         }
     }
+
+    public List<Tkey> getKeys(){
+        return keys;
+    }
+
+    public void setValueAtIndex(int i, TValue value){
+        values[i] = value;
+    }
 }

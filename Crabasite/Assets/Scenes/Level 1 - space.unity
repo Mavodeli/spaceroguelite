@@ -1190,7 +1190,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4181718646894444912, guid: f12490f47e1c6974fbe3de40b7aeb9ac, type: 3}
       propertyPath: m_Name
-      value: ElectroParticle_variation (1)
+      value: ElectroParticle_variation
       objectReference: {fileID: 0}
     - target: {fileID: 4181718646894444916, guid: f12490f47e1c6974fbe3de40b7aeb9ac, type: 3}
       propertyPath: m_RootOrder
@@ -1733,7 +1733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.0200005, y: 15.740001, z: -10}
+  m_LocalPosition: {x: 4.02, y: 15.74, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2110,7 +2110,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 358676104386283864, guid: 85644e2c762a9c04881c11ab3772462c, type: 3}
       propertyPath: m_Name
-      value: ElectroParticle (1)
+      value: ElectroParticle
       objectReference: {fileID: 0}
     - target: {fileID: 358676104386283867, guid: 85644e2c762a9c04881c11ab3772462c, type: 3}
       propertyPath: m_RootOrder
@@ -3031,7 +3031,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4181718646894444912, guid: f12490f47e1c6974fbe3de40b7aeb9ac, type: 3}
       propertyPath: m_Name
-      value: ElectroParticle_variation (1)
+      value: ElectroParticle_variation
       objectReference: {fileID: 0}
     - target: {fileID: 4181718646894444916, guid: f12490f47e1c6974fbe3de40b7aeb9ac, type: 3}
       propertyPath: m_RootOrder
@@ -3590,7 +3590,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 358676104386283864, guid: 85644e2c762a9c04881c11ab3772462c, type: 3}
       propertyPath: m_Name
-      value: ElectroParticle (2)
+      value: ElectroParticle
       objectReference: {fileID: 0}
     - target: {fileID: 358676104386283867, guid: 85644e2c762a9c04881c11ab3772462c, type: 3}
       propertyPath: m_RootOrder
@@ -5042,6 +5042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536b146c4817c1b489b81d2972060323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawnPrefix: EnemySpawn_
 --- !u!114 &1791535494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5285,7 +5286,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 358676104386283864, guid: 85644e2c762a9c04881c11ab3772462c, type: 3}
       propertyPath: m_Name
-      value: ElectroParticle (1)
+      value: ElectroParticle
       objectReference: {fileID: 0}
     - target: {fileID: 358676104386283867, guid: 85644e2c762a9c04881c11ab3772462c, type: 3}
       propertyPath: m_RootOrder
@@ -5917,11 +5918,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 211095242550423662, guid: 299e1938527ecee43a2aa000eb57a644, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.11
+      value: 33.85
       objectReference: {fileID: 0}
     - target: {fileID: 211095242550423662, guid: 299e1938527ecee43a2aa000eb57a644, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.68
+      value: 19.31
       objectReference: {fileID: 0}
     - target: {fileID: 211095242550423662, guid: 299e1938527ecee43a2aa000eb57a644, type: 3}
       propertyPath: m_LocalPosition.z

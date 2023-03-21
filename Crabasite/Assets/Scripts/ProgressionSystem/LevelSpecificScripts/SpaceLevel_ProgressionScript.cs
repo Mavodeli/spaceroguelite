@@ -8,11 +8,9 @@ using static QuestJournal;
 public class SpaceLevel_ProgressionScript : ProgressionParentClass
 {
     private Dictionary<string, OnTriggerEnterDelegate> triggerMap = new Dictionary<string, OnTriggerEnterDelegate>();
-    private GameObject player;
     private QuestJournal QJ;
     
     private void Start(){
-        player = GameObject.FindGameObjectWithTag("Player");
         QJ = gameObject.GetComponent<QuestJournal>();
 
         triggerMap.Add("PH black hole", delegate () {
@@ -20,14 +18,17 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
             player.SendMessage("addHealth", -99999999, SendMessageOptions.DontRequireReceiver);//creates only problems when using infinity
         });
         triggerMap.Add("TriggerElectroAsteroidsEnemySpawner", delegate () {
-            int count = 3;
-            for(int i = 0; i < count; i++){
-                Vector2 playerLastDirection = player.GetComponent<PlayerMovement>().getMovement();
-                //offset still kinda WIP
-                Vector3 spawnOffsetToPlayer = new Vector3(playerLastDirection.x*15, playerLastDirection.y*15, 0);
-                Vector3 fishToFishOffset = new Vector3(2*i, -2*i, 0);
-                Vector3 position = player.transform.position + spawnOffsetToPlayer + fishToFishOffset;
-                Spawn.Enemy("PufferFish", position);
+            if(!PT.getFlag(enemySpawnPrefix+"SpaceLevelPufferFishies")){
+                int count = 1;
+                for(int i = 0; i < count; i++){
+                    Vector2 playerLastDirection = player.GetComponent<PlayerMovement>().getMovement();
+                    //offset still kinda WIP
+                    Vector3 spawnOffsetToPlayer = new Vector3(playerLastDirection.x*15, playerLastDirection.y*15, 0);
+                    Vector3 fishToFishOffset = new Vector3(2*i, -2*i, 0);
+                    Vector3 position = player.transform.position + spawnOffsetToPlayer + fishToFishOffset;
+                    Spawn.Enemy("PufferFish", position/*, new string[]{"SpaceshipDebris"}*/);
+                }
+                PT.setFlag(enemySpawnPrefix+"SpaceLevelPufferFishies");
             }
         });
         triggerMap.Add("SilicateTrigger", delegate () {
