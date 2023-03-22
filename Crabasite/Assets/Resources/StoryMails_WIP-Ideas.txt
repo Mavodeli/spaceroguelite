@@ -3,6 +3,11 @@ Subject:
 Content: Hey, just wanted to let you know how things are over here :) Not that great actually. The experimental treatments do not seem to have any effect on the parasite so far. Still more and more people are getting sick every day, this morning admin has announced that the housing blocks B and D will be entirely put under quarantine. That's nearly half the colony! Also, at work the management finally decided to comply with the emergency regulations, so now we have to enter the office through those decontamination chambers. It's not as much of a hassle as you might think, the procedure is much like passing an air lock. Anyway, guess that's it for now, how are YOU doing? ...No seriously, get back to me as soon as you read this, I'm kinda starting to worry... Love you!
 
 
-From:
-Subject:
-Content:
+From: Family
+Subject: 
+Content: Something strange happened yesterday at the office: around lunch time the head secretary suddenly collapsed right in the middle of a call, limbs thrashing, drooling like crazy, eyes rolling back and everything! Of course that was it for the day, security immediately rushed in, took them to the medical center and everyone who was working in the office at that time was sent home and put under quarantine for two weeks. So, guess I'll be working from home now... Let me tell you, 'home office' hasn't even started, yet I already hate everything about it! Just getting the router to let me use the company's vpn was a real pain but setting up the input pass-through from my keyboard to the cloud hypervisor... I just wish you were here, you're way better with this IT stuff. Also, now that I'm home all the time, X [the kid] is pulling my sleeve like every five minutes, it's so exhausting but I can't call Judy over bc we're technically under quarantine. So yeah, that's how it is right now... Please get this mission done as soon as possible, we need you here. I need you. 
+
+
+From: 
+Subject: 
+Content: 
