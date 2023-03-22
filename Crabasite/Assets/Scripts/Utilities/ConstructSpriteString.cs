@@ -23,7 +23,7 @@ public static class ConstructSpriteString
         // nhd - no hyperdrive
         // hd - hyperdrive
 
-        //state (exterior only):
+        //state:
         // broken/clean
 
         string type, window, hyperdrive, state;
@@ -32,9 +32,9 @@ public static class ConstructSpriteString
         hyperdrive = InstallNewHyperdriveCore_completed ? "hd" : "nhd";
         state = RepairSpaceship_completed ? "clean" : "broken";
 
-        string last_id_part = type == "exterior" ? state : hyperdrive;
+        string last_id_part = type == "exterior" ? "" : "_"+hyperdrive;
 
-        string sprite_identifier = type + "_" + window + "_" + last_id_part;
+        string sprite_identifier = type + "_" + window + "_" + state + last_id_part;
 
         return "Sprites/Spaceship/"+sprite_identifier;
     }
