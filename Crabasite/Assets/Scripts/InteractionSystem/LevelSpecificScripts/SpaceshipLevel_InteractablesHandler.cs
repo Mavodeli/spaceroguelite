@@ -29,6 +29,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                             GameObject.Find("Sounds").SendMessage("playSound", new SoundParameter("SpaceShipDoor", GameObject.Find("SoundHolder"), 1f, true));
                             // SceneManager.LoadScene("Level 1 - space");
                             SceneManager.LoadScene("Level 2 - abandoned spaceship");
+                            
                             Time.timeScale = 1;
                         }
                         else{

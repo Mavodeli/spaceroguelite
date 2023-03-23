@@ -53,19 +53,25 @@ public class Spawn
     }
 
     public static void Gravity(bool enable){
+        Collider2D ASC = GameObject.FindGameObjectWithTag("AbandonedSpaceshipCollider").GetComponent<PolygonCollider2D>();
+
         foreach(Rigidbody2D rb in GameObject.FindObjectsOfType<Rigidbody2D>()){
-            rb.gravityScale = enable ? 1 : 0;
+            Collider2D obj_collider = rb.gameObject.GetComponent<Collider2D>();
+            
+            if(obj_collider.IsTouching(ASC)){
+                rb.gravityScale = enable ? 1 : 0;
 
-            if(enable){
-                rb.AddForce(new Vector2(0, -10*rb.mass));
-            }
+                if(enable){
+                    rb.AddForce(new Vector2(0, -10*rb.mass));
+                }
 
-            //slightly lift the player/loose objects if gravity is turned off
-            //if((!enable) && ((rb.gameObject.tag == "Player") || (rb.tag == "Collectable"))){
-            if(!enable){
-                float lift_force = 100;
-                float rnd = Random.Range(0, lift_force/20);
-                rb.AddForce(new Vector2(0, (lift_force+rnd)/rb.mass));
+                //slightly lift the player/loose objects if gravity is turned off
+                //if((!enable) && ((rb.gameObject.tag == "Player") || (rb.tag == "Collectable"))){
+                if(!enable){
+                    float lift_force = 100;
+                    float rnd = Random.Range(0, lift_force/20);
+                    rb.AddForce(new Vector2(0, (lift_force+rnd)/rb.mass));
+                }
             }
         }
     }
