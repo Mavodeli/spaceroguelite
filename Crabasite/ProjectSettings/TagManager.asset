@@ -17,6 +17,7 @@ TagManager:
   - PausePanel
   - QuestEventsContainer
   - ShipHull
+  - AbandonedSpaceshipCollider
   layers:
   - Default
   - TransparentFX
