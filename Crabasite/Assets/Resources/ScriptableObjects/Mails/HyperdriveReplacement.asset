@@ -26,4 +26,4 @@ MonoBehaviour:
     accordance with the 2nd Spacecraft Standardization and Interspace Travel Safety
     Act (rev. SSITS-53376-2/5221) we have to revoke your personal spaceship ensurance
     if you do not replace the damaged component within the next 7 days.
-  icon: {fileID: 0}
+  attachmentImage: {fileID: 21300000, guid: 6a6aa906b816eb6439156ae7f5aeb9c1, type: 3}

@@ -10,6 +10,7 @@ public class Mail : ScriptableObject
     public string mailName;
     public string senderName;
     public string description;
-    public Sprite icon;
+    // public Sprite icon;
+    public Sprite attachmentImage;
 }
 

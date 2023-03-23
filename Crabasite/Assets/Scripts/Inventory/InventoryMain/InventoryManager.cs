@@ -241,16 +241,16 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
             GameObject obj = Instantiate(InventoryMail, MailContent);
             var mailController = obj.GetComponent<InventoryMailController>();
             var mailName = obj.transform.Find("MailName").GetComponent<TMP_Text>();
-            var mailIcon = obj.transform.Find("MailIcon").GetComponent<Image>();
-            var mailDescription = obj.transform.Find("MailDescription").GetComponent<TMP_Text>();
+            // var mailIcon = obj.transform.Find("MailIcon").GetComponent<Image>();
+            // var mailDescription = obj.transform.Find("MailDescription").GetComponent<TMP_Text>();
 
             string path = "ScriptableObjects/Mails/" + entry.Key;
             Mail mail = Resources.Load<Mail>(path);
 
             mailController.mail = mail;
             mailName.text = mail.mailName;
-            mailIcon.sprite = mail.icon;
-            mailDescription.text = mail.description;
+            // mailIcon.sprite = mail.icon;
+            // mailDescription.text = mail.description;
         }
     }
 
@@ -263,14 +263,19 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         string path = "ScriptableObjects/Mails/" + toFind;
         Mail mail = Resources.Load<Mail>(path);
 
-        GameObject obj1 = Instantiate(InventoryMailDescription, MailDescriptionContent);
-        var mailName = obj1.transform.Find("MailName").GetComponent<TMP_Text>();
-        var mailIcon = obj1.transform.Find("MailIcon").GetComponent<Image>();
-        var mailDescription = obj1.transform.Find("MailDescription").GetComponent<TMP_Text>();
+        GameObject obj = Instantiate(InventoryMailDescription, MailDescriptionContent);
+        var mailName = obj.transform.Find("MailName").GetComponent<TMP_Text>();
+        // var mailIcon = obj1.transform.Find("MailIcon").GetComponent<Image>();
+        var mailDescription = obj.transform.Find("MailDescription").GetComponent<TMP_Text>();
+        var mailAttachment = obj.transform.Find("MailAttachment").GetComponent<Image>();
 
         mailName.text = mail.mailName;
-        mailIcon.sprite = mail.icon;
+        // mailIcon.sprite = mail.icon;
         mailDescription.text = mail.description;
+        if(mail.attachmentImage)
+            mailAttachment.sprite = mail.attachmentImage;
+        else
+            mailAttachment.gameObject.SetActive(false);
     }
 
     /// This function is used to list all the quests in the quest tab
