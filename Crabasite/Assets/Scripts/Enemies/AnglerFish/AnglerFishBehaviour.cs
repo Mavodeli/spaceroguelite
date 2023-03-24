@@ -14,7 +14,7 @@ public class AnglerFishBehaviour : Enemy
         afd = Resources.Load<AnglerFishData>("ScriptableObjects/EnemyData/AnglerFishData");
         Texture2D _sprite = Resources.Load<Texture2D>(afd.texturePath);
         Sprite sprite = Sprite.Create(_sprite, //texture
-                                        new Rect(0.0f, 0.0f, _sprite.width, _sprite.height), //subpart of the texture to create the sprite from
+                                        new Rect(0.0f, 0.0f, _sprite.width/4, _sprite.height), //subpart of the texture to create the sprite from
                                         new Vector2(0.5f, 0.5f), //new sprite origin \in [0,1]^2
                                         100.0f, //number of pixels in the sprite that correspond to one unit in world space
                                         0, //amount by which the sprite mesh should be expanded outwards
@@ -31,6 +31,7 @@ public class AnglerFishBehaviour : Enemy
                         afd.stoppingDistance,//stopping distance
                         afd.path_to_controller// path to animator controller
                         );//Sprites/AnglerFish_256x256_New3
+        gameObject.GetComponent<BoxCollider2D>().size *= .8f;
     }
 
     // Update is called once per frame

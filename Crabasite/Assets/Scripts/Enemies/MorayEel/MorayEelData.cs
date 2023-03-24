@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MorayEelData", menuName = "Enemy Data/Create MorayEelData")]
 public class MorayEelData : ScriptableObject
 {
-    public string texturePath = "Sprites/GreenBubble";
-    public float textureScale = 2;
+    public string texturePath = "Sprites/onlyeel";
+    public float textureScale = 1;
     public float health = 70;
     public float damage = 3;
     public float meleeDamage = 10;
@@ -17,10 +17,8 @@ public class MorayEelData : ScriptableObject
     public float projectileCooldown = 2;
     public float meleeCooldown = .3f;
     public float paralyzeDuration = 1.2f;
-    public float stoppingDistance = 8;
-    public string texturePathNoProjectile = "Sprites/GreenBubble";
-    public float textureScaleNoProjectile = 2;
-    public string texturePathProjectile = "Sprites/GreenBubble";
-    public float textureScaleProjectile = .7f;
+    public float stoppingDistance = 2;
+    public string texturePathProjectile = "Sprites/onlyball";
+    public float textureScaleProjectile = 1;
     public string path_to_controller = "Animation/Enemies/AC_Morey_Eel";
 }

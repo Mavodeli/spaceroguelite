@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MorayEelData
   m_EditorClassIdentifier: 
   texturePath: Sprites/onlyeel
-  textureScale: 0.5
+  textureScale: 1
   health: 70
   damage: 3
   meleeDamage: 10
@@ -24,9 +24,7 @@ MonoBehaviour:
   projectileCooldown: 2
   meleeCooldown: 0.3
   paralyzeDuration: 1.2
-  stoppingDistance: 8
-  texturePathNoProjectile: Sprites/onlyeel
-  textureScaleNoProjectile: 0.5
+  stoppingDistance: 2
   texturePathProjectile: Sprites/onlyball
-  textureScaleProjectile: 0.6
+  textureScaleProjectile: 1
   path_to_controller: Animation/Enemies/AC_Morey_Eel
