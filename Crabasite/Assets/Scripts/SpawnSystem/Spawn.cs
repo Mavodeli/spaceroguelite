@@ -20,9 +20,10 @@ public class Spawn
         if(type == "AnglerFish"){
             Vector2 size = enemy.GetComponent<SpriteRenderer>().size;
             size *= new Vector2(1, 3);
-            size /= 2;
+            size /= 1.5f;
             enemy.GetComponent<SpriteRenderer>().size = size;
             enemy.GetComponent<BoxCollider2D>().size = size*0.8f;
+            enemy.GetComponent<AnglerFishBehaviour>().adjustHealthbarOffsetBy(1.6f);
         } 
         enemy.SendMessage("setItemsToDrop", itemsToDrop, SendMessageOptions.DontRequireReceiver);
     }

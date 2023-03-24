@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     protected Animator animator;
     protected SpriteRenderer sr;
     protected BoxCollider2D bc;
+    protected HealthBar hb;
 
     //melee damage
     private float meleeDamage;
@@ -84,7 +85,7 @@ public class Enemy : MonoBehaviour
 
         //setup HealthSystem
         HS = new HealthSystem((int) health, (int) maxhealth);
-        HS.attachHealthBar(gameObject, sr.size.y/2+.1f);
+        hb = HS.attachHealthBar(gameObject, sr.size.y/2+.1f);
 
         //setup Rigidbody2D
         // rb = gameObject.AddComponent<Rigidbody2D>();
@@ -232,5 +233,9 @@ public class Enemy : MonoBehaviour
 
     public void setItemsToDrop(string[] IDs){
         itemsToDrop = IDs;
+    }
+
+    public void adjustHealthbarOffsetBy(float factor){
+        hb.transform.localPosition *= factor;
     }
 }
