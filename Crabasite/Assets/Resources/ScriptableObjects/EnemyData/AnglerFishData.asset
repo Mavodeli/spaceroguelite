@@ -15,8 +15,8 @@ MonoBehaviour:
   texturePath: Sprites/angler_sheet
   textureScale: 1
   health: 100
-  damage: 25
-  meleeDamage: 25
+  damage: 0
+  meleeDamage: 0
   chaseSpeed: 400
   gameObjectName: Angler fish emeny
   meleeCooldown: 0.5

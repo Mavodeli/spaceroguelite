@@ -24,7 +24,8 @@ public class Spawn
             enemy.GetComponent<SpriteRenderer>().size = size;
             enemy.GetComponent<BoxCollider2D>().size = size*0.8f;
             enemy.GetComponent<AnglerFishBehaviour>().adjustHealthbarOffsetBy(1.6f);
-        } 
+        }
+        itemsToDrop = itemsToDrop == null ? new string[]{} : itemsToDrop;
         enemy.SendMessage("setItemsToDrop", itemsToDrop, SendMessageOptions.DontRequireReceiver);
     }
 

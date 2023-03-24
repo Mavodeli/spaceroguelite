@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828ad31325e15594883edf5fd02fa856, type: 3}
   m_Name: MorayEelData
   m_EditorClassIdentifier: 
-  texturePath: Sprites/GreenBubble
-  textureScale: 2
+  texturePath: Sprites/onlyeel
+  textureScale: 0.5
   health: 70
   damage: 3
   meleeDamage: 10
@@ -25,7 +25,8 @@ MonoBehaviour:
   meleeCooldown: 0.3
   paralyzeDuration: 1.2
   stoppingDistance: 8
-  texturePathNoProjectile: Sprites/GreenBubble
-  textureScaleNoProjectile: 2
-  texturePathProjectile: Sprites/GreenBubble
-  textureScaleProjectile: 0.7
+  texturePathNoProjectile: Sprites/onlyeel
+  textureScaleNoProjectile: 0.5
+  texturePathProjectile: Sprites/onlyball
+  textureScaleProjectile: 0.6
+  path_to_controller: Animation/Enemies/AC_Morey_Eel

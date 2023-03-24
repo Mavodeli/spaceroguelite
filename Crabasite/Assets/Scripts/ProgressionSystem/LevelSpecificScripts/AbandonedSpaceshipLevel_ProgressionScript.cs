@@ -15,8 +15,12 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
 
         //1st parameter: the name of the GameObject (the 'trigger' object with the ProgressionTrigger script)
         //2nd parameter: the function that should be executed OnTriggerEnter
-        triggerMap.Add("BobTheTrigger", delegate () {
-
+        triggerMap.Add("AS_MorayEelTrigger", delegate () {
+            if(!PT.getFlag(enemySpawnPrefix+"MorayEels")){
+                Spawn.Enemy("MorayEel", new Vector3(52.29f, 30.4f, 0));
+                Spawn.Enemy("MorayEel", new Vector3(55.88f, 25.72f, 0));
+                PT.setFlag(enemySpawnPrefix+"MorayEels");
+            }
         });
       
         //fill the triggers in the scene with their behaviours according to the trigger map
@@ -25,10 +29,15 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
             pt.Setup(triggerMap[trigger.name]);
         }
 
-        if(!PT.getFlag("AnglerfishSpawned") || !dpm.getGameData().UltimateDict[1]){//spawn if not already spawned or if player doesn't have ult
+        if(!PT.getFlag(enemySpawnPrefix+"Anglerfish")){
             Vector3 position = new Vector3(0.170000002f, 9.89999962f, 0.0f);
-            Spawn.Enemy("AnglerFish", position, new string[]{"CrushOrb"});
-            PT.setFlag("AnglerfishSpawned");
+
+            if(!dpm.getGameData().UltimateDict[1])//if player doesn't have ult
+                Spawn.Enemy("AnglerFish", position, new string[]{"CrushOrb"});
+            else
+                Spawn.Enemy("AnglerFish", position);
+
+            PT.setFlag(enemySpawnPrefix+"Anglerfish");
         }
     }
 
