@@ -16,12 +16,14 @@ public class InteractionButton : MonoBehaviour
     private OnButtonPressDelegate onButtonPress;
     private bool lastFrameGetKey;
     private TimerObject buttonPressCooldown;
+    private bool isVisible;
 
-    public void Setup(OnButtonPressDelegate _delegate, string _inputKey = "e", float _showDistanceMaximum = 3){
+    public void Setup(OnButtonPressDelegate _delegate, string _inputKey = "e", float _showDistanceMaximum = 3, bool visible = true){
         onButtonPress = _delegate;
         inputKey = _inputKey;
         showDistanceMaximum = _showDistanceMaximum;
         buttonPressCooldown = new TimerObject();
+        isVisible = visible;
     }
 
     void Start()
@@ -36,7 +38,7 @@ public class InteractionButton : MonoBehaviour
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
         //create button if not present and player is close enough
-        if ((distanceToPlayer <= showDistanceMaximum) && !hasButton)
+        if ((distanceToPlayer <= showDistanceMaximum) && !hasButton && isVisible)
         {
             button.name = "InteractionButton of " + name;
             button.GetComponent<SpriteRenderer>().sortingOrder = 3;
@@ -50,8 +52,7 @@ public class InteractionButton : MonoBehaviour
             hasButton = false;
         }
         //check if player presses button, if so, perform onButtonPress
-
-        if (Input.GetKey(inputKey) && !lastFrameGetKey && hasButton && !buttonPressCooldown.runs())
+        if (Input.GetKey(inputKey) && !lastFrameGetKey && hasButton && !buttonPressCooldown.runs() && isVisible)
         {
             buttonPressCooldown.start(1.5f);
             onButtonPress();
@@ -61,5 +62,9 @@ public class InteractionButton : MonoBehaviour
 
     public void setNewOffset(Vector3 newOffset){
         offset = newOffset;
+    }
+
+    public void setVisibility(bool value){
+        isVisible = value;
     }
 }

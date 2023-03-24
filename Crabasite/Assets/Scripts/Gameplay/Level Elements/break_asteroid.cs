@@ -10,7 +10,7 @@ public class break_asteroid : MonoBehaviour
     public GameObject player;
     public int requiredForce;
     public float breakCooldown = 3f;
-    private Timer breakTimer;
+    private TimerObject breakTimer;
 
     // state bounds
     private int breakState = 0;
@@ -28,7 +28,7 @@ public class break_asteroid : MonoBehaviour
     {
         if (
             breakState < splitState
-            && !breakTimer.is_running()
+            && !breakTimer.runs()
             && collision.gameObject != player
             && collision.relativeVelocity.magnitude > requiredForce
         )
@@ -42,7 +42,7 @@ public class break_asteroid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        breakTimer = new Timer();
+        breakTimer = new TimerObject();
 
         stateMap = new GameObject[] { state0, state1, state2, state3 };
     }
@@ -50,12 +50,6 @@ public class break_asteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // update timer
-        if (breakTimer != null)
-        {
-            breakTimer.Update();
-        }
-
         // update active object if necessary
         if (collided)
         {

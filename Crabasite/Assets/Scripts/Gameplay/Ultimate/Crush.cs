@@ -24,7 +24,9 @@ public class Crush : Ultimate
 
         foreach (var hitCollider in hitColliders)
         {
-            hitCollider.SendMessage("EnemyTakeDmg", 5, SendMessageOptions.DontRequireReceiver);
+            // hitCollider.SendMessage("EnemyTakeDmg", 5, SendMessageOptions.DontRequireReceiver);
+            hitCollider.SendMessage("addHealth", -5, SendMessageOptions.DontRequireReceiver);
+            hitCollider.SendMessage("addHealthToEmergencyDoor", -34, SendMessageOptions.DontRequireReceiver);
             // Debug.Log(hitCollider);
         }
 

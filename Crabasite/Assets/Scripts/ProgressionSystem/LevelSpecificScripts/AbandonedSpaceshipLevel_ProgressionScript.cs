@@ -17,8 +17,8 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
         //2nd parameter: the function that should be executed OnTriggerEnter
         triggerMap.Add("AS_MorayEelTrigger", delegate () {
             if(!PT.getFlag(enemySpawnPrefix+"MorayEels")){
-                Spawn.Enemy("MorayEel", new Vector3(52.29f, 30.4f, 0));
-                Spawn.Enemy("MorayEel", new Vector3(55.88f, 25.72f, 0));
+                // Spawn.Enemy("MorayEel", new Vector3(52.29f, 30.4f, 0));
+                // Spawn.Enemy("MorayEel", new Vector3(55.88f, 25.72f, 0));
                 PT.setFlag(enemySpawnPrefix+"MorayEels");
             }
         });

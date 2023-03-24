@@ -257,6 +257,20 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                         CommentarySystem.displayProtagonistComment("completedFindACure");
                 })
             );
+
+            quest_identifier = "OpenTheEmergencyDoor";
+            data.Add(
+                quest_identifier,
+                new Quest(
+                    quest_identifier,
+                    "interactedWithEmergencyDoor",
+                    delegate(){//completionCriterion
+                        return IM.ItemAmountInDict("TheCure") >= 1;
+                    },
+                    delegate(){//onCompletion
+                        CommentarySystem.displayProtagonistComment("completedOpenTheEmergencyDoor");
+                })
+            );
         }
 
         public Quest at(string key){ return data[key];}

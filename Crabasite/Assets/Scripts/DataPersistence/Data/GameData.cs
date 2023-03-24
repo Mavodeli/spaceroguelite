@@ -16,6 +16,7 @@ public class GameData
     public SerializableDictionary<int, bool> UltimateDict;
     public int lastEquippedUltimate;
     public SerializableDictionary<string, bool> activeQuests;
+    public bool AS_EmergencyDoorUnlocked;
 
     // Options related Savedata
     public int graphicsIndex;
@@ -40,6 +41,7 @@ public class GameData
         UltimateDict.Add(2, false);
         this.lastEquippedUltimate = 3;
         this.activeQuests = new SerializableDictionary<string, bool>();
+        this.AS_EmergencyDoorUnlocked = false;
         this.graphicsIndex = 0;
         this.soundVolume = 0;
         this.isFullscreen = true;
