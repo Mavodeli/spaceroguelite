@@ -22,7 +22,7 @@ public class Spawn
             size *= new Vector2(1, 3);
             size /= 2;
             enemy.GetComponent<SpriteRenderer>().size = size;
-            enemy.GetComponent<BoxCollider2D>().size = size;
+            enemy.GetComponent<BoxCollider2D>().size = size*0.8f;
         } 
         enemy.SendMessage("setItemsToDrop", itemsToDrop, SendMessageOptions.DontRequireReceiver);
     }
