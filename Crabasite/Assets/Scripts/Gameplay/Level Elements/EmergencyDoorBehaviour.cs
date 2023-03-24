@@ -20,7 +20,10 @@ public class EmergencyDoorBehaviour : MonoBehaviour, IDataPersistence
         isOpen_timer.setOnRunningOut(delegate(){close();});
         bc = gameObject.GetComponent<BoxCollider2D>();
         ib = gameObject.GetComponent<InteractionButton>();
-        ib.Setup(delegate(){if(unlocked) open();}, "e");
+        ib.Setup(delegate(){
+            GameObject.FindGameObjectWithTag("QuestEventsContainer").SendMessage("InvokeEvent", "interactedWithEmergencyDoor", SendMessageOptions.DontRequireReceiver);
+            if(unlocked) open();
+        }, "e");
         ib.setNewOffset(new Vector3(0, 0, 0));
         ib.setVisibility(unlocked);
     }
