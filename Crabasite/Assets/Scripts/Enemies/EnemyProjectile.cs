@@ -66,7 +66,7 @@ public class EnemyProjectile : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        if((other.gameObject != parent) && (other.gameObject.name != gameObject.name)){
+        if((other.gameObject != parent) && (other.gameObject.name != gameObject.name) && (other.gameObject.tag != "AbandonedSpaceshipCollider")){
             del(other);
             GameObject.Destroy(gameObject);
         }
