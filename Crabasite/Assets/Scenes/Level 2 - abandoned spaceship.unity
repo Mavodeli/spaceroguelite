@@ -981,7 +981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8416738512718005718, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1391395.9
+      value: 1494830.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
@@ -3161,7 +3161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855a8a3b804751f4ea80565e816b4f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnPrefix: EnemySpawn_
 --- !u!1 &1417364125
 GameObject:
   m_ObjectHideFlags: 0
@@ -4648,6 +4647,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 260857939645100705, guid: 19d4bf439374fbd48864abbaa63050e4, type: 3}
+      propertyPath: m_Points.Array.data[3].x
+      value: -20.380154
+      objectReference: {fileID: 0}
+    - target: {fileID: 260857939645100705, guid: 19d4bf439374fbd48864abbaa63050e4, type: 3}
+      propertyPath: m_Points.Array.data[3].y
+      value: -19.470379
+      objectReference: {fileID: 0}
+    - target: {fileID: 260857939645100705, guid: 19d4bf439374fbd48864abbaa63050e4, type: 3}
+      propertyPath: m_Points.Array.data[4].x
+      value: -49.381336
+      objectReference: {fileID: 0}
+    - target: {fileID: 260857939645100705, guid: 19d4bf439374fbd48864abbaa63050e4, type: 3}
+      propertyPath: m_Points.Array.data[4].y
+      value: -19.471354
+      objectReference: {fileID: 0}
+    - target: {fileID: 260857939645100705, guid: 19d4bf439374fbd48864abbaa63050e4, type: 3}
+      propertyPath: m_Points.Array.data[5].x
+      value: -49.353706
+      objectReference: {fileID: 0}
+    - target: {fileID: 260857939645100705, guid: 19d4bf439374fbd48864abbaa63050e4, type: 3}
+      propertyPath: m_Points.Array.data[5].y
+      value: -2.6133518
+      objectReference: {fileID: 0}
     - target: {fileID: 1497496389780142235, guid: 19d4bf439374fbd48864abbaa63050e4, type: 3}
       propertyPath: m_Name
       value: AS_PlayerCollider

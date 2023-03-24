@@ -17,6 +17,13 @@ public class Spawn
         GameObject enemy = Object.Instantiate(Resources.Load<GameObject>("Prefabs/Enemy"));
         EnemyBehaviourMap[type](enemy);
         enemy.transform.position = position;
+        if(type == "AnglerFish"){
+            Vector2 size = enemy.GetComponent<SpriteRenderer>().size;
+            size *= new Vector2(1, 3);
+            size /= 2;
+            enemy.GetComponent<SpriteRenderer>().size = size;
+            enemy.GetComponent<BoxCollider2D>().size = size;
+        } 
         enemy.SendMessage("setItemsToDrop", itemsToDrop, SendMessageOptions.DontRequireReceiver);
     }
 
