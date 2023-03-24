@@ -1,0 +1,10 @@
+Ending: give the cure to the colony
+Text: You arrive on Cryke 2H23 just in time. You decided against entering cryo sleep again for the journey back home, out of fear that you wouldn't wake up again. As a result, the head ache steadily worsened and halfway along the flight you lost all feeling in the infected arm, to the point where you were unable to even lift it up, let alone steer the ship with it. Once you finally entered Cryke's atmosphere, the claw had begun to involuntarily snap at everything around it and by the time they dragged you out of your cockpit you had completely lost any sense of your body and your limbs were thrashing uncontrollably. Shortly after that, you lost consciousness.
+
+
+Ending: take the cure yourself
+Text: 
+
+
+Ending: split the cure sample
+Text: 
