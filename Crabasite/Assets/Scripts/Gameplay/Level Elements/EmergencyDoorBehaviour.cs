@@ -23,9 +23,13 @@ public class EmergencyDoorBehaviour : MonoBehaviour, IDataPersistence
         ib.Setup(delegate(){
             GameObject.FindGameObjectWithTag("QuestEventsContainer").SendMessage("InvokeEvent", "interactedWithEmergencyDoor", SendMessageOptions.DontRequireReceiver);
             if(unlocked) open();
-        }, "e");
+        }, _otherDelegate: delegate(){
+            InteractionButton.displayProtagonistComment(gameObject.name+"_IsNotInteractable");
+            GameObject GH = GameObject.FindGameObjectWithTag("GameHandler");
+            GH.SendMessage("addNewQuest", "OpenTheEmergencyDoor", SendMessageOptions.DontRequireReceiver);
+        });
         ib.setNewOffset(new Vector3(0, 0, 0));
-        ib.setVisibility(unlocked);
+        ib.setInteractability(unlocked);
     }
 
     public void open(){
@@ -47,10 +51,15 @@ public class EmergencyDoorBehaviour : MonoBehaviour, IDataPersistence
     private void unlock(){
         // Debug.Log(gameObject.name+": I'm open now :)");
         unlocked = true;
-        ib.setVisibility(true);
+        ib.setInteractability(true);
+        InteractionButton.displayProtagonistComment(gameObject.name+"_JustGotUnlocked");
     }
 
-    public void addHealthToEmergencyDoor(int hp){
+    public bool isUnlocked(){
+        return unlocked;
+    }
+
+    private void addHealthToEmergencyDoor(int hp){
         if(!unlocked){
             // Debug.Log(gameObject.name+": Help! I'm taking "+(-hp)+" damage!");
             float health = Mathf.Clamp(HS.Health+hp,0,HS.MaxHealth);

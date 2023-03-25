@@ -265,7 +265,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     quest_identifier,
                     "interactedWithEmergencyDoor",
                     delegate(){//completionCriterion
-                        return IM.ItemAmountInDict("TheCure") >= 1;
+                        return GameObject.FindObjectOfType<EmergencyDoorBehaviour>().isUnlocked();
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayProtagonistComment("completedOpenTheEmergencyDoor");

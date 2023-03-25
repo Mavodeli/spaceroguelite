@@ -14,16 +14,21 @@ public class InteractionButton : MonoBehaviour
     private string inputKey;
     public delegate void OnButtonPressDelegate();
     private OnButtonPressDelegate onButtonPress;
+    public delegate void OnNotInteractableButtonPressDelegate();
+    private OnNotInteractableButtonPressDelegate onNotInteractableButtonPress;
     private bool lastFrameGetKey;
     private TimerObject buttonPressCooldown;
     private bool isVisible;
+    private bool isInteractable;
 
-    public void Setup(OnButtonPressDelegate _delegate, string _inputKey = "e", float _showDistanceMaximum = 3, bool visible = true){
+    public void Setup(OnButtonPressDelegate _delegate, string _inputKey = "e", float _showDistanceMaximum = 3, bool visible = true, bool interactable = true, OnNotInteractableButtonPressDelegate _otherDelegate = null){
         onButtonPress = _delegate;
+        onNotInteractableButtonPress = _otherDelegate == null ? delegate(){CommentarySystem.displayProtagonistComment("Default_IsNotInteractable");} : _otherDelegate;
         inputKey = _inputKey;
         showDistanceMaximum = _showDistanceMaximum;
         buttonPressCooldown = new TimerObject();
         isVisible = visible;
+        isInteractable = interactable;
     }
 
     void Start()
@@ -52,10 +57,14 @@ public class InteractionButton : MonoBehaviour
             hasButton = false;
         }
         //check if player presses button, if so, perform onButtonPress
-        if (Input.GetKey(inputKey) && !lastFrameGetKey && hasButton && !buttonPressCooldown.runs() && isVisible)
+        if (Input.GetKey(inputKey) && !lastFrameGetKey && hasButton && !buttonPressCooldown.runs() && isVisible && isInteractable)
         {
             buttonPressCooldown.start(1.5f);
             onButtonPress();
+        }
+        else if(Input.GetKey(inputKey) && !lastFrameGetKey && hasButton && !buttonPressCooldown.runs() && isVisible && !isInteractable){
+            buttonPressCooldown.start(1.5f);
+            onNotInteractableButtonPress();
         }
         lastFrameGetKey = Input.GetKey(inputKey);
     }
@@ -66,5 +75,14 @@ public class InteractionButton : MonoBehaviour
 
     public void setVisibility(bool value){
         isVisible = value;
+    }
+
+    public void setInteractability(bool value){
+        isInteractable = value;
+    }
+
+    //pass-through function used by the EmergencyDoor
+    public static void displayProtagonistComment(string id){
+        CommentarySystem.displayProtagonistComment(id);
     }
 }

@@ -54,5 +54,13 @@
     "protagonistCompletedEmergencyRepairs" :
     "Finally. The ship's 'ready for lift-off' again. Well, not really, but the thrusters should be enough to get me to that abandoned spaceship Qarea mentioned.",
     "gameSaved" :
-    "Game saved."
+    "Game saved.",
+    "completedOpenTheEmergencyDoor" :
+    "If you think about it, it's actually kind of intuitive to try and break a lock using this massive crab claw. That ability will surely come in handy further down the line. ...Get it? Ok, ok I'm sorry, I'll stop.",
+    "AS_EmergencyDoor_IsNotInteractable" :
+    "Hm, the AI seems to have shut down the controlls for that door. Looks like I have to find another way to open it.",
+    "AS_EmergencyDoor_JustGotUnlocked" :
+    "That should do it, the locking mechanism is disabled.",
+    "Default_IsNotInteractable" : 
+    "Locked."
 }

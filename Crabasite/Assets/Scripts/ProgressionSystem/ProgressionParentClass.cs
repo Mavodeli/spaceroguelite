@@ -7,7 +7,7 @@ public class ProgressionParentClass : MonoBehaviour, IDataPersistence
     public delegate void OnTriggerEnterDelegate();
     protected ProgressionTracker PT = new ProgressionTracker();
     protected GameObject player;
-    protected string enemySpawnPrefix = "EnemySpawn_";//DON'T CHANGE  THIS VALUE, IT IS HARD-CODED IN THE DPM (LoadGame())!!!
+    protected string enemySpawnPrefix = "EnemySpawn_";//DON'T CHANGE THIS VALUE, IT IS HARD-CODED IN THE DPM (LoadGame())!!!
 
     public void Awake(){
         player = GameObject.FindGameObjectWithTag("Player");
