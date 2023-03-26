@@ -15,12 +15,15 @@ public class SilicateBehaviour : PhysicalEntity
         //setup sound
         pickupSound = (AudioSource) (GameObject.Find("PickupObject")).GetComponent(typeof (AudioSource));
 
+        GameObject GameHandler = GameObject.FindGameObjectWithTag("GameHandler");
+
         //setup Pickup (formerly done by the PickupHandler)
         ib = gameObject.AddComponent<InteractionButton>();
         ib.Setup(delegate () {
             if(!GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>().inventoryIsOpened){
                 pickupSound.Play();
-                InventoryManager.Instance.AddItem("Silicate");
+                InventoryManager.Instance.AddItem("Silicate");                
+                GameHandler.GetComponent<CollectibleTracking>().AddCollectibleToDict(name);
                 Destroy(gameObject);
             }
         }, "e");
