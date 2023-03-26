@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using System.IO;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -48,9 +49,10 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     // New Game starts with fresh GameData
     private async void Start()
     {
-        if (!DataPersistenceManager.instance.HasGameData())
+        string path = Path.Combine(Application.persistentDataPath, "data.game");
+        if (!File.Exists(path))
         {
-            loadGameButton.interactable = false;
+            loadGameButton.interactable = false;            
         }
 
         resolutions = Screen.resolutions;

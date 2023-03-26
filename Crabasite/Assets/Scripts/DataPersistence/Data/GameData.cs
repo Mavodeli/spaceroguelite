@@ -14,6 +14,7 @@ public class GameData
     public SerializableDictionary<string, bool> QuestDict;
     public SerializableDictionary<string, bool> ProgressionDict;
     public SerializableDictionary<int, bool> UltimateDict;
+    public SerializableDictionary<string, bool> CollectibleDict;
     public int lastEquippedUltimate;
     public SerializableDictionary<string, bool> activeQuests;
 
@@ -35,6 +36,7 @@ public class GameData
         this.QuestDict = new SerializableDictionary<string, bool>();
         this.ProgressionDict = new SerializableDictionary<string, bool>();
         this.UltimateDict = new SerializableDictionary<int, bool>();
+        this.CollectibleDict = new SerializableDictionary<string, bool>();
         UltimateDict.Add(0, false);
         UltimateDict.Add(1, false);
         UltimateDict.Add(2, false);
