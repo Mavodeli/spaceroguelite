@@ -73,7 +73,7 @@ public class CrabClaw : MonoBehaviour
                 objectRigidbody.AddForce(PullMI.getFrameDirection()*PullMI.getFrameSpeed());
                 // hit.transform.position += PullMI.getFrameDirection()*PullMI.getFrameSpeed()*Time.deltaTime;
 
-                soundController.SendMessage("playSoundLoopingSafe", new SoundParameter("PlayerPullSound", player, 0.5f, false));
+                soundController.SendMessage("playSoundLoopingSafe", new SoundParameter("PlayerPullSound", player, 0.5f, false), SendMessageOptions.DontRequireReceiver);
 
             }
             else{
@@ -87,7 +87,7 @@ public class CrabClaw : MonoBehaviour
                 objectRigidbody.AddForce(PushMI.getFrameDirection()*PushMI.getFrameSpeed());
                 // hit.transform.position += PushMI.getFrameDirection()*PushMI.getFrameSpeed()*Time.deltaTime;
 
-                soundController.SendMessage("playSoundLoopingSafe", new SoundParameter("PlayerPushSound", player, 0.5f, false));
+                soundController.SendMessage("playSoundLoopingSafe", new SoundParameter("PlayerPushSound", player, 0.5f, false), SendMessageOptions.DontRequireReceiver);
 
             }
             else{
@@ -95,18 +95,18 @@ public class CrabClaw : MonoBehaviour
             }
 
             if((Input.GetMouseButton(0) || Input.GetMouseButton(1)) && !PM.hasMana()){
-                soundController.SendMessage("playSoundSafe", new SoundParameter("PlayerManaEmpty", player, 1f, false));
+                soundController.SendMessage("playSoundSafe", new SoundParameter("PlayerManaEmpty", player, 1f, false), SendMessageOptions.DontRequireReceiver);
             }
 
             if(Input.GetMouseButtonUp(0)){
-                soundController.SendMessage("stopSound", "PlayerPullSound");
+                soundController.SendMessage("stopSound", "PlayerPullSound", SendMessageOptions.DontRequireReceiver);
             }
             if(Input.GetMouseButtonUp(1)){
-                soundController.SendMessage("stopSound", "PlayerPushSound");
+                soundController.SendMessage("stopSound", "PlayerPushSound", SendMessageOptions.DontRequireReceiver);
             }
             if(!PM.hasMana()){
-                soundController.SendMessage("stopSound", "PlayerPullSound");
-                soundController.SendMessage("stopSound", "PlayerPushSound");
+                soundController.SendMessage("stopSound", "PlayerPullSound", SendMessageOptions.DontRequireReceiver);
+                soundController.SendMessage("stopSound", "PlayerPushSound", SendMessageOptions.DontRequireReceiver);
             }
 
         }
