@@ -7,4 +7,5 @@ Text: You open the little yellow strongbox with the evil-looking pictogram. Insi
 
 
 Ending: split the cure sample
-Text: 
+Text: 'I'm technically getting the cure for the colony, so it would be only a matter of time until I received some of it myself, right? Right.' Having justified your decision for yourself you proceed to open the yellow box. Inside lies a small phial with a strangely blue-ish glowing liquid. You open it, pour about a third of the sample into a metal teacup you recently found hidden in a dusty corner of the cargo hold, reseal the phial, put it back into the box and chug the potion in one go before you can question your judgement any further. You then get into the cockpit of your ship and fire up the engine. Time to head home.
+
