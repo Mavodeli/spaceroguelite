@@ -19,11 +19,13 @@ public class CommentarySystem : MonoBehaviour
     private static bool alreadyShowingComment = false;
     private static Queue<string> stashedComments; // stores comments that are waiting to be displayed: #0 followed by an id will display a protagonist comment, #1 followed by an id will display an ai comment
 
+    private GameObject soundController;
+
     // Typewriter effect
     private static bool isTypeWriting = false;
     private static string typeWriterText = "";
     private static int typeWriterCounter = 0;
-    private const float AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS = 0.1f;
+    private const float AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS = 0.05f;
     private static float timeSinceLastLetterAppeared = 0f;
 
     void Start(){
@@ -31,6 +33,8 @@ public class CommentarySystem : MonoBehaviour
         textField = GameObject.Find("CommentText");
         image.SetActive(false);
         textField.SetActive(false);
+
+        soundController = GameObject.Find("Sounds");
 
         textToBeDisplayed = textField.GetComponent<TextMeshProUGUI>();
         imageToBeDisplayed = image.GetComponent<Image>();
@@ -50,6 +54,7 @@ public class CommentarySystem : MonoBehaviour
             } else {
                 if(timeSinceLastLetterAppeared >= AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS){
                     textToBeDisplayed.text += typeWriterText[typeWriterCounter];
+                    soundController.SendMessage("playSound", new SoundParameter("TypewriterSound", this.gameObject, 0.75f, false));
                     typeWriterCounter++;
                     timeSinceLastLetterAppeared -= AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS;
                     if(textToBeDisplayed.text == typeWriterText){
