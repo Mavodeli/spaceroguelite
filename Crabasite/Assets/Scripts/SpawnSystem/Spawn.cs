@@ -31,8 +31,8 @@ public class Spawn
         item.transform.position = position;
 
         Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
-        float rnd1 = Random.Range(0, rb.mass);
-        float rnd2 = Random.Range(-rb.mass, rb.mass);
+        float rnd1 = Random.Range(0, rb.mass)*5;
+        float rnd2 = Random.Range(-rb.mass, rb.mass)*2;
         rb.AddForce(new Vector2(rnd1/rb.mass, rnd2/rb.mass));
         rb.AddTorque(rnd1+rnd2);
     }
@@ -64,21 +64,24 @@ public class Spawn
 
         foreach(Rigidbody2D rb in GameObject.FindObjectsOfType<Rigidbody2D>()){
             Collider2D obj_collider = rb.gameObject.GetComponent<Collider2D>();
+            string obj_tag = rb.gameObject.tag;
             
             if(obj_collider.IsTouching(ASC)){
-                rb.gravityScale = enable ? 1 : 0;
+                if(obj_tag != "Interactable" && obj_tag != "Stationary"){//object selection criteria
+                    rb.gravityScale = enable ? 1 : 0;
 
-                if(enable){
-                    rb.AddForce(new Vector2(0, -10*rb.mass));
-                }
+                    if(enable){
+                        rb.AddForce(new Vector2(0, -10*rb.mass));
+                    }
 
-                //slightly lift the player/loose objects if gravity is turned off
-                //if((!enable) && ((rb.gameObject.tag == "Player") || (rb.tag == "Collectable"))){
-                if(!enable){
-                    float lift_force = 100;
-                    float rnd = Random.Range(0, lift_force/20);
-                    rb.AddForce(new Vector2(0, (lift_force+rnd)/rb.mass));
-                    rb.AddTorque(Random.Range(-lift_force/20, lift_force/20));
+                    //slightly lift the player/loose objects if gravity is turned off
+                    //if((!enable) && ((rb.gameObject.tag == "Player") || (rb.tag == "Collectable"))){
+                    if(!enable){
+                        float lift_force = 100;
+                        float rnd = Random.Range(0, lift_force/20);
+                        rb.AddForce(new Vector2(0, (lift_force+rnd)/rb.mass));
+                        rb.AddTorque(Random.Range(-lift_force/20, lift_force/20));
+                    }
                 }
             }
         }

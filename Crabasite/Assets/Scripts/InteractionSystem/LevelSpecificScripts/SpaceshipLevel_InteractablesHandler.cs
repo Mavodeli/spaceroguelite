@@ -29,10 +29,13 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                             GameObject.Find("Sounds").SendMessage("playSound", new SoundParameter("SpaceShipDoor", GameObject.Find("SoundHolder"), 1f, true), SendMessageOptions.DontRequireReceiver);
                             // SceneManager.LoadScene("Level 1 - space");
                             SceneManager.LoadScene("Level 2 - abandoned spaceship");
+
+                            // debug ulti unlock
                             GameObject inv = GameObject.FindGameObjectWithTag("Inventory");
-                            inv.SendMessage("unlockUltimate", 1, SendMessageOptions.DontRequireReceiver);
+                            inv.SendMessage("unlockUltimate", 0, SendMessageOptions.DontRequireReceiver);
                             GameObject player = GameObject.FindGameObjectWithTag("Player");
-                            player.SendMessage("SwitchUltimate", 1, SendMessageOptions.DontRequireReceiver);
+                            player.SendMessage("SwitchUltimate", 0, SendMessageOptions.DontRequireReceiver);
+
                             Time.timeScale = 1;
                         }
                         else{
