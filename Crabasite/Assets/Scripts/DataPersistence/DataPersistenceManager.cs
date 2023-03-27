@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using log4net.Core;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -76,6 +77,22 @@ public class DataPersistenceManager : MonoBehaviour
 
         if(hull != null)
             hull.GetComponent<SpriteRenderer>().sprite = sprite;
+
+
+        GameObject GameHandler = null;
+
+        try
+        {
+           GameHandler = GameObject.FindGameObjectWithTag("GameHandler");
+        }
+        catch (System.NullReferenceException) { }
+
+        if(GameHandler != null && SceneManager.GetActiveScene().name != "Level 0 - spaceship")
+        {
+            GameHandler.GetComponent<CollectibleTracking>().deleteCollectibles();
+        }
+            
+
     }
     // Called when switching Scenes
     public void OnSceneUnloaded(Scene scene)

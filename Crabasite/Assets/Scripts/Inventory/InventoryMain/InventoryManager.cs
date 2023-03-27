@@ -201,7 +201,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
             itemController.item = item;
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
-            itemDescription.text = item.description; 
+            itemDescription.text = item.description;
         }
 
     }
@@ -219,10 +219,16 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         var itemName = obj1.transform.Find("ItemName").GetComponent<TMP_Text>();
         var itemIcon = obj1.transform.Find("ItemIcon").GetComponent<Image>();
         var itemDescription = obj1.transform.Find("ItemDescription").GetComponent<TMP_Text>();
+        var itemAmount = obj1.transform.Find("ItemAmount").GetComponent<TMP_Text>();
+
+        Debug.Log(itemAmount);
 
         itemName.text = item.itemName;
         itemIcon.sprite = item.icon;
         itemDescription.text = item.description;
+        itemAmount.text = ItemAmountInDict(toFind).ToString() + "x";
+
+        Debug.Log(itemAmount.text);
     }
 
     /// This function is used to list all the mails in the mail tab
@@ -266,9 +272,9 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         GameObject obj = Instantiate(InventoryMailDescription, MailDescriptionContent);
         var mailName = obj.transform.Find("MailName").GetComponent<TMP_Text>();
         // var mailIcon = obj1.transform.Find("MailIcon").GetComponent<Image>();
-        var mailDescription = obj.transform.Find("MailDescription").GetComponent<TMP_Text>();
+        var mailDescription = obj.transform.GetChild(3).GetChild(0).GetComponent<TMP_Text>();
         var mailAttachment = obj.transform.Find("MailAttachment").GetComponent<Image>();
-
+        Debug.Log(mailDescription);
         mailName.text = mail.mailName;
         // mailIcon.sprite = mail.icon;
         mailDescription.text = mail.description;
