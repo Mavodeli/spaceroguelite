@@ -19,6 +19,13 @@ public class CommentarySystem : MonoBehaviour
     private static bool alreadyShowingComment = false;
     private static Queue<string> stashedComments; // stores comments that are waiting to be displayed: #0 followed by an id will display a protagonist comment, #1 followed by an id will display an ai comment
 
+    // Typewriter effect
+    private static bool isTypeWriting = false;
+    private static string typeWriterText = "";
+    private static int typeWriterCounter = 0;
+    private const float AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS = 0.1f;
+    private static float timeSinceLastLetterAppeared = 0f;
+
     void Start(){
         image = GameObject.Find("CommentBox");
         textField = GameObject.Find("CommentText");
@@ -36,26 +43,44 @@ public class CommentarySystem : MonoBehaviour
     }
 
     void Update(){
-        if(alreadyShowingComment && Input.GetKeyDown("c")){
-            image.SetActive(false);
-            textField.SetActive(false);
-            alreadyShowingComment = false;
-            if(stashedComments.Count > 0){
-                string nextComment = stashedComments.Dequeue();
-                if(nextComment.StartsWith("#0")){
-                    // protagonist comment
-                    displayProtagonistComment(nextComment.Substring(2));
-                } else if(nextComment.StartsWith("#1")) {
-                    // ai comment
-                    displayAIComment(nextComment.Substring(2));
+        if(alreadyShowingComment && isTypeWriting){
+            if(Input.GetKeyDown("c")){
+                isTypeWriting = false;
+                textToBeDisplayed.text = typeWriterText;
+            } else {
+                if(timeSinceLastLetterAppeared >= AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS){
+                    textToBeDisplayed.text += typeWriterText[typeWriterCounter];
+                    typeWriterCounter++;
+                    timeSinceLastLetterAppeared -= AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS;
+                    if(textToBeDisplayed.text == typeWriterText){
+                        isTypeWriting = false;
+                    }
                 } else {
-                    Debug.LogWarning("The following comment should be displayed but can't since it is neither a ai-comment nor a protagonist comment: [" + nextComment + "]");
+                    timeSinceLastLetterAppeared += Time.deltaTime;
                 }
             }
-        }        
+        } else if(alreadyShowingComment && !isTypeWriting){
+            if(Input.GetKeyDown("c")){
+                image.SetActive(false);
+                textField.SetActive(false);
+                alreadyShowingComment = false;
+                if(stashedComments.Count > 0){
+                    string nextComment = stashedComments.Dequeue();
+                    if(nextComment.StartsWith("#0")){
+                        // protagonist comment
+                        displayProtagonistComment(nextComment.Substring(2));
+                    } else if(nextComment.StartsWith("#1")){
+                        // ai comment
+                        displayAIComment(nextComment.Substring(2));
+                    } else {
+                        // This one should never appear
+                        Debug.LogWarning("The following comment hsould be displayed but can't, since it is neither an ai-comment nor a protagonist comment: [" + nextComment + "]");
+                    }
+                }
+            }
+        }
     }
-
-
+    
     public static void displayProtagonistComment(string id){
         if(alreadyShowingComment){
             stashedComments.Enqueue("#0" + id);
@@ -88,7 +113,11 @@ public class CommentarySystem : MonoBehaviour
         textField.SetActive(true);
         alreadyShowingComment = true;
 
-        textToBeDisplayed.text = id; // TODO show actual text
+        isTypeWriting = true;
+        typeWriterText = id; // TODO show actual text
+        textToBeDisplayed.text = "" + typeWriterText[0];
+        typeWriterCounter = 1;
+        timeSinceLastLetterAppeared = 0f;
     }
 
     private static string LoadFromFile(string identifier)
