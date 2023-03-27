@@ -15,11 +15,10 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
 
         //1st parameter: the name of the GameObject (the 'trigger' object with the ProgressionTrigger script)
         //2nd parameter: the function that should be executed OnTriggerEnter
-        triggerMap.Add("AS_MorayEelTrigger", delegate () {
-            if(!PT.getFlag(enemySpawnPrefix+"MorayEels")){
-                // Spawn.Enemy("MorayEel", new Vector3(52.29f, 30.4f, 0));
-                // Spawn.Enemy("MorayEel", new Vector3(55.88f, 25.72f, 0));
-                PT.setFlag(enemySpawnPrefix+"MorayEels");
+        triggerMap.Add("AS_MantisShrimpTrigger", delegate () {
+            if(!PT.getFlag(enemySpawnPrefix+"MantisShrimp")){
+                // Spawn.Enemy("MantisShrimp", new Vector3(55.88f, 25.72f, 0));//TODO new sprites not implemented yet!!!
+                PT.setFlag(enemySpawnPrefix+"MantisShrimp");
             }
         });
       

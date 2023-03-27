@@ -29,6 +29,12 @@ public class Spawn
         script.Setup(type, onPickup == null ? delegate(){} : onPickup);
         
         item.transform.position = position;
+
+        Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
+        float rnd1 = Random.Range(0, rb.mass);
+        float rnd2 = Random.Range(-rb.mass, rb.mass);
+        rb.AddForce(new Vector2(rnd1/rb.mass, rnd2/rb.mass));
+        rb.AddTorque(rnd1+rnd2);
     }
 
     public static void Mail(string id){
@@ -72,6 +78,7 @@ public class Spawn
                     float lift_force = 100;
                     float rnd = Random.Range(0, lift_force/20);
                     rb.AddForce(new Vector2(0, (lift_force+rnd)/rb.mass));
+                    rb.AddTorque(Random.Range(-lift_force/20, lift_force/20));
                 }
             }
         }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6560645665575337683}
   - component: {fileID: 7203739634980021352}
   m_Layer: 0
-  m_Name: AS_MorayEelTrigger
+  m_Name: AS_MantisShrimpTrigger
   m_TagString: ProgressionTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -182,7 +182,7 @@ public class Enemy : MonoBehaviour
         //melee damage a.k.a. fish biting the player
         nearPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position) <= meleeDistance;
         if(nearPlayer && !bite_timer.runs()){
-            soundController.SendMessage("playSound", new SoundParameter("EnemySound_MeleeAttack", this.gameObject, 0.15f, false));
+            soundController.SendMessage("playSound", new SoundParameter("EnemySound_MeleeAttack", this.gameObject, 0.15f, false), SendMessageOptions.DontRequireReceiver);
             player.GetComponent<BoxCollider2D>().SendMessage("addHealth", -meleeDamage, SendMessageOptions.DontRequireReceiver);
             bite_timer.start(meleeCooldown);
         }
@@ -215,7 +215,7 @@ public class Enemy : MonoBehaviour
         }
         
         if(health == 0){
-            soundController.SendMessage("playSound", new SoundParameter("EnemyDeath", this.gameObject, 1f, false));
+            soundController.SendMessage("playSound", new SoundParameter("EnemyDeath", this.gameObject, 1f, false), SendMessageOptions.DontRequireReceiver);
             
             foreach(string id in itemsToDrop){
                 GameObject GH = GameObject.FindGameObjectWithTag("GameHandler");

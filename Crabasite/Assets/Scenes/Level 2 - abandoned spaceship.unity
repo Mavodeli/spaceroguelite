@@ -981,7 +981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8416738512718005718, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2058659.6
+      value: 2072632.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
@@ -3948,7 +3948,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3725346752500214893, guid: a439748cb9f83864f83cddeee4e757c2, type: 3}
       propertyPath: m_Name
-      value: AS_MorayEelTrigger
+      value: AS_MantisShrimpTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 7203739634980021352, guid: a439748cb9f83864f83cddeee4e757c2, type: 3}
       propertyPath: m_Size.x

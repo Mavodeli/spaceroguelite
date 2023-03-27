@@ -22,7 +22,7 @@ public class SpaceLevel_InteractablesHandler : MonoBehaviour
 
                 if(interactable.name == "SpaceshipEntrance"){
                     script.Setup(delegate () {
-                        soundController.SendMessage("playSound", new SoundParameter("SpaceShipDoor", GameObject.Find("SoundHolder"), 1f, true));
+                        soundController.SendMessage("playSound", new SoundParameter("SpaceShipDoor", GameObject.Find("SoundHolder"), 1f, true), SendMessageOptions.DontRequireReceiver);
                         // the above line of code duplicates the player
                         SceneManager.LoadScene("Level 0 - spaceship");
                         Time.timeScale = 1;
@@ -35,7 +35,7 @@ public class SpaceLevel_InteractablesHandler : MonoBehaviour
                         int ult = 0;//attract two
                         GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
                         IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);
-                        soundController.SendMessage("playSound", new SoundParameter("PickupUlt", GameObject.Find("Player"), 1f, false));
+                        soundController.SendMessage("playSound", new SoundParameter("PickupUlt", GameObject.Find("Player"), 1f, false), SendMessageOptions.DontRequireReceiver);
                         GameObject player = GameObject.FindGameObjectWithTag("Player");
                         player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
                         Destroy(GameObject.Find(interactable.name));//kinda tricky to get the delegate to destroy the correct gameObject ;)

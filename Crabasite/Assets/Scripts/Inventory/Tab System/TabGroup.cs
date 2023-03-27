@@ -51,7 +51,7 @@ public class TabGroup : MonoBehaviour
     {
         selectedTab = button;
         ResetTabs();
-        soundController.SendMessage("playSound", new SoundParameter("InventoryTabSwitch", GameObject.Find("Player"), 0.1f, false));
+        soundController.SendMessage("playSound", new SoundParameter("InventoryTabSwitch", GameObject.Find("Player"), 0.1f, false), SendMessageOptions.DontRequireReceiver);
         button.background.sprite = tabActive;
         int index = button.transform.GetSiblingIndex();
         for (int i=0; i < objectsToSwap.Count; i++)
