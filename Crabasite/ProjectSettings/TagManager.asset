@@ -18,6 +18,7 @@ TagManager:
   - QuestEventsContainer
   - ShipHull
   - AbandonedSpaceshipCollider
+  - Stationary
   layers:
   - Default
   - TransparentFX
