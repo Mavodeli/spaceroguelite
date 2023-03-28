@@ -119,8 +119,8 @@ public class CommentarySystem : MonoBehaviour
     private static string LoadFromFile(string identifier)
     {
         // using Path.Combine because of different Paths of different OS's
-        string path = Path.Combine(Application.persistentDataPath, "english.json");
-        path = "Assets/Resources/english.json";
+        // string path = Path.Combine(Application.persistentDataPath, "english.json");
+        string path = "Assets/Resources/english.json";
         string result = "DEFAULT COMMENT: should not appear!";
         if(File.Exists(path))
         {

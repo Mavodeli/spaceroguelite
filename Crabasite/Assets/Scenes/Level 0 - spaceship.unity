@@ -1069,13 +1069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7275111609405808602, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_text
-      value: Judging from all the warnings and error messages the bord computer throws
-        at me the ship took quite the beating when it was pulled out of hyper space.
-        Seems like many smaller components were ripped off when it crashed into some
-        of the smaller asteroids before coming to a halt. It's a miracle that the
-        hull is mostly intact and the artificial atmosphere is still stable. Once
-        I get outside I should have a look around and see what can be salvaged in
-        the vicinity.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7275111609405808602, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_fontSize
