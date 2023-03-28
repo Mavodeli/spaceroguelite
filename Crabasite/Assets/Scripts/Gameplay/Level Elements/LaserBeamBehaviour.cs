@@ -8,7 +8,6 @@ public class LaserBeamBehaviour : MonoBehaviour
     BoxCollider2D bc;
     float max_beam_length;
     Vector2 emitter_position;
-    Texture2D tex;
     
     void Start(){
         sr = gameObject.GetComponentInChildren<SpriteRenderer>();

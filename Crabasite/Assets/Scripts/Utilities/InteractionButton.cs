@@ -11,7 +11,7 @@ public class InteractionButton : MonoBehaviour
     private GameObject button;
     private Vector3 offset = new Vector3(1, 1, 0);
     private bool hasButton = false;
-    private string inputKey;
+    private string inputKey = "e";
     public delegate void OnButtonPressDelegate();
     private OnButtonPressDelegate onButtonPress;
     public delegate void OnNotInteractableButtonPressDelegate();
