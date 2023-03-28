@@ -128,6 +128,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         audioMixer.SetFloat("volume", Mathf.Log10(volume)*20);
         soundVolume = volume;
         Debug.Log(soundVolume);
+        GameObject.Find("Sounds").SendMessage("setVolume", soundVolume);
     }
     public void SetQuality (int qualityIndex)
     {

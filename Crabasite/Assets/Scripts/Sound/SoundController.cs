@@ -11,6 +11,8 @@ public class SoundController : MonoBehaviour
 
     private List<NamedAudioSource> activeSounds;
 
+    private float volume = 1f; // Range from 0f to 1f
+
     void Start()
     {
         Component[] audioSources = GetComponentsInChildren(typeof (AudioSource));
@@ -73,7 +75,7 @@ public class SoundController : MonoBehaviour
         AudioSource source = parameters.gameObject.AddComponent<AudioSource>();
         source.clip = sounds[parameters.soundName].clip;
         source.loop = true;
-        source.volume = parameters.volume;
+        source.volume = parameters.volume * this.volume;
         source.Play();
         NamedAudioSource audio = new NamedAudioSource(parameters.soundName, source);
         activeSounds.Add(audio);
@@ -91,7 +93,7 @@ public class SoundController : MonoBehaviour
     private void playSound(string name, GameObject gameObject, float volume, bool dontDestroyOnLoad){
         AudioSource source = gameObject.AddComponent<AudioSource>();
         source.clip = sounds[name].clip;
-        source.volume = volume;
+        source.volume = volume * this.volume;
         source.Play();
         activeSounds.Add(new NamedAudioSource(name, source));
         if(dontDestroyOnLoad){
@@ -108,6 +110,16 @@ public class SoundController : MonoBehaviour
             if(activeSound.name == soundName){
                 activeSound.source.Stop();
             }
+        }
+    }
+
+    public void setVolume(float volume){
+        if(volume < 0f){
+            this.volume = 0f;
+        } else if(volume > 1f){
+            this.volume = 1f;
+        } else {
+            this.volume = volume;
         }
     }
 

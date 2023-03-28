@@ -19,11 +19,13 @@ public class CommentarySystem : MonoBehaviour
     private static bool alreadyShowingComment = false;
     private static Queue<string> stashedComments; // stores comments that are waiting to be displayed: #0 followed by an id will display a protagonist comment, #1 followed by an id will display an ai comment
 
+    private GameObject soundController;
+
     // Typewriter effect
     private static bool isTypeWriting = false;
     private static string typeWriterText = "";
     private static int typeWriterCounter = 0;
-    private const float AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS = 0.1f;
+    private const float AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS = 0.05f;
     private static float timeSinceLastLetterAppeared = 0f;
 
     void Start(){
@@ -32,11 +34,14 @@ public class CommentarySystem : MonoBehaviour
         image.SetActive(false);
         textField.SetActive(false);
 
+        soundController = GameObject.Find("Sounds");
+
         textToBeDisplayed = textField.GetComponent<TextMeshProUGUI>();
         imageToBeDisplayed = image.GetComponent<Image>();
 
-        protagonistCommentSprite = Resources.Load<Sprite>("Sprites/TextBoxes/TextBoxProtagonistComment");
-        aiCommentSprite = Resources.Load<Sprite>("Sprites/TextBoxes/TextBoxAiComment");
+        protagonistCommentSprite = Resources.Load<Sprite>("Sprites/TextBoxes/TextBoxProtagonistCommentNewWithArrow");
+        aiCommentSprite = Resources.Load<Sprite>("Sprites/TextBoxes/TextBoxAiCommentWithArrow");
+
 
         stashedComments = new Queue<string>();
 
@@ -50,6 +55,7 @@ public class CommentarySystem : MonoBehaviour
             } else {
                 if(timeSinceLastLetterAppeared >= AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS){
                     textToBeDisplayed.text += typeWriterText[typeWriterCounter];
+                    soundController.SendMessage("playSound", new SoundParameter("TypewriterSound", this.gameObject, 0.75f, false));
                     typeWriterCounter++;
                     timeSinceLastLetterAppeared -= AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS;
                     if(textToBeDisplayed.text == typeWriterText){
@@ -88,10 +94,6 @@ public class CommentarySystem : MonoBehaviour
         }
         imageToBeDisplayed.sprite = protagonistCommentSprite;
         displayComment(id);
-
-        //TODO: implement this
-        //@Rico: the string obtained with LoadFromFile(id) should appear in a textbox ingame and not as a debug log ;)
-        Debug.Log(LoadFromFile(id));
     }
 
     public static void displayAIComment(string id){
@@ -100,12 +102,6 @@ public class CommentarySystem : MonoBehaviour
         }
         imageToBeDisplayed.sprite = aiCommentSprite;
         displayComment(id);
-
-
-
-        //TODO: implement this
-        //@Rico: different text box
-        Debug.Log("Rogue AI: "+LoadFromFile(id));//the "Rogue AI: " prefix is for debugging only
     }
 
     private static void displayComment(string id){
@@ -114,7 +110,7 @@ public class CommentarySystem : MonoBehaviour
         alreadyShowingComment = true;
 
         isTypeWriting = true;
-        typeWriterText = id; // TODO show actual text
+        typeWriterText = LoadFromFile(id);
         textToBeDisplayed.text = "" + typeWriterText[0];
         typeWriterCounter = 1;
         timeSinceLastLetterAppeared = 0f;
@@ -123,7 +119,8 @@ public class CommentarySystem : MonoBehaviour
     private static string LoadFromFile(string identifier)
     {
         // using Path.Combine because of different Paths of different OS's
-        string path = Path.Combine(Application.persistentDataPath, "english.json");
+        // string path = Path.Combine(Application.persistentDataPath, "english.json");
+        string path = "Assets/Resources/english.json";
         string result = "DEFAULT COMMENT: should not appear!";
         if(File.Exists(path))
         {
