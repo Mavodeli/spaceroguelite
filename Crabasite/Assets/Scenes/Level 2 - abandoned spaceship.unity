@@ -797,11 +797,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3015971165787764263, guid: d1619157d5adc0f44b6e76cf5eba256d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.02
+      value: 8.72
       objectReference: {fileID: 0}
     - target: {fileID: 3015971165787764263, guid: d1619157d5adc0f44b6e76cf5eba256d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.03
+      value: 29.48
       objectReference: {fileID: 0}
     - target: {fileID: 3015971165787764263, guid: d1619157d5adc0f44b6e76cf5eba256d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1450,11 +1450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3015971165787764263, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.13
+      value: 7.34
       objectReference: {fileID: 0}
     - target: {fileID: 3015971165787764263, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 37.21
+      value: 37.07
       objectReference: {fileID: 0}
     - target: {fileID: 3015971165787764263, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1487,6 +1487,26 @@ PrefabInstance:
     - target: {fileID: 3015971165787764263, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940986527964491281, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1875
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940986527964491281, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.475
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940986527964491281, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620351609142228206, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
+      propertyPath: m_AutoTiling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4637935629117624866, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}

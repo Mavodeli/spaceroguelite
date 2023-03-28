@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3015971165787764263}
   - component: {fileID: 3015971165787764256}
   - component: {fileID: 5589768478195572346}
-  - component: {fileID: 1362320405968988712}
+  - component: {fileID: 4620351609142228206}
   m_Layer: 2
   m_Name: LaserBeam
   m_TagString: Stationary
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d684993821fb45a4889f208ecaf93ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &1362320405968988712
+--- !u!61 &4620351609142228206
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,15 +84,15 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4, y: 1.4}
-    newSize: {x: 1.4, y: 1.4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 1
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 1.4, y: 1.4}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &7843200280030693938
 GameObject:
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 3940986527964491281}
   - component: {fileID: 4637935629117624866}
   m_Layer: 2
-  m_Name: GameObject
+  m_Name: SpriteContainer
   m_TagString: Stationary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,7 @@ SpriteRenderer:
   m_Color: {r: 0.9056604, g: 0.22754934, b: 0.029903898, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 1.4, y: 1.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0

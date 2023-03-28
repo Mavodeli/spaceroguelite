@@ -12,18 +12,11 @@ public class LaserBeamBehaviour : MonoBehaviour
     
     void Start(){
         sr = gameObject.GetComponentInChildren<SpriteRenderer>();
+        sr.size *= new Vector2(sr.transform.localScale.x, sr.transform.localScale.y);
         bc = GetComponent<BoxCollider2D>();
-        tex = Resources.Load<Texture2D>("Sprites/MovableObjects/cargo_cont");//TODO set to correct path!!!
-        sr.sprite = Sprite.Create(
-            tex, //texture
-            new Rect(0.0f, 0.0f, tex.width, tex.height), //subpart of the texture to create the sprite from
-            new Vector2(0.5f, 0.5f), //new sprite origin \in [0,1]^2
-            100.0f, //number of pixels in the sprite that correspond to one unit in world space
-            0, //amount by which the sprite mesh should be expanded outwards
-            SpriteMeshType.FullRect //mesh type
-        );
-        max_beam_length = sr.bounds.extents.y*2;
-        emitter_position = new Vector2(transform.position.x, transform.position.y+sr.bounds.extents.y);
+        bc.size = sr.size;
+        max_beam_length = sr.size.y;
+        emitter_position = new Vector2(transform.position.x, transform.position.y+sr.size.y/2);
     }
 
     void Update()
@@ -48,7 +41,7 @@ public class LaserBeamBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy"){
             //some laser roasting player sound?
-            other.gameObject.SendMessage("addHealth", -30, SendMessageOptions.DontRequireReceiver);
+            other.gameObject.SendMessage("addHealth", -90, SendMessageOptions.DontRequireReceiver);
         }
     }
 
