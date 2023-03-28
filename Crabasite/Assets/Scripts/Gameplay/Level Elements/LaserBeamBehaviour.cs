@@ -6,29 +6,42 @@ public class LaserBeamBehaviour : MonoBehaviour
 {
     SpriteRenderer sr;
     BoxCollider2D bc;
+    float max_beam_length;
+    Vector2 emitter_position;
+    Texture2D tex;
     
     void Start(){
-        sr = GetComponent<SpriteRenderer>();
+        sr = gameObject.GetComponentInChildren<SpriteRenderer>();
         bc = GetComponent<BoxCollider2D>();
+        tex = Resources.Load<Texture2D>("Sprites/MovableObjects/cargo_cont");//TODO set to correct path!!!
+        sr.sprite = Sprite.Create(
+            tex, //texture
+            new Rect(0.0f, 0.0f, tex.width, tex.height), //subpart of the texture to create the sprite from
+            new Vector2(0.5f, 0.5f), //new sprite origin \in [0,1]^2
+            100.0f, //number of pixels in the sprite that correspond to one unit in world space
+            0, //amount by which the sprite mesh should be expanded outwards
+            SpriteMeshType.FullRect //mesh type
+        );
+        max_beam_length = sr.bounds.extents.y*2;
+        emitter_position = new Vector2(transform.position.x, transform.position.y+sr.bounds.extents.y);
     }
 
     void Update()
     {
-        Vector2 emitter_position = new Vector2(transform.position.x, transform.position.y+sr.bounds.extents.y);
-        Vector2 beam_direction = new Vector2(0, -1);
-
-        RaycastHit2D hit = Physics2D.Raycast(emitter_position, beam_direction, sr.bounds.extents.y*2, LayerMask.GetMask("Raycast"));
+        RaycastHit2D hit = Physics2D.Raycast(emitter_position, new Vector2(0, -1), max_beam_length, LayerMask.GetMask("Raycast"));
         if(hit.collider != null){
-            Debug.Log("hit "+hit.collider.gameObject.name);
-            float beam_length = emitter_position.y-hit.point.y;
-            float beam_end_position = emitter_position.y-beam_length;
-            float new_beam_center = beam_end_position+((emitter_position.y-beam_end_position)/2);
-            float max_beam_length = emitter_position.y-(sr.bounds.extents.y*2);
-            bc.offset = new Vector2(0, new_beam_center-transform.position.y);
-            // bc.size = new Vector2(bc.size.x, bc.size.y+(max_beam_length-beam_length));
+            float beam_center_modifier = Mathf.Abs((transform.position.y-(bc.size.y/2))-hit.point.y);
+            // Debug.DrawRay(emitter_position, hit.point-emitter_position);
+
+            bc.offset = new Vector2(0, beam_center_modifier);
+            bc.size = new Vector2(bc.size.x, max_beam_length-beam_center_modifier);
+
+            squashSprite((max_beam_length-beam_center_modifier)/max_beam_length, beam_center_modifier);
         }
         else{
             bc.offset = new Vector2(0, 0);
+            bc.size = new Vector2(bc.size.x, max_beam_length);
+            squashSprite(1, 0);
         }
     }
 
@@ -37,5 +50,11 @@ public class LaserBeamBehaviour : MonoBehaviour
             //some laser roasting player sound?
             other.gameObject.SendMessage("addHealth", -30, SendMessageOptions.DontRequireReceiver);
         }
+    }
+
+    private void squashSprite(float factor, float transform_modifier){
+        GameObject child = transform.GetChild(0).gameObject;
+        child.transform.localScale = new Vector3(1, factor, 0);
+        child.transform.localPosition = new Vector3(0, transform_modifier, 0);
     }
 }
