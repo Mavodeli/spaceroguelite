@@ -1517,7 +1517,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.02, y: 15.74, z: -10}
+  m_LocalPosition: {x: 4.0200005, y: 15.740001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5166,6 +5166,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1741156894377827742, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4a222dee7a5aae249853a24fc2915eaf, type: 3}
     - target: {fileID: 2243675858571574332, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5193,6 +5197,14 @@ PrefabInstance:
     - target: {fileID: 4389568797800237517, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144082147587634351, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 208.323
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144082147587634351, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -569.1615
       objectReference: {fileID: 0}
     - target: {fileID: 5490913796474604760, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_Pivot.x
@@ -5282,9 +5294,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6595293945350444319, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7275111609405808602, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7275111609405808602, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_fontSize
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7275111609405808602, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 27
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
