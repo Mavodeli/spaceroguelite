@@ -798,6 +798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9c12967f9b58e4c9fe02b94805be0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawnPrefix: EnemySpawn_
 --- !u!82 &704581695
 AudioSource:
   m_ObjectHideFlags: 0
@@ -934,6 +935,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1741156894377827742, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4a222dee7a5aae249853a24fc2915eaf, type: 3}
     - target: {fileID: 2243675858571574332, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -961,6 +966,14 @@ PrefabInstance:
     - target: {fileID: 4389568797800237517, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144082147587634351, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 307.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144082147587634351, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -597.0984
       objectReference: {fileID: 0}
     - target: {fileID: 5490913796474604760, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_Pivot.x
@@ -1049,6 +1062,24 @@ PrefabInstance:
     - target: {fileID: 5490913796474604764, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_Name
       value: GameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595293945350444319, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 56.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7275111609405808602, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_text
+      value: Judging from all the warnings and error messages the bord computer throws
+        at me the ship took quite the beating when it was pulled out of hyper space.
+        Seems like many smaller components were ripped off when it crashed into some
+        of the smaller asteroids before coming to a halt. It's a miracle that the
+        hull is mostly intact and the artificial atmosphere is still stable. Once
+        I get outside I should have a look around and see what can be salvaged in
+        the vicinity.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7275111609405808602, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_margin.w
+      value: -109.29406
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
