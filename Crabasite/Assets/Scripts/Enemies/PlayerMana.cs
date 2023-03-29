@@ -32,7 +32,7 @@ public class PlayerMana : MonoBehaviour, IDataPersistence
         }
         
         if(mana == 0){
-            Debug.Log("Player.mana == 0 => No Mana left");
+            // Debug.Log("Player.mana == 0 => No Mana left");
         }
     }
 
