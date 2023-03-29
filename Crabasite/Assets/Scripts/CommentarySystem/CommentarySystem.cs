@@ -49,7 +49,7 @@ public class CommentarySystem : MonoBehaviour
 
     void Update(){
         if(alreadyShowingComment && isTypeWriting){
-            if(Input.GetKeyDown("c")){
+            if(Input.GetKeyDown("e")){
                 isTypeWriting = false;
                 textToBeDisplayed.text = typeWriterText;
             } else {
@@ -66,7 +66,7 @@ public class CommentarySystem : MonoBehaviour
                 }
             }
         } else if(alreadyShowingComment && !isTypeWriting){
-            if(Input.GetKeyDown("c")){
+            if(Input.GetKeyDown("e")){
                 image.SetActive(false);
                 textField.SetActive(false);
                 alreadyShowingComment = false;
@@ -114,6 +114,10 @@ public class CommentarySystem : MonoBehaviour
         textToBeDisplayed.text = "" + typeWriterText[0];
         typeWriterCounter = 1;
         timeSinceLastLetterAppeared = 0f;
+    }
+
+    public static bool isShowingTextbox(){
+        return alreadyShowingComment;
     }
 
     private static string LoadFromFile(string identifier)
