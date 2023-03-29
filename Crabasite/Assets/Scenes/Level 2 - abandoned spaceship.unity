@@ -3053,6 +3053,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 4.9340625
       objectReference: {fileID: 0}
+    - target: {fileID: 5589768478195572346, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
+      propertyPath: laser_uptime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
 --- !u!4 &1276467146 stripped
