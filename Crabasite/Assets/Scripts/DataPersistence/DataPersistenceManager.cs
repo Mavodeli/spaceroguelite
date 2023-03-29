@@ -53,6 +53,22 @@ public class DataPersistenceManager : MonoBehaviour
         return b;
     }
 
+    public bool ProgressionFlagIsSet(string id){
+        bool b = false;
+        try
+        {
+            b = gameData.ProgressionDict[id];
+        }
+        catch(KeyNotFoundException){}
+        catch(System.NullReferenceException){}
+        return b;
+    }
+
+    public void setProgressionFlag(string id, bool value = true){
+        if(HasGameData())
+            gameData.ProgressionDict[id] = value;
+    }
+
     // Called when switching Scenes
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

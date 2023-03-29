@@ -85,4 +85,9 @@ public class InteractionButton : MonoBehaviour
     public static void displayProtagonistComment(string id){
         CommentarySystem.displayProtagonistComment(id);
     }
+
+    //pass-through function used by the EmergencyDoor
+    public static void displayAIComment(string id){
+        CommentarySystem.displayAIComment(id);
+    }
 }
