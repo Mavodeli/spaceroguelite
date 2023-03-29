@@ -9,11 +9,12 @@ public class LaserBeamBehaviour : MonoBehaviour
     private float max_beam_length;
     private Vector2 emitter_position;
     private TimerObject laser_uptime_timer;
-    [SerializeField] private float laser_uptime = 0;
+    [SerializeField] private float laser_uptime = 1;
     private TimerObject laser_downtime_timer;
     [SerializeField] private float laser_downtime = 0;
     private TimerObject laser_offset_timer;
     [SerializeField] private float laser_offset_downtime = 0;
+    private bool isConstantlyEmitting;
     
     void Start(){
         sr = gameObject.GetComponentInChildren<SpriteRenderer>();
@@ -23,8 +24,14 @@ public class LaserBeamBehaviour : MonoBehaviour
         max_beam_length = sr.size.y;
         emitter_position = new Vector2(transform.position.x, transform.position.y+sr.size.y/2);
 
+        //fix 0 downtime laser not emitting constantly
+        isConstantlyEmitting = (laser_downtime == 0);
+
         laser_uptime_timer = new TimerObject(gameObject.name+" laser_uptime_timer");
-        laser_uptime_timer.setOnRunningOut(delegate(){laser_downtime_timer.start(laser_downtime);});
+        if(isConstantlyEmitting)
+            laser_uptime_timer.setOnRunningOut(delegate(){laser_uptime_timer.start(laser_uptime);});
+        else
+            laser_uptime_timer.setOnRunningOut(delegate(){laser_downtime_timer.start(laser_downtime);});
 
         laser_downtime_timer = new TimerObject(gameObject.name+" laser_downtime_timer");
         laser_downtime_timer.setOnRunningOut(delegate(){laser_uptime_timer.start(laser_uptime);});
@@ -44,7 +51,7 @@ public class LaserBeamBehaviour : MonoBehaviour
         if(laser_uptime_timer.runs()){
             float elapsed_uptime = laser_uptime_timer.getElapsedTime();
 
-            if(floatIsBetweenInclusive(elapsed_uptime, 0, to_uptime_duration))
+            if(floatIsBetweenInclusive(elapsed_uptime, 0, to_uptime_duration) && !isConstantlyEmitting)
                 current_beam_length = max_beam_length*(elapsed_uptime/to_uptime_duration);
             else
                 current_beam_length = max_beam_length;

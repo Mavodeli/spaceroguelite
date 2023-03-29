@@ -58,7 +58,7 @@
     "completedOpenTheEmergencyDoor" :
     "If you think about it, it's actually kind of intuitive to try and break a lock using this massive crab claw. That ability will surely come in handy further down the line. ...Get it? Ok, ok I'm sorry, I'll stop.",
     "AS_EmergencyDoor_IsNotInteractable" :
-    "(TODO split this into a repeatable part (this) and a show-one-time-only part (xenias dialogue)) Hm, the AI seems to have shut down the controlls for that door. Looks like I have to find another way to open it.",
+    "Hm, the AI seems to have shut down the controlls for that door. Looks like I have to find another way to open it.",
     "AS_EmergencyDoor_IsNotInteractableMC1" :
     "TODO",
     "AS_EmergencyDoor_IsNotInteractableAI1" :

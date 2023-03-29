@@ -57,7 +57,7 @@ public class InteractionButton : MonoBehaviour
             Instantiate(button, transform.position + offset, Quaternion.identity, transform);
             hasButton = true;
         }
-        //destroy button if player is too far away
+        //destroy button if player is too far away or if it should be invisible
         if (((distanceToPlayer > showDistanceMaximum) && hasButton) || (!isVisible && hasButton))
         {
             Destroy(transform.Find("InteractionButton of " + name + "(Clone)").gameObject);

@@ -48,7 +48,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
     /// If the player presses the "i" key, the inventory will open or close
     void Update() {
-        if (Input.GetKeyDown("i")) {
+        if (Input.GetKeyDown("i") && !CommentarySystem.isShowingTextbox()) {
             if (inventoryIsOpened == false) {
                 Inventory.SetActive(true);
                 inventoryIsOpened = true;
