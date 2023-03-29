@@ -11,10 +11,18 @@ public class SoundController : MonoBehaviour
 
     private List<NamedAudioSource> activeSounds;
 
+    [SerializeField]
     private float volume = 0.8f; // Range from 0f to 1f
 
     void Start()
     {
+
+        GameObject[] possibleSoundControllers = GameObject.FindGameObjectsWithTag("SoundController");
+        if(possibleSoundControllers.Length > 1){
+            Destroy(this.gameObject);
+            return;
+        }
+
         Component[] audioSources = GetComponentsInChildren(typeof (AudioSource));
         sounds = new Dictionary<string, Sound>();
         foreach(Component audioSource in audioSources){
