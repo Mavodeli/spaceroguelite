@@ -11,7 +11,7 @@ public class SoundController : MonoBehaviour
 
     private List<NamedAudioSource> activeSounds;
 
-    private float volume = 1f; // Range from 0f to 1f
+    private float volume = 0.8f; // Range from 0f to 1f
 
     void Start()
     {
