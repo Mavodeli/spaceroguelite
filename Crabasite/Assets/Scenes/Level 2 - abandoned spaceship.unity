@@ -201,11 +201,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522419, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.98
+      value: 72.81
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522419, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.52
+      value: 24.91
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522419, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2468,7 +2468,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029963224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.98, y: 1.52, z: -10}
+  m_LocalPosition: {x: 72.81, y: 24.91, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3015,7 +3015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3015971165787764263, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 77.85
+      value: 77.42
       objectReference: {fileID: 0}
     - target: {fileID: 3015971165787764263, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3063,11 +3063,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5589768478195572346, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: laser_uptime
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5589768478195572346, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: laser_downtime
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
@@ -3754,7 +3754,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457706971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.98, y: 1.52, z: -10}
+  m_LocalPosition: {x: 72.81, y: 24.91, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3876,7 +3876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3015971165787764263, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 79.61
+      value: 79.9
       objectReference: {fileID: 0}
     - target: {fileID: 3015971165787764263, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3924,11 +3924,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5589768478195572346, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: laser_uptime
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5589768478195572346, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: laser_downtime
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
@@ -5002,15 +5002,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5589768478195572346, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: laser_uptime
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5589768478195572346, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: laser_downtime
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5589768478195572346, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
       propertyPath: laser_offset_downtime
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba0d56965b2c2b146b9dfeab6eb148a9, type: 3}
