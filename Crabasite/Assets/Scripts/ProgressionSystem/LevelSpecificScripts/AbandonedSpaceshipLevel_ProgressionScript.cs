@@ -24,21 +24,28 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
 
         triggerMap.Add("AS_EngineRoomTrigger", delegate () {
             if(!PT.getFlag("firstTimeEnteredEngineRoom")){
-                
+                CommentarySystem.displayProtagonistComment("firstTimeEnteringEngineRoomMC1");
+                CommentarySystem.displayAIComment("firstTimeEnteringEngineRoomAI");
+                CommentarySystem.displayProtagonistComment("firstTimeEnteringEngineRoomMC2");
                 PT.setFlag("firstTimeEnteredEngineRoom");
             }
         });
 
         triggerMap.Add("AS_LaboratoryTrigger", delegate () {
             if(!PT.getFlag("firstTimeEnteredLaboratory")){
-                
+                CommentarySystem.displayAIComment("firstTimeEnteringLaboratoryAI");
+                CommentarySystem.displayProtagonistComment("firstTimeEnteringLaboratoryMC1");
+                CommentarySystem.displayProtagonistComment("firstTimeEnteringLaboratoryMC2");
+                Spawn.Mail("WifeMail4");
                 PT.setFlag("firstTimeEnteredLaboratory");
             }
         });
 
         triggerMap.Add("AS_EnterSpaceshipTrigger", delegate () {
             if(!PT.getFlag("firstTimeEnteredAbandonedSpaceship")){
-                
+                CommentarySystem.displayProtagonistComment("firstTimeEnteringAbandonedSpaceshipMC1");
+                CommentarySystem.displayAIComment("firstTimeEnteringAbandonedSpaceshipAI");
+                CommentarySystem.displayProtagonistComment("firstTimeEnteringAbandonedSpaceshipMC2");
                 PT.setFlag("firstTimeEnteredAbandonedSpaceship");
             }
         });
@@ -58,6 +65,15 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
                 Spawn.Enemy("AnglerFish", position);
 
             PT.setFlag(enemySpawnPrefix+"Anglerfish");
+        }
+
+        if(!PT.getFlag("AbandonedSpaceshipMailDumpHappened")){
+            Spawn.Mail("HyperdriveReplacement");
+            Spawn.Mail("WifeMail1");
+            Spawn.Mail("MissionReport");
+            Spawn.Mail("WifeMail2");
+            Spawn.Mail("WifeMail3");
+            PT.setFlag("AbandonedSpaceshipMailDumpHappened");
         }
     }
 

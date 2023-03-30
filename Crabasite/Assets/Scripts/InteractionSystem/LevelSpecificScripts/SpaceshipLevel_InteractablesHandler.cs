@@ -85,7 +85,6 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                         if(!QuestIsCompletedOrActive("FindANewHyperdriveCore")){
                             Spawn.Quest("FindANewHyperdriveCore");
                             CommentarySystem.displayProtagonistComment("startFindANewHyperdriveCore");
-                            Spawn.Mail("HyperdriveReplacement");
 
                             showCommentOnAllQuestsCollected();
                         }
