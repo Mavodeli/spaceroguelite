@@ -478,8 +478,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -214, y: 400}
-  m_SizeDelta: {x: 150, y: 800}
+  m_AnchoredPosition: {x: -214, y: 390.47815}
+  m_SizeDelta: {x: 170.758, y: 790.478}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5328340663482516021
 CanvasRenderer:
@@ -951,7 +951,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.6999999
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1553,7 +1553,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.39999992
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5768,7 +5768,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.6999999
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -5900,8 +5900,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 150, y: 830}
+  m_AnchoredPosition: {x: 0, y: -0.000047581747}
+  m_SizeDelta: {x: 170.76, y: 798.536}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3461945738605588363
 MonoBehaviour:
@@ -5920,10 +5920,10 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 18
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 130, y: 80}
+  m_CellSize: {x: 150, y: 80}
   m_Spacing: {x: 0, y: 6}
   m_Constraint: 1
   m_ConstraintCount: 1
@@ -6012,7 +6012,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.39999992
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -6925,6 +6925,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mail Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 979544370283177300, guid: c6d9c12e5cb09be498865d5975bac9eb, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 979544370283177300, guid: c6d9c12e5cb09be498865d5975bac9eb, type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1940307004097721656, guid: c6d9c12e5cb09be498865d5975bac9eb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7011,7 +7019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7488374812047408587, guid: c6d9c12e5cb09be498865d5975bac9eb, type: 3}
       propertyPath: m_fontSize
-      value: 37.95
+      value: 24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6d9c12e5cb09be498865d5975bac9eb, type: 3}
