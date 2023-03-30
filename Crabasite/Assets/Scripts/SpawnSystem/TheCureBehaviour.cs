@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemBehaviour : PhysicalEntity
+public class TheCureBehaviour : PhysicalEntity
 {
     private AudioSource pickupSound;
     private InteractionButton ib;
     private OnPickup onPickup;
     private Item scriptable;
+    private HealthSystem HS;
+    private Vector3 spawnPosition;
 
-    public void Setup(string name, OnPickup _onPickup = null){
+    public void Start(){
 
         //check ScriptableObject existence
         try
@@ -22,18 +24,8 @@ public class ItemBehaviour : PhysicalEntity
             return;
         }
 
-        //setup gameObject
-        gameObject.name = name;
-        gameObject.tag = "Collectable";
-
-        //setup SpriteRenderer
-        sr.sprite = scriptable.icon;
-        sr.size *= scriptable.iconScale;
-
-        //setup delegate
-        onPickup = delegate(){};
-        if(_onPickup != null)
-            onPickup = _onPickup;
+        HS = new HealthSystem(1, 1);
+        spawnPosition = transform.position;
 
         //setup sound
         pickupSound = (AudioSource) (GameObject.Find("PickupObject")).GetComponent(typeof (AudioSource));
@@ -43,11 +35,28 @@ public class ItemBehaviour : PhysicalEntity
         ib.Setup(delegate () {
             if(!GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>().inventoryIsOpened){
                 pickupSound.Play();
-                onPickup();
                 InventoryManager.Instance.AddItem(gameObject.name);
                 Destroy(gameObject);
             }
         }, "e");
         ib.setNewOffset(new Vector3(0, 0, 0));
+    }
+
+    public void Respawn(){
+        //respawn if not picked up
+        GameObject newCure = Instantiate(Resources.Load<GameObject>("Prefabs/Collectables/TheCure"));
+        newCure.transform.position = spawnPosition;
+    }
+
+    private void addHealth(int hp){
+        float health = Mathf.Clamp(HS.Health+hp,0,HS.MaxHealth);
+        if(hp < 0) HS.Damage(-hp);
+        else HS.Heal(hp);
+        if(health == 0){
+            Respawn();
+            DataPersistenceManager.instance.LoadGame(true);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().GameOverScreen.Setup();
+            Destroy(gameObject);
+        } 
     }
 }

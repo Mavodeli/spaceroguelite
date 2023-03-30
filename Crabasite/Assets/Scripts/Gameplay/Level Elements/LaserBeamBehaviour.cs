@@ -78,9 +78,7 @@ public class LaserBeamBehaviour : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy"){
-            other.gameObject.SendMessage("addHealth", -90, SendMessageOptions.DontRequireReceiver);
-        }
+        other.gameObject.SendMessage("addHealth", -90, SendMessageOptions.DontRequireReceiver);
     }
 
     private void drawBeamWithLength(float length){
