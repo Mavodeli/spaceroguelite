@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   itemName: Hyperdrive Core
-  description: 
+  description: Energetic Core that is used to activate the HyperDrive mode.
   icon: {fileID: 0}
   iconScale: 1
+  itemAmount: 
