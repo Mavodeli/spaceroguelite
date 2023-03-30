@@ -275,7 +275,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         var mailDescription = obj.transform.GetChild(4).GetChild(0).GetComponent<TMP_Text>();
         var mailAttachment = obj.transform.Find("MailAttachment").GetComponent<Image>();
         var senderName = obj.transform.Find("SenderName").GetComponent<TMP_Text>();
-        Debug.Log(mailDescription);
+
         mailName.text = mail.mailName;
         senderName.text = mail.senderName;
         // mailIcon.sprite = mail.icon;
