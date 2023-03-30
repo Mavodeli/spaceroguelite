@@ -57,34 +57,34 @@
     "Game saved.",
     "completedOpenTheEmergencyDoor" :
     "If you think about it, it's actually kind of intuitive to try and break a lock using this massive crab claw. That ability will surely come in handy further down the line. ...Get it? Ok, ok I'm sorry, I'll stop.",
-    "AS_EmergencyDoor_IsNotInteractable" :
-    "Hm, the AI seems to have shut down the controlls for that door. Looks like I have to find another way to open it.",
     "AS_EmergencyDoor_IsNotInteractableMC1" :
-    "TODO",
-    "AS_EmergencyDoor_IsNotInteractableAI1" :
-    "TODO",
+    "Shit, how do I get through? I don't have a code or anything. Maybe I should try '1234' or 'password'... ... Alright, that would've been too good to be true.",
+    "AS_EmergencyDoor_IsNotInteractableAI" :
+    "Emergency door locked. Need to protect the cure at all costs.",
     "AS_EmergencyDoor_IsNotInteractableMC2" :
-    "TODO",
-    "AS_EmergencyDoor_IsNotInteractableAI2" :
-    "TODO",
+    "How are you even still functioning, this ship has been floating in space for weeks",
     "AS_EmergencyDoor_IsNotInteractableMC3" :
-    "TODO",
-    "AS_EmergencyDoor_JustGotUnlocked" :
-    "That should do it, the locking mechanism is disabled.",
+    "How the hell do I get through?!",
     "Default_IsNotInteractable" : 
     "Locked.",
     "firstTimeEnteringAbandonedSpaceshipMC1" :
-    "TODO",
+    "Oh god, what the hell is this thing? Is this what killed the crew?",   
+    "firstTimeEnteringAbandonedSpaceshipAI" :
+    "Intruder. Intruder. Emergency protocol activated. Emergency door looked. Must protect cure at all costs.",
     "firstTimeEnteringAbandonedSpaceshipMC2" :
-    "TODO",
+    "The AI is still functional? Why didn't it protect the crew? What the hell happend here.",
+    "firstTimeEnteringEngineRoomMC1" :
+    "This looks like the engine room. There seems to be a floor above me, but how do I get up there?",
     "firstTimeEnteringEngineRoomAI" :
-    "TODO",
-    "firstTimeEnteringEngineRoomMC" :
-    "TODO",
+    "I have warned you. This ship will be your end.",
+    "firstTimeEnteringEngineRoomMC2" :
+    "Oh great...",
     "firstTimeEnteringLaboratoryAI" :
-    "TODO",
-    "firstTimeEnteringLaboratoryMC" :
-    "TODO",
+    "Unauthorized person entering restricted area. Unauthorized person entering restricted area.",
+    "firstTimeEnteringLaboratoryMC1" :
+    "This is the lab. If I remember correctly, this ship had a small crew of medical professionals on board. I wonder what happened to them...",
+    "firstTimeEnteringLaboratoryMC2" :
+    "Anyway, the cure should be somewhere around here, probably on the other side of this thick glass.",
     "onAnglerFishDied" :
-    "TODO"
+    "It dropped something and my arm sucked it up, it's getting hungrier. I really need to hurry this up. Hopefully the AI won't be too difficult to deal with."
 }
