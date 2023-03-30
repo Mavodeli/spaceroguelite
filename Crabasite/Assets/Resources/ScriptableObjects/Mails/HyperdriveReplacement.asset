@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372ec46424d5f4703aeb5c1397fb1260, type: 3}
   m_Name: HyperdriveReplacement
   m_EditorClassIdentifier: 
-  id: 0
   mailName: Hyperdrive Replacement
   senderName: Gruber Technologies Customer Service
   description: According to our records, the Gruber Technologies Panther II hyperdrive
@@ -26,4 +25,4 @@ MonoBehaviour:
     accordance with the 2nd Spacecraft Standardization and Interspace Travel Safety
     Act (rev. SSITS-53376-2/5221) we have to revoke your personal spaceship ensurance
     if you do not replace the damaged component within the next 7 days.
-  attachmentImage: {fileID: 21300000, guid: 6a6aa906b816eb6439156ae7f5aeb9c1, type: 3}
+  attachmentImage: {fileID: 0}
