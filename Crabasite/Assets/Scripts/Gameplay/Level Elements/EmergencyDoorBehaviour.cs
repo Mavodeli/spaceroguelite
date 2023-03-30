@@ -26,14 +26,13 @@ public class EmergencyDoorBehaviour : MonoBehaviour, IDataPersistence
         }, _otherDelegate: delegate(){
             if(!dpm.ProgressionFlagIsSet("ShowedEmergencyDoorDialogue")){
                 InteractionButton.displayProtagonistComment("AS_EmergencyDoor_IsNotInteractableMC1");
-                InteractionButton.displayAIComment("AS_EmergencyDoor_IsNotInteractableAI1");
+                InteractionButton.displayAIComment("AS_EmergencyDoor_IsNotInteractableAI");
                 InteractionButton.displayProtagonistComment("AS_EmergencyDoor_IsNotInteractableMC2");
-                InteractionButton.displayAIComment("AS_EmergencyDoor_IsNotInteractableAI2");
                 InteractionButton.displayProtagonistComment("AS_EmergencyDoor_IsNotInteractableMC3");
                 dpm.setProgressionFlag("ShowedEmergencyDoorDialogue");
             }
             else
-                InteractionButton.displayProtagonistComment(gameObject.name+"_IsNotInteractable");
+                InteractionButton.displayProtagonistComment("Default_IsNotInteractable");
             GameObject GH = GameObject.FindGameObjectWithTag("GameHandler");
             GH.SendMessage("addNewQuest", "OpenTheEmergencyDoor", SendMessageOptions.DontRequireReceiver);
         });
