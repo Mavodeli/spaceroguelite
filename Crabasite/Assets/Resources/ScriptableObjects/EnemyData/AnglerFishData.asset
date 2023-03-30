@@ -17,8 +17,8 @@ MonoBehaviour:
   health: 100
   damage: 0
   meleeDamage: 0
-  chaseSpeed: 400
+  chaseSpeed: 250
   gameObjectName: Angler fish emeny
   meleeCooldown: 0.5
-  stoppingDistance: 2
+  stoppingDistance: 6.8
   path_to_controller: Animation/Enemies/AC_Anglerfish

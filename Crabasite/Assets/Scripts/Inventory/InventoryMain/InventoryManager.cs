@@ -254,7 +254,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
             Mail mail = Resources.Load<Mail>(path);
 
             mailController.mail = mail;
-            mailName.text = mail.mailName;
+            mailName.text = mail.subject;
             // mailIcon.sprite = mail.icon;
             // mailDescription.text = mail.description;
         }
@@ -276,7 +276,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         var mailAttachment = obj.transform.Find("MailAttachment").GetComponent<Image>();
         var senderName = obj.transform.Find("SenderName").GetComponent<TMP_Text>();
 
-        mailName.text = mail.mailName;
+        mailName.text = mail.subject;
         senderName.text = mail.senderName;
         // mailIcon.sprite = mail.icon;
         mailDescription.text = mail.description;

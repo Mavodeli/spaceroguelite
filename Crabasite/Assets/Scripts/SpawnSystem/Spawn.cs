@@ -61,6 +61,7 @@ public class Spawn
 
     public static void Gravity(bool enable){
         Collider2D ASC = GameObject.FindGameObjectWithTag("AbandonedSpaceshipCollider").GetComponent<PolygonCollider2D>();
+        DataPersistenceManager dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager").GetComponent<DataPersistenceManager>();
 
         foreach(Rigidbody2D rb in GameObject.FindObjectsOfType<Rigidbody2D>()){
             Collider2D obj_collider = rb.gameObject.GetComponent<Collider2D>();
@@ -85,5 +86,6 @@ public class Spawn
                 }
             }
         }
+        dpm.getGameData().AS_hasGravity = enable;
     }
 }

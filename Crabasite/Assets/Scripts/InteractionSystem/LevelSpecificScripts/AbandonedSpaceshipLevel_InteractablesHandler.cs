@@ -29,5 +29,9 @@ public class AbandonedSpaceshipLevel_InteractablesHandler : MonoBehaviour
                 }
             }
         }
+
+        //set initial gravity
+        DataPersistenceManager dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager").GetComponent<DataPersistenceManager>();
+        Spawn.Gravity(dpm.getGameData().AS_hasGravity);
     }
 }
