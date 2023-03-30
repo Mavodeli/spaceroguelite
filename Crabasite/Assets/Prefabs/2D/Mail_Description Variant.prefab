@@ -171,9 +171,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 35.741}
-  m_SizeDelta: {x: 400.3, y: 485.642}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000015258789, y: 239.7169}
+  m_SizeDelta: {x: 400.3, y: 468.984}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &8500114270969555893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,11 +189,11 @@ MonoBehaviour:
   m_Content: {fileID: 3911326822123984740}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 20
   m_Viewport: {fileID: 7979624929672034308}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 3911326822123984740}
   - component: {fileID: 795358397241447554}
   - component: {fileID: 1793666762558702949}
+  - component: {fileID: 488696386521563198}
   m_Layer: 5
   m_Name: MailDescription
   m_TagString: Untagged
@@ -251,11 +252,11 @@ RectTransform:
   m_Father: {fileID: 7979624929672034308}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000047684, y: -0.0000064314145}
-  m_SizeDelta: {x: 400, y: 482.89}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0.000061035156}
+  m_SizeDelta: {x: -0.1000061, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &795358397241447554
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -328,8 +329,8 @@ MonoBehaviour:
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 3
+  m_wordWrappingRatios: 0.3
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -347,12 +348,26 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 10, y: 12.326553, z: 20, w: -771.44885}
+  m_margin: {x: 10, y: 9.62265, z: 20, w: 0.8571623}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &488696386521563198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177499656007838214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &6550778586873649712
 GameObject:
   m_ObjectHideFlags: 0

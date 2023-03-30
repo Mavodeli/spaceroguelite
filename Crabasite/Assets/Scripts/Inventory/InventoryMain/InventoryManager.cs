@@ -279,7 +279,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         mailName.text = mail.subject;
         senderName.text = mail.senderName;
         // mailIcon.sprite = mail.icon;
-        mailDescription.text = mail.description;
+        mailDescription.text = mail.description+System.Environment.NewLine+"...";
         if(mail.attachmentImage)
             mailAttachment.sprite = mail.attachmentImage;
         else
