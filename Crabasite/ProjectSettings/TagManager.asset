@@ -19,6 +19,7 @@ TagManager:
   - ShipHull
   - AbandonedSpaceshipCollider
   - Stationary
+  - SoundController
   layers:
   - Default
   - TransparentFX

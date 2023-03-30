@@ -42,6 +42,13 @@ public class InteractionButton : MonoBehaviour
     {
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
+        //check if textbox is appearing, if so, hide button
+        bool hidingWhileTextbox = false;
+        if(CommentarySystem.isShowingTextbox()){
+            isVisible = false;
+            hidingWhileTextbox = true;
+        }
+
         //create button if not present and player is close enough
         if ((distanceToPlayer <= showDistanceMaximum) && !hasButton && isVisible)
         {
@@ -50,8 +57,8 @@ public class InteractionButton : MonoBehaviour
             Instantiate(button, transform.position + offset, Quaternion.identity, transform);
             hasButton = true;
         }
-        //destroy button if player is too far away
-        if ((distanceToPlayer > showDistanceMaximum) && hasButton)
+        //destroy button if player is too far away or if it should be invisible
+        if (((distanceToPlayer > showDistanceMaximum) && hasButton) || (!isVisible && hasButton))
         {
             Destroy(transform.Find("InteractionButton of " + name + "(Clone)").gameObject);
             hasButton = false;
@@ -66,6 +73,12 @@ public class InteractionButton : MonoBehaviour
             buttonPressCooldown.start(1.5f);
             onNotInteractableButtonPress();
         }
+
+        //unhide button if hidden bc of textbox
+        if(hidingWhileTextbox){
+            isVisible = true;
+        }
+
         lastFrameGetKey = Input.GetKey(inputKey);
     }
 
@@ -84,5 +97,10 @@ public class InteractionButton : MonoBehaviour
     //pass-through function used by the EmergencyDoor
     public static void displayProtagonistComment(string id){
         CommentarySystem.displayProtagonistComment(id);
+    }
+
+    //pass-through function used by the EmergencyDoor
+    public static void displayAIComment(string id){
+        CommentarySystem.displayAIComment(id);
     }
 }
