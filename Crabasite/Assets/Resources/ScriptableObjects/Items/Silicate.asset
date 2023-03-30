@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   itemName: Silicate
-  description: 
+  description: Can be used to craft Silicone.
   icon: {fileID: 21300000, guid: 4a66ce75bb2d6af4ab35fec780157e4e, type: 2}
   iconScale: 1
+  itemAmount: 

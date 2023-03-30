@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   itemName: Silicone
-  description: 
+  description: Sticky, rubberish material.
   icon: {fileID: 21300000, guid: d3816ab818024ff4eb28a939d40a5cfb, type: 3}
   iconScale: 1
+  itemAmount: 
