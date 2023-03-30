@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372ec46424d5f4703aeb5c1397fb1260, type: 3}
   m_Name: MissionReport
   m_EditorClassIdentifier: 
-  subject: 
-  senderName: 
-  description: 
+  subject: 'REMINDER: Submit your mission report'
+  senderName: Qarea
+  description: 'It has been several days since your last mission report. Please submit
+    an up-to-date report detailing your current progress at your earliest convenience.
+    Sincerely, Qarea, Chief Scientist on Cryke 2H23 on behalf of the Ministry of
+    Medical Affairs. PS: As you know, when the ministry asks you to submit something
+    ''at your earliest convenience'' that this means ''immediately''. I don''t care
+    if you are currently having supper or if you are being chased by a Tenebrian
+    destroyer, start writing that report! Also, should you have retrieved the cure
+    by now and are deliberately delaying your return, you will have to explain yourself
+    before an imperial court martial, do I make myself clear?'
   attachmentImage: {fileID: 0}

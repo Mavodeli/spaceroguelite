@@ -17,8 +17,22 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
         //2nd parameter: the function that should be executed OnTriggerEnter
         triggerMap.Add("AS_MantisShrimpTrigger", delegate () {
             if(!PT.getFlag(enemySpawnPrefix+"MantisShrimp")){
-                // Spawn.Enemy("MantisShrimp", new Vector3(55.88f, 25.72f, 0));//TODO new sprites not implemented yet!!!
+                Spawn.Enemy("MantisShrimp", new Vector3(55.88f, 25.72f, 0));//TODO new sprites not implemented yet!!!
                 PT.setFlag(enemySpawnPrefix+"MantisShrimp");
+            }
+        });
+
+        triggerMap.Add("AS_EngineRoomTrigger", delegate () {
+            if(!PT.getFlag("firstTimeEnteredEngineRoom")){
+                
+                PT.setFlag("firstTimeEnteredEngineRoom");
+            }
+        });
+
+        triggerMap.Add("AS_LaboratoryTrigger", delegate () {
+            if(!PT.getFlag("firstTimeEnteredLaboratory")){
+                
+                PT.setFlag("firstTimeEnteredLaboratory");
             }
         });
       

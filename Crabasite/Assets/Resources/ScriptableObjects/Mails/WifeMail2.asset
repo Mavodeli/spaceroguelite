@@ -12,7 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372ec46424d5f4703aeb5c1397fb1260, type: 3}
   m_Name: WifeMail2
   m_EditorClassIdentifier: 
-  subject: 
-  senderName: 
-  description: 
+  subject: home office...
+  senderName: Katheryne
+  description: 'Something strange happened yesterday at the office: around lunch
+    time the head secretary suddenly collapsed right in the middle of a call, limbs
+    thrashing, drooling like crazy, eyes rolling back and everything! Of course that
+    was it for the day, security immediately rushed in, took them to the medical
+    center and everyone who was working in the office at that time was sent home
+    and put under quarantine for two weeks. So, guess I''ll be working from home
+    now... Let me tell you, ''home office'' hasn''t even started, yet I already hate
+    everything about it! Just getting the router to let me use the company''s vpn
+    was a real pain but setting up the input pass-through from my keyboard to the
+    cloud hypervisor... I just wish you were here, you''re way better with this IT
+    stuff. Also, now that I''m home all the time, Sasha is pulling my sleeve like
+    every five minutes, it''s so exhausting but I can''t call Judy over bc we''re
+    technically under quarantine. So yeah, that''s how it is right now... Please
+    get this mission done as soon as possible, we need you here. I need you. '
   attachmentImage: {fileID: 0}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372ec46424d5f4703aeb5c1397fb1260, type: 3}
   m_Name: HyperdriveReplacement
   m_EditorClassIdentifier: 
-  mailName: Hyperdrive Replacement
+  subject: Hyperdrive Replacement
   senderName: Gruber Technologies Customer Service
   description: According to our records, the Gruber Technologies Panther II hyperdrive
     of your ship has recently sustained severe damage. However, we are pleased to

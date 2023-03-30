@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372ec46424d5f4703aeb5c1397fb1260, type: 3}
   m_Name: WifeMail4
   m_EditorClassIdentifier: 
-  subject: 
-  senderName: 
-  description: 
+  subject: Sasha is ill
+  senderName: Katheryne
+  description: Sasha has fallen ill. They took them to the medical center this morning.
+    They were constantly coughing for two days now and began complaining about head
+    ache and nausea yesterday evening. The doctor said it is likely another parasite
+    infection. I am little fatigued myself since I came back home and my shoulder
+    blades feel somewhat stiff, dunno if it's just stress or if I caught something...
+    if it doesn't get better by tomorrow I'll make an appointment for a check-up.
+    I'm begging you, please just get this mission done and come back, I really need
+    you here with me. It's just so much at the moment, I don't know if I'll be able
+    to bear it all...
   attachmentImage: {fileID: 0}
