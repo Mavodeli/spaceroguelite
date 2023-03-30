@@ -35,6 +35,13 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
                 PT.setFlag("firstTimeEnteredLaboratory");
             }
         });
+
+        triggerMap.Add("AS_EnterSpaceshipTrigger", delegate () {
+            if(!PT.getFlag("firstTimeEnteredAbandonedSpaceship")){
+                
+                PT.setFlag("firstTimeEnteredAbandonedSpaceship");
+            }
+        });
       
         //fill the triggers in the scene with their behaviours according to the trigger map
         foreach(GameObject trigger in GameObject.FindGameObjectsWithTag("ProgressionTrigger")){
