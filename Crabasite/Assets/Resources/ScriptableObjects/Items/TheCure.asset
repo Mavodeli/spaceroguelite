@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: TheCure
   m_EditorClassIdentifier: 
   id: 0
-  itemName: 
+  itemName: The Cure
   description: The Antidote for the Crabasite. The Potion is limited.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 8681bc9a3bf93f44eb4f41267958e7ad, type: 3}
   iconScale: 0
-  itemAmount: 
