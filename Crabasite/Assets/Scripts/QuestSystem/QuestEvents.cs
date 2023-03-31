@@ -19,6 +19,7 @@ public class QuestEvents : MonoBehaviour
             Events.Add("interactedWithHyperdrive", new UnityEvent());
             Events.Add("unlockUltimate", new UnityEvent());
             Events.Add("interactedWithEmergencyDoor", new UnityEvent());
+            Events.Add("detachedEngineRoomHatch", new UnityEvent());
         }
     }
 

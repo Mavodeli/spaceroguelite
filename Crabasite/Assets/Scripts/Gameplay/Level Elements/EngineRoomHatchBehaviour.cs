@@ -18,6 +18,11 @@ public class EngineRoomHatchBehaviour : MonoBehaviour, IDataPersistence
     private void detach(){
         rb.constraints = RigidbodyConstraints2D.None;
         loose = true;
+        GameObject.FindGameObjectWithTag("QuestEventsContainer").SendMessage("InvokeEvent", "detachedEngineRoomHatch", SendMessageOptions.DontRequireReceiver);
+    }
+
+    public bool isLoose(){
+        return loose;
     }
 
     public void LoadData(GameData data)
