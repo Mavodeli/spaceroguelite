@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: FindACure
   m_EditorClassIdentifier: 
   id: 0
-  header: Hello
-  description: desc
+  header: The cure
+  description: Qarea told you to find a cure for the parasite that is plaguing their
+    people. It should be somewhere on the Asclepius.
   icon: {fileID: 0}
   iconScale: 0

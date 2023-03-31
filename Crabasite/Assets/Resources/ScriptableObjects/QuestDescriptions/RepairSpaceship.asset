@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: RepairSpaceship
   m_EditorClassIdentifier: 
   id: 0
-  header: 
-  description: 
+  header: Broken ship parts
+  description: Some parts of the ship are damaged. Let's see if I can find something
+    to repair them.
   icon: {fileID: 0}
   iconScale: 0

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: InstallNewHyperdriveCore
   m_EditorClassIdentifier: 
   id: 0
-  header: 
-  description: 
+  header: Install the new core
+  description: Thankfully, this cursed ship at least had a core we can use to get
+    out of there. I should head back and install it.
   icon: {fileID: 0}
   iconScale: 1

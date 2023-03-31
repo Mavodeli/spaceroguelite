@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: GetAttractTwo
   m_EditorClassIdentifier: 
   id: 0
-  header: 
-  description: 
+  header: Find a way to get the silicate
+  description: There is some silicate floating around but I need to find a way to
+    break them into smaller pieces.
   icon: {fileID: 0}
   iconScale: 0

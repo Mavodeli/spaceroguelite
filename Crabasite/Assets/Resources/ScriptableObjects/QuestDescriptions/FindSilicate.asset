@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: FindSilicate
   m_EditorClassIdentifier: 
   id: 0
-  header: 
-  description: 
+  header: Broken window
+  description: The windshield is broken. Without it the ship can't go anywhere. Maybe
+    there is something outside that can repair it.
   icon: {fileID: 0}
   iconScale: 1

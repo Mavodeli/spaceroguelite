@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: FindANewHyperdriveCore
   m_EditorClassIdentifier: 
   id: 0
-  header: 
-  description: 
+  header: Mysteriously missing core
+  description: The hyperdrive core went missing somehow. Disregarding how that even
+    happened, a new one has to be found.
   icon: {fileID: 0}
   iconScale: 0

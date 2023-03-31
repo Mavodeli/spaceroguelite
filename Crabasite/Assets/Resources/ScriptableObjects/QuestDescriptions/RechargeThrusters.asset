@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: RechargeThrusters
   m_EditorClassIdentifier: 
   id: 0
-  header: 
-  description: 
+  header: Energy deficiency
+  description: There is no energy left to power the thrusters. I need to find something
+    to recharge them.
   icon: {fileID: 0}
   iconScale: 0

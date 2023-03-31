@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: RefineSilicate
   m_EditorClassIdentifier: 
   id: 0
-  header: 
-  description: 
+  header: Refine the silicate
+  description: Luckily, there was some silicate floating around space. With the workbench
+    I should be able to refine it and repair the window.
   icon: {fileID: 0}
   iconScale: 1
