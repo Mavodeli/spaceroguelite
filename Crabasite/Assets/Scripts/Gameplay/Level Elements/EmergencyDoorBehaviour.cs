@@ -11,14 +11,25 @@ public class EmergencyDoorBehaviour : MonoBehaviour, IDataPersistence
     private HealthSystem HS;
     private BoxCollider2D bc;
     private InteractionButton ib;
+    private SpriteRenderer sr;
+    private Sprite closedSprite;
+    private Sprite openSprite;
 
     void Start(){
         dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager").GetComponent<DataPersistenceManager>();
         unlocked = dpm.getGameData().AS_EmergencyDoorUnlocked;
+
         HS = new HealthSystem(100, 100);
+
         isOpen_timer = new TimerObject(gameObject.name+" isOpen_timer");
         isOpen_timer.setOnRunningOut(delegate(){close();});
+
         bc = gameObject.GetComponent<BoxCollider2D>();
+
+        sr = gameObject.GetComponent<SpriteRenderer>();
+        closedSprite = Resources.Load<Sprite>("TODO");
+        openSprite = Resources.Load<Sprite>("TODO");
+
         ib = gameObject.GetComponent<InteractionButton>();
         ib.Setup(delegate(){
             GameObject.FindGameObjectWithTag("QuestEventsContainer").SendMessage("InvokeEvent", "interactedWithEmergencyDoor", SendMessageOptions.DontRequireReceiver);
@@ -44,14 +55,14 @@ public class EmergencyDoorBehaviour : MonoBehaviour, IDataPersistence
         if(unlocked && !isOpen_timer.runs()){
             isOpen_timer.start(5);
             bc.enabled = false;
-            //TODO change sprite
+            sr.sprite = openSprite;
         }
     }
 
     private void close(){
         if(unlocked){
             bc.enabled = true;
-            //TODO change sprite
+            sr.sprite = closedSprite;
             if(isOpen_timer.runs()) isOpen_timer.stop();
         }
     }

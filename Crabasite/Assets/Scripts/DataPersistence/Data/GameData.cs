@@ -19,6 +19,7 @@ public class GameData
     public SerializableDictionary<string, bool> activeQuests;
     public bool AS_EmergencyDoorUnlocked;
     public bool AS_hasGravity;
+    public bool AS_GlassWallIntact;
 
     // Options related Savedata
     public int graphicsIndex;
@@ -46,6 +47,7 @@ public class GameData
         this.activeQuests = new SerializableDictionary<string, bool>();
         this.AS_EmergencyDoorUnlocked = false;
         this.AS_hasGravity = true;
+        this.AS_GlassWallIntact = true;
         this.graphicsIndex = 0;
         this.soundVolume = 0;
         this.isFullscreen = true;
