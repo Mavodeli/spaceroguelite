@@ -49,6 +49,14 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
                 PT.setFlag("firstTimeEnteredAbandonedSpaceship");
             }
         });
+
+        triggerMap.Add("AS_EngineRoomHatchTrigger", delegate () {
+            if(!PT.getFlag("firstTimeSeenEngineRoomHatch")){
+                CommentarySystem.displayProtagonistComment("startOpenHatch");
+                Spawn.Quest("OpenHatch");
+                PT.setFlag("firstTimeSeenEngineRoomHatch");
+            }
+        });
       
         //fill the triggers in the scene with their behaviours according to the trigger map
         foreach(GameObject trigger in GameObject.FindGameObjectsWithTag("ProgressionTrigger")){

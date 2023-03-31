@@ -86,5 +86,9 @@
     "firstTimeEnteringLaboratoryMC2" :
     "Anyway, the cure should be somewhere around here, probably on the other side of this thick glass.",
     "onAnglerFishDied" :
-    "It dropped something and my arm sucked it up, it's getting hungrier. I really need to hurry this up. Hopefully the AI won't be too difficult to deal with."
+    "It dropped something and my arm sucked it up, it's getting hungrier. I really need to hurry this up. Hopefully the AI won't be too difficult to deal with.",
+    "startOpenHatch" :
+    "That hatch is shut tight. If I want to get to the Asclepius' hyperdrive, I will have to open it somehow. The hinges look quite rusty, if I push hard enough I should be able to just bust it open.",
+    "completedOpenHatch" :
+    "Ok, now the way to the hyperdrive core should be free."
 }
