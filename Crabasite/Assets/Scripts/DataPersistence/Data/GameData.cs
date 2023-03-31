@@ -20,6 +20,10 @@ public class GameData
     public bool AS_EmergencyDoorUnlocked;
     public bool AS_hasGravity;
     public bool AS_GlassWallIntact;
+    public bool AS_EngineRoomHatchLoose;
+    public Vector3 AS_EngineRoomPosition;
+    public Vector3 AS_EngineRoomRotation;
+    public Vector3 AS_EngineRoomScale;
 
     // Options related Savedata
     public int graphicsIndex;
@@ -48,6 +52,10 @@ public class GameData
         this.AS_EmergencyDoorUnlocked = false;
         this.AS_hasGravity = true;
         this.AS_GlassWallIntact = true;
+        this.AS_EngineRoomHatchLoose = false;
+        this.AS_EngineRoomPosition = new Vector3(-8, 27.9f, 0);
+        this.AS_EngineRoomRotation = new Vector3(0, 0, 0);
+        this.AS_EngineRoomScale = new Vector3(1.9f,0.2f,1);
         this.graphicsIndex = 0;
         this.soundVolume = 0;
         this.isFullscreen = true;

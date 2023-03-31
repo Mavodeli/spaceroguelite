@@ -16,7 +16,7 @@ public class NegativeCharge : Ultimate
             selectedTarget = RayCastSelect.SelectTarget(key);
         }
         else 
-        {            
+        {
             RepelCollider repelColliderScript = selectedTarget.AddComponent<RepelCollider>();
             selectedTarget = null;
             isActive = false;           

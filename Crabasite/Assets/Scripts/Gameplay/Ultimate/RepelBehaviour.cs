@@ -38,7 +38,8 @@ public class RepelBehaviour : MonoBehaviour
             //if the object is inside the negative charge radius, apply force to it to repel it
             if (_distance.magnitude <= infusedObjectCollider.radius)
             {
-                myRigidbody.AddForce(-direction * _force);
+                myRigidbody.SendMessage("detach", SendMessageOptions.DontRequireReceiver);
+                myRigidbody.AddForce(-direction * _force * 5);
             } else // if it left the radius, destroy this script
             {
                 Destroy(GetComponent<RepelBehaviour>());
