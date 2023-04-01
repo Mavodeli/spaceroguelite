@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subject: Be careful! xoxo
   senderName: Katheryne
-  description: I know it's only been a day but I miss you already. X does too. I
-    know you're busy but you know we worry. Please check in when you have time. xoxo
+  description: I know it's only been a day but I miss you already. Sasha does too.
+    I know you're busy but you know we worry. Please check in when you have time.
+    xoxo
   attachmentImage: {fileID: 0}

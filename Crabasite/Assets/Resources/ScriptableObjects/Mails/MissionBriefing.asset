@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subject: 'MISSION BRIEFING: Infection on Cryke 2H23'
   senderName: HQ
-  description: You next mission comes from the small planet Crye 2H23 where a small
+  description: Your next mission comes from the small planet Crye 2H23 where a small
     team of experts is trying to fight off an infection that is spreading across
     the planet. You will make your way there and talk to Qarea, a local medical expert
-    that is currently in charge to find a cure this infection.  Good luck
+    that is currently in charge to find a cure for this infection.  Good luck
   attachmentImage: {fileID: 0}

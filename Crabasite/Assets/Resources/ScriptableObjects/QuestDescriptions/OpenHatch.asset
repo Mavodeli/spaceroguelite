@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: OpenHatch
   m_EditorClassIdentifier: 
   id: 0
-  header: 
-  description: 
+  header: Open the hatch
+  description: There seems to be something on the second level of the engine room
+    but it's blocked by a broken hatch. I should look for a way to get past.
   icon: {fileID: 0}
   iconScale: 0
