@@ -20,4 +20,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 2 - abandoned spaceship.unity
     guid: 9a22f60b135a99f458bafb1317a21e0e
+  - enabled: 1
+    path: Assets/Scenes/StoryScenes/StoryScene2.unity
+    guid: 5f28a582b736a61438f577f13c543126
+  - enabled: 1
+    path: Assets/Scenes/StoryScenes/ColonyEndingScene.unity
+    guid: 69798bb7f9e36464b8b3d8b875f8aae6
+  - enabled: 1
+    path: Assets/Scenes/StoryScenes/SplitEndingScene.unity
+    guid: ff58c93ad19ff5d4788f671118e89b43
+  - enabled: 1
+    path: Assets/Scenes/StoryScenes/StoryScene1.unity
+    guid: a6833150091951e45b2659ea15207034
+  - enabled: 1
+    path: Assets/Scenes/StoryScenes/TakeEndingScene.unity
+    guid: 586275459f3d0d54b90638a3a86585fb
   m_configObjects: {}
