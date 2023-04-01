@@ -45,7 +45,7 @@ public class AttractTwoBehaviour : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //if the Collision detector detects a collision with anything, the pull script will be destroyed to stop the pull
-        gameObject.GetComponent<Collider2D>().SendMessage("addHealth", -5*_force, SendMessageOptions.DontRequireReceiver);
+        gameObject.SendMessage("addHealth", -5*_force, SendMessageOptions.DontRequireReceiver);
         gameObject.SendMessage("addHealthToGlassWall", -1, SendMessageOptions.DontRequireReceiver);
 
         //return collision detection to discrete
