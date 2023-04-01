@@ -66,7 +66,27 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                         fireEvent("interactedWithWindshield");
 
                         showCommentOnEmergencyRepairsCompleted();
-                        
+    
+                        bool thrustersCompleted = QuestIsCompleted("RechargeThrusters");
+                        bool windshieldCompleted = QuestIsCompleted("RepairWindshield");
+                        bool spaceshipCompleted = QuestIsCompleted("RepairSpaceship");
+                        bool cureCompleted = QuestIsCompleted("FindACure");
+                        bool coreCompleted = QuestIsCompleted("FindANewHyperdriveCore");
+
+                        Debug.Log(thrustersCompleted);
+                        Debug.Log(windshieldCompleted);
+                        Debug.Log(spaceshipCompleted);
+                        Debug.Log(cureCompleted);
+                        Debug.Log(coreCompleted);
+
+                        if (thrustersCompleted && windshieldCompleted && spaceshipCompleted && !cureCompleted && !coreCompleted)
+                        {
+                            SceneManager.LoadScene("StoryScene1");
+                        } else if (thrustersCompleted && windshieldCompleted && spaceshipCompleted && cureCompleted && coreCompleted)
+                        {
+                            SceneManager.LoadScene("StoryScene2");
+                        }                       
+
                     }, "e", newShowDistanceMaximum+.2f);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
