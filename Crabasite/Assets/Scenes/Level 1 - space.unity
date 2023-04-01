@@ -307,7 +307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3903277959235523391, guid: 7a67d1cb68a68d044a634c23146ab4d9, type: 3}
       propertyPath: m_Name
-      value: Square (4)
+      value: useless asteroid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a67d1cb68a68d044a634c23146ab4d9, type: 3}
@@ -496,7 +496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3903277959235523391, guid: 7a67d1cb68a68d044a634c23146ab4d9, type: 3}
       propertyPath: m_Name
-      value: Square (2)
+      value: useless asteroid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a67d1cb68a68d044a634c23146ab4d9, type: 3}
@@ -878,7 +878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3903277959235523391, guid: 7a67d1cb68a68d044a634c23146ab4d9, type: 3}
       propertyPath: m_Name
-      value: Square (3)
+      value: useless asteroid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a67d1cb68a68d044a634c23146ab4d9, type: 3}
@@ -1517,7 +1517,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.0200005, y: 15.740001, z: -10}
+  m_LocalPosition: {x: 4.02, y: 15.74, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2545,7 +2545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3903277959235523391, guid: 7a67d1cb68a68d044a634c23146ab4d9, type: 3}
       propertyPath: m_Name
-      value: Square (1)
+      value: useless asteroid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a67d1cb68a68d044a634c23146ab4d9, type: 3}
@@ -2999,7 +2999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3903277959235523391, guid: 7a67d1cb68a68d044a634c23146ab4d9, type: 3}
       propertyPath: m_Name
-      value: Square (5)
+      value: useless asteroid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a67d1cb68a68d044a634c23146ab4d9, type: 3}
@@ -4327,7 +4327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3903277959235523391, guid: 7a67d1cb68a68d044a634c23146ab4d9, type: 3}
       propertyPath: m_Name
-      value: Square
+      value: useless asteroid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a67d1cb68a68d044a634c23146ab4d9, type: 3}

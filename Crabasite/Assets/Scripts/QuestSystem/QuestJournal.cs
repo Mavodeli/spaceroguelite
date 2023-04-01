@@ -241,6 +241,8 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                             true
                         ), GameObject.FindGameObjectWithTag("ShipHull"));
                         CommentarySystem.displayProtagonistComment("completedInstallNewHyperdriveCore");
+                        if(QJ.questIsCompleted("FindACure"))
+                            CommentarySystem.displayProtagonistComment("startTheJourneyHome");
                 })
             );
 
@@ -255,6 +257,8 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayProtagonistComment("completedFindACure");
+                        if(QJ.questIsCompleted("InstallNewHyperdriveCore"))
+                            CommentarySystem.displayProtagonistComment("startTheJourneyHome");
                 })
             );
 
@@ -280,20 +284,6 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     "detachedEngineRoomHatch",
                     delegate(){//completionCriterion
                         return GameObject.FindObjectOfType<EngineRoomHatchBehaviour>().isLoose();
-                    },
-                    delegate(){//onCompletion
-                        CommentarySystem.displayProtagonistComment("completedOpenHatch");
-                })
-            );
-
-            quest_identifier = "TheJourneyHome";
-            data.Add(
-                quest_identifier,
-                new Quest(
-                    quest_identifier,
-                    "interactedWithWindshield",
-                    delegate(){//completionCriterion
-                        return true;//TODO
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayProtagonistComment("completedOpenHatch");
