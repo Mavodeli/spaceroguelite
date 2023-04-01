@@ -24,6 +24,9 @@ public class SpaceshipLevel_ProgressionScript : ProgressionParentClass
 
         if(!PT.getFlag("ProtagonistWokeUp")){
             CommentarySystem.displayProtagonistComment("protagonistWakesUp");
+            Spawn.Mail("MissionBriefing", true);
+            Spawn.Mail("MissionDetails", true);
+            Spawn.Mail("WifeMail0", true);
             PT.setFlag("ProtagonistWokeUp");
         }
     }

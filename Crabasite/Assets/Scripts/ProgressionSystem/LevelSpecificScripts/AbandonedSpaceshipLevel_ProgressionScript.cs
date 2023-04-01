@@ -27,6 +27,7 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
                 CommentarySystem.displayProtagonistComment("firstTimeEnteringEngineRoomMC1");
                 CommentarySystem.displayAIComment("firstTimeEnteringEngineRoomAI");
                 CommentarySystem.displayProtagonistComment("firstTimeEnteringEngineRoomMC2");
+                Spawn.Mail("HyperdriveReplacement");
                 PT.setFlag("firstTimeEnteredEngineRoom");
             }
         });
@@ -36,7 +37,7 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
                 CommentarySystem.displayAIComment("firstTimeEnteringLaboratoryAI");
                 CommentarySystem.displayProtagonistComment("firstTimeEnteringLaboratoryMC1");
                 CommentarySystem.displayProtagonistComment("firstTimeEnteringLaboratoryMC2");
-                Spawn.Mail("WifeMail4");
+                Spawn.Mail("WifeMail3");
                 PT.setFlag("firstTimeEnteredLaboratory");
             }
         });
@@ -76,11 +77,11 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
         }
 
         if(!PT.getFlag("AbandonedSpaceshipMailDumpHappened")){
-            Spawn.Mail("HyperdriveReplacement");
-            Spawn.Mail("WifeMail1");
-            Spawn.Mail("MissionReport");
-            Spawn.Mail("WifeMail2");
-            Spawn.Mail("WifeMail3");
+            Spawn.Mail("MissionReportHQ");
+            Spawn.Mail("WifeMail1.5", true);
+            Spawn.Mail("WifeMail1", true);
+            Spawn.Mail("MissionReport", true);
+            Spawn.Mail("WifeMail2", true);
             PT.setFlag("AbandonedSpaceshipMailDumpHappened");
         }
     }

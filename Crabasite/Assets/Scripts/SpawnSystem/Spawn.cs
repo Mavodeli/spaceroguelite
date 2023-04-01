@@ -37,8 +37,11 @@ public class Spawn
         rb.AddTorque(rnd1+rnd2);
     }
 
-    public static void Mail(string id){
+    public static void Mail(string id, bool mute = false){
         InventoryManager IM = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
+        GameObject soundController = GameObject.Find("Sounds");
+        if(!mute)
+            soundController.SendMessage("playSound", new SoundParameter("MessageReceivedSound", GameObject.FindGameObjectWithTag("Player"), 0.7f, false), SendMessageOptions.DontRequireReceiver);
         IM.AddMail(id);
     }
 

@@ -257,6 +257,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayProtagonistComment("completedFindACure");
+                        Spawn.Mail("WifeMail4");
                         if(QJ.questIsCompleted("InstallNewHyperdriveCore"))
                             CommentarySystem.displayProtagonistComment("startTheJourneyHome");
                 })

@@ -50,11 +50,14 @@ public class AttractTwoBehaviour : MonoBehaviour
 
         //return collision detection to discrete
         myRigidbody.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
+        //remove pull force
+        myRigidbody.velocity = new Vector2(0, 0);
+        myRigidbody.angularVelocity = 0;
         //slightly randomize bounce direction
         float randomAngle = Random.Range(-4.0f, 4.0f);
         Vector3 randomizedBounceDirection = Quaternion.Euler(0, 0, randomAngle) * -gameObjectToTargetDirection;
         // bounce off collision
-        myRigidbody.AddForce(randomizedBounceDirection * 4 * _force);
+        myRigidbody.AddForce(randomizedBounceDirection * 8 * _force);
         Destroy(this);
     }
 }
