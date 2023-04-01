@@ -4926,6 +4926,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4705152366001522428, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
+      propertyPath: PushParticleSystemPrefab
+      value: 
+      objectReference: {fileID: 1562006985091824410, guid: 7c40bdd2fc3432945bbeaf545ad92285, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
 --- !u!4 &1760991938 stripped

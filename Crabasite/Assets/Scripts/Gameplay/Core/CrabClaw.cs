@@ -8,6 +8,8 @@ public class CrabClaw : MonoBehaviour
     [SerializeField] private float PushSpeed = 4;
     [SerializeField] private float StartDelayDuration = 0.15f;
     [SerializeField] private float EndDelayDuration = 0.3f;
+    [SerializeField] private GameObject PushParticleSystemPrefab;
+    [SerializeField] private GameObject PullParticleSystemPrefab;    
     // [SerializeField] private float PullSafetyDistance = 2;
     //IMPORTANT: the movement interpolation doesn't work for the end delay
     //  (and fixing that would significantly increase the complexity of the script, hence why that is not fixed) 
@@ -24,6 +26,8 @@ public class CrabClaw : MonoBehaviour
 
     private GameObject inventory;
     private GameObject soundController;
+    private ParticleSystem PushParticleSystem;
+    private ParticleSystem PullparticleSystem;
 
 
 
@@ -43,6 +47,10 @@ public class CrabClaw : MonoBehaviour
         manaCooldown = new TimerObject("Player manaCooldown");
         inventory = GameObject.FindGameObjectWithTag("Inventory");
         soundController = GameObject.Find("Sounds");
+        // Instantiate Particle Systems as children
+        GameObject PushParticleObject = Transform.Instantiate(PushParticleSystemPrefab);
+        PushParticleObject.transform.parent = gameObject.transform;
+        PushParticleSystem = PushParticleObject.GetComponent<ParticleSystem>();
     }
     
     void Update()
@@ -82,6 +90,7 @@ public class CrabClaw : MonoBehaviour
 
             if(Input.GetMouseButton(1) && PM.hasMana()){
                 PushMI.Update(true, mousePos_relative_to_player);
+                PushParticleSystem.Play(true);
                 objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
                 objectRigidbody.velocity = Vector3.zero;
                 objectRigidbody.AddForce(PushMI.getFrameDirection()*PushMI.getFrameSpeed());
@@ -92,6 +101,7 @@ public class CrabClaw : MonoBehaviour
             }
             else{
                 PushMI.Update(false, mousePos_relative_to_player);
+                PushParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             }
 
             if((Input.GetMouseButton(0) || Input.GetMouseButton(1)) && !PM.hasMana()){
