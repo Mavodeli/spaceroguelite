@@ -16,6 +16,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         try
         {
             activeQuests[quest_identifier] = false;
+            GameObject.FindGameObjectWithTag("QuestEventsContainer").SendMessage("InvokeEvent", "updatedQuestStatus", SendMessageOptions.DontRequireReceiver);
         }
         catch (KeyNotFoundException)
         {
@@ -255,6 +256,8 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayProtagonistComment("completedFindACure");
+                        if(QJ.questIsCompleted("InstallNewHyperdriveCore"))
+                            CommentarySystem.displayProtagonistComment("completedFindACure");
                 })
             );
 
@@ -280,20 +283,6 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     "detachedEngineRoomHatch",
                     delegate(){//completionCriterion
                         return GameObject.FindObjectOfType<EngineRoomHatchBehaviour>().isLoose();
-                    },
-                    delegate(){//onCompletion
-                        CommentarySystem.displayProtagonistComment("completedOpenHatch");
-                })
-            );
-
-            quest_identifier = "TheJourneyHome";
-            data.Add(
-                quest_identifier,
-                new Quest(
-                    quest_identifier,
-                    "interactedWithWindshield",
-                    delegate(){//completionCriterion
-                        return true;//TODO
                     },
                     delegate(){//onCompletion
                         CommentarySystem.displayProtagonistComment("completedOpenHatch");
