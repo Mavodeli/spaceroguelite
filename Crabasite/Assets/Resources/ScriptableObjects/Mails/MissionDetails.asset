@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372ec46424d5f4703aeb5c1397fb1260, type: 3}
+  m_Name: MissionDetails
+  m_EditorClassIdentifier: 
+  subject: 'MISSION DETAILS: Infection on Cryke 2H23'
+  senderName: Qarea
+  description: Here are the details we talked about including an attachment of the
+    last known position of the abandoned spaceship.  Please retrieve a cure that
+    is located aboard an abandoned spaceship that was on the way to us before all
+    communication stopped a few weeks ago. It was a small ship, only manning a small
+    crew and some lab staff. They were supposed to deliver a cure for the parasite
+    that has infected many of our people already. If we don't get our hands on it
+    soon, many of the infected will be too late to be cured.  Qarea
+  attachmentImage: {fileID: 0}
