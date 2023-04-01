@@ -20,7 +20,6 @@ public class QuestEvents : MonoBehaviour
             Events.Add("unlockUltimate", new UnityEvent());
             Events.Add("interactedWithEmergencyDoor", new UnityEvent());
             Events.Add("detachedEngineRoomHatch", new UnityEvent());
-            Events.Add("updatedQuestStatus", new UnityEvent());
         }
     }
 

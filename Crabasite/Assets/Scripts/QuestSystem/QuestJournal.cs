@@ -16,7 +16,6 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
         try
         {
             activeQuests[quest_identifier] = false;
-            GameObject.FindGameObjectWithTag("QuestEventsContainer").SendMessage("InvokeEvent", "updatedQuestStatus", SendMessageOptions.DontRequireReceiver);
         }
         catch (KeyNotFoundException)
         {
@@ -242,6 +241,8 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                             true
                         ), GameObject.FindGameObjectWithTag("ShipHull"));
                         CommentarySystem.displayProtagonistComment("completedInstallNewHyperdriveCore");
+                        if(QJ.questIsCompleted("FindACure"))
+                            CommentarySystem.displayProtagonistComment("startTheJourneyHome");
                 })
             );
 
@@ -257,7 +258,7 @@ public class QuestJournal : MonoBehaviour, IDataPersistence
                     delegate(){//onCompletion
                         CommentarySystem.displayProtagonistComment("completedFindACure");
                         if(QJ.questIsCompleted("InstallNewHyperdriveCore"))
-                            CommentarySystem.displayProtagonistComment("completedFindACure");
+                            CommentarySystem.displayProtagonistComment("startTheJourneyHome");
                 })
             );
 

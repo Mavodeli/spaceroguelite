@@ -90,5 +90,7 @@
     "startOpenHatch" :
     "That hatch is shut tight. If I want to get to the Asclepius' hyperdrive, I will have to open it somehow. The hinges look quite rusty, if I push hard enough I should be able to just bust it open.",
     "completedOpenHatch" :
-    "Ok, now the way to the hyperdrive core should be free."
+    "Ok, now the way to the hyperdrive core should be free.",
+    "startTheJourneyHome" : 
+    "Now that I have both the cure and a new hyperdrive core, I'm all set to pack up and head home. Let's get to the cockpit and leave this cursed asteroid field for good."
 }
