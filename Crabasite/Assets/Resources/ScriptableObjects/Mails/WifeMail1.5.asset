@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372ec46424d5f4703aeb5c1397fb1260, type: 3}
+  m_Name: WifeMail1.5
+  m_EditorClassIdentifier: 
+  subject: Please text back
+  senderName: Katheryne
+  description: It's been two days and still no word from you. I know I always worry
+    way too much but this is very unlike you, so please respond. Just a small response
+    back would be great if you are busy. We miss you. xoxo
+  attachmentImage: {fileID: 0}

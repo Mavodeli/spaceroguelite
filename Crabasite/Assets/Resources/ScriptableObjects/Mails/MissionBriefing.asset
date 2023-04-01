@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372ec46424d5f4703aeb5c1397fb1260, type: 3}
+  m_Name: MissionBriefing
+  m_EditorClassIdentifier: 
+  subject: 'MISSION BRIEFING: Infection on Cryke 2H23'
+  senderName: HQ
+  description: You next mission comes from the small planet Crye 2H23 where a small
+    team of experts is trying to fight off an infection that is spreading across
+    the planet. You will make your way there and talk to Qarea, a local medical expert
+    that is currently in charge to find a cure this infection.  Good luck
+  attachmentImage: {fileID: 0}
