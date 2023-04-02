@@ -27,7 +27,6 @@ public class CrabClaw : MonoBehaviour
     private GameObject inventory;
     private GameObject soundController;
     private ParticleSystem PushParticleSystem;
-    private ParticleSystem PullparticleSystem;
 
 
 
@@ -47,10 +46,11 @@ public class CrabClaw : MonoBehaviour
         manaCooldown = new TimerObject("Player manaCooldown");
         inventory = GameObject.FindGameObjectWithTag("Inventory");
         soundController = GameObject.Find("Sounds");
-        // Instantiate Particle Systems as children
+        // Instantiate Push Particle System as child
         GameObject PushParticleObject = Transform.Instantiate(PushParticleSystemPrefab);
         PushParticleObject.transform.parent = gameObject.transform;
         PushParticleSystem = PushParticleObject.GetComponent<ParticleSystem>();
+        PushParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // prevent particles when loading into scene
     }
     
     void Update()
@@ -75,6 +75,7 @@ public class CrabClaw : MonoBehaviour
             //update the position of the object hit by the ray
             // if(Input.GetMouseButton(0) && dist > PullSafetyDistance){
             if(Input.GetMouseButton(0) && PM.hasMana()){
+                attachPullParticleSystem(hit.transform.gameObject);
                 PullMI.Update(true, playerPos_relative_to_hit);
                 objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
                 objectRigidbody.velocity = Vector3.zero;
@@ -89,8 +90,8 @@ public class CrabClaw : MonoBehaviour
             }
 
             if(Input.GetMouseButton(1) && PM.hasMana()){
-                PushMI.Update(true, mousePos_relative_to_player);
                 PushParticleSystem.Play(true);
+                PushMI.Update(true, mousePos_relative_to_player);
                 objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
                 objectRigidbody.velocity = Vector3.zero;
                 objectRigidbody.AddForce(PushMI.getFrameDirection()*PushMI.getFrameSpeed());
@@ -147,6 +148,14 @@ public class CrabClaw : MonoBehaviour
         if (!manaCooldown.runs())
         {
             manaCooldown.start(duration);
+        }
+    }
+
+    void attachPullParticleSystem(GameObject targetObject) {
+        // if (targetObject.transform.Find("PullAnimation"))
+        {
+            GameObject newSystem = Transform.Instantiate(PullParticleSystemPrefab);
+            newSystem.transform.parent = targetObject.transform;
         }
     }
 }
