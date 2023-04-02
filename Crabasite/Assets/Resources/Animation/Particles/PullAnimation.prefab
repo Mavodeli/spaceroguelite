@@ -4827,4 +4827,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zPosition: 5
   distanceScaling: 0.5
-  player: {fileID: 0}
+  lifeTime: 0.2

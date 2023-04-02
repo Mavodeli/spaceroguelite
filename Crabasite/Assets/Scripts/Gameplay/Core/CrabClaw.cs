@@ -27,6 +27,8 @@ public class CrabClaw : MonoBehaviour
     private GameObject inventory;
     private GameObject soundController;
     private ParticleSystem PushParticleSystem;
+    private Timer PullParticleCooldown;
+
 
 
 
@@ -46,6 +48,7 @@ public class CrabClaw : MonoBehaviour
         manaCooldown = new TimerObject("Player manaCooldown");
         inventory = GameObject.FindGameObjectWithTag("Inventory");
         soundController = GameObject.Find("Sounds");
+        PullParticleCooldown = new Timer();
         // Instantiate Push Particle System as child
         GameObject PushParticleObject = Transform.Instantiate(PushParticleSystemPrefab);
         PushParticleObject.transform.parent = gameObject.transform;
@@ -125,6 +128,8 @@ public class CrabClaw : MonoBehaviour
             PushMI.Update(false, new Vector2(0, 0));
             PullMI.Update(false, new Vector2(0, 0));
         }
+
+        PullParticleCooldown.Update();
     }
 
        void FixedUpdate()
@@ -152,10 +157,12 @@ public class CrabClaw : MonoBehaviour
     }
 
     void attachPullParticleSystem(GameObject targetObject) {
-        // if (targetObject.transform.Find("PullAnimation"))
+        if (!PullParticleCooldown.is_running()) 
         {
             GameObject newSystem = Transform.Instantiate(PullParticleSystemPrefab);
             newSystem.transform.parent = targetObject.transform;
+            PullParticleScript pps = newSystem.GetComponent<PullParticleScript>();
+            PullParticleCooldown.start(pps.lifeTime); // adapt the cooldown to the lifetime settings of the Particle Script
         }
     }
 }
