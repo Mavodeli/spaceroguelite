@@ -71,10 +71,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PullSpeed: 16
   PushSpeed: 16
-  StartDelayDuration: 0.5
-  EndDelayDuration: 0.3
-  PushParticleSystem: {fileID: 1562006985091824410, guid: 7c40bdd2fc3432945bbeaf545ad92285, type: 3}
-  PullParticleSystem: {fileID: 0}
+  range: 7
+  PushParticleSystemPrefab: {fileID: 0}
+  PullParticleSystemPrefab: {fileID: 0}
 --- !u!114 &4705152366001522416
 MonoBehaviour:
   m_ObjectHideFlags: 0
