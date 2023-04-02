@@ -55,8 +55,6 @@ public class CrabClaw : MonoBehaviour
             Vector2 playerPos_relative_to_hit = transform.position-hit.transform.position;
             playerPos_relative_to_hit.Normalize();
 
-            Debug.Log(Vector3.Distance(player.transform.position, hit.point));
-
             //update the position of the object hit by the ray
             if(Input.GetMouseButton(0) && PM.hasMana()){
                 attachPullParticleSystem(hit.transform.gameObject);
