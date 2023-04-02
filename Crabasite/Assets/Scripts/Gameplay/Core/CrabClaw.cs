@@ -157,7 +157,8 @@ public class CrabClaw : MonoBehaviour
     }
 
     void attachPullParticleSystem(GameObject targetObject) {
-        if (!PullParticleCooldown.is_running()) 
+        // if the target is constructed of multiple smaller pieces, attach one to each
+        if (targetObject.tag != "MultiPartObstacle" && !PullParticleCooldown.is_running()) 
         {
             GameObject newSystem = Transform.Instantiate(PullParticleSystemPrefab);
             newSystem.transform.parent = targetObject.transform;

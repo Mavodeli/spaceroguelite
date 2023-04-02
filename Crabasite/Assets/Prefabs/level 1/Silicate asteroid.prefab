@@ -703,7 +703,7 @@ GameObject:
   - component: {fileID: 6845474544414116931}
   m_Layer: 6
   m_Name: Silicate asteroid
-  m_TagString: Untagged
+  m_TagString: MultiPartObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

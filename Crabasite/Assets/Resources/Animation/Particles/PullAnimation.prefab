@@ -4826,5 +4826,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zPosition: 5
-  distanceScaling: 0.5
   lifeTime: 0.2
