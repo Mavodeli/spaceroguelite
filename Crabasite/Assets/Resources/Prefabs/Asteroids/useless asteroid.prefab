@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3903277959235523378}
   - component: {fileID: 3903277959235523389}
   m_Layer: 6
-  m_Name: Square
+  m_Name: useless asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
