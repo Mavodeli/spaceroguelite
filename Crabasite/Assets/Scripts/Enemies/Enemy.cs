@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -82,6 +83,8 @@ public class Enemy : MonoBehaviour
         // sr.drawMode = SpriteDrawMode.Sliced;//needed for scaling the sprite
         sr.size *= spriteScale;
         // sr.sortingOrder = 1;
+        if(SceneManager.GetActiveScene().name == "Level 2 - abandoned spaceship")
+            sr.color *= new Color(1, 1, 1, .7f);
 
         //setup HealthSystem
         HS = new HealthSystem((int) health, (int) maxhealth);

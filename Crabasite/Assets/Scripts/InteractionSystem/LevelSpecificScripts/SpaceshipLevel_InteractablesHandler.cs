@@ -34,9 +34,11 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
 
                             // debug ulti unlock
                             // GameObject inv = GameObject.FindGameObjectWithTag("Inventory");
+                            // inv.SendMessage("unlockUltimate", 0, SendMessageOptions.DontRequireReceiver);
+                            // inv.SendMessage("unlockUltimate", 1, SendMessageOptions.DontRequireReceiver);
                             // inv.SendMessage("unlockUltimate", 2, SendMessageOptions.DontRequireReceiver);
                             // GameObject player = GameObject.FindGameObjectWithTag("Player");
-                            // player.SendMessage("SwitchUltimate", 2, SendMessageOptions.DontRequireReceiver);
+                            // player.SendMessage("SwitchUltimate", 0, SendMessageOptions.DontRequireReceiver);
 
                             Time.timeScale = 1;
                         }
@@ -73,13 +75,13 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                         bool cureCompleted = QuestIsCompleted("FindACure");
                         bool coreCompleted = QuestIsCompleted("FindANewHyperdriveCore");
 
-                        Debug.Log(thrustersCompleted);
-                        Debug.Log(windshieldCompleted);
-                        Debug.Log(spaceshipCompleted);
-                        Debug.Log(cureCompleted);
-                        Debug.Log(coreCompleted);
+                        // Debug.Log(thrustersCompleted);
+                        // Debug.Log(windshieldCompleted);
+                        // Debug.Log(spaceshipCompleted);
+                        // Debug.Log(cureCompleted);
+                        // Debug.Log(coreCompleted);
 
-                        if (thrustersCompleted && windshieldCompleted && spaceshipCompleted && !cureCompleted && !coreCompleted)
+                        if (true)//thrustersCompleted && windshieldCompleted && spaceshipCompleted && !cureCompleted && !coreCompleted)
                         {
                             SceneManager.LoadScene("StoryScene1");
                         } else if (thrustersCompleted && windshieldCompleted && spaceshipCompleted && cureCompleted && coreCompleted)
