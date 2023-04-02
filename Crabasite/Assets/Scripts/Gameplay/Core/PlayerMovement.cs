@@ -20,10 +20,13 @@ public class PlayerMovement : MonoBehaviour
     private TimerObject paralyze_timer;
     private TimerObject dash_cooldown_timer;
 
+    private Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
 
         paralyze_timer = new TimerObject("Player paralyze_timer");
         dash_cooldown_timer = new TimerObject("Player dash_cooldown_timer");
@@ -68,6 +71,22 @@ public class PlayerMovement : MonoBehaviour
             force.y = 0;
 
         rb.AddForce(force);
+        if(GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().gravityScale > 0)
+        {
+            if(force != new Vector2(0,0))
+            {
+            animator.SetBool("walk", true);
+            }
+            if(force == new Vector2(0,0))
+            {
+            animator.SetBool("walk",false);
+        } 
+        }else{
+            animator.SetBool("fly",true);
+        }
+        
+
+        
     }
 
     IEnumerator Dash(Vector2 dir)
