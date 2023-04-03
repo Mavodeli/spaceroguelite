@@ -28,6 +28,8 @@ public class RepelCollider : MonoBehaviour
             player.GetComponent<UltimateHolder>().NegativeChargeAnimationPrefab
         );
         particleObject.transform.SetParent(gameObject.transform, false);
+        // Change the layer of the gameobject to prevent duplicates and raycast intersecting with circlecollider
+        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
     }
 
     private void Update()
@@ -37,7 +39,10 @@ public class RepelCollider : MonoBehaviour
 
         if (chargeDuration <= 0)
         {
-            Destroy(particleObject);
+            // Restore Layer
+            gameObject.layer = LayerMask.NameToLayer("Raycast");
+            // the particles use a custom destroy that lets particles play out
+            particleObject.GetComponent<NegativeChargeParticleScript>().DestroyParticleObject();
             Destroy(GetComponent<CircleCollider2D>());
             Destroy(GetComponent<RepelCollider>());
         }

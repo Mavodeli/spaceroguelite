@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1562006985091824408}
   - component: {fileID: 1562006985091824411}
   - component: {fileID: 7342352110853486360}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PushAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}

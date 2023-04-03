@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NegativeChargeParticleScript : MonoBehaviour
+public class SelectionAnimationScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        // Scale emission shape to parent bounds
+        // Scale circle to roughly fit parent bounds
         GameObject parent = transform.parent.gameObject;
         Renderer parentRenderer = transform.parent.GetComponent<Renderer>();
         if (parentRenderer == null)
@@ -19,19 +19,22 @@ public class NegativeChargeParticleScript : MonoBehaviour
 
         ParticleSystem ps = GetComponent<ParticleSystem>();
         var shape = ps.shape;
-        // circle should be inside collider of most shapes
-        shape.radius = Mathf.Min(parentBounds.size.x / 2, parentBounds.size.y / 2) / 2;
+        // radius is half of the average size of the parent bounds
+        shape.radius = (parentBounds.size.x + parentBounds.size.y) / 4;
+        // scale emission with size of the circle
+        var emission = ps.emission;
+        emission.rateOverTimeMultiplier *= shape.radius;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+        transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0, -90, -90));
     }
 
     IEnumerator DelayedDestroy()
     {
-        yield return new WaitForSeconds(1.0f); // this needs to match maximum particle lifetime
+        yield return new WaitForSeconds(0.5f); // this needs to match maximum particle lifetime
         Destroy(gameObject);
     }
 

@@ -18,5 +18,9 @@ public class NegativeCharge : Ultimate
             selectedTarget = null;
             isActive = false;
         }
+        else
+        {
+            selectedTarget = null;
+        }
     }
 }
