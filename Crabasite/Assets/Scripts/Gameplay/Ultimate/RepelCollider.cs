@@ -13,7 +13,7 @@ public class RepelCollider : MonoBehaviour
     {
         //initiate the sphere collider that will act as the negative charge range
         repelRange = gameObject.AddComponent<CircleCollider2D>();
-        Debug.Log(repelRange);
+        // Debug.Log(repelRange);
         //isTrigger will make it so it does not cause collision
         repelRange.isTrigger = true;
         repelRange.radius = 1.5f;
