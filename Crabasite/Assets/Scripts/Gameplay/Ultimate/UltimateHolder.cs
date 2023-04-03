@@ -27,6 +27,7 @@ public class UltimateHolder : MonoBehaviour, IDataPersistence
 
     // Particle Animations to hand over to specific ultimate
     public GameObject CrushAnimationPrefab;
+    public GameObject NegativeChargeAnimationPrefab;
 
     // Start is called before the first frame update
     void Start()

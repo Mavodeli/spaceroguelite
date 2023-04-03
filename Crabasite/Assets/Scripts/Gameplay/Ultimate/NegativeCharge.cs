@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Negative Charge", menuName = "Ultimate/Create Negative Charge")]
+[CreateAssetMenu(fileName = "Negative Charge", menuName = "Ultimate/Create Negative Charge")]
 public class NegativeCharge : Ultimate
 {
     public GameObject selectedTarget;
@@ -15,13 +15,11 @@ public class NegativeCharge : Ultimate
         {
             selectedTarget = RayCastSelect.SelectTarget(key);
         }
-        else 
+        else
         {
             RepelCollider repelColliderScript = selectedTarget.AddComponent<RepelCollider>();
             selectedTarget = null;
-            isActive = false;           
+            isActive = false;
         }
-        
     }
-
 }

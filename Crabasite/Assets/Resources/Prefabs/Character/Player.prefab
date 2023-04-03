@@ -91,6 +91,7 @@ MonoBehaviour:
   player: {fileID: 4705152366001522419}
   key: 32
   CrushAnimationPrefab: {fileID: 1941224211598267925, guid: fb4784717f0ee4f4ca09bd04028166df, type: 3}
+  NegativeChargeAnimationPrefab: {fileID: 5592103896092821819, guid: eb64e85b1642293418b8a284c8426996, type: 3}
 --- !u!114 &4705152366001522421
 MonoBehaviour:
   m_ObjectHideFlags: 0
