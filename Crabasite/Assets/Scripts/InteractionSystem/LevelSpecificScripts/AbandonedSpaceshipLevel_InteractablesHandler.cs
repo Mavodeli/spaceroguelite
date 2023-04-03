@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class AbandonedSpaceshipLevel_InteractablesHandler : MonoBehaviour
 {
+
     void Start()
     {
         //check if all interactables have the button script, if not, add missing scripts
