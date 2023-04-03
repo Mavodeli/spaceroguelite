@@ -15,6 +15,7 @@ public class CommentarySystem : MonoBehaviour
 
     private static Sprite protagonistCommentSprite;
     private static Sprite aiCommentSprite;
+    private static Sprite bcCommentSprite;
 
     private static bool alreadyShowingComment = false;
     private static Queue<string> stashedComments; // stores comments that are waiting to be displayed: #0 followed by an id will display a protagonist comment, #1 followed by an id will display an ai comment
@@ -41,13 +42,20 @@ public class CommentarySystem : MonoBehaviour
 
         protagonistCommentSprite = Resources.Load<Sprite>("Sprites/TextBoxes/TextBoxProtagonistCommentNewWithArrow");
         aiCommentSprite = Resources.Load<Sprite>("Sprites/TextBoxes/TextBoxAiCommentWithArrow");
-
+        bcCommentSprite = Resources.Load<Sprite>("Sprites/TextBoxes/TextBoxBCCommentWithArrow");
 
         stashedComments = new Queue<string>();
 
     }
 
     void Update(){
+        // string str = "stashedComments: ";
+        // string[] array = stashedComments.ToArray();
+        // for(int i = 0; i < stashedComments.Count; i++){
+        //     str += array[i];
+        // }
+        // if(str != "stashedComments: ") Debug.Log(str);
+
         if(alreadyShowingComment && isTypeWriting){
             if(Input.GetKeyDown("e")){
                 isTypeWriting = false;
@@ -78,6 +86,9 @@ public class CommentarySystem : MonoBehaviour
                     } else if(nextComment.StartsWith("#1")){
                         // ai comment
                         displayAIComment(nextComment.Substring(2));
+                    } else if(nextComment.StartsWith("#2")){
+                        // bc comment
+                        displayBCComment(nextComment.Substring(2));
                     } else {
                         // This one should never appear
                         Debug.LogWarning("The following comment hsould be displayed but can't, since it is neither an ai-comment nor a protagonist comment: [" + nextComment + "]");
@@ -99,8 +110,18 @@ public class CommentarySystem : MonoBehaviour
     public static void displayAIComment(string id){
         if(alreadyShowingComment){
             stashedComments.Enqueue("#1" + id);
+            return;
         }
         imageToBeDisplayed.sprite = aiCommentSprite;
+        displayComment(id);
+    }
+
+    public static void displayBCComment(string id){
+        if(alreadyShowingComment){
+            stashedComments.Enqueue("#2" + id);
+            return;
+        }
+        imageToBeDisplayed.sprite = bcCommentSprite;
         displayComment(id);
     }
 

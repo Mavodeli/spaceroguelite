@@ -53,7 +53,7 @@ public class UltimateHolder : MonoBehaviour, IDataPersistence
                     cooldownTimer = ultimate.cooldown;
                 } else
                 {
-                    ultimate.Use();
+                    if(!CommentarySystem.isShowingTextbox()) ultimate.Use();
                 }
                 break;
             case UltimateState.cooldown:

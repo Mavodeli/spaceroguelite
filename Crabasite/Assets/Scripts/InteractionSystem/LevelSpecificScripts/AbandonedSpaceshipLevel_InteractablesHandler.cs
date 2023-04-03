@@ -27,6 +27,26 @@ public class AbandonedSpaceshipLevel_InteractablesHandler : MonoBehaviour
                     }, "e");
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
+
+                if(interactable.name == "SecretRoomInteractable"){
+                    script.Setup(delegate () {
+                        CommentarySystem.displayBCComment("cuttingRoomFloorBC1.1");
+                        CommentarySystem.displayBCComment("cuttingRoomFloorBC1.2");
+                        CommentarySystem.displayBCComment("cuttingRoomFloorBC1.3");
+                        CommentarySystem.displayProtagonistComment("cuttingRoomFloorMC1");
+                        CommentarySystem.displayBCComment("cuttingRoomFloorBC2");
+                        CommentarySystem.displayBCComment("cuttingRoomFloorBC3");
+                        CommentarySystem.displayAIComment("cuttingRoomFloorAI1");
+                        CommentarySystem.displayBCComment("cuttingRoomFloorBC4.1");
+                        CommentarySystem.displayBCComment("cuttingRoomFloorBC4.2");
+                        CommentarySystem.displayAIComment("cuttingRoomFloorAI2");
+                        CommentarySystem.displayBCComment("cuttingRoomFloorBC5");
+                        CommentarySystem.displayProtagonistComment("cuttingRoomFloorMC2");
+                        CommentarySystem.displayBCComment("cuttingRoomFloorBC6");
+                        CommentarySystem.displayProtagonistComment("cuttingRoomFloorMC3");
+                    }, "e", 2);
+                    script.setNewOffset(new Vector3(0, 0, 0));
+                }
             }
         }
 

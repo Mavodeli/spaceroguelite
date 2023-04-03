@@ -27,6 +27,7 @@ public class Crush : Ultimate
             // hitCollider.SendMessage("EnemyTakeDmg", 5, SendMessageOptions.DontRequireReceiver);
             hitCollider.SendMessage("addHealth", -5, SendMessageOptions.DontRequireReceiver);
             hitCollider.SendMessage("addHealthToEmergencyDoor", -34, SendMessageOptions.DontRequireReceiver);
+            hitCollider.SendMessage("addHealthToFalseWall", -101, SendMessageOptions.DontRequireReceiver);
             // Debug.Log(hitCollider);
         }
 

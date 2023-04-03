@@ -65,6 +65,8 @@
     "How are you even still functioning, this ship has been floating in space for weeks",
     "AS_EmergencyDoor_IsNotInteractableMC3" :
     "How the hell do I get through?!",
+    "AS_EmergencyDoor_JustGotUnlocked" :
+    "That should do it, the locking mechanism is disabled.",
     "Default_IsNotInteractable" : 
     "Locked.",
     "firstTimeEnteringAbandonedSpaceshipMC1" :
@@ -92,5 +94,33 @@
     "completedOpenHatch" :
     "Ok, now the way to the hyperdrive core should be free.",
     "startTheJourneyHome" : 
-    "Now that I have both the cure and a new hyperdrive core, I'm all set to pack up and head home. Let's get to the cockpit and leave this cursed asteroid field for good."
+    "Now that I have both the cure and a new hyperdrive core, I'm all set to pack up and head home. Let's get to the cockpit and leave this cursed asteroid field for good.",
+    "cuttingRoomFloorBC1.1" :
+    "So, while you were figuring out how to get that door open, I had a look into our ships' database and found an old manual for spaceship IPAs.",
+    "cuttingRoomFloorBC1.2" :
+    "Apparently, the earlier versions had issues with paradox detection. There are multiple reports on really dumb IAs that completely flatlined 'cause of recursion overflow.",
+    "cuttingRoomFloorBC1.3" :
+    "Maybe we can just talk that evil AI into blowing itself up by asking it to decide some stupid problems?",
+    "cuttingRoomFloorMC1" :
+    "Let me guess, and then you thought...",
+    "cuttingRoomFloorBC2" :
+    "'Cache my memory, if there is one thing that I'm good at then it's asking dumb questions.' Hold on, let me actually try something.",
+    "cuttingRoomFloorBC3" :
+    "Hey AI! Does the set that contains all sets contain itself?",
+    "cuttingRoomFloorAI1" :
+    "No. There is no data structure that can hold values of it's own type.",
+    "cuttingRoomFloorBC4.1" :
+    "Actually, nowadays such data structures do exist, but fair enough. Hm, let's see...",
+    "cuttingRoomFloorBC4.2" :
+    "Suppose you stole an alien from me and promised its return if I could correctly guess what you will do, how would you respond in the case that I guess the alien will not be returned?",
+    "cuttingRoomFloorAI2" :
+    "I would return the alien, because I never said what I would do in case you guessed incorrectly.",
+    "cuttingRoomFloorBC5" :
+    "Gosh, that's a tough nut to crack. Wait, what about...",
+    "cuttingRoomFloorMC2" :
+    "Stop it, that obviously won't work.",
+    "cuttingRoomFloorBC6" :
+    "But maybe it can prove P versus NP for us... That would make my life a lot easier, you know?",
+    "cuttingRoomFloorMC3" :
+    "Shut up."
 }
