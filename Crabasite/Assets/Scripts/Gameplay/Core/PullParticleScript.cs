@@ -41,39 +41,17 @@ public class PullParticleScript : MonoBehaviour
         parentBounds = r.bounds;
 
         // scale distance
-        distanceScaling = Mathf.Max(parentBounds.extents.x, parentBounds.extents.y) / 3;
-        if (distanceScaling < 1.0f)
-        {
-            distanceScaling = 1.0f;
-        }
-        if (distanceScaling > 2.0f)
-        {
-            distanceScaling = 2.0f;
-        }
+        distanceScaling = (parentBounds.size.x / 2 + parentBounds.size.y / 2) / 2;
 
-        float scalingFactor = Mathf.Max(parentBounds.extents.x, parentBounds.extents.y) / 2;
-
-        // clamp scalingFactor
-        if (scalingFactor < 1.0f)
-        {
-            scalingFactor = 1.0f;
-        }
-        if (scalingFactor > 5.0f)
-        {
-            scalingFactor = 5.0f;
-        }
+        float scaling = Mathf.Min(parentBounds.size.x, parentBounds.size.y) / 2;
 
         // Set particle speed antiproportional to scaling factor
         // and scale emission shape width
         ParticleSystem ps = GetComponent<ParticleSystem>();
         var main = ps.main;
-        main.startSpeedMultiplier = 1 / scalingFactor;
+        main.startSpeedMultiplier = 1 / scaling;
         var shape = ps.shape;
-        shape.radius *= scalingFactor;
-        if (shape.radius > 1.0f)
-        {
-            shape.radius = 1.0f;
-        }
+        shape.radius = scaling / 2;
     }
 
     // Update is called once per frame

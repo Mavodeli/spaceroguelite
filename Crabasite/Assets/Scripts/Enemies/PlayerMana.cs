@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMana : MonoBehaviour, IDataPersistence
 {
-    private int mana = 100;
-    private int maxMana = 100;
+    private int mana = 250;
+    private int maxMana = 250;
     private ManaSystem MS;
     private ManaBar manaBar;
     

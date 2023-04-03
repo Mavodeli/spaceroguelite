@@ -33,7 +33,7 @@ public class CrabClaw : MonoBehaviour
         PullParticleCooldown = new Timer();
         // Instantiate Push Particle System as child
         GameObject PushParticleObject = Transform.Instantiate(PushParticleSystemPrefab);
-        PushParticleObject.transform.parent = gameObject.transform;
+        PushParticleObject.transform.SetParent(gameObject.transform, false);
         PushParticleSystem = PushParticleObject.GetComponent<ParticleSystem>();
         PushParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // prevent particles when loading into scene
     }
@@ -129,7 +129,7 @@ public class CrabClaw : MonoBehaviour
         if (targetObject.tag != "MultiPartObstacle" && !PullParticleCooldown.is_running()) 
         {
             GameObject newSystem = Transform.Instantiate(PullParticleSystemPrefab);
-            newSystem.transform.parent = targetObject.transform;
+            newSystem.transform.SetParent(targetObject.transform, false);
             PullParticleScript pps = newSystem.GetComponent<PullParticleScript>();
             PullParticleCooldown.start(pps.lifeTime); // adapt the cooldown to the lifetime settings of the Particle Script
         }
