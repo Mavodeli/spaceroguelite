@@ -25,6 +25,9 @@ public class UltimateHolder : MonoBehaviour, IDataPersistence
     // key can be assiged in inspector
     public KeyCode key;
 
+    // Particle Animations to hand over to specific ultimate
+    public GameObject CrushAnimationPrefab;
+
     // Start is called before the first frame update
     void Start()
     {

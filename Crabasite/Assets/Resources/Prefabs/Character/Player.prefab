@@ -90,6 +90,7 @@ MonoBehaviour:
   cooldownTimer: 0
   player: {fileID: 4705152366001522419}
   key: 32
+  CrushAnimationPrefab: {fileID: 1941224211598267925, guid: fb4784717f0ee4f4ca09bd04028166df, type: 3}
 --- !u!114 &4705152366001522421
 MonoBehaviour:
   m_ObjectHideFlags: 0
