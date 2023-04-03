@@ -12,7 +12,7 @@ public class NegativeCharge : Ultimate
     {
         selectedTarget = RayCastSelect.SelectTarget(key);
 
-        if (selectedTarget is GameObject)
+        if (selectedTarget is GameObject && selectedTarget.GetComponent<Renderer>())
         {
             RepelCollider repelColliderScript = selectedTarget.AddComponent<RepelCollider>();
             selectedTarget = null;
