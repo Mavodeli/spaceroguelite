@@ -8,7 +8,7 @@ public class RepelCollider : MonoBehaviour
     public CircleCollider2D repelRange;
 
     //duration of the negative charge
-    float chargeDuration = 30f;
+    float chargeDuration = 5.0f;
 
     // particle animation child object
     GameObject particleObject;
@@ -19,7 +19,9 @@ public class RepelCollider : MonoBehaviour
         repelRange = gameObject.AddComponent<CircleCollider2D>();
         //isTrigger will make it so it does not cause collision
         repelRange.isTrigger = true;
-        repelRange.radius = 1.5f;
+        // scale to be 2 times the size of the object (roughly)
+        Renderer r = gameObject.GetComponent<Renderer>();
+        repelRange.radius = 2.0f * Mathf.Max(r.bounds.size.x, r.bounds.size.y);
         // attach particles (first getting the prefab around a few corners)
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         particleObject = Transform.Instantiate(
