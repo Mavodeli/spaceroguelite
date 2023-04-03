@@ -10,12 +10,9 @@ public class NegativeCharge : Ultimate
 
     public override void Use()
     {
-        //select target if none is selected
-        if (selectedTarget == null)
-        {
-            selectedTarget = RayCastSelect.SelectTarget(key);
-        }
-        else
+        selectedTarget = RayCastSelect.SelectTarget(key);
+
+        if (selectedTarget is GameObject)
         {
             RepelCollider repelColliderScript = selectedTarget.AddComponent<RepelCollider>();
             selectedTarget = null;

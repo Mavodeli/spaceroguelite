@@ -47,6 +47,7 @@ public class UltimateHolder : MonoBehaviour, IDataPersistence
                 {
                     ultimate.isActive = true;
                     state = UltimateState.active;
+                    ultimate.Use();
                 }
                 break;
             case UltimateState.active:
