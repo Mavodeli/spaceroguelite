@@ -81,7 +81,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                         // Debug.Log(cureCompleted);
                         // Debug.Log(coreCompleted);
 
-                        if (true)//thrustersCompleted && windshieldCompleted && spaceshipCompleted && !cureCompleted && !coreCompleted)
+                        if (thrustersCompleted && windshieldCompleted && spaceshipCompleted && !cureCompleted && !coreCompleted)
                         {
                             SceneManager.LoadScene("StoryScene1");
                         } else if (thrustersCompleted && windshieldCompleted && spaceshipCompleted && cureCompleted && coreCompleted)
