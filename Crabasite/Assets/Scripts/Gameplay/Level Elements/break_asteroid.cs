@@ -77,4 +77,9 @@ public class break_asteroid : MonoBehaviour
             }
         }
     }
+
+    public float lossyCollisionForce(Collision collision)
+    {
+        return 0f;
+    }
 }
