@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class RayCastSelect
 {
+    static float range = 10;
+
     public static GameObject SelectTarget(KeyCode key)
     {
         GameObject target = null;
@@ -24,7 +26,7 @@ public static class RayCastSelect
         RaycastHit2D hit = Physics2D.Raycast(
             playerPosition,
             playerToMouseDirection,
-            Mathf.Infinity,
+            range,
             LayerMask.GetMask("Raycast")
         );
         //if the key is down and the raycast hits something then store the hit gameobject inside target

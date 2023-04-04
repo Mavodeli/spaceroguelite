@@ -4863,9 +4863,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522416, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
-      propertyPath: ultimate
+      propertyPath: AttractTwoAnimation1Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8303708270963385004, guid: 530b78e001a13f746a752dad475e568b, type: 3}
     - target: {fileID: 4705152366001522419, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: m_RootOrder
       value: 2

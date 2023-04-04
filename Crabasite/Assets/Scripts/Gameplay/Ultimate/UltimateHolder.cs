@@ -29,8 +29,7 @@ public class UltimateHolder : MonoBehaviour, IDataPersistence
     public GameObject CrushAnimationPrefab;
     public GameObject NegativeChargeAnimationPrefab;
     public GameObject SelectionAnimationPrefab;
-    public GameObject AttractTwoAnimation1Prefab;
-    public GameObject AttractTwoAnimation2Prefab;
+    public GameObject AttractTwoAnimationPrefab;
 
     // Start is called before the first frame update
     void Start()

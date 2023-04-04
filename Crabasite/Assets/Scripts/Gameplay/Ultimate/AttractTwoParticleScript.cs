@@ -2,23 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PullParticleScript : MonoBehaviour
+public class AttractTwoParticleScript : MonoBehaviour
 {
     [SerializeField]
-    private float zPosition = 5;
+    private GameObject target;
 
-    [SerializeField]
-    public float lifeTime = 0.2f;
     private float distanceScaling;
     private GameObject player;
-    private Timer lifeTimer;
 
     void Awake()
     {
-        lifeTimer = new Timer();
         // move ourselves far away to prevent glitchy particles before the first frame Update
         transform.SetPositionAndRotation(
-            new Vector3(10000, 10000, zPosition),
+            new Vector3(10000, 10000, transform.position.z),
             new Quaternion(0, 0, 1, 0)
         );
     }
@@ -27,7 +23,6 @@ public class PullParticleScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        lifeTimer.start(lifeTime);
 
         // scale to parent size
         GameObject parent = transform.parent.gameObject;
@@ -68,32 +63,26 @@ public class PullParticleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 directionVector = player.transform.position - transform.parent.position;
+        // if we have no target anymore (fading out state) we don't update our position anymore
+        if (!target || !target.transform || !target.activeSelf)
+        {
+            return;
+        }
+        Vector2 direction = target.transform.position - transform.parent.position;
+        Vector2 positionVector = direction.normalized * distanceScaling;
 
-        Vector2 targetVector = directionVector.normalized * distanceScaling;
-
-        float zRotation = Mathf.Atan2(directionVector.y, directionVector.x) * Mathf.Rad2Deg;
+        float zRotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         // correct orientation of particle system
         zRotation -= 90;
 
         transform.SetPositionAndRotation(
             new Vector3(
-                transform.parent.position.x + targetVector.x,
-                transform.parent.position.y + targetVector.y,
-                zPosition
+                transform.parent.position.x + positionVector.x,
+                transform.parent.position.y + positionVector.y,
+                transform.position.z
             ),
             Quaternion.Euler(0.0f, 0.0f, zRotation)
         );
-
-        // Timer
-        lifeTimer.Update();
-        // End of Life?
-        if (!lifeTimer.is_running())
-        {
-            ParticleSystem ps = GetComponent<ParticleSystem>();
-            ps.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-            StartCoroutine(DelayedDestroy());
-        }
     }
 
     IEnumerator DelayedDestroy()
@@ -116,12 +105,24 @@ public class PullParticleScript : MonoBehaviour
             for (int i = 1; i < childRenderers.Length; i++)
             {
                 GameObject childObject = childRenderers[i].transform.gameObject;
-                if (childObject.activeSelf && !childObject.GetComponent<PullParticleScript>())
+                if (childObject.activeSelf && !childObject.GetComponent<AttractTwoParticleScript>())
                 {
                     bounds.Encapsulate(childRenderers[i].bounds);
                 }
             }
             return bounds;
         }
+    }
+
+    public void DestroyParticleObject()
+    {
+        ParticleSystem ps = GetComponent<ParticleSystem>();
+        ps.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        StartCoroutine(DelayedDestroy());
+    }
+
+    public void SetTarget(GameObject target)
+    {
+        this.target = target;
     }
 }

@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PullSpeed: 16
   PushSpeed: 16
-  range: 7
+  range: 10
   PushParticleSystemPrefab: {fileID: 1562006985091824410, guid: 7c40bdd2fc3432945bbeaf545ad92285, type: 3}
   PullParticleSystemPrefab: {fileID: 8768868552205507901, guid: 34cc0de008ac562469a269d3a9aeb90f, type: 3}
 --- !u!114 &4705152366001522416
@@ -93,8 +93,7 @@ MonoBehaviour:
   CrushAnimationPrefab: {fileID: 1941224211598267925, guid: fb4784717f0ee4f4ca09bd04028166df, type: 3}
   NegativeChargeAnimationPrefab: {fileID: 5592103896092821819, guid: eb64e85b1642293418b8a284c8426996, type: 3}
   SelectionAnimationPrefab: {fileID: 3235100780530446029, guid: 528e8254da59f3148943ce01cdb96cd4, type: 3}
-  AttractTwoAnimation1Prefab: {fileID: 0}
-  AttractTwoAnimation2Prefab: {fileID: 0}
+  AttractTwoAnimationPrefab: {fileID: 8303708270963385004, guid: 530b78e001a13f746a752dad475e568b, type: 3}
 --- !u!114 &4705152366001522421
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -49,7 +49,7 @@ public class RepelCollider : MonoBehaviour
         particleObject = Transform.Instantiate(
             player.GetComponent<UltimateHolder>().NegativeChargeAnimationPrefab
         );
-        particleObject.transform.SetParent(gameObject.transform, false);
+        particleObject.transform.SetParent(transform, false);
         // Change the layer of the gameobject to prevent duplicates and raycast intersecting with circlecollider
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
     }

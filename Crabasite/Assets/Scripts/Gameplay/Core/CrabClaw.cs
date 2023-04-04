@@ -6,7 +6,7 @@ public class CrabClaw : MonoBehaviour
 {
     [SerializeField] private float PullSpeed = 4;
     [SerializeField] private float PushSpeed = 4;
-    [SerializeField] private float range = 7;
+    [SerializeField] private float range = 10;
     [SerializeField] private GameObject PushParticleSystemPrefab;
     [SerializeField] private GameObject PullParticleSystemPrefab;
     private LayerMask DetectionLayer;

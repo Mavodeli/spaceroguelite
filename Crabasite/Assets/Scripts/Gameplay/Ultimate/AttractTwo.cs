@@ -20,9 +20,13 @@ public class AttractTwo : Ultimate
     //selects two targets and adds a script to both of them, making them pull together.
     //needed to be split in two (AttractTwo and AttractTwoBehaviour) so the pulling of the objects happens separately
     //and we don't have to wait for them to collide to start the cooldown
-    //TODO: make it do dmg
     public override void Use()
     {
+        // make sure the selected target still exists
+        if (!selectedObject1 || !selectedObject1.transform || !selectedObject1.activeSelf)
+        {
+            selectedObject1 = null;
+        }
         //select two targets
         SelectTargets();
 
@@ -58,7 +62,11 @@ public class AttractTwo : Ultimate
         if (selectedObject1 == null)
         {
             selectedObject1 = RayCastSelect.SelectTarget(key);
-            attachSelectionAnimation(selectedObject1);
+            // if we hit a valid target we attach the selection animation
+            if (selectedObject1)
+            {
+                attachSelectionAnimation(selectedObject1);
+            }
         }
 
         //only look for a second target if the second selected object is still null

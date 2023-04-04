@@ -7,6 +7,12 @@ public class SelectionAnimationScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // fix pick up causing problems - we might not be supposed to exist
+        if (!transform || !transform.parent)
+        {
+            Destroy(gameObject);
+            return;
+        }
         // Scale circle to roughly fit parent bounds
         GameObject parent = transform.parent.gameObject;
         Renderer parentRenderer = transform.parent.GetComponent<Renderer>();
