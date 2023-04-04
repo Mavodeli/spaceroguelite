@@ -9,13 +9,13 @@ using UnityEngine.SceneManagement;
 public class CreditsConstructor : MonoBehaviour
 {
     private GameObject parent;
-    [SerializeField] float scroll_speed = .1f;
+    private float scroll_speed;
     private float break_bound;
     private float between_tiles;//spacing
     private float all_tiles_height = 0;
     private bool tiles_height_was_updated = false;
     private TimerObject delay_timer;
-    private float delay_time = 4;
+    private float delay_time = 3;
 
     void Start()
     {
@@ -24,6 +24,7 @@ public class CreditsConstructor : MonoBehaviour
         //set scaling parameter according to screen size
         between_tiles = 50;
         break_bound = Screen.height+between_tiles*transform.childCount;
+        scroll_speed = 0.00185f*Screen.height;
 
         gameObject.GetComponent<VerticalLayoutGroup>().spacing = between_tiles;
 
