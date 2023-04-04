@@ -17,6 +17,11 @@ public class RepelBehaviour : MonoBehaviour
     {
         //get the rigidbody to be able to apply force
         myRigidbody = gameObject.GetComponent<Rigidbody2D>();
+        // abort if there is no rigidbody
+        if (!myRigidbody) 
+        {
+            Destroy(GetComponent<RepelBehaviour>());
+        }
         //get the collider of the negatively charged object to be able to meassure the distance to it
         infusedObjectCollider = infusedObject.GetComponent<CircleCollider2D>();
     }

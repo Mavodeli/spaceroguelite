@@ -2,33 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Attract Two", menuName = "Ultimate/Create Attract Two")]
+[CreateAssetMenu(fileName = "Attract Two", menuName = "Ultimate/Create Attract Two")]
 public class AttractTwo : Ultimate
 {
     // GameObject player;
-    
+
     public GameObject selectedObject1;
     public GameObject selectedObject2;
 
     public float object1Speed;
     public float object2Speed;
 
-    const float SPEED = 5;
+    const float SPEED = 50;
 
     public KeyCode key;
 
     //selects two targets and adds a script to both of them, making them pull together.
     //needed to be split in two (AttractTwo and AttractTwoBehaviour) so the pulling of the objects happens separately
     //and we don't have to wait for them to collide to start the cooldown
-    //TODO: make it do dmg
     public override void Use()
     {
+        // make sure the selected target still exists
+        if (!selectedObject1 || !selectedObject1.transform || !selectedObject1.activeSelf)
+        {
+            selectedObject1 = null;
+        }
         //select two targets
         SelectTargets();
 
         //when both target are selected it assigns the pull scripts to them and resets all fields
-        if(selectedObject1 != null && selectedObject2 != null)
+        if (selectedObject1 != null && selectedObject2 != null)
         {
+            // Remove selection animation from object1
+            removeSelectionAnimation(selectedObject1);
+
             //attach the pull script
             AttractTwoBehaviour object1Script = selectedObject1.AddComponent<AttractTwoBehaviour>();
             AttractTwoBehaviour object2Script = selectedObject2.AddComponent<AttractTwoBehaviour>();
@@ -45,7 +52,7 @@ public class AttractTwo : Ultimate
             isActive = false;
             selectedObject1 = null;
             selectedObject2 = null;
-        }     
+        }
     }
 
     //selects both targets for the ultimate
@@ -55,6 +62,11 @@ public class AttractTwo : Ultimate
         if (selectedObject1 == null)
         {
             selectedObject1 = RayCastSelect.SelectTarget(key);
+            // if we hit a valid target we attach the selection animation
+            if (selectedObject1)
+            {
+                attachSelectionAnimation(selectedObject1);
+            }
         }
 
         //only look for a second target if the second selected object is still null
@@ -65,6 +77,27 @@ public class AttractTwo : Ultimate
             if (selectedObject1 != selectedObject)
             {
                 selectedObject2 = selectedObject;
+            }
+        }
+    }
+
+    void attachSelectionAnimation(GameObject target)
+    {
+        GameObject selectionAnimationObject = Transform.Instantiate(
+            player.gameObject.GetComponent<UltimateHolder>().SelectionAnimationPrefab
+        );
+        selectionAnimationObject.transform.SetParent(target.transform, false);
+    }
+
+    void removeSelectionAnimation(GameObject target)
+    {
+        int childCount = target.transform.childCount;
+        for (int i = 0; i < childCount; i++)
+        {
+            Transform child = target.transform.GetChild(i);
+            if (child.gameObject.GetComponent<SelectionAnimationScript>())
+            {
+                child.gameObject.GetComponent<SelectionAnimationScript>().DestroyParticleObject();
             }
         }
     }

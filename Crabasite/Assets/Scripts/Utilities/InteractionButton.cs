@@ -54,7 +54,9 @@ public class InteractionButton : MonoBehaviour
         {
             button.name = "InteractionButton of " + name;
             button.GetComponent<SpriteRenderer>().sortingOrder = 3;
-            Instantiate(button, transform.position + offset, Quaternion.identity, transform);
+            GameObject buttonObj = Transform.Instantiate(button, transform.position + offset, Quaternion.identity);
+            // setting the parent like this keeps the original scale:
+            buttonObj.transform.SetParent(transform, true);
             hasButton = true;
         }
         //destroy button if player is too far away or if it should be invisible

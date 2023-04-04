@@ -25,7 +25,6 @@ public class ElectroParticleBehaviour : PhysicalEntity
                 pickupSound.Play();
                 InventoryManager.Instance.AddItem("ElectroParticle");
                 GameHandler.GetComponent<CollectibleTracking>().AddCollectibleToDict(name); 
-                Debug.Log(GameHandler);
                 Destroy(gameObject);
             }
         }, "e");

@@ -20,6 +20,7 @@ TagManager:
   - AbandonedSpaceshipCollider
   - Stationary
   - SoundController
+  - MultiPartObstacle
   layers:
   - Default
   - TransparentFX

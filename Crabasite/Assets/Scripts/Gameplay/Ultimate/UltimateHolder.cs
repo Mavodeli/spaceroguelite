@@ -25,6 +25,12 @@ public class UltimateHolder : MonoBehaviour, IDataPersistence
     // key can be assiged in inspector
     public KeyCode key;
 
+    // Particle Animations to hand over to specific ultimate
+    public GameObject CrushAnimationPrefab;
+    public GameObject NegativeChargeAnimationPrefab;
+    public GameObject SelectionAnimationPrefab;
+    public GameObject AttractTwoAnimationPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +49,7 @@ public class UltimateHolder : MonoBehaviour, IDataPersistence
                 {
                     ultimate.isActive = true;
                     state = UltimateState.active;
+                    ultimate.Use();
                 }
                 break;
             case UltimateState.active:
@@ -84,7 +91,7 @@ public class UltimateHolder : MonoBehaviour, IDataPersistence
         bool unlocked = dpm.getGameData().UltimateDict[ult];
         if(unlocked){
             ultimate = (Ultimate)ultimateList[ult];
-            if(ult == 1) { ultimate.player = player; }
+            ultimate.player = player;
             hud.SendMessage("ChangeSprite", ult, SendMessageOptions.DontRequireReceiver);
             equippedUltimate = ult;
         }

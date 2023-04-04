@@ -30,7 +30,7 @@ public class break_asteroid : MonoBehaviour
             breakState < splitState
             && !breakTimer.runs()
             && collision.gameObject != player
-            && collision.relativeVelocity.magnitude > requiredForce
+            && lossyCollisionForce(collision) > requiredForce
         )
         {
             breakState += 1;
@@ -76,5 +76,12 @@ public class break_asteroid : MonoBehaviour
                 }
             }
         }
+    }
+
+    public float lossyCollisionForce(Collision2D collision)
+    {
+        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+        return Vector2.Dot(collision.contacts[0].normal, collision.relativeVelocity)
+            * rigidbody.mass;
     }
 }

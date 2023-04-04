@@ -10,7 +10,7 @@ public class PufferFishData : ScriptableObject
     public float health = 100;
     public float damage = 25;
     public float meleeDamage = 25;
-    public float chaseSpeed = 400;
+    public float chaseSpeed = 100000;
     public string gameObjectName = "Puffer fish emeny";
     public float meleeCooldown = .5f;
     public float stoppingDistance = 0.0f;
