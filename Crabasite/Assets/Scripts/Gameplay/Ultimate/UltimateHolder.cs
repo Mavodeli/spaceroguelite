@@ -28,6 +28,9 @@ public class UltimateHolder : MonoBehaviour, IDataPersistence
     // Particle Animations to hand over to specific ultimate
     public GameObject CrushAnimationPrefab;
     public GameObject NegativeChargeAnimationPrefab;
+    public GameObject SelectionAnimationPrefab;
+    public GameObject AttractTwoAnimation1Prefab;
+    public GameObject AttractTwoAnimation2Prefab;
 
     // Start is called before the first frame update
     void Start()
@@ -89,7 +92,7 @@ public class UltimateHolder : MonoBehaviour, IDataPersistence
         bool unlocked = dpm.getGameData().UltimateDict[ult];
         if(unlocked){
             ultimate = (Ultimate)ultimateList[ult];
-            if(ult == 1) { ultimate.player = player; }
+            ultimate.player = player;
             hud.SendMessage("ChangeSprite", ult, SendMessageOptions.DontRequireReceiver);
             equippedUltimate = ult;
         }

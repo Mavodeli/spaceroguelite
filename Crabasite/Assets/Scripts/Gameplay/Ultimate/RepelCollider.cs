@@ -19,9 +19,31 @@ public class RepelCollider : MonoBehaviour
         repelRange = gameObject.AddComponent<CircleCollider2D>();
         //isTrigger will make it so it does not cause collision
         repelRange.isTrigger = true;
-        // scale to be 2 times the size of the object (roughly)
+        // scale to be 1.5 times the size of the object (roughly)
+        Bounds bounds;
         Renderer r = gameObject.GetComponent<Renderer>();
-        repelRange.radius = 2.0f * Mathf.Max(r.bounds.size.x, r.bounds.size.y);
+        if (r == null)
+        {
+            // Are there any valid children?
+            Renderer[] childRenderers = gameObject.GetComponentsInChildren<Renderer>();
+            if (childRenderers.Length < 1)
+            {
+                // if there aren't we default to 2.0f (size is always double the extents)
+                bounds = new Bounds(Vector3.zero, new Vector3(1, 1, 1));
+            }
+            else
+            {
+                // if there are we calculate bounds from them:
+                bounds = GetBoundsFromActiveChildren(gameObject, childRenderers);
+            }
+        }
+        else
+        {
+            bounds = r.bounds;
+        }
+        // incorporate scale of object
+        float scale = (transform.lossyScale.x + transform.lossyScale.y) / 2;
+        repelRange.radius = (1.5f * Mathf.Max(bounds.size.x, bounds.size.y)) / scale;
         // attach particles (first getting the prefab around a few corners)
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         particleObject = Transform.Instantiate(
@@ -42,7 +64,10 @@ public class RepelCollider : MonoBehaviour
             // Restore Layer
             gameObject.layer = LayerMask.NameToLayer("Raycast");
             // the particles use a custom destroy that lets particles play out
-            particleObject.GetComponent<NegativeChargeParticleScript>().DestroyParticleObject();
+            if (particleObject)
+            {
+                particleObject.GetComponent<NegativeChargeParticleScript>().DestroyParticleObject();
+            }
             Destroy(GetComponent<CircleCollider2D>());
             Destroy(GetComponent<RepelCollider>());
         }
@@ -55,5 +80,31 @@ public class RepelCollider : MonoBehaviour
         RepelBehaviour repelScript = collidingObject.AddComponent<RepelBehaviour>();
 
         repelScript.infusedObject = gameObject;
+    }
+
+    Bounds GetBoundsFromActiveChildren(GameObject parent, Renderer[] childRenderers)
+    {
+        if (childRenderers.Length == 1)
+        {
+            // if only one child is valid, copy its bounds
+            return childRenderers[0].bounds;
+        }
+        else
+        {
+            // otherwise combine bounds of all children
+            Bounds bounds = childRenderers[0].bounds;
+            for (int i = 1; i < childRenderers.Length; i++)
+            {
+                GameObject childObject = childRenderers[i].transform.gameObject;
+                if (
+                    childObject.activeSelf
+                    && !childObject.GetComponent<NegativeChargeParticleScript>()
+                )
+                {
+                    bounds.Encapsulate(childRenderers[i].bounds);
+                }
+            }
+            return bounds;
+        }
     }
 }

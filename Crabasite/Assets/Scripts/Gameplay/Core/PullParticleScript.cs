@@ -35,13 +35,23 @@ public class PullParticleScript : MonoBehaviour
         Bounds parentBounds;
         if (r == null)
         {
-            // if the parent has no renderer, it is invalid and we abort.
-            Destroy(gameObject);
+            // Are there any valid children?
+            Renderer[] childRenderers = parent.GetComponentsInChildren<Renderer>();
+            if (childRenderers.Length < 1)
+            {
+                // if there aren't we abort
+                Destroy(gameObject);
+            }
+            // if there are we calculate bounds from them:
+            parentBounds = GetBoundsFromActiveChildren(parent, childRenderers);
         }
-        parentBounds = r.bounds;
+        else
+        {
+            parentBounds = r.bounds;
+        }
 
         // scale distance
-        distanceScaling = (parentBounds.size.x / 2 + parentBounds.size.y / 2) / 2;
+        distanceScaling = (parentBounds.size.x / 2 + parentBounds.size.y / 2) / 3;
 
         float scaling = Mathf.Min(parentBounds.size.x, parentBounds.size.y) / 2;
 
@@ -89,5 +99,28 @@ public class PullParticleScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f); // this needs to match maximum particle lifetime
         Destroy(gameObject);
+    }
+
+    Bounds GetBoundsFromActiveChildren(GameObject parent, Renderer[] childRenderers)
+    {
+        if (childRenderers.Length == 1)
+        {
+            // if only one child is valid, copy its bounds
+            return childRenderers[0].bounds;
+        }
+        else
+        {
+            // otherwise combine bounds of all children
+            Bounds bounds = childRenderers[0].bounds;
+            for (int i = 1; i < childRenderers.Length; i++)
+            {
+                GameObject childObject = childRenderers[i].transform.gameObject;
+                if (childObject.activeSelf && !childObject.GetComponent<PullParticleScript>())
+                {
+                    bounds.Encapsulate(childRenderers[i].bounds);
+                }
+            }
+            return bounds;
+        }
     }
 }

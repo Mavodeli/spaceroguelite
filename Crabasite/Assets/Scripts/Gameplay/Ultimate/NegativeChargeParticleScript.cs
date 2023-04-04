@@ -10,12 +10,23 @@ public class NegativeChargeParticleScript : MonoBehaviour
         // Scale emission shape to parent bounds
         GameObject parent = transform.parent.gameObject;
         Renderer parentRenderer = transform.parent.GetComponent<Renderer>();
+        Bounds parentBounds;
         if (parentRenderer == null)
         {
-            // if the parent has no renderer, it is invalid and we abort.
-            Destroy(gameObject);
+            // Are there any valid children?
+            Renderer[] childRenderers = parent.GetComponentsInChildren<Renderer>();
+            if (childRenderers.Length < 1)
+            {
+                // if there aren't we abort
+                Destroy(gameObject);
+            }
+            // if there are we calculate bounds from them:
+            parentBounds = GetBoundsFromActiveChildren(parent, childRenderers);
         }
-        Bounds parentBounds = parentRenderer.bounds;
+        else
+        {
+            parentBounds = parentRenderer.bounds;
+        }
 
         ParticleSystem ps = GetComponent<ParticleSystem>();
         var shape = ps.shape;
@@ -40,5 +51,31 @@ public class NegativeChargeParticleScript : MonoBehaviour
         ParticleSystem ps = GetComponent<ParticleSystem>();
         ps.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         StartCoroutine(DelayedDestroy());
+    }
+
+    Bounds GetBoundsFromActiveChildren(GameObject parent, Renderer[] childRenderers)
+    {
+        if (childRenderers.Length == 1)
+        {
+            // if only one child is valid, copy its bounds
+            return childRenderers[0].bounds;
+        }
+        else
+        {
+            // otherwise combine bounds of all children
+            Bounds bounds = childRenderers[0].bounds;
+            for (int i = 1; i < childRenderers.Length; i++)
+            {
+                GameObject childObject = childRenderers[i].transform.gameObject;
+                if (
+                    childObject.activeSelf
+                    && !childObject.GetComponent<NegativeChargeParticleScript>()
+                )
+                {
+                    bounds.Encapsulate(childRenderers[i].bounds);
+                }
+            }
+            return bounds;
+        }
     }
 }
