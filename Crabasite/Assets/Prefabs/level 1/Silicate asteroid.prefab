@@ -741,7 +741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  requiredForce: 10
+  requiredForce: 2500
   breakCooldown: 3
   state0: {fileID: 6845474544457167453}
   state1: {fileID: 6845474543658705863}

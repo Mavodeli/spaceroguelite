@@ -10,7 +10,6 @@ public class AttractTwoBehaviour : MonoBehaviour
     //speed of the pull
     public float speed;
     Rigidbody2D myRigidbody;
-    float _force;
     Vector3 gameObjectToTargetDirection;
 
     //Collision detection script
@@ -29,7 +28,11 @@ public class AttractTwoBehaviour : MonoBehaviour
         myTransform = gameObject.GetComponent<Transform>();
         targetTransform = target.GetComponent<Transform>();
         myRigidbody = gameObject.GetComponent<Rigidbody2D>();
-        _force = 5;
+        // if we don't have a rigidbody, our parent should have one
+        if (!myRigidbody)
+        {
+            myRigidbody = transform.parent.gameObject.GetComponent<Rigidbody2D>();
+        }
 
         //set collision detection to continuous
         myRigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
@@ -62,13 +65,13 @@ public class AttractTwoBehaviour : MonoBehaviour
         );
         gameObjectToTargetDirection.Normalize();
 
-        myRigidbody.AddForce(gameObjectToTargetDirection * _force);
+        myRigidbody.AddForce(gameObjectToTargetDirection * speed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //if the Collision detector detects a collision with anything, the pull script will be destroyed to stop the pull
-        gameObject.SendMessage("addHealth", -5 * _force, SendMessageOptions.DontRequireReceiver);
+        gameObject.SendMessage("addHealth", -25, SendMessageOptions.DontRequireReceiver);
         gameObject.SendMessage("addHealthToGlassWall", -1, SendMessageOptions.DontRequireReceiver);
 
         //return collision detection to discrete
@@ -78,7 +81,7 @@ public class AttractTwoBehaviour : MonoBehaviour
         Vector3 randomizedBounceDirection =
             Quaternion.Euler(0, 0, randomAngle) * -gameObjectToTargetDirection;
         // bounce off collision
-        myRigidbody.AddForce(randomizedBounceDirection * 4 * _force);
+        myRigidbody.AddForce(randomizedBounceDirection * 4 * speed);
         // destroy
         DestroyOperation();
     }
@@ -93,5 +96,16 @@ public class AttractTwoBehaviour : MonoBehaviour
             particleObject.GetComponent<AttractTwoParticleScript>().DestroyParticleObject();
         }
         Destroy(this);
+    }
+
+    public void DelayedDestroyOperation(float time)
+    {
+        StartCoroutine(DelayedDestroyOperationCoroutine(time));
+    }
+
+    IEnumerator DelayedDestroyOperationCoroutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+        DestroyOperation();
     }
 }

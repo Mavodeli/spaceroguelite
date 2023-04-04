@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CrabClaw : MonoBehaviour
 {
-    [SerializeField] private float PullSpeed = 4;
-    [SerializeField] private float PushSpeed = 4;
+    [SerializeField] private float PullSpeed = 1000;
+    [SerializeField] private float PushSpeed = 1000;
     [SerializeField] private float range = 10;
     [SerializeField] private GameObject PushParticleSystemPrefab;
     [SerializeField] private GameObject PullParticleSystemPrefab;
@@ -59,7 +59,6 @@ public class CrabClaw : MonoBehaviour
             if(Input.GetMouseButton(0) && PM.hasMana()){
                 attachPullParticleSystem(hit.transform.gameObject);
                 objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
-                objectRigidbody.velocity = Vector3.zero;
                 objectRigidbody.AddForce(playerPos_relative_to_hit*PullSpeed);
 
                 soundController.SendMessage("playSoundLoopingSafe", new SoundParameter("PlayerPullSound", player, 0.5f, false), SendMessageOptions.DontRequireReceiver);
@@ -69,7 +68,6 @@ public class CrabClaw : MonoBehaviour
             if(Input.GetMouseButton(1) && PM.hasMana()){
                 PushParticleSystem.Play(true);
                 objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
-                objectRigidbody.velocity = Vector3.zero;
                 objectRigidbody.AddForce(mousePos_relative_to_player*PushSpeed);
                 // hit.transform.position += PushMI.getFrameDirection()*PushMI.getFrameSpeed()*Time.deltaTime;
 
@@ -111,7 +109,7 @@ public class CrabClaw : MonoBehaviour
             }
             if (!manaCooldown.runs())
             {
-                PM.addMana(1);
+                PM.addMana(3);
             }
         }
     }
