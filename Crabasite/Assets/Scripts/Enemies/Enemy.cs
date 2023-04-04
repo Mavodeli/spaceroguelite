@@ -155,7 +155,7 @@ public class Enemy : MonoBehaviour
             if (currentWaypoint >= path.vectorPath.Count) return;
             Vector3 direction = path.vectorPath[currentWaypoint] - gameObject.transform.position;
             direction.Normalize();
-            force = direction * speed * Time.deltaTime;
+            force = direction * speed;
             if (Vector2.Distance(gameObject.transform.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)
                 currentWaypoint++;
         }
@@ -163,7 +163,7 @@ public class Enemy : MonoBehaviour
         {
             Vector3[] map = getNormalizedDirectionMap();
             Vector3 direction = map[Random.Range(0, map.Length - 1)];
-            force = direction * speed * Time.deltaTime;
+            force = direction * speed;
         }
 
         //paralyze?
