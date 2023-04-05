@@ -72,7 +72,6 @@ public class AttractTwoBehaviour : MonoBehaviour
     {
         //if the Collision detector detects a collision with anything, the pull script will be destroyed to stop the pull
         float damageToDeal = -0.02f * lossyCollisionForce(collision);
-        Debug.Log(damageToDeal);
         gameObject.SendMessage("addHealth", damageToDeal, SendMessageOptions.DontRequireReceiver);
         collision.gameObject.SendMessage("addHealth", damageToDeal, SendMessageOptions.DontRequireReceiver);
         // we deal damage to both ourselves and the object we collided with
