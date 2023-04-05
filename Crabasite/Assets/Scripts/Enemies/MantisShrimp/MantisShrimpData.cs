@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="MantisShrimpData", menuName = "Enemy Data/Create MantisShrimpData")]
 public class MantisShrimpData : ScriptableObject
 {
-    public string texturePath = "Sprites/EnemyPlaceholder_MantisShrimp_249x171_Ammo";
+    public string texturePath = "Sprites/mantis_shrimp";
     public float textureScale = 1;
     public float health = 180;
     public float damage = 50;
@@ -20,6 +20,7 @@ public class MantisShrimpData : ScriptableObject
     public float spearTriggerDistance = 20;
     public string texturePathNoSpear = "Sprites/EnemyPlaceholder_MantisShrimp_249x171_noAmmo";
     public float textureScaleNoSpear = 1;
-    public string texturePathSpear = "Sprites/EnemyPlaceholder_MantisShrimp_55x12_Projectile";
+    public string texturePathSpear = "Sprites/projectile_mantis";
     public float textureScaleSpear = 1.5f;
+    public string path_to_controller = "Animation/Enemies/AC_mantis_shrimp";
 }
