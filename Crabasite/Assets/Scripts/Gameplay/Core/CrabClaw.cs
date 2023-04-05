@@ -23,7 +23,8 @@ public class CrabClaw : MonoBehaviour
     private Timer PullParticleCooldown;
 
 
-    void Start(){
+    void Start()
+    {
         DetectionLayer = LayerMask.GetMask("Raycast");
         player = GameObject.FindGameObjectWithTag("Player");
         PM = player.GetComponent<PlayerMana>();
@@ -37,75 +38,84 @@ public class CrabClaw : MonoBehaviour
         PushParticleSystem = PushParticleObject.GetComponent<ParticleSystem>();
         PushParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // prevent particles when loading into scene
     }
-    
+
     void Update()
-    {   
+    {
         //mousePos_relative_to_player: vector that points Player -> Mouse Cursor
-        Vector2 mousePos_relative_to_player = Camera.main.ScreenToWorldPoint(Input.mousePosition)-transform.position;
+        Vector2 mousePos_relative_to_player = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         mousePos_relative_to_player = new Vector2(mousePos_relative_to_player.x, mousePos_relative_to_player.y);
         mousePos_relative_to_player.Normalize();
 
-        //Ray characteristics
-        //- origin: Player Position
-        //- direction: normalized Mouse Cursor Position
-        //- maximal t: range
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, mousePos_relative_to_player, range, DetectionLayer);
-        if(hit.collider != null && !inventory.GetComponent<InventoryManager>().inventoryIsOpened){ // check if inventory is off to enable crab claw 
-            //playerPos_relative_to_hit: vector that points [location where the ray hits a collider] -> Player
-            Vector2 playerPos_relative_to_hit = transform.position-hit.transform.position;
-            playerPos_relative_to_hit.Normalize();
-
-            //update the position of the object hit by the ray
-            if(Input.GetMouseButton(0) && PM.hasMana()){
-                attachPullParticleSystem(hit.transform.gameObject);
-                objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
-                objectRigidbody.AddForce(playerPos_relative_to_hit*PullSpeed);
-
-                soundController.SendMessage("playSoundLoopingSafe", new SoundParameter("PlayerPullSound", player, 0.5f, false), SendMessageOptions.DontRequireReceiver);
-
-            }
-
-            if(Input.GetMouseButton(1) && PM.hasMana()){
-                PushParticleSystem.Play(true);
-                objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
-                objectRigidbody.AddForce(mousePos_relative_to_player*PushSpeed);
-                // hit.transform.position += PushMI.getFrameDirection()*PushMI.getFrameSpeed()*Time.deltaTime;
-
-                soundController.SendMessage("playSoundLoopingSafe", new SoundParameter("PlayerPushSound", player, 0.5f, false), SendMessageOptions.DontRequireReceiver);
-
-            }
-            else{
-                PushParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-            }
-
-            if((Input.GetMouseButton(0) || Input.GetMouseButton(1)) && !PM.hasMana()){
+        // only cast ray if mouse is being pressed, inventory is closed and the player has mana
+        if ((Input.GetMouseButton(0) || Input.GetMouseButton(1)) && !inventory.GetComponent<InventoryManager>().inventoryIsOpened)
+        {
+            // check if the player has mana
+            if (!PM.hasMana())
+            {
                 soundController.SendMessage("playSoundSafe", new SoundParameter("PlayerManaEmpty", player, 1f, false), SendMessageOptions.DontRequireReceiver);
             }
 
-            if(Input.GetMouseButtonUp(0)){
-                soundController.SendMessage("stopSound", "PlayerPullSound", SendMessageOptions.DontRequireReceiver);
-            }
-            if(Input.GetMouseButtonUp(1)){
-                soundController.SendMessage("stopSound", "PlayerPushSound", SendMessageOptions.DontRequireReceiver);
-            }
-            if(!PM.hasMana()){
-                soundController.SendMessage("stopSound", "PlayerPullSound", SendMessageOptions.DontRequireReceiver);
-                soundController.SendMessage("stopSound", "PlayerPushSound", SendMessageOptions.DontRequireReceiver);
-            }
+            // Raycast
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, mousePos_relative_to_player, range, DetectionLayer);
+            if (hit.collider != null)
+            {
+                Vector2 playerPos_relative_to_hit = transform.position - hit.transform.position;
+                playerPos_relative_to_hit.Normalize();
 
+                // pull
+                if (Input.GetMouseButton(0))
+                {
+                    // particles
+                    attachPullParticleSystem(hit.transform.gameObject);
+                    // apply force
+                    objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
+                    objectRigidbody.AddForce(playerPos_relative_to_hit * PullSpeed);
+                    // play sound
+                    soundController.SendMessage("playSoundLoopingSafe", new SoundParameter("PlayerPullSound", player, 0.5f, false), SendMessageOptions.DontRequireReceiver);
+                }
+
+                // push
+                if (Input.GetMouseButton(1))
+                {
+                    // particles
+                    PushParticleSystem.Play(true);
+                    // apply force
+                    objectRigidbody = hit.transform.gameObject.GetComponent<Rigidbody2D>();
+                    objectRigidbody.AddForce(mousePos_relative_to_player * PushSpeed);
+                    // play sound
+                    soundController.SendMessage("playSoundLoopingSafe", new SoundParameter("PlayerPushSound", player, 0.5f, false), SendMessageOptions.DontRequireReceiver);
+                }
+            }
+            else // no hit
+            {
+                stopAll();
+            }
+        }
+        else // no input, mana or inventory opened
+        {
+            stopAll();
         }
 
         PullParticleCooldown.Update();
     }
 
-       void FixedUpdate()
+    private void stopAll()
+    {
+        // particles
+        PushParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        // sounds
+        soundController.SendMessage("stopSound", "PlayerPullSound", SendMessageOptions.DontRequireReceiver);
+        soundController.SendMessage("stopSound", "PlayerPushSound", SendMessageOptions.DontRequireReceiver);
+    }
+
+    void FixedUpdate()
     {
         if (!inventory.GetComponent<InventoryManager>().inventoryIsOpened)
         {
             if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
             {
                 PM.addMana(-2);
-                manaCooldownTimer(2.5f);
+                manaCooldownTimer(1.5f);
             }
             if (!manaCooldown.runs())
             {
@@ -122,9 +132,10 @@ public class CrabClaw : MonoBehaviour
         }
     }
 
-    void attachPullParticleSystem(GameObject targetObject) {
+    void attachPullParticleSystem(GameObject targetObject)
+    {
         // if the target is constructed of multiple smaller pieces, attach one to each
-        if (!PullParticleCooldown.is_running()) 
+        if (!PullParticleCooldown.is_running())
         {
             GameObject newSystem = Transform.Instantiate(PullParticleSystemPrefab);
             newSystem.transform.SetParent(targetObject.transform, false);
