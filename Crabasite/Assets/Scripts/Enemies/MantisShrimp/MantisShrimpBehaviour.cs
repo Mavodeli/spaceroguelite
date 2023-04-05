@@ -25,7 +25,8 @@ public class MantisShrimpBehaviour : Enemy
                         msd.gameObjectName,//name 
                         shrimpWithSpear,//sprite 
                         msd.textureScale,//sprite scale modifier
-                        msd.stoppingDistance//stopping distance
+                        msd.stoppingDistance,//stopping distance
+                        msd.path_to_controller
                         );
         spear1_timer = new TimerObject(msd.gameObjectName+" spear1_timer");
         spear2_timer = new TimerObject(msd.gameObjectName+" spear2_timer");
