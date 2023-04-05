@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashDistance = 15f;
     public float dashDuration = 0.1f;
     public float dash_cooldown = 1f;
+    public float walkingAnimationCutoffSpeed = 0.5f;
 
     private TimerObject paralyze_timer;
     private TimerObject dash_cooldown_timer;
@@ -71,22 +72,26 @@ public class PlayerMovement : MonoBehaviour
             force.y = 0;
 
         rb.AddForce(force);
-        if(GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().gravityScale > 0)
-        {
-            if(force != new Vector2(0,0))
-            {
-            animator.SetBool("walk", true);
-            }
-            if(force == new Vector2(0,0))
-            {
-            animator.SetBool("walk",false);
-        } 
-        }else{
-            animator.SetBool("fly",true);
-        }
-        
 
-        
+        if (rb.gravityScale > 0)
+        {
+            animator.SetBool("fly", false);
+
+            float lossyPlayerSpeed = Mathf.Abs((rb.velocity.x + rb.velocity.y) / 2);
+            if (lossyPlayerSpeed >= walkingAnimationCutoffSpeed)
+            {
+                animator.SetBool("walk", true);
+            }
+            if (lossyPlayerSpeed < walkingAnimationCutoffSpeed)
+            {
+                animator.Play("anim_idle", -1); // don't wait for animation to finish
+                animator.SetBool("walk", false);
+            }
+        }
+        else
+        {
+            animator.SetBool("fly", true);
+        }
     }
 
     IEnumerator Dash(Vector2 dir)

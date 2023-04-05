@@ -4838,26 +4838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c389136544bf47799f9a1ee83249463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1760991953
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258273435}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 86c46dd847da9b547807f4cce0e76d2c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1772335244
 PrefabInstance:
   m_ObjectHideFlags: 0
