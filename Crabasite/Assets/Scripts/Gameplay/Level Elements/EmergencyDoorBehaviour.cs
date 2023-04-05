@@ -47,7 +47,7 @@ public class EmergencyDoorBehaviour : MonoBehaviour, IDataPersistence
             GameObject GH = GameObject.FindGameObjectWithTag("GameHandler");
             GH.SendMessage("addNewQuest", "OpenTheEmergencyDoor", SendMessageOptions.DontRequireReceiver);
         });
-        ib.setNewOffset(new Vector3(0, 0, 0));
+        ib.setNewOffset(new Vector3(0, -2.8f, 0));
         ib.setInteractability(unlocked);
     }
 
