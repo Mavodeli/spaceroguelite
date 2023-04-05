@@ -30,6 +30,7 @@ public class GameData
     public float soundVolume;
     public bool isFullscreen;
     public int resolutionsIndex;
+    public float textSpeed;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there is no data to Load
@@ -60,5 +61,6 @@ public class GameData
         this.soundVolume = 0;
         this.isFullscreen = true;
         this.resolutionsIndex = 0;
+        this.textSpeed = 200.0f;
     }
 }

@@ -27,7 +27,7 @@ public class CommentarySystem : MonoBehaviour
     private static bool instanciatedTypingSounds = false;
     private static string typeWriterText = "";
     private static int typeWriterCounter = 0;
-    private const float AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS = 0.005f;
+    private float AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS = 0.005f;
     private static float timeSinceLastLetterAppeared = 0f;
 
     void Start(){
@@ -188,6 +188,10 @@ public class CommentarySystem : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
             StartCoroutine(typingSounds());
         }
+    }
+
+    public void setTypeWriterSpeed(float charsPerSecond) {
+        AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS = 1.0f / charsPerSecond;
     }
 }
 

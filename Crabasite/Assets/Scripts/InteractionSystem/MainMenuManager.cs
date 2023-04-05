@@ -29,6 +29,8 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject settingsText;
     [SerializeField] private GameObject graphicsText;
     [SerializeField] private GameObject resolutionsText;
+    [SerializeField] private Slider textSpeedSlider;
+    [SerializeField] private GameObject textSpeedText;
 
     public AudioMixer audioMixer;
     Resolution[] resolutions;
@@ -39,6 +41,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     private float soundVolume = 0;
     public bool isFullscreen;
     public int resolutionsIndex;
+    public float textSpeed = 200.0f;
 
 
     private void Awake()
@@ -145,6 +148,20 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
         resolutionsIndex = resolutionIndex;
     }
+    public void SetTextSpeed (float textSpeed)
+    {
+        this.textSpeed = textSpeed;
+        GameObject cBox = GameObject.Find("CommentBox");
+        CommentarySystem cs;
+        if (cBox) {
+            cs = GameObject.Find("CommentBox").GetComponent<CommentarySystem>();
+        } else {
+            cs = null;
+        }
+        if (cs) { // if there is one in the scene, update it directly (for if we add in-game options)
+            cs.setTypeWriterSpeed(textSpeed);
+        }
+    }
 
     // Section for general Funtions
     // ============================
@@ -169,6 +186,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         graphicsDD.interactable = false;
         resolutionsDD.interactable = false;
         fullscreenToggle.interactable = false;
+        textSpeedSlider.interactable = false;
     }
     public void EnableOptionButtons()
     {
@@ -177,6 +195,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         graphicsDD.interactable = true;
         resolutionsDD.interactable = true;
         fullscreenToggle.interactable = true;
+        textSpeedSlider.interactable = true;
     }
     private void InvisibleMenuButtons()
     {
@@ -204,6 +223,8 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         resolutionsDD.gameObject.SetActive(true);
         volumeSlider.gameObject.SetActive(true);
         fullscreenToggle.gameObject.SetActive(true);
+        textSpeedSlider.gameObject.SetActive(true);
+        textSpeedText.gameObject.SetActive(true);
     }
     private void InvisibleOptionScreen()
     {
@@ -216,6 +237,8 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         resolutionsDD.gameObject.SetActive(false);
         volumeSlider.gameObject.SetActive(false);
         fullscreenToggle.gameObject.SetActive(false);
+        textSpeedSlider.gameObject.SetActive(false);
+        textSpeedText.gameObject.SetActive(false);
     }
     
         
@@ -227,6 +250,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         this.soundVolume = data.soundVolume;
         this.isFullscreen = data.isFullscreen;
         this.resolutionsIndex = data.resolutionsIndex;
+        this.textSpeed = data.textSpeed;
     }
     public void SaveData(ref GameData data)
     {
@@ -235,6 +259,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         data.soundVolume = this.soundVolume;
         data.isFullscreen = this.isFullscreen;
         data.resolutionsIndex = this.resolutionsIndex;
+        data.textSpeed = this.textSpeed;
     }
 
 }
