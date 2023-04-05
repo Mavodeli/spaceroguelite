@@ -62,8 +62,9 @@ public class AttractTwo : Ultimate
         if (selectedObject1 == null)
         {
             selectedObject1 = RayCastSelect.SelectTarget(key);
+            Rigidbody2D rb1 = selectedObject1.GetComponent<Rigidbody2D>();
             // if we hit a valid target we attach the selection animation
-            if (selectedObject1)
+            if (selectedObject1 && rb1)
             {
                 attachSelectionAnimation(selectedObject1);
             }
@@ -74,7 +75,8 @@ public class AttractTwo : Ultimate
         {
             //only assign the selected object if the found target is not the same gameobject as the first
             GameObject selectedObject = RayCastSelect.SelectTarget(key);
-            if (selectedObject1 != selectedObject)
+            Rigidbody2D rb = selectedObject1.GetComponent<Rigidbody2D>();
+            if ((selectedObject1 != selectedObject) && rb)
             {
                 selectedObject2 = selectedObject;
             }

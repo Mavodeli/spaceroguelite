@@ -17,8 +17,8 @@ public class ProgressionParentClass : MonoBehaviour, IDataPersistence
     public void spawnItem(object[] args){
 
         if((string)args[0] == "CrushOrb"){
-            CommentarySystem.displayProtagonistComment("onAnglerFishDied");
             Spawn.Item("CrushOrb", (Vector3)args[1], delegate(){
+                CommentarySystem.displayProtagonistComment("onAnglerFishDied");
                 int ult = 1;//crush
                 GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
                 IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);
