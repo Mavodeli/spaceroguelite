@@ -34,6 +34,7 @@ public class GlassWallBehaviour : MonoBehaviour
         dpm.getGameData().AS_GlassWallIntact = false;
         bc.enabled = false;
         sr.sprite = brokenSprite;
+        transform.localScale = new Vector3(0, 0, 0);
     }
 
     private void addHealthToGlassWall(int hp){
