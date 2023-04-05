@@ -98,7 +98,7 @@
     "cuttingRoomFloorBC1.1" :
     "So, while you were figuring out how to get that door open, I had a look into our ships' database and found an old manual for spaceship IPAs.",
     "cuttingRoomFloorBC1.2" :
-    "Apparently, the earlier versions had issues with paradox detection. There are multiple reports on really dumb IAs that completely flatlined 'cause of recursion overflow.",
+    "Apparently, the earlier versions had issues with paradox detection. There are multiple reports on really dumb AIs that completely flatlined 'cause of recursion overflow.",
     "cuttingRoomFloorBC1.3" :
     "Maybe we can just talk that evil AI into blowing itself up by asking it to decide some stupid problems?",
     "cuttingRoomFloorMC1" :
