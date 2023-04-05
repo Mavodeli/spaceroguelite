@@ -65,7 +65,7 @@ public class SeelieBehaviour : MonoBehaviour
             if (Vector2.Distance(gameObject.transform.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)
                 currentWaypoint++;
             
-            if(Vector3.Distance(gameObject.transform.position, destination) <= maxDistanceToPlayer)
+            // if(Vector3.Distance(gameObject.transform.position, destination) <= maxDistanceToPlayer)
         }
         else
         {
