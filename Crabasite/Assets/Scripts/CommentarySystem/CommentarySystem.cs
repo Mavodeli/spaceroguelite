@@ -24,9 +24,10 @@ public class CommentarySystem : MonoBehaviour
 
     // Typewriter effect
     private static bool isTypeWriting = false;
+    private static bool instanciatedTypingSounds = false;
     private static string typeWriterText = "";
     private static int typeWriterCounter = 0;
-    private const float AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS = 0.05f;
+    private const float AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS = 0.005f;
     private static float timeSinceLastLetterAppeared = 0f;
 
     void Start(){
@@ -45,7 +46,6 @@ public class CommentarySystem : MonoBehaviour
         bcCommentSprite = Resources.Load<Sprite>("Sprites/TextBoxes/TextBoxBCCommentWithArrow");
 
         stashedComments = new Queue<string>();
-
     }
 
     void Update(){
@@ -56,14 +56,23 @@ public class CommentarySystem : MonoBehaviour
         // }
         // if(str != "stashedComments: ") Debug.Log(str);
 
+        if (!isTypeWriting && instanciatedTypingSounds)
+        {
+            instanciatedTypingSounds = false;
+        }
+
         if(alreadyShowingComment && isTypeWriting){
             if(Input.GetKeyDown("e")){
                 isTypeWriting = false;
                 textToBeDisplayed.text = typeWriterText;
             } else {
+                if (!instanciatedTypingSounds)
+                {
+                    StartCoroutine(typingSounds());
+                    instanciatedTypingSounds = true;
+                }
                 if(timeSinceLastLetterAppeared >= AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS){
                     textToBeDisplayed.text += typeWriterText[typeWriterCounter];
-                    soundController.SendMessage("playSound", new SoundParameter("TypewriterSound", this.gameObject, 0.75f, false));
                     typeWriterCounter++;
                     timeSinceLastLetterAppeared -= AMOUNT_OF_SECONDS_UNTIL_NEXT_LETTER_APPEARS;
                     if(textToBeDisplayed.text == typeWriterText){
@@ -169,6 +178,16 @@ public class CommentarySystem : MonoBehaviour
             }
         }
         return result;
+    }
+
+    private IEnumerator typingSounds()
+    {
+        if (isTypeWriting)
+        {
+            soundController.SendMessage("playSound", new SoundParameter("TypewriterSound", this.gameObject, 0.75f, false));
+            yield return new WaitForSeconds(0.05f);
+            StartCoroutine(typingSounds());
+        }
     }
 }
 
