@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1497496389780142235
+--- !u!1 &2874692843093071284
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3181614862692976465}
-  - component: {fileID: 260857939645100705}
-  m_Layer: 0
+  - component: {fileID: 2237028136644962942}
+  - component: {fileID: 3508893487796789134}
+  - component: {fileID: 8441287922699325619}
+  m_Layer: 6
   m_Name: AS_PlayerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3181614862692976465
+--- !u!4 &2237028136644962942
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1497496389780142235}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.318344, y: 20.108007, z: -0.4458703}
+  m_GameObject: {fileID: 2874692843093071284}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -22.19, y: -17.69, z: -2.7499}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!68 &260857939645100705
+--- !u!68 &3508893487796789134
 EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1497496389780142235}
+  m_GameObject: {fileID: 2874692843093071284}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -48,30 +49,58 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -22.192295, y: 3.354082}
-  - {x: -22.11284, y: -6.880744}
-  - {x: -20.194492, y: -6.892605}
-  - {x: -20.257908, y: -19.703758}
-  - {x: -49.52581, y: -19.638052}
-  - {x: -49.387047, y: -2.546671}
-  - {x: -27.271948, y: -2.5705624}
-  - {x: -27.187342, y: -6.91152}
-  - {x: -25.488834, y: -6.8639812}
-  - {x: -25.293118, y: 3.2580566}
-  - {x: -49.460655, y: 3.365055}
-  - {x: -49.439697, y: 12.490192}
-  - {x: -45.083946, y: 12.495947}
-  - {x: -45.117508, y: 13.265093}
-  - {x: -49.39803, y: 13.290567}
-  - {x: -49.437508, y: 20.38429}
-  - {x: -20.354193, y: 20.416597}
-  - {x: -20.332077, y: 13.224794}
-  - {x: -42.94315, y: 13.263964}
-  - {x: -42.81404, y: 12.498945}
-  - {x: 52.66703, y: 12.434418}
-  - {x: 52.68238, y: 3.444933}
-  - {x: 52.68238, y: 3.444933}
-  m_AdjacentStartPoint: {x: 36.9, y: 3.4}
-  m_AdjacentEndPoint: {x: 36.9, y: 3.4}
-  m_UseAdjacentStartPoint: 1
-  m_UseAdjacentEndPoint: 1
+  - {x: -31.401478, y: 38.995235}
+  - {x: 0.7171898, y: 38.766296}
+  - {x: 0.66320705, y: 20.166931}
+  - {x: -0.24093914, y: 15.988941}
+  - {x: -0.2953148, y: 1.7386813}
+  - {x: 0.52755165, y: 1.7780647}
+  - {x: 0.5735359, y: 15.222422}
+  - {x: 23.635683, y: 15.182417}
+  - {x: 23.62136, y: 9.45433}
+  - {x: 26.167751, y: 9.461248}
+  - {x: 26.201406, y: 16.178606}
+  - {x: 21.078688, y: 16.15324}
+  - {x: 21.087257, y: 20.14241}
+  - {x: 25.32662, y: 20.147684}
+  - {x: 25.32661, y: 19.401033}
+  - {x: 26.218279, y: 19.400782}
+  - {x: 26.226675, y: 21.087132}
+  - {x: 1.5256195, y: 21.079424}
+  - {x: 1.5481033, y: 30.109837}
+  - {x: 5.9165745, y: 30.076048}
+  - {x: 5.890318, y: 31.02794}
+  - {x: 1.5578117, y: 30.986856}
+  - {x: 1.5701437, y: 38.141293}
+  - {x: 30.553062, y: 38.093437}
+  - {x: 30.529493, y: 30.995947}
+  - {x: 7.8129997, y: 30.967752}
+  - {x: 7.895416, y: 30.10158}
+  - {x: 102.54999, y: 30.08977}
+  - {x: 102.51485, y: 21.085297}
+  - {x: 29.69199, y: 21.020542}
+  - {x: 29.73397, y: -1.9418111}
+  - {x: -0.2622671, y: -1.9404607}
+  - {x: -0.22633743, y: -2.7348728}
+  - {x: -31.527775, y: -2.7788043}
+  - {x: -31.522102, y: 38.455765}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!114 &8441287922699325619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2874692843093071284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 7135511919460309971
+  updateError: 1
+  checkTime: 0.2
