@@ -29,9 +29,7 @@ public class SeelieBehaviour : MonoBehaviour
         seeker = gameObject.GetComponent<Seeker>();
         currentWaypoint = 0;
         nextWaypointDistance = 3.0f;
-        stoppingDistance = 2;
         player = GameObject.FindGameObjectWithTag("Player");
-        destination = new Vector3(0, 0, 0);//TODO
         StartCoroutine(UpdateCoroutine(.5f));
     }
 
@@ -66,9 +64,12 @@ public class SeelieBehaviour : MonoBehaviour
             direction.Normalize();
             if (Vector2.Distance(gameObject.transform.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)
                 currentWaypoint++;
+            
+            if(Vector3.Distance(gameObject.transform.position, destination) <= maxDistanceToPlayer)
         }
         else
         {
+            rb.velocity = new Vector2(0, 0);
             direction = Vector3.zero;
         }
         force = direction * speed;
