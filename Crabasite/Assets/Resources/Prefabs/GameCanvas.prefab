@@ -1268,6 +1268,7 @@ GameObject:
   - component: {fileID: 5087621037232615383}
   - component: {fileID: 1741156894377827742}
   - component: {fileID: 8932174430204681903}
+  - component: {fileID: 7844206855301231180}
   m_Layer: 5
   m_Name: CommentBox
   m_TagString: Untagged
@@ -1344,6 +1345,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d31e13f60b361e449b83e7d2058f1dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7844206855301231180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3184199104836366042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90661ce17630851408d5279ee214b76c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3215014033347614263
