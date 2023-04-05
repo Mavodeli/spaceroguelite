@@ -186,9 +186,11 @@ public class DataPersistenceManager : MonoBehaviour
         return gameData != null;
     }
 
-    public GameData getGameData(){
+    public GameData getGameData(bool fromFile = false){
         if(HasGameData())
             return gameData;
+        if(fromFile)
+            return dataHandler.Load();
         return null;
     }
 }

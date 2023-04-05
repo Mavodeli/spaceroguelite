@@ -21,24 +21,24 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                     script.Setup(delegate () {
                         showCommentOnInspectingCrabasite();
 
-                        if(true//ensure that the player 'collected' all quests for the space level
-                            // QuestIsCompletedOrActive("FindSilicate") &&
-                            // QuestIsCompletedOrActive("RepairSpaceship") &&
-                            // QuestIsCompletedOrActive("RechargeThrusters")
+                        if(//ensure that the player 'collected' all quests for the space level
+                            QuestIsCompletedOrActive("FindSilicate") &&
+                            QuestIsCompletedOrActive("RepairSpaceship") &&
+                            QuestIsCompletedOrActive("RechargeThrusters")
                         ){
                             GameObject.Find("Sounds").SendMessage("playSound", new SoundParameter("SpaceShipDoor", GameObject.Find("SoundHolder"), 1f, true), SendMessageOptions.DontRequireReceiver);
-                            // SceneManager.LoadScene("Level 1 - space");
+                            SceneManager.LoadScene("Level 1 - space");
 
                             // debug scene switch
-                            SceneManager.LoadScene("Level 2 - abandoned spaceship");
+                            // SceneManager.LoadScene("Level 2 - abandoned spaceship");
 
                             // debug ulti unlock
-                            GameObject inv = GameObject.FindGameObjectWithTag("Inventory");
-                            inv.SendMessage("unlockUltimate", 0, SendMessageOptions.DontRequireReceiver);
-                            inv.SendMessage("unlockUltimate", 1, SendMessageOptions.DontRequireReceiver);
-                            inv.SendMessage("unlockUltimate", 2, SendMessageOptions.DontRequireReceiver);
-                            GameObject player = GameObject.FindGameObjectWithTag("Player");
-                            player.SendMessage("SwitchUltimate", 0, SendMessageOptions.DontRequireReceiver);
+                            // GameObject inv = GameObject.FindGameObjectWithTag("Inventory");
+                            // inv.SendMessage("unlockUltimate", 0, SendMessageOptions.DontRequireReceiver);
+                            // inv.SendMessage("unlockUltimate", 1, SendMessageOptions.DontRequireReceiver);
+                            // inv.SendMessage("unlockUltimate", 2, SendMessageOptions.DontRequireReceiver);
+                            // GameObject player = GameObject.FindGameObjectWithTag("Player");
+                            // player.SendMessage("SwitchUltimate", 0, SendMessageOptions.DontRequireReceiver);
 
                             Time.timeScale = 1;
                         }
