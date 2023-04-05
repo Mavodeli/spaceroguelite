@@ -20,8 +20,8 @@ public class GlassWallBehaviour : MonoBehaviour
         HS = new HealthSystem(1, 1);
 
         sr = gameObject.GetComponent<SpriteRenderer>();
-        intactSprite = Resources.Load<Sprite>("Sprites/StationaryObjects/window_element");
-        brokenSprite = Resources.Load<Sprite>("TODO");
+        intactSprite = Resources.Load<Sprite>("Sprites/StationaryObjects/glass_intact");
+        brokenSprite = Resources.Load<Sprite>("Sprites/StationaryObjects/glass_broken");
         if(isIntact) sr.sprite = intactSprite;
         else sr.sprite = brokenSprite;
 

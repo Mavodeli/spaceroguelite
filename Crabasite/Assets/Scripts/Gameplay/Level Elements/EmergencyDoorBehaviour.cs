@@ -27,8 +27,8 @@ public class EmergencyDoorBehaviour : MonoBehaviour, IDataPersistence
         bc = gameObject.GetComponent<BoxCollider2D>();
 
         sr = gameObject.GetComponent<SpriteRenderer>();
-        closedSprite = Resources.Load<Sprite>("TODO");
-        openSprite = Resources.Load<Sprite>("TODO");
+        closedSprite = Resources.Load<Sprite>("Sprites/StationaryObjects/emerg_closed");
+        openSprite = Resources.Load<Sprite>("Sprites/StationaryObjects/emerg_open");
 
         ib = gameObject.GetComponent<InteractionButton>();
         ib.Setup(delegate(){
