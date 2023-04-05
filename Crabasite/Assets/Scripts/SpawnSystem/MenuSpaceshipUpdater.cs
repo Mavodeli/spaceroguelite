@@ -30,7 +30,6 @@ public class MenuSpaceshipUpdater : MonoBehaviour
 
     private IEnumerator waitForCanvasDraw(){
         yield return new WaitForEndOfFrame();
-        Debug.Log(sprite);
         gameObject.GetComponent<Image>().sprite = sprite;
     }
 }
