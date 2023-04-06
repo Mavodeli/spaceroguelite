@@ -25,7 +25,7 @@ MonoBehaviour:
   meleeCooldown: 0.5
   stoppingDistance: 10
   spearTriggerDistance: 20
-  texturePathNoSpear: Sprites/EnemyPlaceholder_MantisShrimp_249x171_noAmmo
+  texturePathNoSpear: Sprites/mantis_shrimp
   textureScaleNoSpear: 1
   texturePathSpear: Sprites/projectile_mantis
   textureScaleSpear: 1.5
