@@ -59,6 +59,11 @@ public class EnemyProjectile : MonoBehaviour
         bc = gameObject.AddComponent<BoxCollider2D>();
         bc.size = sr.size;
         bc.isTrigger = true;
+
+        //setup spawn position
+        Vector3 Psr_extends = _parent.GetComponent<SpriteRenderer>().bounds.extents;
+        float meanOffset = (Psr_extends.x+Psr_extends.y)/2;
+        transform.position = _parent.transform.position + (targetDirection*meanOffset);
     }
 
     void Update(){
@@ -66,7 +71,13 @@ public class EnemyProjectile : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        if((other.gameObject != parent) && (other.gameObject.name != gameObject.name) && (other.gameObject.tag != "AbandonedSpaceshipCollider")){
+        if(
+            (other.gameObject != parent) && 
+            (other.gameObject.name != gameObject.name) &&
+            (other.gameObject.tag != "ProgressionTrigger") &&
+            (other.gameObject.tag != "AbandonedSpaceshipCollider")
+        ){
+            Debug.Log(other.gameObject.name);
             del(other);
             GameObject.Destroy(gameObject);
         }

@@ -16,7 +16,8 @@ public class MantisShrimpBehaviour : Enemy
         msd = Resources.Load<MantisShrimpData>("ScriptableObjects/EnemyData/MantisShrimpData");
         shrimpWithSpear = getSprite(Resources.Load<Texture2D>(msd.texturePath));
         shrimpWithoutSpear = getSprite(Resources.Load<Texture2D>(msd.texturePathNoSpear));
-        shrimpSpear = getSprite(Resources.Load<Texture2D>(msd.texturePathSpear));
+        Texture2D spearTex = Resources.Load<Texture2D>(msd.texturePathSpear);
+        shrimpSpear = getSprite(spearTex, new Rect(0, 0, spearTex.width/3, spearTex.height));
         initialSetup(msd.health,//health 
                         msd.health,//max health
                         msd.meleeDamage,//melee 
@@ -57,9 +58,10 @@ public class MantisShrimpBehaviour : Enemy
         bc.size = sr.size;
     }
 
-    private static Sprite getSprite(Texture2D tex){
+    private static Sprite getSprite(Texture2D tex, Rect subpart = new Rect()){
+        if(subpart == new Rect()) subpart = new Rect(0.0f, 0.0f, tex.width, tex.height);
         return Sprite.Create(tex, //texture
-                                new Rect(0.0f, 0.0f, tex.width, tex.height), //subpart of the texture to create the sprite from
+                                subpart, //subpart of the texture to create the sprite from
                                 new Vector2(0.5f, 0.5f), //new sprite origin \in [0,1]^2
                                 100.0f, //number of pixels in the sprite that correspond to one unit in world space
                                 0, //amount by which the sprite mesh should be expanded outwards
