@@ -1,7 +1,31 @@
 + Credits
 
-# Programming
-- John Doe
+# Producers
 
-# Rigging
-- Bob the Builder
+# Programmers
+
+# Character Artists
+
+# Background Artists
+
+# UI Designers
+
+# Level Designers
+
+# Visual Effects Artists
+
+# Sound Designers
+
+# Narrative Designers
+
+# QA Testers
+
+# Marketing/PR Managers
+
+# The game utilizes the following software
+- A* Pathfinding Project (Free version) by Aron Granberg
+- Json.NET by James Newton-King
+
+# Special Thanks
+- Andreas Engelhardt
+- Zohreh Ghaderi
