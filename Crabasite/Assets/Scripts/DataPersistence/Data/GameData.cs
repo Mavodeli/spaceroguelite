@@ -25,12 +25,6 @@ public class GameData
     public Vector3 AS_EngineRoomRotation;
     public Vector3 AS_EngineRoomScale;
 
-    // Options related Savedata
-    public int graphicsIndex;
-    public float soundVolume;
-    public bool isFullscreen;
-    public int resolutionsIndex;
-    public float textSpeed;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there is no data to Load
@@ -57,10 +51,5 @@ public class GameData
         this.AS_EngineRoomPosition = new Vector3(-8, 27.9f, 0);
         this.AS_EngineRoomRotation = new Vector3(0, 0, 0);
         this.AS_EngineRoomScale = new Vector3(1.9f,0.2f,1);
-        this.graphicsIndex = 0;
-        this.soundVolume = 0;
-        this.isFullscreen = true;
-        this.resolutionsIndex = 0;
-        this.textSpeed = 200.0f;
     }
 }

@@ -12,10 +12,7 @@ public class ApplyTypeWriterSpeed : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager").GetComponent<DataPersistenceManager>();
-
-        GameData gd = dpm.getGameData(false);
-
-        gameObject.GetComponent<CommentarySystem>().setTypeWriterSpeed(gd.textSpeed);
+        OptionData optionData = OptionPersistenceManager.instance.GetOptionData();
+        gameObject.GetComponent<CommentarySystem>().setTypeWriterSpeed(optionData.textSpeed);
     }
 }

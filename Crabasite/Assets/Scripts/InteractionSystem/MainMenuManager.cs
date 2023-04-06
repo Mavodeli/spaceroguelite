@@ -37,11 +37,11 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
 
     // Added for the GameData to save
     private string level = "Level 0 - spaceship";
-    private int graphicsIndex = 0;
-    private float soundVolume = 0;
+    private int graphicsIndex;
+    private float soundVolume;
     public bool isFullscreen;
     public int resolutionsIndex;
-    public float textSpeed = 200.0f;
+    public float textSpeed;
 
 
     private void Awake()
@@ -77,8 +77,6 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         }
 
         resolutionsDD.AddOptions(options);
-        resolutionsDD.value = currentResolutionIndex;
-        resolutionsDD.RefreshShownValue();
     }
     // Section for the Main Menu Page
     // ==============================
@@ -102,8 +100,9 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         DisableMenuButtons();
         InvisibleMenuButtons();
         VisibleOptionScreen();
-        EnableMenuButtons();
-        // Add Options Screen here with settings.
+        EnableOptionButtons();
+        LoadOptions();
+        updateOptionControls();
     }
     public void QuitGameMenu()
     {
@@ -120,9 +119,10 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     public void BackToMenu()
     {
         DisableOptionButtons();
-        VisibleMenuButtons();
         InvisibleOptionScreen();
-        EnableOptionButtons();
+        EnableMenuButtons();
+        VisibleMenuButtons();
+        SaveOptions();
     }
 
     public void SetVolume(float volume)
@@ -246,20 +246,36 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         this.level = data.level;
-        this.graphicsIndex = data.graphicsIndex;
-        this.soundVolume = data.soundVolume;
-        this.isFullscreen = data.isFullscreen;
-        this.resolutionsIndex = data.resolutionsIndex;
-        this.textSpeed = data.textSpeed;
     }
     public void SaveData(ref GameData data)
     {
         data.level = this.level;
-        data.graphicsIndex = this.graphicsIndex;
-        data.soundVolume = this.soundVolume;
-        data.isFullscreen = this.isFullscreen;
-        data.resolutionsIndex = this.resolutionsIndex;
-        data.textSpeed = this.textSpeed;
     }
 
+    public void LoadOptions() {
+        OptionData optionData = OptionPersistenceManager.instance.GetOptionData();
+        this.graphicsIndex = optionData.graphicsIndex;
+        this.soundVolume = optionData.soundVolume;
+        this.isFullscreen = optionData.isFullscreen;
+        this.resolutionsIndex = optionData.resolutionsIndex;
+        this.textSpeed = optionData.textSpeed;
+    }
+    public void SaveOptions() {
+        OptionData optionData = new OptionData();
+        optionData.graphicsIndex = this.graphicsIndex;
+        optionData.soundVolume = this.soundVolume;
+        optionData.isFullscreen = this.isFullscreen;
+        optionData.resolutionsIndex = this.resolutionsIndex;
+        optionData.textSpeed = this.textSpeed;
+        OptionPersistenceManager.instance.SetOptionData(optionData);
+    }
+
+    private void updateOptionControls()
+    {
+        volumeSlider.value = this.soundVolume;
+        textSpeedSlider.value = this.textSpeed;
+        fullscreenToggle.isOn = this.isFullscreen;
+        graphicsDD.value = this.graphicsIndex;
+        resolutionsDD.value = this.resolutionsIndex;
+    }
 }
