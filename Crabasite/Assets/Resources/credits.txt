@@ -1,30 +1,50 @@
 + Credits
 
+
 # Producers
+- Niklas Munkes
+
 
 # Programmers
+- Niklas Munkes
+
 
 # Character Artists
 
+
 # Background Artists
+
 
 # UI Designers
 
+
 # Level Designers
+
 
 # Visual Effects Artists
 
+
 # Sound Designers
 
+
 # Narrative Designers
+- Niklas Munkes
+
 
 # QA Testers
+- Niklas Munkes
+
 
 # Marketing/PR Managers
+- Niklas Munkes
+
+
 
 # The game utilizes the following software
 - A* Pathfinding Project (Free version) by Aron Granberg
 - Json.NET by James Newton-King
+
+
 
 # Special Thanks
 - Andreas Engelhardt
