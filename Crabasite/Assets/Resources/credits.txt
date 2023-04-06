@@ -56,6 +56,8 @@
 # Software used to create Assets
 - After Effects CC
 - Photoshop CC
+- Krita
+- PureRef
 
 
 
