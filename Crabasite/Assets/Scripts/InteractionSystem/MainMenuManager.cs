@@ -141,6 +141,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     public void SetFullscreen (bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+        this.isFullscreen = isFullscreen;
     }
     public void SetResolution (int resolutionIndex)
     {

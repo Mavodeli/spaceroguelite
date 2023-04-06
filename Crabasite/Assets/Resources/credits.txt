@@ -3,25 +3,30 @@
 
 # Producers
 - Niklas Munkes
+- Manuel von der Linden
 
 
 # Programmers
 - Niklas Munkes
+- Manuel von der Linden
 
 
 # Character Artists
 
 
 # Background Artists
+- Manuel von der Linden
 
 
 # UI Designers
 
 
 # Level Designers
+- Manuel von der Linden
 
 
 # Visual Effects Artists
+- Manuel von der Linden
 
 
 # Sound Designers
@@ -33,6 +38,7 @@
 
 # QA Testers
 - Niklas Munkes
+- Manuel von der Linden
 
 
 # Marketing/PR Managers
@@ -41,8 +47,15 @@
 
 
 # The game utilizes the following software
+- Unity 2021.3.13f1
 - A* Pathfinding Project (Free version) by Aron Granberg
 - Json.NET by James Newton-King
+
+
+
+# Software used to create Assets
+- After Effects CC
+- Photoshop CC
 
 
 
