@@ -14,8 +14,9 @@ public class GameOverScreen : MonoBehaviour
     }
 
     public void RestartButton() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        DataPersistenceManager dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager").GetComponent<DataPersistenceManager>();
+        dpm.LoadGame(true);
+        SceneManager.LoadScene(dpm.getGameData().level);
         Time.timeScale = 1;
     }
-
 }
