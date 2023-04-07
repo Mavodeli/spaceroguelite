@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2467022203168586271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.7, y: 8.03, z: 11.516738}
+  m_LocalPosition: {x: -18.7, y: 8.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 2694980083383913633
+  uniqueID: 6937115806941158053
   updateError: 1
   checkTime: 0.2
 --- !u!95 &2467022203168586256
@@ -213,7 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0236cc909be1442bed187c3841c3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  maxDistanceToPlayer: 10
-  stoppingDistance: 10
-  destination: {x: 0, y: 0, z: 0}
+  speed: 4
+  maxDistanceToPlayer: 5
+  destination: {x: -30.95432, y: 27.674675, z: 4.9787545}
