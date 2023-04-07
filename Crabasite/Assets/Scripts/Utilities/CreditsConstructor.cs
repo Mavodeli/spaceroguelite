@@ -26,7 +26,8 @@ public class CreditsConstructor : MonoBehaviour
         break_bound = Screen.height+between_tiles*transform.childCount;
         scroll_speed = 0.00185f*Screen.height;
 
-        gameObject.GetComponent<VerticalLayoutGroup>().spacing = between_tiles;
+        VerticalLayoutGroup vlg = gameObject.GetComponent<VerticalLayoutGroup>();
+        vlg.spacing = between_tiles;
 
         string path = "Assets/Resources/credits.txt";
         if(File.Exists(path))

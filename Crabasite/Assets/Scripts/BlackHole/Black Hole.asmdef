@@ -1,0 +1,16 @@
+{
+    "name": "BlackHole",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3c9462bc1497cff42acca51c6af056c7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

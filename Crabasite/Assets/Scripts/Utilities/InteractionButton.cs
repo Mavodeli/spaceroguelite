@@ -49,6 +49,10 @@ public class InteractionButton : MonoBehaviour
             hidingWhileTextbox = true;
         }
 
+        //black hole hiding check
+        GameObject blackHole = GameObject.Find("black hole");
+        if (blackHole && blackHole.GetComponent<BlackHole>().isActive) { isVisible = false; }
+
         //create button if not present and player is close enough
         if ((distanceToPlayer <= showDistanceMaximum) && !hasButton && isVisible)
         {

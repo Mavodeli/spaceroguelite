@@ -13,7 +13,7 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
     private void Start(){
         QJ = gameObject.GetComponent<QuestJournal>();
 
-        triggerMap.Add("PH black hole", delegate () {
+        triggerMap.Add("black hole", delegate () {
             //kill player upon entering the black hole
             player.SendMessage("addHealth", -99999999, SendMessageOptions.DontRequireReceiver);//creates only problems when using infinity
         });

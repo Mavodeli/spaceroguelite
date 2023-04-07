@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     private int maxhealth = 100;
     private HealthSystem HS;
     public GameOverScreen GameOverScreen;
+    public bool invincible = false;
 
     void Start()
     {
@@ -23,32 +24,49 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     }
 
     //negative hp damages, positive hp heals
-    public void addHealth(int hp){
-        health = Mathf.Clamp(health+hp,0,maxhealth);
-        if(hp < 0){
+    public void addHealth(int hp)
+    {
+        if (invincible && hp < 0) // prevent damage without preventing healing
+        {
+            hp = 0;
+        }
+        health = Mathf.Clamp(health + hp, 0, maxhealth);
+        if (hp < 0)
+        {
             HS.Damage(-hp);
         }
-        else{
+        else
+        {
             HS.Heal(hp);
         }
-        
-        if(!isAlive()){
+
+        if (!isAlive())
+        {
+            CommentarySystem.abortDisplayingComment();
             Debug.Log("YOU DIED");
             DataPersistenceManager.instance.LoadGame(true);
             GameOverScreen.Setup();
         }
     }
 
-    public bool isAlive(){
+    public bool isAlive()
+    {
         return health > 0;
     }
 
-     public void LoadData(GameData data)
+    public void LoadData(GameData data)
     {
         this.health = data.health;
     }
     public void SaveData(ref GameData data)
     {
         data.health = this.health;
+    }
+
+    public IEnumerator makeInvincible(float duration)
+    {
+        invincible = true;
+        yield return new WaitForSeconds(duration);
+        invincible = false;
     }
 }

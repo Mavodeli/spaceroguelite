@@ -27,6 +27,7 @@ public class MorayEelBehaviour : Enemy
                         med.path_to_controller
                         );
         projectile_timer = new TimerObject(med.gameObjectName+" projectile_timer");
+        adjustHealthbarOffsetBy(.6f);
     }
 
     void LateUpdate()//bc Enemy.cs already uses Update()!

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2467022203168586257}
   - component: {fileID: 2467022203168586256}
   - component: {fileID: 2467022203168586263}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Seelie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2467022203168586271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.7, y: 8.03, z: 11.516738}
+  m_LocalPosition: {x: -18.7, y: 8.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3972801b1b9d140b98ee2a9d5349eeb5, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.74509805}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_Size: {x: 0.9, y: 0.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &2467022203168586260
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -130,9 +130,9 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f557de55bc329a6479b752e38cdc0b03, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 2694980083383913633
+  uniqueID: 6937115806941158053
   updateError: 1
   checkTime: 0.2
 --- !u!95 &2467022203168586256
@@ -191,7 +191,7 @@ Animator:
   m_GameObject: {fileID: 2467022203168586271}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d0d1f859de0861a46b523f6a495f7597, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -213,7 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0236cc909be1442bed187c3841c3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  maxDistanceToPlayer: 10
-  stoppingDistance: 10
-  destination: {x: 0, y: 0, z: 0}
+  speed: 2
+  maxDistanceToPlayer: 4
+  destination: {x: -30.95432, y: 27.674675, z: 0}

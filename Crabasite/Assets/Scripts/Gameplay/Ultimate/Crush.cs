@@ -11,6 +11,9 @@ public class Crush : Ultimate
 
     public override void Use()
     {
+        // make player invincible for a short bit so the objects don't damage us when we attract them
+        player.SendMessage("makeInvincible", 0.5f, SendMessageOptions.DontRequireReceiver);
+
         // play animation
         GameObject animPrefab = player.gameObject
             .GetComponent<UltimateHolder>()
@@ -28,7 +31,7 @@ public class Crush : Ultimate
 
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.gameObject)
+            if (hitCollider.gameObject && hitCollider.gameObject.GetComponent<Rigidbody2D>())
             {
                 AttractTwoBehaviour object1 =
                     hitCollider.gameObject.AddComponent<AttractTwoBehaviour>();
@@ -40,8 +43,9 @@ public class Crush : Ultimate
 
         foreach (var hitCollider in hitColliders)
         {
+            // this is only flat damage, the AttractTwoBehaviour will deal additional damage
             hitCollider.SendMessage("addHealth", -5, SendMessageOptions.DontRequireReceiver);
-            hitCollider.SendMessage("addHealthToEmergencyDoor", -34, SendMessageOptions.DontRequireReceiver);
+            hitCollider.SendMessage("addHealthToEmergencyDoor", -101, SendMessageOptions.DontRequireReceiver);
             hitCollider.SendMessage("addHealthToFalseWall", -101, SendMessageOptions.DontRequireReceiver);
         }
 

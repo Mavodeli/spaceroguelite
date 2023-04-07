@@ -27,8 +27,8 @@ public class EmergencyDoorBehaviour : MonoBehaviour, IDataPersistence
         bc = gameObject.GetComponent<BoxCollider2D>();
 
         sr = gameObject.GetComponent<SpriteRenderer>();
-        closedSprite = Resources.Load<Sprite>("TODO");
-        openSprite = Resources.Load<Sprite>("TODO");
+        closedSprite = Resources.Load<Sprite>("Sprites/StationaryObjects/emerg_closed");
+        openSprite = Resources.Load<Sprite>("Sprites/StationaryObjects/emerg_open");
 
         ib = gameObject.GetComponent<InteractionButton>();
         ib.Setup(delegate(){
@@ -47,7 +47,7 @@ public class EmergencyDoorBehaviour : MonoBehaviour, IDataPersistence
             GameObject GH = GameObject.FindGameObjectWithTag("GameHandler");
             GH.SendMessage("addNewQuest", "OpenTheEmergencyDoor", SendMessageOptions.DontRequireReceiver);
         });
-        ib.setNewOffset(new Vector3(0, 0, 0));
+        ib.setNewOffset(new Vector3(0, -2.8f, 0));
         ib.setInteractability(unlocked);
     }
 

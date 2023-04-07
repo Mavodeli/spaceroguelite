@@ -44,6 +44,7 @@ public class PlayerPause : MonoBehaviour
 
     public void ExitPauseMenu()
     {
+        DataPersistenceManager.instance.SaveGame(false);//removed persistent save at quit
         PausePanel.SetActive(false);
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1978cd1bf5b534db562ab0547e488a, type: 3}
   m_Name: MantisShrimpData
   m_EditorClassIdentifier: 
-  texturePath: Sprites/EnemyPlaceholder_MantisShrimp_249x171_Ammo
+  texturePath: Sprites/mantis_shrimp
   textureScale: 1
   health: 180
   damage: 50
@@ -25,7 +25,8 @@ MonoBehaviour:
   meleeCooldown: 0.5
   stoppingDistance: 10
   spearTriggerDistance: 20
-  texturePathNoSpear: Sprites/EnemyPlaceholder_MantisShrimp_249x171_noAmmo
+  texturePathNoSpear: Sprites/mantis_shrimp
   textureScaleNoSpear: 1
-  texturePathSpear: Sprites/EnemyPlaceholder_MantisShrimp_55x12_Projectile
+  texturePathSpear: Sprites/projectile_mantis
   textureScaleSpear: 1.5
+  path_to_controller: Animation/Enemies/AC_mantis_shrimp

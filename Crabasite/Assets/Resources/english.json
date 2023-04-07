@@ -122,5 +122,9 @@
     "cuttingRoomFloorBC6" :
     "But maybe it can prove P versus NP for us... That would make my life a lot easier, you know?",
     "cuttingRoomFloorMC3" :
-    "Shut up."
+    "Shut up.",
+    "blackHoleHalftimeWarning" :
+    "I need to get out of here fast. The black hole already appears about twice as big now.",
+    "blackHoleTooLate" :
+    "Oh no. I won't make it. Shit shit shit ..."
 }

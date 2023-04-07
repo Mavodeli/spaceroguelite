@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AnglerFishBehaviour : Enemy
 {
-    public float maxReachAttraction = 7f; // defines the Reach Value of the Attraction
-    public float maxReachDamage = 3f; // defines the Range in which the enemy starts to deal damage
-    public float AttractionForce = 10f; // defines the Force Value of the Attraction
+    public float maxReachAttraction; // defines the Reach Value of the Attraction
+    public float maxReachDamage; // defines the Range in which the enemy starts to deal damage
+    public float AttractionForce; // defines the Force Value of the Attraction
     private AnglerFishData afd;
 
     void Awake()//use this instead of Start(), bc Enemy.cs already uses Start()!
@@ -32,6 +32,9 @@ public class AnglerFishBehaviour : Enemy
                         afd.path_to_controller// path to animator controller
                         );//Sprites/AnglerFish_256x256_New3
         gameObject.GetComponent<BoxCollider2D>().size *= .8f;
+        maxReachAttraction = afd.maxReachAttraction;
+        maxReachDamage = afd.maxReachDamage;
+        AttractionForce = afd.AttractionForce;
     }
 
     // Update is called once per frame

@@ -65,13 +65,23 @@ public class AttractTwoBehaviour : MonoBehaviour
         );
         gameObjectToTargetDirection.Normalize();
 
+        //increase attraction force of enemies to mitigate their own movement force
+        speed = gameObject.tag == "Enemy" ? speed*1.0005f : speed;
+
         myRigidbody.AddForce(gameObjectToTargetDirection * speed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //if the Collision detector detects a collision with anything, the pull script will be destroyed to stop the pull
-        gameObject.SendMessage("addHealth", -25, SendMessageOptions.DontRequireReceiver);
+        float damageToDeal = -0.02f * lossyCollisionForce(collision);
+
+        gameObject.SendMessage("addHealth", damageToDeal, SendMessageOptions.DontRequireReceiver);
+        collision.gameObject.SendMessage("addHealth", damageToDeal, SendMessageOptions.DontRequireReceiver);
+        // we deal damage to both ourselves and the object we collided with
+        // this way damage is dealt even when colliding with an obstacle inbetween
+        // a force of 5000 deals 100 damage -> if we collide with our target 2500 each deals 100 damage. 2500 is also the amount of force required to break the silicate asteroids
+
         gameObject.SendMessage("addHealthToGlassWall", -1, SendMessageOptions.DontRequireReceiver);
 
         //return collision detection to discrete
@@ -110,5 +120,12 @@ public class AttractTwoBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         DestroyOperation();
+    }
+
+    public float lossyCollisionForce(Collision2D collision)
+    {
+        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+        return Vector2.Dot(collision.contacts[0].normal, collision.relativeVelocity)
+            * rigidbody.mass;
     }
 }

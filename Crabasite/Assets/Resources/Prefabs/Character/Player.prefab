@@ -54,10 +54,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae3a6710de8c544dbd4bb6fe710140e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standard_speed: 1000
-  dashDistance: 500
+  standard_speed: 200
+  dashDistance: 100
   dashDuration: 0.1
   dash_cooldown: 1
+  walkingAnimationCutoffSpeed: 0.5
 --- !u!114 &4705152366001522428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,8 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63c3d9e4659f0243a4c1331e13d1e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PullSpeed: 16
-  PushSpeed: 16
+  PullSpeed: 32
+  PushSpeed: 32
   range: 10
   PushParticleSystemPrefab: {fileID: 1562006985091824410, guid: 7c40bdd2fc3432945bbeaf545ad92285, type: 3}
   PullParticleSystemPrefab: {fileID: 8768868552205507901, guid: 34cc0de008ac562469a269d3a9aeb90f, type: 3}
@@ -108,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverScreen: {fileID: 0}
+  invincible: 0
 --- !u!212 &4705152366001522431
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -173,7 +175,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 10
-  m_LinearDrag: 5
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
