@@ -53,6 +53,8 @@ public class CrabClaw : MonoBehaviour
             if (!PM.hasMana())
             {
                 soundController.SendMessage("playSoundSafe", new SoundParameter("PlayerManaEmpty", player, 1f, false), SendMessageOptions.DontRequireReceiver);
+                stopAll();
+                return;
             }
 
             // Raycast

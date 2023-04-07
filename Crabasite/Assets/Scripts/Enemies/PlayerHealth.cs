@@ -42,6 +42,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
 
         if (!isAlive())
         {
+            CommentarySystem.abortDisplayingComment();
             Debug.Log("YOU DIED");
             DataPersistenceManager.instance.LoadGame(true);
             GameOverScreen.Setup();

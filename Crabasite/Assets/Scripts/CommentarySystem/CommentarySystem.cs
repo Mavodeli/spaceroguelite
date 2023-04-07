@@ -146,6 +146,15 @@ public class CommentarySystem : MonoBehaviour
         timeSinceLastLetterAppeared = 0f;
     }
 
+    public static void abortDisplayingComment() {
+        if (alreadyShowingComment) {
+            if (isTypeWriting) { isTypeWriting = false; }
+            image.SetActive(false);
+            textField.SetActive(false);
+            alreadyShowingComment = false;
+        }
+    }
+
     public static bool isShowingTextbox(){
         return alreadyShowingComment;
     }

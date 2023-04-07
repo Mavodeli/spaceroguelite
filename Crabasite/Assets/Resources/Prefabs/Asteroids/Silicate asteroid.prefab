@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6845474543563127174}
   - component: {fileID: 3119877030590211921}
   m_Layer: 6
-  m_Name: SilicateA2_1
+  m_Name: SilicateA1_1
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 125
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 6845474544291419869}
   - component: {fileID: 8708275040943296752}
   m_Layer: 6
-  m_Name: SilicateA2_0
+  m_Name: SilicateA1_0
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -601,7 +601,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 125
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -760,7 +760,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 500
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -920,7 +920,7 @@ GameObject:
   - component: {fileID: 6845474545075378787}
   - component: {fileID: 1141728091584052861}
   m_Layer: 6
-  m_Name: SilicateA2_2
+  m_Name: SilicateA1_2
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1006,7 +1006,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 125
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1108,7 +1108,7 @@ GameObject:
   - component: {fileID: 6845474545153823622}
   - component: {fileID: 4272173102671705754}
   m_Layer: 6
-  m_Name: SilicateA2_3
+  m_Name: SilicateA1_3
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1194,7 +1194,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 125
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
