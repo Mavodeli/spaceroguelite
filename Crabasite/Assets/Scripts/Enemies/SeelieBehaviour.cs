@@ -17,6 +17,7 @@ public class SeelieBehaviour : MonoBehaviour
     private float nextWaypointDistance;
     private GameObject player;
     [SerializeField] private Vector3 destination;
+    private TimerObject delayed_despawn;
 
     void Start()
     {
@@ -24,6 +25,8 @@ public class SeelieBehaviour : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         bc = gameObject.GetComponent<BoxCollider2D>();
         bc.size = sr.size;
+        delayed_despawn = new TimerObject(gameObject.name+" delayed_despawn", true);
+        delayed_despawn.setOnRunningOut(delegate(){despawn();});
 
         seeker = gameObject.GetComponent<Seeker>();
         currentWaypoint = 0;
@@ -59,16 +62,24 @@ public class SeelieBehaviour : MonoBehaviour
 
         Debug.Log(Vector3.Distance(gameObject.transform.position, destination));
 
+        float distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
+        float distanceToDestination = Vector3.Distance(gameObject.transform.position, destination);
+
         //move when near player
-        if (Vector3.Distance(gameObject.transform.position, player.transform.position) <= maxDistanceToPlayer)
+        if (distanceToPlayer <= maxDistanceToPlayer)
         {
             if (path == null) return;
             if (currentWaypoint >= path.vectorPath.Count) return;
 
             //dont move if destination reached
-            if(Vector3.Distance(gameObject.transform.position, destination) <= maxDistanceToPlayer){
+            if(distanceToDestination <= 1){
+
                 //fix overshooting destination
-                haltMovement(direction);
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                //initiate delayed despawn
+                delayed_despawn.start(5);
+
                 return;
             }
 
@@ -100,5 +111,11 @@ public class SeelieBehaviour : MonoBehaviour
         float rndX = Random.Range(-1, 1);
         float rndY = Random.Range(-1, 1);
         direction += new Vector3(rndX, rndY, 0)*factor;
+    }
+
+    private void despawn(){
+        //TODO
+        Debug.Log("Puff!");
+        Destroy(gameObject);
     }
 }
