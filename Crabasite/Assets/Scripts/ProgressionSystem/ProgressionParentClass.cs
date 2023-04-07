@@ -26,6 +26,15 @@ public class ProgressionParentClass : MonoBehaviour, IDataPersistence
             });
             return;
         }
+        else if((string)args[0] == "NegativeChargeOrb"){
+            Spawn.Item("NegativeChargeOrb", (Vector3)args[1], delegate(){
+                int ult = 2;//neg. charge
+                GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
+                IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);
+                player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
+            });
+            return;
+        }
         Spawn.Item((string)args[0], (Vector3)args[1]);
     }
 

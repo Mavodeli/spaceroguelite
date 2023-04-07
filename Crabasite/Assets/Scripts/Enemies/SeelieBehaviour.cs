@@ -110,7 +110,9 @@ public class SeelieBehaviour : MonoBehaviour
     }
 
     private void despawn(){
-        //TODO
+        GameObject GH = GameObject.FindGameObjectWithTag("GameHandler");
+        object[] args = new object[]{"NegativeChargeOrb", transform.position};
+        GH.SendMessage("spawnItem", args, SendMessageOptions.DontRequireReceiver);
         Debug.Log("Puff!");
         Destroy(gameObject);
     }
