@@ -30,8 +30,6 @@ public class SeelieBehaviour : MonoBehaviour
         nextWaypointDistance = 3.0f;
         player = GameObject.FindGameObjectWithTag("Player");
 
-        destination = GameObject.Find("TheCure").transform.position;
-
         StartCoroutine(UpdateCoroutine(.5f));
     }
 

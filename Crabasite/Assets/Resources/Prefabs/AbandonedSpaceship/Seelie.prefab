@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2467022203168586257}
   - component: {fileID: 2467022203168586256}
   - component: {fileID: 2467022203168586263}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Seelie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -215,4 +215,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   maxDistanceToPlayer: 5
-  destination: {x: -30.95432, y: 27.674675, z: 4.9787545}
+  destination: {x: -30.95432, y: 27.674675, z: 0}
