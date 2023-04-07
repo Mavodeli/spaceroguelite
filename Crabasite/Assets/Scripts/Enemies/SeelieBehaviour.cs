@@ -101,8 +101,6 @@ public class SeelieBehaviour : MonoBehaviour
         float veloX = Mathf.Clamp(rb.velocity.x, -speed, speed);
         float veloY = Mathf.Clamp(rb.velocity.y, -speed, speed);
         rb.velocity = new Vector2(veloX, veloY);
-
-        Debug.Log(rb.velocity);
     }
 
     private void haltMovement(Vector3 direction){
