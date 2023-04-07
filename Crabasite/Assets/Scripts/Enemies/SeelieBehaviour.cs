@@ -18,15 +18,19 @@ public class SeelieBehaviour : MonoBehaviour
     private GameObject player;
     [SerializeField] private Vector3 destination;
     private TimerObject delayed_despawn;
+    private bool drops_ultimate;
 
     void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         bc = gameObject.GetComponent<BoxCollider2D>();
-        bc.size = new Vector2(.1f, .1f);
         delayed_despawn = new TimerObject(gameObject.name+" delayed_despawn", true);
         delayed_despawn.setOnRunningOut(delegate(){despawn();});
+
+        //magic numbers!
+        transform.localScale *= 1.5f;
+        bc.size = sr.size * .33f;
 
         seeker = gameObject.GetComponent<Seeker>();
         currentWaypoint = 0;
@@ -76,7 +80,7 @@ public class SeelieBehaviour : MonoBehaviour
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
                 //initiate delayed despawn
-                delayed_despawn.start(4);
+                delayed_despawn.start(3);
 
                 return;
             }
@@ -110,10 +114,16 @@ public class SeelieBehaviour : MonoBehaviour
     }
 
     private void despawn(){
-        GameObject GH = GameObject.FindGameObjectWithTag("GameHandler");
-        object[] args = new object[]{"NegativeChargeOrb", transform.position};
-        GH.SendMessage("spawnItem", args, SendMessageOptions.DontRequireReceiver);
-        Debug.Log("Puff!");
+        if(drops_ultimate){
+            GameObject GH = GameObject.FindGameObjectWithTag("GameHandler");
+            object[] args = new object[]{"NegativeChargeOrb", transform.position};
+            GH.SendMessage("spawnItem", args, SendMessageOptions.DontRequireReceiver);
+        }
+        // Debug.Log("Puff!");
         Destroy(gameObject);
+    }
+
+    public void shouldDropUltimate(bool b){
+        drops_ultimate = b;
     }
 }

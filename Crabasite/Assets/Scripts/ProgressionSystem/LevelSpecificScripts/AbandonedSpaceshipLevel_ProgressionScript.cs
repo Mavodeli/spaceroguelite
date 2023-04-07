@@ -84,6 +84,10 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
             Spawn.Mail("WifeMail2", true);
             PT.setFlag("AbandonedSpaceshipMailDumpHappened");
         }
+
+        //spawn seelie if player doesn't have neg. charge unlocked
+        if(!dpm.getGameData().UltimateDict[2])
+            Spawn.Seelie(new Vector3(-24.8f,6.6f,0), true);
     }
 
     public bool getFlag(string id){

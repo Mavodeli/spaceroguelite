@@ -17,4 +17,4 @@ MonoBehaviour:
   description: 'Placeholder: gets removed immediately, the player shouldn''t be able
     to read this ;)'
   icon: {fileID: 21300000, guid: 926d2671fd1ee3a49952766d5ed0b531, type: 3}
-  iconScale: 0.3
+  iconScale: 0.4
