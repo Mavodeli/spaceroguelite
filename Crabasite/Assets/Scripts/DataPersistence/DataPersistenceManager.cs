@@ -119,6 +119,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void NewGame()
     {
         this.gameData = new GameData();
+        SaveGame(true);//resets save file
         Debug.Log("New Game");
     }
     public void LoadGame(bool fromFile)

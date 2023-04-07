@@ -21,6 +21,12 @@ public class Spawn
         enemy.SendMessage("setItemsToDrop", itemsToDrop, SendMessageOptions.DontRequireReceiver);
     }
 
+    public static void Seelie(Vector3 position, bool drop_ultimate){
+        GameObject seelie = Object.Instantiate(Resources.Load<GameObject>("Prefabs/AbandonedSpaceship/Seelie"));
+        seelie.transform.position = position;
+        seelie.SendMessage("shouldDropUltimate", drop_ultimate, SendMessageOptions.DontRequireReceiver);
+    }
+
     public static void Item(string type, Vector3 position, ItemBehaviour.OnPickup onPickup = null){
         GameObject item = Object.Instantiate(Resources.Load<GameObject>("Prefabs/Collectables/DefaultItem"));
         Item so = Resources.Load<Item>("ScriptableObjects/Items/"+type);

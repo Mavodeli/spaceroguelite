@@ -17,8 +17,17 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
         //2nd parameter: the function that should be executed OnTriggerEnter
         triggerMap.Add("AS_MantisShrimpTrigger", delegate () {
             if(!PT.getFlag(enemySpawnPrefix+"MantisShrimp")){
-                Spawn.Enemy("MantisShrimp", new Vector3(55.88f, 25.72f, 0));//TODO new sprites not implemented yet!!!
+                Spawn.Enemy("MantisShrimp", new Vector3(55.88f, 25.72f, 0));
                 PT.setFlag(enemySpawnPrefix+"MantisShrimp");
+            }
+        });
+
+        triggerMap.Add("AS_MorayEelTrigger", delegate () {
+            if(!PT.getFlag(enemySpawnPrefix+"MorayEels")){
+                Spawn.Enemy("MorayEel", new Vector3(-27.08f, 31.21f, 0));
+                Spawn.Enemy("MorayEel", new Vector3(-40.52f, 32.94f, 0));
+                Spawn.Enemy("MorayEel", new Vector3(-35.53f, 24, 0));
+                PT.setFlag(enemySpawnPrefix+"MorayEels");
             }
         });
 
@@ -84,6 +93,10 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
             Spawn.Mail("WifeMail2", true);
             PT.setFlag("AbandonedSpaceshipMailDumpHappened");
         }
+
+        //spawn seelie if player doesn't have neg. charge unlocked
+        if(!dpm.getGameData().UltimateDict[2])
+            Spawn.Seelie(new Vector3(-24.8f,6.6f,0), true);
     }
 
     public bool getFlag(string id){

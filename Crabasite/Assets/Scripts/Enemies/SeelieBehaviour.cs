@@ -17,13 +17,20 @@ public class SeelieBehaviour : MonoBehaviour
     private float nextWaypointDistance;
     private GameObject player;
     [SerializeField] private Vector3 destination;
+    private TimerObject delayed_despawn;
+    private bool drops_ultimate;
 
     void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         bc = gameObject.GetComponent<BoxCollider2D>();
-        bc.size = sr.size;
+        delayed_despawn = new TimerObject(gameObject.name+" delayed_despawn", true);
+        delayed_despawn.setOnRunningOut(delegate(){despawn();});
+
+        //magic numbers!
+        transform.localScale *= 1.5f;
+        bc.size = sr.size * .33f;
 
         seeker = gameObject.GetComponent<Seeker>();
         currentWaypoint = 0;
@@ -57,18 +64,24 @@ public class SeelieBehaviour : MonoBehaviour
         //init
         Vector3 force, direction = Vector3.zero;
 
-        Debug.Log(Vector3.Distance(gameObject.transform.position, destination));
+        float distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
+        float distanceToDestination = Vector3.Distance(gameObject.transform.position, destination);
 
         //move when near player
-        if (Vector3.Distance(gameObject.transform.position, player.transform.position) <= maxDistanceToPlayer)
+        if (distanceToPlayer <= maxDistanceToPlayer)
         {
             if (path == null) return;
             if (currentWaypoint >= path.vectorPath.Count) return;
 
             //dont move if destination reached
-            if(Vector3.Distance(gameObject.transform.position, destination) <= maxDistanceToPlayer){
+            if(distanceToDestination <= 1.2f){
+
                 //fix overshooting destination
-                haltMovement(direction);
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                //initiate delayed despawn
+                delayed_despawn.start(3);
+
                 return;
             }
 
@@ -84,10 +97,14 @@ public class SeelieBehaviour : MonoBehaviour
             return;
         }
 
-        // randomizeDirection(direction, 3);
         force = direction * speed;
         // Debug.Log(force);
         rb.AddForce(force);
+
+        //dampen velocity at high acceleration
+        float veloX = Mathf.Clamp(rb.velocity.x, -speed, speed);
+        float veloY = Mathf.Clamp(rb.velocity.y, -speed, speed);
+        rb.velocity = new Vector2(veloX, veloY);
     }
 
     private void haltMovement(Vector3 direction){
@@ -96,9 +113,17 @@ public class SeelieBehaviour : MonoBehaviour
         direction = Vector3.zero;
     }
 
-    private void randomizeDirection(Vector3 direction, float factor){
-        float rndX = Random.Range(-1, 1);
-        float rndY = Random.Range(-1, 1);
-        direction += new Vector3(rndX, rndY, 0)*factor;
+    private void despawn(){
+        if(drops_ultimate){
+            GameObject GH = GameObject.FindGameObjectWithTag("GameHandler");
+            object[] args = new object[]{"NegativeChargeOrb", transform.position};
+            GH.SendMessage("spawnItem", args, SendMessageOptions.DontRequireReceiver);
+        }
+        // Debug.Log("Puff!");
+        Destroy(gameObject);
+    }
+
+    public void shouldDropUltimate(bool b){
+        drops_ultimate = b;
     }
 }

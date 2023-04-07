@@ -46,6 +46,11 @@
 
 
 
+# Published by
+- Crabventure Productions
+
+
+
 # The game utilizes the following software
 - Unity 2021.3.13f1
 - A* Pathfinding Project (Free version) by Aron Granberg
@@ -64,3 +69,18 @@
 # Special Thanks
 - Andreas Engelhardt
 - Zohreh Ghaderi
+
+
+
+- Copyright © 2023 by 
+- Manuel von der Linden
+- Niklas Munkes
+- Marcel Molnar
+- Lasse Frommelt
+- Xenia Wetzel
+- Tarik Eker
+- Marco Madeja
+- Rico Leukert
+- Henri Kramer
+
+- All rights reserved.
