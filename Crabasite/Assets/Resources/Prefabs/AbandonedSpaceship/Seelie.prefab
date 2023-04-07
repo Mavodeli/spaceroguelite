@@ -130,9 +130,9 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f557de55bc329a6479b752e38cdc0b03, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -213,6 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0236cc909be1442bed187c3841c3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  maxDistanceToPlayer: 5
+  speed: 2
+  maxDistanceToPlayer: 4
   destination: {x: -30.95432, y: 27.674675, z: 0}

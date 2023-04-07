@@ -24,7 +24,7 @@ public class SeelieBehaviour : MonoBehaviour
         sr = gameObject.GetComponent<SpriteRenderer>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         bc = gameObject.GetComponent<BoxCollider2D>();
-        bc.size = sr.size;
+        bc.size = new Vector2(.1f, .1f);
         delayed_despawn = new TimerObject(gameObject.name+" delayed_despawn", true);
         delayed_despawn.setOnRunningOut(delegate(){despawn();});
 
@@ -60,8 +60,6 @@ public class SeelieBehaviour : MonoBehaviour
         //init
         Vector3 force, direction = Vector3.zero;
 
-        Debug.Log(Vector3.Distance(gameObject.transform.position, destination));
-
         float distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
         float distanceToDestination = Vector3.Distance(gameObject.transform.position, destination);
 
@@ -72,13 +70,13 @@ public class SeelieBehaviour : MonoBehaviour
             if (currentWaypoint >= path.vectorPath.Count) return;
 
             //dont move if destination reached
-            if(distanceToDestination <= 1){
+            if(distanceToDestination <= 1.2f){
 
                 //fix overshooting destination
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
                 //initiate delayed despawn
-                delayed_despawn.start(5);
+                delayed_despawn.start(4);
 
                 return;
             }
@@ -95,22 +93,22 @@ public class SeelieBehaviour : MonoBehaviour
             return;
         }
 
-        // randomizeDirection(direction, 3);
         force = direction * speed;
         // Debug.Log(force);
         rb.AddForce(force);
+
+        //dampen velocity at high acceleration
+        float veloX = Mathf.Clamp(rb.velocity.x, -speed, speed);
+        float veloY = Mathf.Clamp(rb.velocity.y, -speed, speed);
+        rb.velocity = new Vector2(veloX, veloY);
+
+        Debug.Log(rb.velocity);
     }
 
     private void haltMovement(Vector3 direction){
         rb.velocity = new Vector2(0, 0);
         rb.angularVelocity = 0.1f;
         direction = Vector3.zero;
-    }
-
-    private void randomizeDirection(Vector3 direction, float factor){
-        float rndX = Random.Range(-1, 1);
-        float rndY = Random.Range(-1, 1);
-        direction += new Vector3(rndX, rndY, 0)*factor;
     }
 
     private void despawn(){
