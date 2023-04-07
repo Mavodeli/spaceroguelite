@@ -18,10 +18,10 @@ MonoBehaviour:
   damage: 25
   meleeDamage: 25
   chaseSpeed: 300
-  maxReachAttraction: 7
+  maxReachAttraction: 5
   maxReachDamage: 3
-  AttractionForce: 10
+  AttractionForce: 8
   gameObjectName: Angler fish emeny
   meleeCooldown: 0.5
-  stoppingDistance: 6.8
+  stoppingDistance: 4.8
   path_to_controller: Animation/Enemies/AC_Anglerfish
