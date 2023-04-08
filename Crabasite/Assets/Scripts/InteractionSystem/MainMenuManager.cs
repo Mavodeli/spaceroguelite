@@ -21,6 +21,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
 
     [SerializeField] private TMP_Dropdown graphicsDD;
     [SerializeField] private TMP_Dropdown resolutionsDD;
+    [SerializeField] private TMP_Dropdown vsyncDD;
 
     [SerializeField] private Button backToMenu;
     [SerializeField] private Slider volumeSlider;
@@ -31,6 +32,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject resolutionsText;
     [SerializeField] private Slider textSpeedSlider;
     [SerializeField] private GameObject textSpeedText;
+    [SerializeField] private GameObject vsyncText;
 
     public AudioMixer audioMixer;
     Resolution[] resolutions;
@@ -42,6 +44,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     public bool isFullscreen;
     public int resolutionsIndex;
     public float textSpeed;
+    private int vsync;
 
 
     private void Awake()
@@ -163,6 +166,11 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
             cs.setTypeWriterSpeed(textSpeed);
         }
     }
+    public void SetVSync(int vsyncValue)
+    {
+        this.vsync = vsyncValue;
+        QualitySettings.vSyncCount = vsyncValue;
+    }
 
     // Section for general Funtions
     // ============================
@@ -188,6 +196,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         resolutionsDD.interactable = false;
         fullscreenToggle.interactable = false;
         textSpeedSlider.interactable = false;
+        vsyncDD.interactable = false;
     }
     public void EnableOptionButtons()
     {
@@ -197,6 +206,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         resolutionsDD.interactable = true;
         fullscreenToggle.interactable = true;
         textSpeedSlider.interactable = true;
+        vsyncDD.interactable = true;
     }
     private void InvisibleMenuButtons()
     {
@@ -226,6 +236,8 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         fullscreenToggle.gameObject.SetActive(true);
         textSpeedSlider.gameObject.SetActive(true);
         textSpeedText.gameObject.SetActive(true);
+        vsyncDD.gameObject.SetActive(true);
+        vsyncText.gameObject.SetActive(true);
     }
     private void InvisibleOptionScreen()
     {
@@ -240,6 +252,8 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         fullscreenToggle.gameObject.SetActive(false);
         textSpeedSlider.gameObject.SetActive(false);
         textSpeedText.gameObject.SetActive(false);
+        vsyncDD.gameObject.SetActive(false);
+        vsyncText.gameObject.SetActive(false);
     }
     
         
@@ -260,6 +274,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         this.isFullscreen = optionData.isFullscreen;
         this.resolutionsIndex = optionData.resolutionsIndex;
         this.textSpeed = optionData.textSpeed;
+        this.vsync = optionData.vsync;
     }
     public void SaveOptions() {
         OptionData optionData = new OptionData();
@@ -268,6 +283,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         optionData.isFullscreen = this.isFullscreen;
         optionData.resolutionsIndex = this.resolutionsIndex;
         optionData.textSpeed = this.textSpeed;
+        optionData.vsync = this.vsync;
         OptionPersistenceManager.instance.SetOptionData(optionData);
     }
 
@@ -278,5 +294,6 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         fullscreenToggle.isOn = this.isFullscreen;
         graphicsDD.value = this.graphicsIndex;
         resolutionsDD.value = this.resolutionsIndex;
+        vsyncDD.value = this.vsync;
     }
 }

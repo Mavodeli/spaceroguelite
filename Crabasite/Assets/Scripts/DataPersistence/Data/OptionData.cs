@@ -9,6 +9,7 @@ public class OptionData
     public bool isFullscreen;
     public float soundVolume;
     public float textSpeed;
+    public int vsync;
 
     // default values
     public OptionData()
@@ -18,5 +19,6 @@ public class OptionData
         this.isFullscreen = true;
         this.soundVolume = 0.8f; // Range 0 - 1
         this.textSpeed = 200.0f; // characters per second
+        this.vsync = 0; // v-sync is off by default
     }
 }
