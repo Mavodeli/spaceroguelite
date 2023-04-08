@@ -10113,7 +10113,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2874692843093071284, guid: e0e1e2de4b80c534e8aae859e2baa765, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874692843093071284, guid: e0e1e2de4b80c534e8aae859e2baa765, type: 3}
+      propertyPath: m_TagString
+      value: Stationary
       objectReference: {fileID: 0}
     - target: {fileID: 3508893487796789134, guid: e0e1e2de4b80c534e8aae859e2baa765, type: 3}
       propertyPath: m_Points.Array.size
