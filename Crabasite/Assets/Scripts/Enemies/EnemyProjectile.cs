@@ -77,7 +77,6 @@ public class EnemyProjectile : MonoBehaviour
             (other.gameObject.tag != "ProgressionTrigger") &&
             (other.gameObject.tag != "AbandonedSpaceshipCollider")
         ){
-            Debug.Log(other.gameObject.name);
             del(other);
             GameObject.Destroy(gameObject);
         }

@@ -31,7 +31,7 @@ public class CreditsConstructor : MonoBehaviour
         vlg.spacing = between_tiles;
 
         string credits = Resources.Load<TextAsset>("credits").ToString(); // loads credits.txt
-        string[] lines = Regex.Split(credits, "\r\n|\r|\n");
+        string[] lines = Regex.Split(credits, "\n");
 
         foreach (string s in lines) { GameObject newTile = TMPTile(s); }
 
