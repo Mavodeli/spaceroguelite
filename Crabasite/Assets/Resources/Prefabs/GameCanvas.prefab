@@ -529,9 +529,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -5734913992523488922, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
-        m_TargetAssemblyTypeName: PlayerPause, InteractionSystem
-        m_MethodName: ExitPauseMenu
+      - m_Target: {fileID: 5490913796359502947}
+        m_TargetAssemblyTypeName: GameOverScreen, Enemies
+        m_MethodName: QuitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -11,11 +11,11 @@ public class BlackHole : MonoBehaviour
     private List<Rigidbody2D> pulledObjects = new List<Rigidbody2D>();
     private Rigidbody2D spaceShipRigidBody;
     [SerializeField] private int secondsBeforeBlackHoleIsActive = 480;
-    [SerializeField] private int secondsUntilTargetPosition = 15;
+    [SerializeField] private int secondsUntilTargetPosition = 8;
     [SerializeField] private Vector3 targetPosition;
     private Vector3 startingPosition;
     private Vector3 fullPath;
-    private const float APPROX_MAX_DISTANCE = 60.0f;
+    private const float APPROX_MAX_DISTANCE = 200.0f;
     public bool isActive = false;
     private float loadedTime;
     private bool halfTimeMessageSent = false;
@@ -31,7 +31,7 @@ public class BlackHole : MonoBehaviour
         float timeFactor = Mathf.Clamp(timeSinceActive() / 10, 0.0f, 1.0f);
         speed *= timeFactor;
         // flat factor
-        speed *= 0.5f;
+        speed *= 5.0f;
         return speed;
     }
 
@@ -47,10 +47,10 @@ public class BlackHole : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= secondsBeforeBlackHoleIsActive / 2 && !halfTimeMessageSent) { SendHalfTimeMessageToPlayer(); halfTimeMessageSent = true; }
-        if (Time.time >= secondsBeforeBlackHoleIsActive - 3 && !tooLateMessageSent) { SendTooLateMessageToPlayer(); tooLateMessageSent = true; }
+        if (levelTime() >= secondsBeforeBlackHoleIsActive / 2 && !halfTimeMessageSent) { SendHalfTimeMessageToPlayer(); halfTimeMessageSent = true; }
+        if (levelTime() >= secondsBeforeBlackHoleIsActive && !tooLateMessageSent) { SendTooLateMessageToPlayer(); tooLateMessageSent = true; }
 
-        if (Time.time < secondsBeforeBlackHoleIsActive) { return; }
+        if (levelTime() < secondsBeforeBlackHoleIsActive) { return; }
         if (!this.isActive)
         {
             this.isActive = true;
@@ -68,14 +68,7 @@ public class BlackHole : MonoBehaviour
             direction.Normalize();
             float speed = blackHoleAttractionSpeed(attractedObject, distanceToBlackHole);
 
-            if (attractedObject.tag == "Player")
-            {
-                attractedObject.AddForce(direction * speed * 10.0f); // there is no escape
-            }
-            else
-            {
-                attractedObject.AddForce(direction * speed);
-            }
+            attractedObject.AddForce(direction * speed);
         }
     }
 

@@ -19,4 +19,10 @@ public class GameOverScreen : MonoBehaviour
         SceneManager.LoadScene(dpm.getGameData().level);
         Time.timeScale = 1;
     }
+
+    public void QuitButton() {
+        DataPersistenceManager.instance.SaveGame(false);
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
+    }
 }
