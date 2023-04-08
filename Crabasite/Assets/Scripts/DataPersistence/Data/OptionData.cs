@@ -15,7 +15,7 @@ public class OptionData
     {
         this.graphicsIndex = 0;
         this.resolutionsIndex = 0;
-        this.isFullscreen = false;
+        this.isFullscreen = true;
         this.soundVolume = 0.8f; // Range 0 - 1
         this.textSpeed = 200.0f; // characters per second
     }

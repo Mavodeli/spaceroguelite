@@ -1,4 +1,3 @@
-using Codice.Client.BaseCommands;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +9,11 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
     private Dictionary<string, OnTriggerEnterDelegate> triggerMap = new Dictionary<string, OnTriggerEnterDelegate>();
     private QuestJournal QJ;
     
-    private void Start(){
+    private void Start() {
+        Invoke("delayedStart", 0.2f); // delay start to allow CommentarySystem to fully set up
+    }
+
+    private void delayedStart() {
         QJ = gameObject.GetComponent<QuestJournal>();
 
         triggerMap.Add("black hole", delegate () {

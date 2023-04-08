@@ -1,4 +1,3 @@
-using Codice.Client.BaseCommands;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +9,11 @@ public class AbandonedSpaceshipLevel_ProgressionScript : ProgressionParentClass
     private DataPersistenceManager dpm;
 
 
-    private void Start(){
+    private void Start() {
+        Invoke("delayedStart", 0.2f); // delay start to allow CommentarySystem to fully set up
+    }
+
+    private void delayedStart() {
         dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager").GetComponent<DataPersistenceManager>();
 
         //1st parameter: the name of the GameObject (the 'trigger' object with the ProgressionTrigger script)
