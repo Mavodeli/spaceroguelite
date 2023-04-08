@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
+public class SpaceshipLevel_InteractablesHandler : MonoBehaviour, IDataPersistence
 {
     private SpaceshipLevel_ProgressionScript progressionScript;
+
+    private string SSE_exterior_level;
 
     void Start()
     {
@@ -22,26 +24,23 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                         showCommentOnInspectingCrabasite();
 
                         if(//ensure that the player 'collected' all quests for the space level
-                            //debug value
-                            true
-
-                            // QuestIsCompletedOrActive("FindSilicate") &&
-                            // QuestIsCompletedOrActive("RepairSpaceship") &&
-                            // QuestIsCompletedOrActive("RechargeThrusters")
+                            QuestIsCompletedOrActive("FindSilicate") &&
+                            QuestIsCompletedOrActive("RepairSpaceship") &&
+                            QuestIsCompletedOrActive("RechargeThrusters")
                         ){
                             GameObject.Find("Sounds").SendMessage("playSound", new SoundParameter("SpaceShipDoor", GameObject.Find("SoundHolder"), 1f, true), SendMessageOptions.DontRequireReceiver);
-                            // SceneManager.LoadScene("Level 1 - space");
+                            SceneManager.LoadScene(SSE_exterior_level);
 
                             // debug scene switch
-                            SceneManager.LoadScene("Level 2 - abandoned spaceship");
+                            // SceneManager.LoadScene("Level 2 - abandoned spaceship");
 
                             // debug ulti unlock
-                            GameObject inv = GameObject.FindGameObjectWithTag("Inventory");
-                            inv.SendMessage("unlockUltimate", 0, SendMessageOptions.DontRequireReceiver);
-                            // inv.SendMessage("unlockUltimate", 1, SendMessageOptions.DontRequireReceiver);
-                            // inv.SendMessage("unlockUltimate", 2, SendMessageOptions.DontRequireReceiver);
-                            GameObject player = GameObject.FindGameObjectWithTag("Player");
-                            player.SendMessage("SwitchUltimate", 0, SendMessageOptions.DontRequireReceiver);
+                            // GameObject inv = GameObject.FindGameObjectWithTag("Inventory");
+                            // inv.SendMessage("unlockUltimate", 0, SendMessageOptions.DontRequireReceiver);
+                            // // inv.SendMessage("unlockUltimate", 1, SendMessageOptions.DontRequireReceiver);
+                            // // inv.SendMessage("unlockUltimate", 2, SendMessageOptions.DontRequireReceiver);
+                            // GameObject player = GameObject.FindGameObjectWithTag("Player");
+                            // player.SendMessage("SwitchUltimate", 0, SendMessageOptions.DontRequireReceiver);
 
                             Time.timeScale = 1;
                         }
@@ -221,5 +220,15 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
             Spawn.Quest("FindACure");
             progressionScript.setFlag("protagonistInspectedCrabasite");
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        SSE_exterior_level = data.SSE_exterior_level;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.SSE_exterior_level = SSE_exterior_level;
     }
 }

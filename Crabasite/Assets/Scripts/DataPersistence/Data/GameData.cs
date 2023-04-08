@@ -24,6 +24,7 @@ public class GameData
     public Vector3 AS_EngineRoomPosition;
     public Vector3 AS_EngineRoomRotation;
     public Vector3 AS_EngineRoomScale;
+    public string SSE_exterior_level;
 
 
     // the values defined in this constructor will be the default values
@@ -51,5 +52,6 @@ public class GameData
         this.AS_EngineRoomPosition = new Vector3(-8, 27.9f, 0);
         this.AS_EngineRoomRotation = new Vector3(0, 0, 0);
         this.AS_EngineRoomScale = new Vector3(1.9f,0.2f,1);
+        this.SSE_exterior_level = "Level 1 - space";
     }
 }

@@ -12,9 +12,9 @@
     "startFindSilicate" :
     "Wow, the windshield is pretty badly damaged. Good thing I took the extra effort and scrubbed the security shutters' guide rails before heading out. But with the view obstructed like this there's no way of getting the ship out of the asteroid field in one piece. I have to make some kind of adhesive to seal the cracks in the windshield.",
     "firstTimeSeeingSilicateAsteroidWithUltimate" : 
-    "There seem to be large silicate deposits in these asteroids. That's exactly what I need to repair the windshield. Good thing I recently bought that engine-powered refinery module, I can use that to make the adhesive for the windshield. But first I have to collect enough silicate.",
+    "There seem to be large silicate deposits in these asteroids. That's exactly what I need to repair the windshield. Good thing I recently bought that engine-powered refinery module, I can use that to make the adhesive for the windshield. I guess two of those asteroids should yield enough silicate.",
     "firstTimeSeeingSilicateAsteroidWithoutUltimate" : 
-    "There seem to be large silicate deposits in these asteroids. This is exactly what I need to repair the windshield. Good thing I recently bought that engine-powered refinery module, I can use that to make the adhesive for the windshield. But first I have to find a way to break down the asteroids into smaller pieces that I can carry back to the ship.",
+    "There seem to be large silicate deposits in these asteroids. This is exactly what I need to repair the windshield. Good thing I recently bought that engine-powered refinery module, I can use that to make the adhesive for the windshield. I guess two of those asteroids should yield enough silicate. But first I have to find a way to break down the asteroids into smaller pieces that I can carry back to the ship.",
     "completedFindSilicate" :
     "This should be enough silicate. If I bring it to the engine I can use the refinery module to make the adhesive for the windshield.",
     "completedRefineSilicate" :
@@ -22,7 +22,7 @@
     "completedRepairWindshield" : 
     "Ok, that should do it. Still can't believe how incredibly lucky I was to strand right next to those silicate deposits... Mental note: start saving up for one of these reinforced solid windshields with an environmental projection system.",
     "firstTimeSeeingElectroAsteroid" : 
-    "Those meteoroids seems to be charged with some kind of energy. If I bring them back to the engine, I should be able use my new refinery module to extract the energy and recharge the ships' power plant.",
+    "Those meteoroids seems to be charged with some kind of energy. If I bring them back to the engine, I should be able use my new refinery module to break them down. 12 meteoroids should yield enough energy to recharge the ships' power plant.",
     "firstTimeSeeingAttractTwoAsteroid" :
     "Wow, that's a really large piece of rock. It appears to be heavily fractured, maybe it collided with another asteroid... wait, what's that strange glow in the center? Looks like an energy field of some kind? Let's check it out, maybe there is some valuable ore inside.",
     "completedGetAttractTwo" : 
