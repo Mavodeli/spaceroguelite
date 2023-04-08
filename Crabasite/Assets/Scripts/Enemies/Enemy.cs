@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
         meleeDistance = 
             (sr.size.x/2)+//~offset fish origin to collider edge
             (player.GetComponent<SpriteRenderer>().size.x/2)+//~offset player origin to collider edge
-            .2f;//actual distance :)
+            .1f;//actual distance :)
 
         paralyze_timer = new TimerObject(_name+" paralyze_timer");
 
@@ -184,7 +184,11 @@ public class Enemy : MonoBehaviour
 
         //melee damage a.k.a. fish biting the player
         nearPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position) <= meleeDistance;
-        if(nearPlayer && !bite_timer.runs()){
+
+        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, (player.transform.position-gameObject.transform.position).normalized, meleeDistance, LayerMask.GetMask("Player"));
+        bool rayHitsPlayer = hit.collider != null ? hit.transform.gameObject.tag == "Player" : false;
+
+        if(nearPlayer && rayHitsPlayer && !bite_timer.runs()){
             soundController.SendMessage("playSound", new SoundParameter("EnemySound_MeleeAttack", this.gameObject, 0.15f, false), SendMessageOptions.DontRequireReceiver);
             player.GetComponent<BoxCollider2D>().SendMessage("addHealth", -meleeDamage, SendMessageOptions.DontRequireReceiver);
             bite_timer.start(meleeCooldown);
