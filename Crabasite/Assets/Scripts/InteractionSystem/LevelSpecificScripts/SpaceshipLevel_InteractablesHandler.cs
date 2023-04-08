@@ -65,11 +65,6 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour, IDataPersisten
 
                             showCommentOnAllQuestsCollected();
                         }
-
-                        //fire event interactedWithWindshield
-                        fireEvent("interactedWithWindshield");
-
-                        showCommentOnEmergencyRepairsCompleted();
     
                         bool thrustersCompleted = QuestIsCompleted("RechargeThrusters");
                         bool windshieldCompleted = QuestIsCompleted("RepairWindshield");
@@ -77,20 +72,20 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour, IDataPersisten
                         bool cureCompleted = QuestIsCompleted("FindACure");
                         bool coreCompleted = QuestIsCompleted("FindANewHyperdriveCore");
 
-                        // Debug.Log(thrustersCompleted);
-                        // Debug.Log(windshieldCompleted);
-                        // Debug.Log(spaceshipCompleted);
-                        // Debug.Log(cureCompleted);
-                        // Debug.Log(coreCompleted);
-
                         if (thrustersCompleted && windshieldCompleted && spaceshipCompleted && !cureCompleted && !coreCompleted)
                         {
+                            SSE_exterior_level = "Level 2 - abandoned spaceship";
                             SceneManager.LoadScene("StoryScene1");
                         } else if (thrustersCompleted && windshieldCompleted && spaceshipCompleted && cureCompleted && coreCompleted)
                         {
+                            SSE_exterior_level = "Credits";
                             SceneManager.LoadScene("StoryScene2");
-                        }                       
+                        }
 
+                        //fire event interactedWithWindshield
+                        fireEvent("interactedWithWindshield");
+
+                        showCommentOnEmergencyRepairsCompleted();
                     }, "e", newShowDistanceMaximum+.2f);
                     script.setNewOffset(new Vector3(0, 0, 0));
                 }
