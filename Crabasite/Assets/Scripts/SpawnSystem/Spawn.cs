@@ -27,12 +27,12 @@ public class Spawn
         seelie.SendMessage("shouldDropUltimate", drop_ultimate, SendMessageOptions.DontRequireReceiver);
     }
 
-    public static void Item(string type, Vector3 position, ItemBehaviour.OnPickup onPickup = null){
+    public static void Item(string type, Vector3 position, ItemBehaviour.OnPickup onPickup = null, bool dontAddToInventory = false){
         GameObject item = Object.Instantiate(Resources.Load<GameObject>("Prefabs/Collectables/DefaultItem"));
         Item so = Resources.Load<Item>("ScriptableObjects/Items/"+type);
 
         ItemBehaviour script = item.AddComponent<ItemBehaviour>();
-        script.Setup(type, onPickup == null ? delegate(){} : onPickup);
+        script.Setup(type, onPickup == null ? delegate(){} : onPickup, dontAddToInventory);
         
         item.transform.position = position;
 

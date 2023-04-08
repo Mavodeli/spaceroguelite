@@ -23,7 +23,7 @@ public class ProgressionParentClass : MonoBehaviour, IDataPersistence
                 GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
                 IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);
                 player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
-            });
+            }, dontAddToInventory:true);
             return;
         }
         else if((string)args[0] == "NegativeChargeOrb"){
@@ -32,10 +32,11 @@ public class ProgressionParentClass : MonoBehaviour, IDataPersistence
                 GameObject IM = GameObject.FindGameObjectWithTag("Inventory");
                 IM.SendMessage("unlockUltimate", ult, SendMessageOptions.DontRequireReceiver);
                 player.SendMessage("SwitchUltimate", ult, SendMessageOptions.DontRequireReceiver);
-            });
+            }, dontAddToInventory:true);
             return;
         }
-        Spawn.Item((string)args[0], (Vector3)args[1]);
+        else
+            Spawn.Item((string)args[0], (Vector3)args[1]);
     }
 
     public void LoadData(GameData data)
