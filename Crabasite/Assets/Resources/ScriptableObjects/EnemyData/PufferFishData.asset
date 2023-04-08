@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: PufferFishData
   m_EditorClassIdentifier: 
   texturePath: Sprites/PUFFERFISH_Single
-  textureScale: 0.85
-  health: 100
-  damage: 25
-  meleeDamage: 25
-  chaseSpeed: 400
+  textureScale: 0.3
+  health: 40
+  damage: 10
+  meleeDamage: 10
+  chaseSpeed: 600
   gameObjectName: Puffer fish emeny
-  meleeCooldown: 0.5
-  stoppingDistance: 3
+  meleeCooldown: 0.15
+  stoppingDistance: 0
   path_to_controller: Animation/Enemies/AC_Pufferfish

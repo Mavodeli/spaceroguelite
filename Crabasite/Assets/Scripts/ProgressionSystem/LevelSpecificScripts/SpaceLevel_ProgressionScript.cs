@@ -22,15 +22,11 @@ public class SpaceLevel_ProgressionScript : ProgressionParentClass
         });
         triggerMap.Add("TriggerElectroAsteroidsEnemySpawner", delegate () {
             if(!PT.getFlag(enemySpawnPrefix+"SpaceLevelPufferFishies")){
-                int count = 1;
-                for(int i = 0; i < count; i++){
-                    Vector2 playerLastDirection = player.GetComponent<PlayerMovement>().getMovement();
-                    //offset still kinda WIP
-                    Vector3 spawnOffsetToPlayer = new Vector3(playerLastDirection.x*15, playerLastDirection.y*15, 0);
-                    Vector3 fishToFishOffset = new Vector3(2*i, -2*i, 0);
-                    Vector3 position = player.transform.position + spawnOffsetToPlayer + fishToFishOffset;
-                    Spawn.Enemy("PufferFish", position/*, new string[]{"SpaceshipDebris"}*/);
-                }
+                Spawn.Enemy("PufferFish", new Vector3(8.47f,40.35f,0));
+                Spawn.Enemy("PufferFish", new Vector3(-0.88f,38.27f,0));
+                Spawn.Enemy("PufferFish", new Vector3(9.72f,32.91f,0));
+                Spawn.Enemy("PufferFish", new Vector3(12.5f,42.66f,0));
+                Spawn.Enemy("PufferFish", new Vector3(-1.52f,35.95f,0));
                 PT.setFlag(enemySpawnPrefix+"SpaceLevelPufferFishies");
             }
         });

@@ -110,16 +110,12 @@ public class Enemy : MonoBehaviour
         currentWaypoint = 0;
         nextWaypointDistance = 3.0f;
         stoppingDistance = _stoppingDistance;
-        idleDistance = stoppingDistance * 2;
+        idleDistance = 8;
         player = GameObject.FindGameObjectWithTag("Player");
         // gameObject.AddComponent<DynamicGridObstacle>();
 
         //setup melee damage
         bite_timer = new TimerObject(_name+" bite_timer");
-        meleeDistance = 
-            (sr.size.x/2)+//~offset fish origin to collider edge
-            (player.GetComponent<SpriteRenderer>().size.x/2)+//~offset player origin to collider edge
-            .1f;//actual distance :)
 
         paralyze_timer = new TimerObject(_name+" paralyze_timer");
 
@@ -181,18 +177,34 @@ public class Enemy : MonoBehaviour
         rb.AddForce(force);
     }
 
+    // private void Update(){
+    //     // flip the Enemy sprite horizontally based on the player's position relative to the player's sprite position
+    //     sr.flipX = Mathf.Sign((gameObject.transform.position - player.transform.position).x) > 0;
+    //     if(_name == "Puffer fish emeny") sr.flipX = !sr.flipX;
+
+    //     //melee damage a.k.a. fish biting the player
+    //     nearPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position) <= meleeDistance;
+
+    //     RaycastHit2D selfHit = Physics2D.Raycast(gameObject.transform.position, (player.transform.position-gameObject.transform.position).normalized, Mathf.Infinity, LayerMask.GetMask("Raycast"));
+    //     meleeDistance = selfHit.collider != null ? Vector3.Distance(gameObject.transform.position, new Vector3(selfHit.point.x, selfHit.point.y, 0)) : 0;
+    //     // meleeDistance += .5f;
+    //     RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, (player.transform.position-gameObject.transform.position).normalized, meleeDistance, LayerMask.GetMask("Player"));
+    //     Debug.DrawRay(gameObject.transform.position, (player.transform.position-gameObject.transform.position).normalized*meleeDistance, Color.red);
+    //     bool rayHitsPlayer = hit.collider != null ? hit.transform.gameObject.tag == "Player" : false;
+
+    //     if(nearPlayer && rayHitsPlayer && !bite_timer.runs()){
+    //         soundController.SendMessage("playSound", new SoundParameter("EnemySound_MeleeAttack", this.gameObject, 0.15f, false), SendMessageOptions.DontRequireReceiver);
+    //         player.GetComponent<BoxCollider2D>().SendMessage("addHealth", -meleeDamage, SendMessageOptions.DontRequireReceiver);
+    //         bite_timer.start(meleeCooldown);
+    //     }
+    // }
+
     private void Update(){
         // flip the Enemy sprite horizontally based on the player's position relative to the player's sprite position
         sr.flipX = Mathf.Sign((gameObject.transform.position - player.transform.position).x) > 0;
         if(_name == "Puffer fish emeny") sr.flipX = !sr.flipX;
 
-        //melee damage a.k.a. fish biting the player
-        nearPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position) <= meleeDistance;
-
-        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, (player.transform.position-gameObject.transform.position).normalized, meleeDistance, LayerMask.GetMask("Player"));
-        bool rayHitsPlayer = hit.collider != null ? hit.transform.gameObject.tag == "Player" : false;
-
-        if(nearPlayer && rayHitsPlayer && !bite_timer.runs()){
+        if(bc.IsTouching(player.GetComponent<Collider2D>()) && !bite_timer.runs()){
             soundController.SendMessage("playSound", new SoundParameter("EnemySound_MeleeAttack", this.gameObject, 0.15f, false), SendMessageOptions.DontRequireReceiver);
             player.GetComponent<BoxCollider2D>().SendMessage("addHealth", -meleeDamage, SendMessageOptions.DontRequireReceiver);
             bite_timer.start(meleeCooldown);
