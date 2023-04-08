@@ -16,6 +16,7 @@ public class MenuSpaceshipUpdater : MonoBehaviour
         bool[] booleans = new bool[3];
         string[] ids = new string[]{"RepairWindshield", "RepairSpaceship", "InstallNewHyperdriveCore"};
         for(int i = 0; i < 3; i++){
+            if (existingGameData == null) { booleans[i] = false; continue; }
             try{
                 booleans[i] = !existingGameData.activeQuests[ids[i]];
             }
