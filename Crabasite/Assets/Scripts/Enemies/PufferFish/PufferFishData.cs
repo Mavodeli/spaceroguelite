@@ -11,7 +11,7 @@ public class PufferFishData : ScriptableObject
     public float damage = 25;
     public float meleeDamage = 25;
     public float chaseSpeed = 100000;
-    public string gameObjectName = "Puffer fish emeny";
+    public string gameObjectName = "Puffer fish emeny";//hard-coded in enemy class!!!
     public float meleeCooldown = .5f;
     public float stoppingDistance = 0.0f;
     public string path_to_controller = "Animation/Enemies/AC_Pufferfish";

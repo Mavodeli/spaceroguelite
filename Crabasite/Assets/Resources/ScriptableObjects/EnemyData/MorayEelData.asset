@@ -18,7 +18,7 @@ MonoBehaviour:
   damage: 12
   meleeDamage: 20
   chaseSpeed: 900
-  projectileSpeed: 700
+  projectileSpeed: 400
   projectileTriggerDistance: 14
   gameObjectName: Moray Eel emeny
   projectileCooldown: 3

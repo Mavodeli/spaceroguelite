@@ -20,5 +20,5 @@ MonoBehaviour:
   chaseSpeed: 400
   gameObjectName: Puffer fish emeny
   meleeCooldown: 0.5
-  stoppingDistance: 0
+  stoppingDistance: 3
   path_to_controller: Animation/Enemies/AC_Pufferfish

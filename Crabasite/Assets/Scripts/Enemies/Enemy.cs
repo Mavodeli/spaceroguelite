@@ -184,6 +184,7 @@ public class Enemy : MonoBehaviour
     private void Update(){
         // flip the Enemy sprite horizontally based on the player's position relative to the player's sprite position
         sr.flipX = Mathf.Sign((gameObject.transform.position - player.transform.position).x) > 0;
+        if(_name == "Puffer fish emeny") sr.flipX = !sr.flipX;
 
         //melee damage a.k.a. fish biting the player
         nearPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position) <= meleeDistance;
