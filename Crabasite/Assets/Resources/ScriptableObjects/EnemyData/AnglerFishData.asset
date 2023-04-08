@@ -19,7 +19,7 @@ MonoBehaviour:
   meleeDamage: 25
   chaseSpeed: 300
   maxReachAttraction: 5
-  maxReachDamage: 3
+  maxReachDamage: 2
   AttractionForce: 8
   gameObjectName: Angler fish emeny
   meleeCooldown: 0.5
