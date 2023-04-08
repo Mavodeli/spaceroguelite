@@ -22,9 +22,9 @@ public class CreditsConstructor : MonoBehaviour
         parent = gameObject;
 
         //set scaling parameter according to screen size
-        between_tiles = 50;
+        between_tiles = 42;
         break_bound = Screen.height+between_tiles*transform.childCount;
-        scroll_speed = 0.00185f*Screen.height;
+        scroll_speed = 0.0016f*Screen.height;
 
         VerticalLayoutGroup vlg = gameObject.GetComponent<VerticalLayoutGroup>();
         vlg.spacing = between_tiles;

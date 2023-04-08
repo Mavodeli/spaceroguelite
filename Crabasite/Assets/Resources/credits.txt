@@ -86,7 +86,7 @@
 - Xenia Wetzel
 - Tarik Eker
 - Marco Madeja
-- Rico Leukert
+- Rico Leukart
 - Henri Kramer
 
 - All rights reserved.
