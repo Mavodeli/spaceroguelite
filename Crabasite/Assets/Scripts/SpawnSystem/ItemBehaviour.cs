@@ -9,7 +9,7 @@ public class ItemBehaviour : PhysicalEntity
     private OnPickup onPickup;
     private Item scriptable;
 
-    public void Setup(string name, OnPickup _onPickup = null){
+    public void Setup(string name, OnPickup _onPickup = null, bool dontAddToInventory = false){
 
         //check ScriptableObject existence
         try
@@ -43,8 +43,8 @@ public class ItemBehaviour : PhysicalEntity
         ib.Setup(delegate () {
             if(!GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>().inventoryIsOpened){
                 pickupSound.Play();
+                if(!dontAddToInventory) InventoryManager.Instance.AddItem(gameObject.name);
                 onPickup();
-                InventoryManager.Instance.AddItem(gameObject.name);
                 Destroy(gameObject);
             }
         }, "e");
