@@ -8,7 +8,7 @@ public class GameData
     // Gameplay related Savedata
     public int health;
     public int mana;
-    public string level;
+    //public string level;
     public SerializableDictionary<string, int> ItemsDict;
     public SerializableDictionary<string, bool> MailDict;
     public SerializableDictionary<string, bool> QuestDict;
@@ -33,7 +33,7 @@ public class GameData
     {
         this.health = 100;
         this.mana = 100;
-        this.level = "Level 1 - space";
+        //this.level = "Level 1 - space";
         this.ItemsDict = new SerializableDictionary<string, int>();
         this.MailDict = new SerializableDictionary<string, bool>();
         this.QuestDict = new SerializableDictionary<string, bool>();

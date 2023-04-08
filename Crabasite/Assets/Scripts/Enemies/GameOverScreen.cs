@@ -16,7 +16,7 @@ public class GameOverScreen : MonoBehaviour
     public void RestartButton() {
         DataPersistenceManager dpm = GameObject.FindGameObjectWithTag("DataPersistenceManager").GetComponent<DataPersistenceManager>();
         dpm.LoadGame(true);
-        SceneManager.LoadScene(dpm.getGameData().level);
+        SceneManager.LoadScene("Level 0 - spaceship");
         Time.timeScale = 1;
     }
 

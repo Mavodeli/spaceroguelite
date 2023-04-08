@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
     private int currentWaypoint;
     private float nextWaypointDistance;
     private float stoppingDistance;
+    private float idleDistance;
     protected GameObject player;
 
     //Misc
@@ -109,6 +110,7 @@ public class Enemy : MonoBehaviour
         currentWaypoint = 0;
         nextWaypointDistance = 3.0f;
         stoppingDistance = _stoppingDistance;
+        idleDistance = stoppingDistance * 2;
         player = GameObject.FindGameObjectWithTag("Player");
         // gameObject.AddComponent<DynamicGridObstacle>();
 
@@ -152,7 +154,8 @@ public class Enemy : MonoBehaviour
     {
         //movement
         Vector3 force;
-        if (Vector3.Distance(gameObject.transform.position, player.transform.position) >= stoppingDistance)
+        float distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
+        if (distanceToPlayer >= stoppingDistance && distanceToPlayer < idleDistance)
         {
             if (path == null) return;
             if (currentWaypoint >= path.vectorPath.Count) return;

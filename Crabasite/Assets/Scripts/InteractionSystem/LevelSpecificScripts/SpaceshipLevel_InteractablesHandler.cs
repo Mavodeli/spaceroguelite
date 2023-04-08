@@ -75,6 +75,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour, IDataPersisten
                         if (thrustersCompleted && windshieldCompleted && spaceshipCompleted && !cureCompleted && !coreCompleted)
                         {
                             SSE_exterior_level = "Level 2 - abandoned spaceship";
+                            GameObject.FindGameObjectWithTag("DataPersistenceManager").GetComponent<DataPersistenceManager>().SaveGame(true);
                             SceneManager.LoadScene("StoryScene1");
                         } else if (thrustersCompleted && windshieldCompleted && spaceshipCompleted && cureCompleted && coreCompleted)
                         {

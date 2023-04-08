@@ -246,11 +246,11 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        this.level = data.level;
+        // this.level = data.level;
     }
     public void SaveData(ref GameData data)
     {
-        data.level = this.level;
+        // data.level = this.level;
     }
 
     public void LoadOptions() {
