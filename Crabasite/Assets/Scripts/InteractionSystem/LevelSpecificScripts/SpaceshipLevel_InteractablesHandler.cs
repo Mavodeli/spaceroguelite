@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
+public class SpaceshipLevel_InteractablesHandler : MonoBehaviour, IDataPersistence
 {
     private SpaceshipLevel_ProgressionScript progressionScript;
+
+    private string SSE_exterior_level;
 
     void Start()
     {
@@ -27,7 +29,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
                             QuestIsCompletedOrActive("RechargeThrusters")
                         ){
                             GameObject.Find("Sounds").SendMessage("playSound", new SoundParameter("SpaceShipDoor", GameObject.Find("SoundHolder"), 1f, true), SendMessageOptions.DontRequireReceiver);
-                            SceneManager.LoadScene("Level 1 - space");
+                            SceneManager.LoadScene(SSE_exterior_level);
 
                             // debug scene switch
                             // SceneManager.LoadScene("Level 2 - abandoned spaceship");
@@ -218,5 +220,15 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour
             Spawn.Quest("FindACure");
             progressionScript.setFlag("protagonistInspectedCrabasite");
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        SSE_exterior_level = data.SSE_exterior_level;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.SSE_exterior_level = SSE_exterior_level;
     }
 }
