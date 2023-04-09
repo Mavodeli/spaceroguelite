@@ -13,7 +13,7 @@ public class AttractTwo : Ultimate
     public float object1Speed;
     public float object2Speed;
 
-    const float SPEED = 50;
+    const float SPEED = 75;
 
     public KeyCode key;
 
