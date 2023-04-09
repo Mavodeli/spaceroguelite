@@ -10,7 +10,9 @@
 # Programmers
 - Niklas Munkes
 - Manuel von der Linden
+- Lasse Frommelt
 - Rico Leukart
+
 
 
 # Character Artists
