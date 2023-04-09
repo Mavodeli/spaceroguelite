@@ -7,7 +7,7 @@
 - Rico Leukart
 - Xenia Wetzel
 - Marcel Molnar
-
+- Henri Kramer
 
 # Programmers
 - Niklas Munkes
@@ -30,12 +30,14 @@
 
 # UI Designers
 - Rico Leukart
+- Henri Kramer
 
 
 # Level Designers
 - Manuel von der Linden
 - Tarik Eker
 - Xenia Wetzel
+- Henri Kramer
 
 
 # Visual Effects Artists
