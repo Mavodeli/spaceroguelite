@@ -215,4 +215,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   maxDistanceToPlayer: 4
-  destination: {x: -30.95432, y: 27.674675, z: 0}
+  destination: {x: -26.14, y: 32.09, z: 0}
