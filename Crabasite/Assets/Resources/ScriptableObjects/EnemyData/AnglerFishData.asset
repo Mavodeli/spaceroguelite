@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texturePath: Sprites/angler_sheet
   textureScale: 1.7
-  health: 100
-  damage: 25
-  meleeDamage: 25
+  health: 160
+  damage: 40
+  meleeDamage: 40
   chaseSpeed: 300
-  maxReachAttraction: 5
+  maxReachAttraction: 6
   maxReachDamage: 2
   AttractionForce: 8
   gameObjectName: Angler fish emeny
-  meleeCooldown: 0.5
+  meleeCooldown: 0.4
   stoppingDistance: 4.8
   path_to_controller: Animation/Enemies/AC_Anglerfish

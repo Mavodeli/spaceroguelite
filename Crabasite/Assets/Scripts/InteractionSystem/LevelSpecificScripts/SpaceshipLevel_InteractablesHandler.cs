@@ -25,6 +25,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour, IDataPersisten
 
                         // for debugging the AS level
                         // if(!CommentarySystem.isShowingTextbox()){
+                        //     // SceneManager.LoadScene(SSE_exterior_level);
                         //     SceneManager.LoadScene("Level 2 - abandoned spaceship");
 
                         //     GameObject inv = GameObject.FindGameObjectWithTag("Inventory");
