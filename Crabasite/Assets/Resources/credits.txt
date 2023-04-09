@@ -1,10 +1,11 @@
 + Credits
 
 
-# Producers
+# Game Designers
 - Niklas Munkes
 - Manuel von der Linden
 - Rico Leukart
+- Xenia Wetzel
 
 
 # Programmers
@@ -13,11 +14,13 @@
 - Lasse Frommelt
 - Rico Leukart
 - Marcel Molnar
+- Xenia Wetzel
 
 
 
 # Character Artists
 - Tarik Eker
+- Xenia Wetzel
 
 
 # Background Artists
@@ -31,6 +34,7 @@
 # Level Designers
 - Manuel von der Linden
 - Tarik Eker
+- Xenia Wetzel
 
 
 # Visual Effects Artists
@@ -43,6 +47,7 @@
 
 # Narrative Designers
 - Niklas Munkes
+- Xenia Wetzel
 
 
 # QA Testers
@@ -53,7 +58,7 @@
 
 # Marketing/PR Managers
 - Niklas Munkes
-
+- Xenia Wetzel
 
 
 # Published by
