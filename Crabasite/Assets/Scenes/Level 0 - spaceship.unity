@@ -2525,11 +2525,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522420, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: dashDistance
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522420, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: standard_speed
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 4705152366001522421, guid: 838699a6ba842e44b805948158dd98ac, type: 3}
       propertyPath: GameOverScreen
