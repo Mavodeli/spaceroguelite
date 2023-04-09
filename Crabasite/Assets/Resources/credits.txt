@@ -6,6 +6,7 @@
 - Manuel von der Linden
 - Rico Leukart
 - Xenia Wetzel
+- Marcel Molnar
 
 
 # Programmers
