@@ -17,6 +17,7 @@
 
 
 # Character Artists
+- Tarik Eker
 
 
 # Background Artists
@@ -29,6 +30,7 @@
 
 # Level Designers
 - Manuel von der Linden
+- Tarik Eker
 
 
 # Visual Effects Artists
