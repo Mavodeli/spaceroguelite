@@ -34,6 +34,8 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject textSpeedText;
     [SerializeField] private GameObject vsyncText;
 
+    [SerializeField] private GameObject confirmNewGameMenu;
+
     public AudioMixer audioMixer;
     Resolution[] resolutions;
 
@@ -50,6 +52,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     private void Awake()
     {
         InvisibleOptionScreen();
+        InvisibleConfirmNewGameMenu();
     }
 
     private void Start() {
@@ -100,7 +103,16 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     // ==============================
     public void NewGameMenu()
     {
-        DisableMenuButtons();
+        if (this.loadGameButton.interactable) { // if there is a SaveGame
+            InvisibleMenuButtons();
+            VisibleConfirmNewGameMenu();
+        } else {
+            NewGameConfirmed();
+        }
+    }
+
+    public void NewGameConfirmed()
+    {
         DataPersistenceManager.instance.NewGame();
         SceneManager.LoadSceneAsync("Level 0 - spaceship");
     }
@@ -108,23 +120,19 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     // Game will be loaded from saved GameData
     public void LoadGameMenu()
     {
-        DisableMenuButtons();
         DataPersistenceManager.instance.LoadGame(true);
         SceneManager.LoadSceneAsync(this.level);
     }
 
     public void OptionsMenu()
     {
-        DisableMenuButtons();
         InvisibleMenuButtons();
         VisibleOptionScreen();
-        EnableOptionButtons();
         LoadOptions();
         updateOptionControls();
     }
     public void QuitGameMenu()
     {
-        DisableMenuButtons();
         Application.Quit();
 
         #if UNITY_EDITOR
@@ -136,9 +144,8 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     
     public void BackToMenu()
     {
-        DisableOptionButtons();
         InvisibleOptionScreen();
-        EnableMenuButtons();
+        InvisibleConfirmNewGameMenu();
         VisibleMenuButtons();
         SaveOptions();
     }
@@ -187,43 +194,6 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
 
     // Section for general Funtions
     // ============================
-    private void DisableMenuButtons()
-    {
-        newGameButton.interactable = false;
-        loadGameButton.interactable = false;
-        optionsGameButton.interactable = false;
-        quitGameButton.interactable = false;
-    }
-    private void EnableMenuButtons()
-    {
-        newGameButton.interactable = true;
-        loadGameButton.interactable = true;
-        optionsGameButton.interactable = true;
-        quitGameButton.interactable = true;
-    }
-    public void DisableOptionButtons()
-    {
-        backToMenu.interactable = false;
-        volumeSlider.interactable = false;
-        graphicsDD.interactable = false;
-        resolutionsDD.interactable = false;
-        fullscreenToggle.interactable = false;
-        textSpeedSlider.interactable = false;
-        vsyncDD.interactable = false;
-    }
-    public void EnableOptionButtons()
-    {
-        backToMenu.interactable = true;
-        volumeSlider.interactable = true;
-        graphicsDD.interactable = true;
-        resolutionsDD.interactable = true;
-        fullscreenToggle.interactable = true;
-        textSpeedSlider.interactable = true;
-        vsyncDD.interactable = true;
-#if UNITY_WEBGL
-        fullscreenToggle.interactable = false;
-#endif
-    }
     private void InvisibleMenuButtons()
     {
         newGameButton.gameObject.SetActive(false);
@@ -273,6 +243,14 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         textSpeedText.gameObject.SetActive(false);
         vsyncDD.gameObject.SetActive(false);
         vsyncText.gameObject.SetActive(false);
+    }
+    private void VisibleConfirmNewGameMenu()
+    {
+        confirmNewGameMenu.SetActive(true);
+    }
+    private void InvisibleConfirmNewGameMenu()
+    {
+        confirmNewGameMenu.SetActive(false);
     }
     
         
