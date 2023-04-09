@@ -37,8 +37,8 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour, IDataPersisten
                             // debug ulti unlock
                             // GameObject inv = GameObject.FindGameObjectWithTag("Inventory");
                             // inv.SendMessage("unlockUltimate", 0, SendMessageOptions.DontRequireReceiver);
-                            // // inv.SendMessage("unlockUltimate", 1, SendMessageOptions.DontRequireReceiver);
-                            // // inv.SendMessage("unlockUltimate", 2, SendMessageOptions.DontRequireReceiver);
+                            // inv.SendMessage("unlockUltimate", 1, SendMessageOptions.DontRequireReceiver);
+                            // inv.SendMessage("unlockUltimate", 2, SendMessageOptions.DontRequireReceiver);
                             // GameObject player = GameObject.FindGameObjectWithTag("Player");
                             // player.SendMessage("SwitchUltimate", 0, SendMessageOptions.DontRequireReceiver);
 
