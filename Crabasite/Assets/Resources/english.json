@@ -2,7 +2,7 @@
     "PlayerShouldInspectAllBrokenShipParts" : 
     "I should inspect all of the ships' components before heading out.",
     "startRepairSpaceship" : 
-    "Judging from all the warnings and error messages the bord computer throws at me the ship took quite the beating when it was pulled out of hyper space. Seems like many smaller components were ripped off when it crashed into some of the smaller asteroids before coming to a halt. It's a miracle that the hull is mostly intact and the artificial atmosphere is still stable. Once I get outside I should have a look around and see what can be salvaged in the vicinity.",
+    "Judging from all the warnings and error messages the board computer throws at me the ship took quite the beating when it was pulled out of hyper space. Seems like many smaller components were ripped off when it crashed into some of the smaller asteroids before coming to a halt. It's a miracle that the hull is mostly intact and the artificial atmosphere is still stable. Once I get outside I should have a look around and see what can be salvaged in the vicinity.",
     "completedRepairSpaceship" : 
     "Finally, the minor ship repairs are done. Considering that I slept through most of the engineering lectures at the imperial academy I think I did quite a decent job. Let's get outside and have a quick look at the fruits of my labor.",
     "startRechargeThrusters" : 
@@ -12,15 +12,15 @@
     "startFindSilicate" :
     "Wow, the windshield is pretty badly damaged. Good thing I took the extra effort and scrubbed the security shutters' guide rails before heading out. But with the view obstructed like this there's no way of getting the ship out of the asteroid field in one piece. I have to make some kind of adhesive to seal the cracks in the windshield.",
     "firstTimeSeeingSilicateAsteroidWithUltimate" : 
-    "There seem to be large silicate deposits in these asteroids. That's exactly what I need to repair the windshield. Good thing I recently bought that engine-powered refinery module, I can use that to make the adhesive for the windshield. I guess two of those asteroids should yield enough silicate.",
+    "There seem to be large silicate deposits in these asteroids. That's exactly what I need to repair the windshield. Good thing I recently bought that engine-powered refinery module, I can use that to make the adhesive for the windshield. I guess two of those asteroids should yield enough silicate. Maybe the parasite can help with that weird energy it absorbed.",
     "firstTimeSeeingSilicateAsteroidWithoutUltimate" : 
-    "There seem to be large silicate deposits in these asteroids. This is exactly what I need to repair the windshield. Good thing I recently bought that engine-powered refinery module, I can use that to make the adhesive for the windshield. I guess two of those asteroids should yield enough silicate. But first I have to find a way to break down the asteroids into smaller pieces that I can carry back to the ship.",
+    "There seem to be large silicate deposits in these asteroids. That's exactly what I need to repair the windshield. Good thing I recently bought that engine-powered refinery module, I can use that to make the adhesive for the windshield. I guess two of those asteroids should yield enough silicate. But first I have to find a way to break down the asteroids into smaller pieces that I can carry back to the ship.",
     "completedFindSilicate" :
     "This should be enough silicate. If I bring it to the engine I can use the refinery module to make the adhesive for the windshield.",
     "completedRefineSilicate" :
     "Got the adhesive. Time to head over to the windshield and seal the cracks.",
     "completedRepairWindshield" : 
-    "Ok, that should do it. Still can't believe how incredibly lucky I was to strand right next to those silicate deposits... Mental note: start saving up for one of these reinforced solid windshields with an environmental projection system.",
+    "Ok, that should do it. Still can't believe how incredibly lucky I was to strand right next to those silicate deposits... Mental note: start saving up for one of those reinforced solid CrystalDome™ windshields with an environmental projection system.",
     "firstTimeSeeingElectroAsteroid" : 
     "Those meteoroids seems to be charged with some kind of energy. If I bring them back to the engine, I should be able use my new refinery module to break them down. 12 meteoroids should yield enough energy to recharge the ships' power plant.",
     "firstTimeSeeingAttractTwoAsteroid" :
@@ -46,7 +46,7 @@
     "protagonistCollectedAllSpaceshipQuests" : 
     "Now I've got a good overview of the situation. I should head outside and have a look around, see where I am and if I'm lucky, I can find just what I need to fix up the spaceship and continue my mission.",
     "firstTimeLeavingSpaceship" : 
-    "Well, that explains a lot. The scanner shows that there is a massive black hole in the vicinity. That's what must've pulled the ship out of hyper space. Talkin' 'bout makin' it quick... if I don't manage to repair the ship in time, that parasite will be the least of my concerns.",
+    "Well, that explains a lot. The scanner shows that there is a massive black hole in the vicinity. That's what must've pulled the ship out of hyper space. Talk about needing to hurry... if I don't manage to repair the ship in time, that parasite will be the least of my concerns.",
     "firstTimeLeavingSpaceshipContinued" : 
     "Let's have a look around, see if there's anything useful nearby...",
     "firstTimeSeeingSpaceshipParts" : 
@@ -56,7 +56,7 @@
     "gameSaved" :
     "Game saved.",
     "completedOpenTheEmergencyDoor" :
-    "If you think about it, it's actually kind of intuitive to try and break a lock using this massive crab claw. That ability will surely come in handy further down the line. ...Get it? Ok, ok I'm sorry, I'll stop.",
+    "If you think about it, it's actually kind of intuitive to try and break a lock using this massive crab claw. That ability will surely come in handy further down the line. ...Get it? Ok ok, I'm sorry, I'll stop.",
     "AS_EmergencyDoor_IsNotInteractableMC1" :
     "Shit, how do I get through? I don't have a code or anything. Maybe I should try '1234' or 'password'... ... Alright, that would've been too good to be true.",
     "AS_EmergencyDoor_IsNotInteractableAI" :
