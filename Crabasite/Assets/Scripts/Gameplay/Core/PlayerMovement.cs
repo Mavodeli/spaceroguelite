@@ -90,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            animator.SetBool("walk", false);
             animator.SetBool("fly", true);
         }
     }
