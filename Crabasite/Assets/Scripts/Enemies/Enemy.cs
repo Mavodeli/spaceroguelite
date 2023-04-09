@@ -151,6 +151,7 @@ public class Enemy : MonoBehaviour
         //movement
         Vector3 force;
         float distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
+
         if (distanceToPlayer >= stoppingDistance && distanceToPlayer < idleDistance)
         {
             if (path == null) return;
