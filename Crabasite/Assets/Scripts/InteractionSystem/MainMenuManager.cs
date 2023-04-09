@@ -220,6 +220,9 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         fullscreenToggle.interactable = true;
         textSpeedSlider.interactable = true;
         vsyncDD.interactable = true;
+#if UNITY_WEBGL
+        fullscreenToggle.interactable = false;
+#endif
     }
     private void InvisibleMenuButtons()
     {
@@ -251,6 +254,9 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         textSpeedText.gameObject.SetActive(true);
         vsyncDD.gameObject.SetActive(true);
         vsyncText.gameObject.SetActive(true);
+#if UNITY_WEBGL
+        fullscreenToggle.gameObject.SetActive(false);
+#endif
     }
     private void InvisibleOptionScreen()
     {

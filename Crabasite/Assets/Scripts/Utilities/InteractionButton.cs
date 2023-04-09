@@ -20,6 +20,7 @@ public class InteractionButton : MonoBehaviour
     private TimerObject buttonPressCooldown;
     private bool isVisible;
     private bool isInteractable;
+    private float startTime;
 
     public void Setup(OnButtonPressDelegate _delegate, string _inputKey = "e", float _showDistanceMaximum = 3, bool visible = true, bool interactable = true, OnNotInteractableButtonPressDelegate _otherDelegate = null){
         onButtonPress = _delegate;
@@ -36,10 +37,14 @@ public class InteractionButton : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         button = Resources.Load<GameObject>("Prefabs/Inventory/button");
         lastFrameGetKey = false;
+        startTime = Time.time;
     }
 
     void Update()
     {
+        // disable for 1 second to prevent rapid scene back and forth if scenes are preloaded
+        if (Time.time - startTime < 1.0f) { return; }
+
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
         //check if textbox is appearing, if so, hide button
