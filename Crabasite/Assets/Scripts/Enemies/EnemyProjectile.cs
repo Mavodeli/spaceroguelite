@@ -31,12 +31,6 @@ public class EnemyProjectile : MonoBehaviour
         //determine facing direction
         targetDirection = (_target.transform.position-gameObject.transform.position).normalized;
 
-        //rotation
-        float angle = 90 + Vector3.Angle(new Vector3(0, 1, 0), targetDirection);
-        if(Mathf.Sign((gameObject.transform.position - _target.transform.position).x) == 1)//flip Spear correctly
-            angle += 180;
-        gameObject.transform.Rotate(new Vector3(0, 0, angle), Space.Self);
-
         gameObject.name = parent.name+" Projectile";
         gameObject.tag = "Enemy";
         gameObject.layer = LayerMask.NameToLayer("Raycast");
@@ -45,8 +39,11 @@ public class EnemyProjectile : MonoBehaviour
         sr = gameObject.AddComponent<SpriteRenderer>();
         sr.sprite = _sprite;
         sr.drawMode = SpriteDrawMode.Sliced;//needed for scaling the sprite
-        sr.size *= textureScale;
+        sr.size *= textureScale * new Vector2(.7f, 1);
         sr.sortingOrder = 1;
+
+        //rotation
+        gameObject.transform.right = _target.transform.position - transform.position;
 
         //setup Rigidbody2D
         rb = gameObject.AddComponent<Rigidbody2D>();

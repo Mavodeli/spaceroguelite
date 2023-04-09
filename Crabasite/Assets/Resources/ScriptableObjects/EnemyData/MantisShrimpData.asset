@@ -28,5 +28,5 @@ MonoBehaviour:
   texturePathNoSpear: Sprites/mantis_shrimp
   textureScaleNoSpear: 1
   texturePathSpear: Sprites/projectile_mantis
-  textureScaleSpear: 1.5
+  textureScaleSpear: 1
   path_to_controller: Animation/Enemies/AC_mantis_shrimp

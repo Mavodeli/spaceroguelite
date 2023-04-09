@@ -17,7 +17,7 @@ public class MantisShrimpBehaviour : Enemy
         shrimpWithSpear = getSprite(Resources.Load<Texture2D>(msd.texturePath));
         shrimpWithoutSpear = getSprite(Resources.Load<Texture2D>(msd.texturePathNoSpear));
         Texture2D spearTex = Resources.Load<Texture2D>(msd.texturePathSpear);
-        shrimpSpear = getSprite(spearTex, new Rect(0, 0, spearTex.width/3, spearTex.height));
+        shrimpSpear = getSprite(spearTex, new Rect(0, 0, spearTex.width, spearTex.height));
         initialSetup(msd.health,//health 
                         msd.health,//max health
                         msd.meleeDamage,//melee 
