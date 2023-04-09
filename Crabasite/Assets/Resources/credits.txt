@@ -2,12 +2,16 @@
 
 
 # Game Designers
-- Niklas Munkes
 - Manuel von der Linden
-- Rico Leukart
-- Xenia Wetzel
+- Niklas Munkes
 - Marcel Molnar
+- Lasse Frommelt
+- Xenia Wetzel
+- Tarik Eker
+- Marco Madeja
+- Rico Leukart
 - Henri Kramer
+
 
 # Programmers
 - Niklas Munkes
@@ -18,10 +22,11 @@
 - Xenia Wetzel
 
 
-
 # Character Artists
 - Tarik Eker
 - Xenia Wetzel
+- Henri Kramer
+- Marco Madeja
 
 
 # Background Artists
@@ -40,11 +45,11 @@
 - Henri Kramer
 
 
-# Visual Effects Artists
+# Visual Effects Artist
 - Manuel von der Linden
 
 
-# Sound Designers
+# Sound Designer
 - Rico Leukart
 
 

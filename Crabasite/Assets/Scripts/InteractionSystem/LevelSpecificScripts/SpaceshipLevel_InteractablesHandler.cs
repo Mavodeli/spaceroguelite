@@ -23,7 +23,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour, IDataPersisten
                     script.Setup(delegate () {
                         showCommentOnInspectingCrabasite();
 
-                        //for debugging the AS level
+                        // for debugging the AS level
                         if(!CommentarySystem.isShowingTextbox()){
                             SceneManager.LoadScene("Level 2 - abandoned spaceship");
 
