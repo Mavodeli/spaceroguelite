@@ -49,7 +49,7 @@ public class GameData
         this.AS_hasGravity = true;
         this.AS_GlassWallIntact = true;
         this.AS_EngineRoomHatchLoose = false;
-        this.AS_EngineRoomPosition = new Vector3(-8, 27.9f, 0);
+        this.AS_EngineRoomPosition = new Vector3(-8, 24.5f, 0);
         this.AS_EngineRoomRotation = new Vector3(0, 0, 0);
         this.AS_EngineRoomScale = new Vector3(1.9f,0.2f,1);
         this.SSE_exterior_level = "Level 1 - space";
