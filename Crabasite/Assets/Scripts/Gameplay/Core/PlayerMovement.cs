@@ -100,12 +100,13 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         rb.velocity = rb.velocity;
         rb.AddForce(dir * dashDistance, ForceMode2D.Impulse);
-        GameObject
-            .Find("Sounds")
-            .SendMessage(
-                "playSound",
-                new SoundParameter("PlayerDashSound", GameObject.Find("Player"), 1f, false)
-            );
+        if(dashDistance > 0)
+            GameObject
+                .Find("Sounds")
+                .SendMessage(
+                    "playSound",
+                    new SoundParameter("PlayerDashSound", GameObject.Find("Player"), 1f, false)
+                );
         yield return new WaitForSeconds(dashDuration);
         dash_cooldown_timer.start(dash_cooldown);
         isDashing = false;

@@ -53,10 +53,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae3a6710de8c544dbd4bb6fe710140e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standard_speed: 200
+  standard_speed: 160
   dashDistance: 100
   dashDuration: 0.1
-  dash_cooldown: 1
+  dash_cooldown: 0.5
   walkingAnimationCutoffSpeed: 0.5
 --- !u!114 &4705152366001522428
 MonoBehaviour:
