@@ -1,4 +1,3 @@
-using Codice.Client.BaseCommands;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +8,11 @@ public class SpaceshipLevel_ProgressionScript : ProgressionParentClass
     private Dictionary<string, OnTriggerEnterDelegate> triggerMap = new Dictionary<string, OnTriggerEnterDelegate>();
 
 
-    private void Start(){
+    private void Start() {
+        Invoke("delayedStart", 0.2f); // delay start to allow CommentarySystem to fully set up
+    }
+
+    private void delayedStart() {
         //1st parameter: the name of the GameObject (the 'trigger' object with the ProgressionTrigger script)
         //2nd parameter: the function that should be executed OnTriggerEnter
         triggerMap.Add("BobTheTrigger", delegate () {

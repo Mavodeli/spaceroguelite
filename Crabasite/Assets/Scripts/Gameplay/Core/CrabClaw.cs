@@ -59,7 +59,7 @@ public class CrabClaw : MonoBehaviour
 
             // Raycast
             RaycastHit2D hit = Physics2D.Raycast(transform.position, mousePos_relative_to_player, range, DetectionLayer);
-            if (hit.collider != null)
+            if (hit.collider != null && hit.collider.gameObject.tag != "Stationary")
             {
                 Vector2 playerPos_relative_to_hit = transform.position - hit.transform.position;
                 playerPos_relative_to_hit.Normalize();

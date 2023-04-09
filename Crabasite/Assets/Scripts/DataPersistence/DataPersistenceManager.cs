@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
-using log4net.Core;
 
 public class DataPersistenceManager : MonoBehaviour
 {

@@ -4,11 +4,16 @@
 # Producers
 - Niklas Munkes
 - Manuel von der Linden
+- Rico Leukart
 
 
 # Programmers
 - Niklas Munkes
 - Manuel von der Linden
+- Lasse Frommelt
+- Rico Leukart
+- Marcel Molnar
+
 
 
 # Character Artists
@@ -19,6 +24,7 @@
 
 
 # UI Designers
+- Rico Leukart
 
 
 # Level Designers
@@ -30,6 +36,7 @@
 
 
 # Sound Designers
+- Rico Leukart
 
 
 # Narrative Designers
@@ -39,6 +46,7 @@
 # QA Testers
 - Niklas Munkes
 - Manuel von der Linden
+- Rico Leukart
 
 
 # Marketing/PR Managers
@@ -63,6 +71,8 @@
 - Photoshop CC
 - Krita
 - PureRef
+- Audacity
+- Aseprite
 
 
 
@@ -80,7 +90,7 @@
 - Xenia Wetzel
 - Tarik Eker
 - Marco Madeja
-- Rico Leukert
+- Rico Leukart
 - Henri Kramer
 
 - All rights reserved.

@@ -21,6 +21,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
 
     [SerializeField] private TMP_Dropdown graphicsDD;
     [SerializeField] private TMP_Dropdown resolutionsDD;
+    [SerializeField] private TMP_Dropdown vsyncDD;
 
     [SerializeField] private Button backToMenu;
     [SerializeField] private Slider volumeSlider;
@@ -31,6 +32,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject resolutionsText;
     [SerializeField] private Slider textSpeedSlider;
     [SerializeField] private GameObject textSpeedText;
+    [SerializeField] private GameObject vsyncText;
 
     public AudioMixer audioMixer;
     Resolution[] resolutions;
@@ -42,6 +44,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
     public bool isFullscreen;
     public int resolutionsIndex;
     public float textSpeed;
+    private int vsync;
 
 
     private void Awake()
@@ -49,34 +52,49 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         InvisibleOptionScreen();
     }
 
-    // New Game starts with fresh GameData
-    private async void Start()
-    {
+    private void Start() {
+        Invoke("delayedStart", 0.1f); // delay start to allow QualitySystem & Co to fully set up
+    }
+
+    private void delayedStart() {
+        // Load button available?
         string path = Path.Combine(Application.persistentDataPath, "data.game");
         if (!File.Exists(path))
         {
             loadGameButton.interactable = false;            
         }
 
-        resolutions = Screen.resolutions;
+        // Resolution options
+        Resolution[] availableResolutions = Screen.resolutions;
+        List<Resolution> resolutionCollection = new List<Resolution>();
 
         resolutionsDD.ClearOptions();
 
         List<string> options = new List<string>();
 
-        int currentResolutionIndex = 0;
-        for (int i = 0; i < resolutions.Length; i++)
+        for (int i = 0; i < availableResolutions.Length; i++)
         {
-            string option = resolutions[i].width + "x" + resolutions[i].height + "@" + resolutions[i].refreshRate + "hz";
-            options.Add(option);
-            
-            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
-            {
-                currentResolutionIndex = i;
-            }
+            // hide options that don't play nice with our menu size
+            if (availableResolutions[i].width < 800 || availableResolutions[i].height < 600) { continue; }
+            // add resolution to list of resolutions
+            resolutionCollection.Add(availableResolutions[i]);
+            options.Add(availableResolutions[i].ToString());
+        }
+        resolutionsDD.AddOptions(options);
+        this.resolutions = resolutionCollection.ToArray();
+
+        // default resolution if no options are available should be best available
+        string optionsPath = Path.Combine(Application.persistentDataPath, "options.json");
+        int resolutionOverride = 0;
+        if (!File.Exists(path))
+        {
+            resolutionOverride = resolutions.Length - 1;
         }
 
-        resolutionsDD.AddOptions(options);
+        LoadOptions();
+        this.resolutionsIndex = resolutionOverride;
+        applyOptions();
+        SaveOptions();
     }
     // Section for the Main Menu Page
     // ==============================
@@ -127,11 +145,9 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
 
     public void SetVolume(float volume)
     {
-        Debug.Log(Mathf.Log10(volume)*20);
         audioMixer.SetFloat("volume", Mathf.Log10(volume)*20);
         soundVolume = volume;
-        Debug.Log(soundVolume);
-        GameObject.Find("Sounds").SendMessage("setVolume", soundVolume);
+        GameObject.Find("Sounds").SendMessage("setVolume", soundVolume, SendMessageOptions.DontRequireReceiver);
     }
     public void SetQuality (int qualityIndex)
     {
@@ -163,6 +179,11 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
             cs.setTypeWriterSpeed(textSpeed);
         }
     }
+    public void SetVSync(int vsyncValue)
+    {
+        this.vsync = vsyncValue;
+        QualitySettings.vSyncCount = vsyncValue;
+    }
 
     // Section for general Funtions
     // ============================
@@ -188,6 +209,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         resolutionsDD.interactable = false;
         fullscreenToggle.interactable = false;
         textSpeedSlider.interactable = false;
+        vsyncDD.interactable = false;
     }
     public void EnableOptionButtons()
     {
@@ -197,6 +219,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         resolutionsDD.interactable = true;
         fullscreenToggle.interactable = true;
         textSpeedSlider.interactable = true;
+        vsyncDD.interactable = true;
     }
     private void InvisibleMenuButtons()
     {
@@ -226,6 +249,8 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         fullscreenToggle.gameObject.SetActive(true);
         textSpeedSlider.gameObject.SetActive(true);
         textSpeedText.gameObject.SetActive(true);
+        vsyncDD.gameObject.SetActive(true);
+        vsyncText.gameObject.SetActive(true);
     }
     private void InvisibleOptionScreen()
     {
@@ -240,17 +265,19 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         fullscreenToggle.gameObject.SetActive(false);
         textSpeedSlider.gameObject.SetActive(false);
         textSpeedText.gameObject.SetActive(false);
+        vsyncDD.gameObject.SetActive(false);
+        vsyncText.gameObject.SetActive(false);
     }
     
         
 
     public void LoadData(GameData data)
     {
-        this.level = data.level;
+        // this.level = data.level;
     }
     public void SaveData(ref GameData data)
     {
-        data.level = this.level;
+        // data.level = this.level;
     }
 
     public void LoadOptions() {
@@ -260,6 +287,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         this.isFullscreen = optionData.isFullscreen;
         this.resolutionsIndex = optionData.resolutionsIndex;
         this.textSpeed = optionData.textSpeed;
+        this.vsync = optionData.vsync;
     }
     public void SaveOptions() {
         OptionData optionData = new OptionData();
@@ -268,6 +296,7 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         optionData.isFullscreen = this.isFullscreen;
         optionData.resolutionsIndex = this.resolutionsIndex;
         optionData.textSpeed = this.textSpeed;
+        optionData.vsync = this.vsync;
         OptionPersistenceManager.instance.SetOptionData(optionData);
     }
 
@@ -278,5 +307,30 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
         fullscreenToggle.isOn = this.isFullscreen;
         graphicsDD.value = this.graphicsIndex;
         resolutionsDD.value = this.resolutionsIndex;
+        vsyncDD.value = this.vsync;
+    }
+
+    private void applyOptions() {
+        // Volume
+        audioMixer.SetFloat("volume", Mathf.Log10(soundVolume)*20);
+        GameObject.Find("Sounds").SendMessage("setVolume", soundVolume, SendMessageOptions.DontRequireReceiver);
+        // Quality
+        QualitySettings.SetQualityLevel(this.graphicsIndex);
+        // V-Sync
+        QualitySettings.vSyncCount = this.vsync;
+        // Resolution and fullscreen
+        Resolution resolution = resolutions[this.resolutionsIndex];
+        Screen.SetResolution(resolution.width, resolution.height, this.isFullscreen);
+        // textSpeed
+        GameObject cBox = GameObject.Find("CommentBox");
+        CommentarySystem cs;
+        if (cBox) {
+            cs = GameObject.Find("CommentBox").GetComponent<CommentarySystem>();
+        } else {
+            cs = null;
+        }
+        if (cs) { // if there is one in the scene, update it directly (for if we add in-game options)
+            cs.setTypeWriterSpeed(textSpeed);
+        }
     }
 }

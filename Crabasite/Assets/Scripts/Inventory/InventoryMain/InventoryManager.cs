@@ -221,14 +221,14 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         var itemDescription = obj1.transform.Find("ItemDescription").GetComponent<TMP_Text>();
         var itemAmount = obj1.transform.Find("ItemAmount").GetComponent<TMP_Text>();
 
-        Debug.Log(itemAmount);
+        // Debug.Log(itemAmount);
 
         itemName.text = item.itemName;
         itemIcon.sprite = item.icon;
         itemDescription.text = item.description;
         itemAmount.text = ItemAmountInDict(toFind).ToString() + "x";
 
-        Debug.Log(itemAmount.text);
+        // Debug.Log(itemAmount.text);
     }
 
     /// This function is used to list all the mails in the mail tab

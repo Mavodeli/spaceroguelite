@@ -30,7 +30,7 @@ public class AnglerFishBehaviour : Enemy
                         afd.textureScale,//sprite scale modifier
                         afd.stoppingDistance,//stopping distance
                         afd.path_to_controller// path to animator controller
-                        );//Sprites/AnglerFish_256x256_New3
+                        );
         gameObject.GetComponent<BoxCollider2D>().size *= .8f;
         maxReachAttraction = afd.maxReachAttraction;
         maxReachDamage = afd.maxReachDamage;

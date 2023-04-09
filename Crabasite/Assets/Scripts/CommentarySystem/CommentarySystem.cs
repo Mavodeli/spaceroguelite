@@ -159,34 +159,11 @@ public class CommentarySystem : MonoBehaviour
         return alreadyShowingComment;
     }
 
-    private static string LoadFromFile(string identifier)
-    {
-        // using Path.Combine because of different Paths of different OS's
-        // string path = Path.Combine(Application.persistentDataPath, "english.json");
-        string path = "Assets/Resources/english.json";
-        string result = "DEFAULT COMMENT: should not appear!";
-        if(File.Exists(path))
-        {
-            Dictionary<string, string> deserializedData = new Dictionary<string, string>();
-            try
-            {
-                string jsonData = "";
-                using (FileStream stream = new FileStream(path, FileMode.Open))
-                {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        jsonData = reader.ReadToEnd();
-                    }
-                }
-                deserializedData = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonData);
-                result = deserializedData[identifier];
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError("Error occured when trying to load data from file:" + path + "\n" + e);
-            }
-        }
-        return result;
+    private static string LoadFromFile(string identifier) {
+        string jsonData = Resources.Load<TextAsset>("english").ToString(); // loads english.json
+        Dictionary<string, string> deserializedData = new Dictionary<string, string>();
+        deserializedData = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonData);
+        return deserializedData[identifier];
     }
 
     private IEnumerator typingSounds()

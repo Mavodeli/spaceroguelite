@@ -66,8 +66,8 @@ public class EnemyProjectile : MonoBehaviour
         transform.position = _parent.transform.position + (targetDirection*meanOffset);
     }
 
-    void Update(){
-        rb.AddForce(targetDirection*speed*Time.deltaTime);
+    void FixedUpdate(){
+        rb.AddForce(targetDirection*speed);
     }
 
     void OnTriggerEnter2D(Collider2D other){
@@ -77,7 +77,6 @@ public class EnemyProjectile : MonoBehaviour
             (other.gameObject.tag != "ProgressionTrigger") &&
             (other.gameObject.tag != "AbandonedSpaceshipCollider")
         ){
-            Debug.Log(other.gameObject.name);
             del(other);
             GameObject.Destroy(gameObject);
         }

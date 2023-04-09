@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
 
 public class CreditsConstructor : MonoBehaviour
 {
@@ -22,31 +23,17 @@ public class CreditsConstructor : MonoBehaviour
         parent = gameObject;
 
         //set scaling parameter according to screen size
-        between_tiles = 50;
+        between_tiles = 42;
         break_bound = Screen.height+between_tiles*transform.childCount;
-        scroll_speed = 0.00185f*Screen.height;
+        scroll_speed = 0.0016f*Screen.height;
 
         VerticalLayoutGroup vlg = gameObject.GetComponent<VerticalLayoutGroup>();
         vlg.spacing = between_tiles;
 
-        string path = "Assets/Resources/credits.txt";
-        if(File.Exists(path))
-        {
-            try
-            {
-                FileStream stream = new FileStream(path, FileMode.Open);
-                StreamReader reader = new StreamReader(stream);
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    GameObject newTile = TMPTile(line);
-                }
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError("Error occured when trying to load credits data from file:" + path + "\n" + e);
-            }
-        }
+        string credits = Resources.Load<TextAsset>("credits").ToString(); // loads credits.txt
+        string[] lines = Regex.Split(credits, "\n");
+
+        foreach (string s in lines) { GameObject newTile = TMPTile(s); }
 
         delay_timer = new TimerObject(gameObject.name+" delay_timer");
         delay_timer.start(delay_time);

@@ -99,6 +99,7 @@ public class SoundController : MonoBehaviour
     }
 
     private void playSound(string name, GameObject gameObject, float volume, bool dontDestroyOnLoad){
+        if (!gameObject || gameObject == null) { return; }
         AudioSource source = gameObject.AddComponent<AudioSource>();
         source.clip = sounds[name].clip;
         source.volume = volume * this.volume;
@@ -115,7 +116,7 @@ public class SoundController : MonoBehaviour
      */
     public void stopSound(string soundName){
         foreach(NamedAudioSource activeSound in activeSounds){
-            if(activeSound.name == soundName){
+            if(activeSound.source != null && activeSound.name == soundName){
                 activeSound.source.Stop();
             }
         }
@@ -140,7 +141,7 @@ public class SoundController : MonoBehaviour
             for(int i = activeSounds.Count - 1; i >= 0; i--)
             {
                 AudioSource activeSound = activeSounds[i].source;
-                if(!activeSound.isPlaying){
+                if(activeSound != null && !activeSound.isPlaying){
                     activeSounds.RemoveAt(i);
                     Destroy(activeSound);
                 }
