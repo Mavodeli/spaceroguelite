@@ -24,16 +24,17 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour, IDataPersisten
                         showCommentOnInspectingCrabasite();
 
                         // for debugging the AS level
-                        // if(!CommentarySystem.isShowingTextbox()){
-                        //     SceneManager.LoadScene("Level 2 - abandoned spaceship");
+                        if(!CommentarySystem.isShowingTextbox()){
+                            // SceneManager.LoadScene(SSE_exterior_level);
+                            SceneManager.LoadScene("Level 2 - abandoned spaceship");
 
-                        //     GameObject inv = GameObject.FindGameObjectWithTag("Inventory");
-                        //     inv.SendMessage("unlockUltimate", 0, SendMessageOptions.DontRequireReceiver);
-                        //     inv.SendMessage("unlockUltimate", 1, SendMessageOptions.DontRequireReceiver);
-                        //     inv.SendMessage("unlockUltimate", 2, SendMessageOptions.DontRequireReceiver);
-                        //     GameObject player = GameObject.FindGameObjectWithTag("Player");
-                        //     player.SendMessage("SwitchUltimate", 0, SendMessageOptions.DontRequireReceiver);
-                        // } else
+                            GameObject inv = GameObject.FindGameObjectWithTag("Inventory");
+                            inv.SendMessage("unlockUltimate", 0, SendMessageOptions.DontRequireReceiver);
+                            inv.SendMessage("unlockUltimate", 1, SendMessageOptions.DontRequireReceiver);
+                            inv.SendMessage("unlockUltimate", 2, SendMessageOptions.DontRequireReceiver);
+                            GameObject player = GameObject.FindGameObjectWithTag("Player");
+                            player.SendMessage("SwitchUltimate", 0, SendMessageOptions.DontRequireReceiver);
+                        } else
 
 
                         if(//ensure that the player 'collected' all quests for the space level

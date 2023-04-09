@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texturePath: Sprites/PUFFERFISH_Single
   textureScale: 0.32
-  health: 40
-  damage: 12
-  meleeDamage: 12
+  health: 55
+  damage: 15
+  meleeDamage: 15
   chaseSpeed: 1000
   gameObjectName: Puffer fish emeny
   meleeCooldown: 0.15
