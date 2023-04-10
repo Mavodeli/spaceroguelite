@@ -88,14 +88,11 @@ public class MainMenuManager : MonoBehaviour, IDataPersistence
 
         // default resolution if no options are available should be best available
         string optionsPath = Path.Combine(Application.persistentDataPath, "options.json");
-        int resolutionOverride = 0;
-        if (!File.Exists(path))
-        {
-            resolutionOverride = resolutions.Length - 1;
+        if (!File.Exists(optionsPath)) {
+            LoadOptions();
+            this.resolutionsIndex = resolutions.Length - 1;
         }
-
-        LoadOptions();
-        this.resolutionsIndex = resolutionOverride;
+        else { LoadOptions(); }
         applyOptions();
         SaveOptions();
     }
