@@ -31,6 +31,8 @@
 
 # Background Artists
 - Manuel von der Linden
+- Tarik Eker
+- Marco Madeja
 
 
 # UI Designers
