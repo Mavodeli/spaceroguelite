@@ -15,6 +15,5 @@ MonoBehaviour:
   id: 0
   itemName: Hyperdrive Core
   description: Energetic Core that is used to activate the HyperDrive mode.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2da74e2418b7cf746b91dbfe7ae3bb19, type: 3}
   iconScale: 1
-  itemAmount: 
