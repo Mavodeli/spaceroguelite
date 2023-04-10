@@ -37,8 +37,8 @@ public class Enemy : MonoBehaviour
     private Path path;
     private int currentWaypoint;
     private float nextWaypointDistance;
-    private float stoppingDistance;
-    private float idleDistance;
+    protected float stoppingDistance;
+    protected float idleDistance;
     protected GameObject player;
 
     //Misc

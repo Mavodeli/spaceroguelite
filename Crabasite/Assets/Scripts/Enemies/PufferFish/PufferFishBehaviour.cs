@@ -33,7 +33,9 @@ public class PufferFishBehaviour : Enemy
 
     void LateUpdate()//bc Enemy.cs already uses Update()!
     {
-        if(Random.Range(-1f, 140f * 7f) < 0){ // with approximatly 140 updates per second a sound will be emitted approximatly every 7 seconds per enemy
+        float distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
+        
+        if(Random.Range(-1f, 140f * 7f) < 0 && distanceToPlayer >= stoppingDistance && distanceToPlayer < idleDistance){ // with approximatly 140 updates per second a sound will be emitted approximatly every 7 seconds per enemy
             soundController.SendMessage("playSound", new SoundParameter("EnemySound_1", this.gameObject, 1f, false), SendMessageOptions.DontRequireReceiver);
         }
     }
