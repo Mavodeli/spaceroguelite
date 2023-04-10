@@ -346,7 +346,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
                 child.transform.GetChild(0).gameObject.SetActive(true);
             }
             else{
-                child.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Inventory/skill not unlocked yet resized");
+                child.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Inventory/SkillLockedText");
                 child.GetComponent<Button>().onClick.AddListener(ButtonInactive);
                 child.transform.GetChild(0).gameObject.SetActive(false);
             }
