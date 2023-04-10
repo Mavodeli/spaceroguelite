@@ -21,6 +21,8 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
         healthBar.transform.parent = GameObject.FindGameObjectWithTag("HUD").transform;
         healthBar.name = "PlayerHealth";
         healthBar.transform.localPosition = new Vector3(0, 0, 0);
+
+        addHealth(0);
     }
 
     //negative hp damages, positive hp heals

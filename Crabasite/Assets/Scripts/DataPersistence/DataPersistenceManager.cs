@@ -106,9 +106,8 @@ public class DataPersistenceManager : MonoBehaviour
         {
             GameHandler.GetComponent<CollectibleTracking>().deleteCollectibles();
         }
-            
-
     }
+    
     // Called when switching Scenes
     public void OnSceneUnloaded(Scene scene)
     {
