@@ -72,7 +72,7 @@ public class SpaceshipLevel_InteractablesHandler : MonoBehaviour, IDataPersisten
                         bool windshieldCompleted = QuestIsCompleted("RepairWindshield");
                         bool spaceshipCompleted = QuestIsCompleted("RepairSpaceship");
                         bool cureCompleted = QuestIsCompleted("FindACure");
-                        bool coreCompleted = QuestIsCompleted("FindANewHyperdriveCore");
+                        bool coreCompleted = QuestIsCompleted("InstallNewHyperdriveCore");
 
                         if (thrustersCompleted && windshieldCompleted && spaceshipCompleted && !cureCompleted && !coreCompleted)
                         {
