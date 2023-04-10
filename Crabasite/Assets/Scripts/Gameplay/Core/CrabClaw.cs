@@ -39,8 +39,21 @@ public class CrabClaw : MonoBehaviour
         PushParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // prevent particles when loading into scene
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        // old FixedUpdate:
+        if (!inventory.GetComponent<InventoryManager>().inventoryIsOpened)
+        {
+            if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+            {
+                PM.addMana(-2);
+                manaCooldownTimer(1.5f);
+            }
+            if (!manaCooldown.runs())
+            {
+                PM.addMana(3);
+            }
+        }
         //mousePos_relative_to_player: vector that points Player -> Mouse Cursor
         Vector2 mousePos_relative_to_player = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         mousePos_relative_to_player = new Vector2(mousePos_relative_to_player.x, mousePos_relative_to_player.y);
@@ -108,22 +121,6 @@ public class CrabClaw : MonoBehaviour
         // sounds
         soundController.SendMessage("stopSound", "PlayerPullSound", SendMessageOptions.DontRequireReceiver);
         soundController.SendMessage("stopSound", "PlayerPushSound", SendMessageOptions.DontRequireReceiver);
-    }
-
-    void FixedUpdate()
-    {
-        if (!inventory.GetComponent<InventoryManager>().inventoryIsOpened)
-        {
-            if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
-            {
-                PM.addMana(-2);
-                manaCooldownTimer(1.5f);
-            }
-            if (!manaCooldown.runs())
-            {
-                PM.addMana(3);
-            }
-        }
     }
 
     void manaCooldownTimer(float duration)

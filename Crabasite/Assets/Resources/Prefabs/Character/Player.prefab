@@ -70,8 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63c3d9e4659f0243a4c1331e13d1e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PullSpeed: 32
-  PushSpeed: 32
+  PullSpeed: 160
+  PushSpeed: 160
   range: 10
   PushParticleSystemPrefab: {fileID: 1562006985091824410, guid: 7c40bdd2fc3432945bbeaf545ad92285, type: 3}
   PullParticleSystemPrefab: {fileID: 8768868552205507901, guid: 34cc0de008ac562469a269d3a9aeb90f, type: 3}
