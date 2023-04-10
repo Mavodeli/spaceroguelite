@@ -1027,6 +1027,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UnPauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 3206882157751419275, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
+      propertyPath: m_ScrollSensitivity
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4389568797800237517, guid: db0fd016209daf5479e8c1047e3217d9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

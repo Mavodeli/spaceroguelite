@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texturePath: Sprites/onlyeel
   textureScale: 0.8
-  health: 200
+  health: 150
   damage: 30
   meleeDamage: 40
   chaseSpeed: 500
@@ -23,7 +23,7 @@ MonoBehaviour:
   gameObjectName: Moray Eel emeny
   projectileCooldown: 3
   meleeCooldown: 0.3
-  paralyzeDuration: 3
+  paralyzeDuration: 1.5
   stoppingDistance: 7
   texturePathProjectile: Sprites/onlyball
   textureScaleProjectile: 1

@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texturePath: Sprites/mantis_shrimp
   textureScale: 1
-  health: 150
-  damage: 50
-  meleeDamage: 70
+  health: 100
+  damage: 25
+  meleeDamage: 25
   chaseSpeed: 200
   spearSpeed: 28
   gameObjectName: Mantis shrimp emeny
-  spearCooldown: 0.9
+  spearCooldown: 1.5
   secondSpearDelay: 0.3
   meleeCooldown: 0.5
   stoppingDistance: 9
